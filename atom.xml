@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-09-08T13:53:22.708Z</updated>
+  <updated>2020-09-08T14:54:39.758Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>你难道没收到我的邮件？</title>
+    <link href="https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/"/>
+    <id>https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</id>
+    <published>2014-04-23T04:24:16.000Z</published>
+    <updated>2020-09-08T14:54:39.758Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;细数公司十大经典金句之首，当孰【你难道没收到我的邮件？】无疑（了吧~</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
+    
+  </entry>
+  
+  <entry>
     <title>找 BUG 记</title>
     <link href="https://exp-blog.com/feelings/zhao-bug-ji/"/>
     <id>https://exp-blog.com/feelings/zhao-bug-ji/</id>
     <published>2014-03-22T05:40:46.000Z</published>
-    <updated>2020-09-08T13:53:22.708Z</updated>
+    <updated>2020-09-08T15:13:38.981Z</updated>
     
     
       
@@ -37,6 +62,38 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="BUG" scheme="https://exp-blog.com/tags/BUG/"/>
+    
+    <category term="C++" scheme="https://exp-blog.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>请还我安静的 4 小时</title>
+    <link href="https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/"/>
+    <id>https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/</id>
+    <published>2014-02-28T03:38:56.000Z</published>
+    <updated>2020-09-08T14:54:18.929Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我大概总结了我每天分配的工作时间，一般情况下，我是这样汇报我的工作情况的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./01.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
   </entry>
   
   <entry>
@@ -44,7 +101,7 @@
     <link href="https://exp-blog.com/feelings/ban-bei-shui/"/>
     <id>https://exp-blog.com/feelings/ban-bei-shui/</id>
     <published>2013-12-20T05:40:46.000Z</published>
-    <updated>2020-09-08T13:53:22.287Z</updated>
+    <updated>2020-09-08T14:55:13.893Z</updated>
     
     
       
@@ -61,6 +118,12 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="暗时间" scheme="https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/"/>
+    
+    <category term="K.I.S.S" scheme="https://exp-blog.com/tags/K-I-S-S/"/>
+    
   </entry>
   
   <entry>
@@ -68,7 +131,7 @@
     <link href="https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/"/>
     <id>https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</id>
     <published>2013-11-15T05:40:46.000Z</published>
-    <updated>2020-09-08T13:53:22.477Z</updated>
+    <updated>2020-09-08T15:11:21.144Z</updated>
     
     
       
@@ -85,6 +148,36 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="居安思危" scheme="https://exp-blog.com/tags/%E5%B1%85%E5%AE%89%E6%80%9D%E5%8D%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我们需要的，是测试而非重构</title>
+    <link href="https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/"/>
+    <id>https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</id>
+    <published>2013-11-13T13:14:36.000Z</published>
+    <updated>2020-09-08T14:56:16.505Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;上台一鞠躬。是的，久别两个月我又回来了。&lt;/p&gt;
+&lt;p&gt;最近忙着杂七杂八的一堆事，不过基本都是维护老项目代码了。一说起这个亘古不变的老话题，估计许多人都要开始抱怨了吧：没有格式没有篇章的混乱、没</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
   </entry>
   
   <entry>
@@ -92,7 +185,7 @@
     <link href="https://exp-blog.com/feelings/yue-que-meng-yuan/"/>
     <id>https://exp-blog.com/feelings/yue-que-meng-yuan/</id>
     <published>2013-09-09T06:58:35.000Z</published>
-    <updated>2020-09-08T14:37:16.281Z</updated>
+    <updated>2020-09-08T15:12:57.218Z</updated>
     
     
       
@@ -110,6 +203,157 @@
     
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
+    
+    <category term="中秋" scheme="https://exp-blog.com/tags/%E4%B8%AD%E7%A7%8B/"/>
+    
+    <category term="团圆" scheme="https://exp-blog.com/tags/%E5%9B%A2%E5%9C%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>请发展你的惰性</title>
+    <link href="https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/"/>
+    <id>https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/</id>
+    <published>2013-08-04T08:07:46.000Z</published>
+    <updated>2020-09-08T15:12:20.245Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;你工作的时候就只是工作吗？&lt;/p&gt;
+&lt;p&gt;我不一定。我有些时候不会把今天的所有时间都用在为了完成今天的工作任务中。而且我也相信，把全部时间都花费在工作并不代表就能很好地完成工作。&lt;/p&gt;
+&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>优雅的烂代码</title>
+    <link href="https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/"/>
+    <id>https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/</id>
+    <published>2013-07-28T06:23:41.000Z</published>
+    <updated>2020-09-08T15:12:28.401Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token comment&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
+    
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序员的&quot;病态&quot;</title>
+    <link href="https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/"/>
+    <id>https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/</id>
+    <published>2013-07-16T14:42:15.000Z</published>
+    <updated>2020-09-08T14:43:10.087Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;每个程序员都是从菜鸟过来的，而菜鸟的成长之路总是崎岖的。不断地碰壁、不断地摸索、不断地成长，从中难免衍生出各种各样的“病态”，而这其实都是我们切实作为一个程序员的证明。&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="BUG" scheme="https://exp-blog.com/tags/BUG/"/>
+    
+    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工作需要经营</title>
+    <link href="https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/"/>
+    <id>https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/</id>
+    <published>2013-06-18T14:48:23.000Z</published>
+    <updated>2020-09-08T15:11:49.546Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;转眼间我已实习了3个月有余，在这期间，相比于精通什么技能或业务，我更学会了应该如何去经营自己的工作。&lt;/p&gt;
+&lt;p&gt;我深深体会到工作并不是做好自己的份内事就足够的。单纯的努力工作，那只是为了谋生</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+    <category term="慎言笃行" scheme="https://exp-blog.com/tags/%E6%85%8E%E8%A8%80%E7%AC%83%E8%A1%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一位 ACMer 过来人的心得</title>
+    <link href="https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/"/>
+    <id>https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/</id>
+    <published>2011-07-28T15:39:23.000Z</published>
+    <updated>2020-09-08T15:05:43.787Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;刻苦的训练我打算最后稍微提一下。主要说后者：什么是有效地训练？&lt;/p&gt;
+&lt;p&gt;我想说下我的理解。&lt;/p&gt;
+&lt;p&gt;很多ACMer入门的时候，都被告知：要多做题，做个500多道就变牛了。其实，这既不</summary>
+        
+      
+    
+    
+    
+    <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="ACM" scheme="https://exp-blog.com/tags/ACM/"/>
+    
+    <category term="ICPC" scheme="https://exp-blog.com/tags/ICPC/"/>
+    
+    <category term="算法" scheme="https://exp-blog.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="训练" scheme="https://exp-blog.com/tags/%E8%AE%AD%E7%BB%83/"/>
     
   </entry>
   
