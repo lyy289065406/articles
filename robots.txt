@@ -7,3 +7,42 @@ Disallow: /js/
 Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
+
+
+
+
+
+User-agent: *
+
+# 禁止抓取后台程序文件页面
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+
+# 禁止抓取评论分页等相关链接
+Disallow: /comments/
+Disallow: /*/comment-page-*
+Disallow: /*?replytocom=*
+
+# 禁止抓取收录 trackback 等垃圾信息
+Disallow: /trackback/
+Disallow: /*/trackback
+
+# 禁止抓取附件页面，比如毫无意义的图片附件页面
+Disallow: /attachment/
+
+# 禁止抓取收录 feed 链接，feed 只用于订阅本站，与搜索引擎无关
+Disallow: /comments/feed
+Disallow: /feed
+Disallow: /*/feed
+
+# 禁止抓取站内搜索结果
+Disallow: /?s=*
+Disallow: /*/?s=*\
+
+# 禁止抓取 WordPress 网站根目录的以 wp 开头的文件
+Disallow: /wp-*.php
+
+# 方便搜索引擎抓取的站点地图
+Sitemap: http://exp-blog.com/sitemap.xml
+Sitemap: http://203.195.132.63/sitemap.xml

@@ -2,7 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://exp-blog.com/2013/09/yue-que-meng-yuan/</loc>
+    <loc>https://exp-blog.com/feelings/yue-que-meng-yuan/</loc>
+    
+    <lastmod>2020-09-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/feelings/zhao-bug-ji/</loc>
+    
+    <lastmod>2020-09-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</loc>
+    
+    <lastmod>2020-09-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/feelings/ban-bei-shui/</loc>
     
     <lastmod>2020-09-08</lastmod>
     
@@ -12,27 +33,6 @@
     <loc>https://exp-blog.com/friends/index.html</loc>
     
     <lastmod>2020-09-08</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/2013/12/ban-bei-shui/</loc>
-    
-    <lastmod>2020-09-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/2013/11/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</loc>
-    
-    <lastmod>2020-09-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/2014/03/zhao-bug-ji/</loc>
-    
-    <lastmod>2020-09-07</lastmod>
     
   </url>
   
@@ -65,20 +65,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E4%B8%AD%E7%A7%8B/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E5%9B%A2%E5%9C%86/</loc>
-    <lastmod>2020-09-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
 
   
