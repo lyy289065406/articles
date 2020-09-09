@@ -2,84 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://exp-blog.com/feelings/yue-que-meng-yuan/</loc>
+    <loc>https://exp-blog.com/insights/yi-wei-acmer-guo-lai-ren-de-xin-de/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</loc>
+    <loc>https://exp-blog.com/insights/ban-bei-shui/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/</loc>
+    <loc>https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/</loc>
+    <loc>https://exp-blog.com/insights/yue-que-meng-yuan/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/</loc>
+    <loc>https://exp-blog.com/insights/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/</loc>
+    <loc>https://exp-blog.com/insights/you-ya-de-lan-dai-ma/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</loc>
+    <loc>https://exp-blog.com/insights/qing-huan-wo-an-jing-de-4-xiao-shi/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/</loc>
+    <loc>https://exp-blog.com/insights/qing-fa-zhan-ni-de-duo-xing/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/</loc>
+    <loc>https://exp-blog.com/insights/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</loc>
+    <loc>https://exp-blog.com/insights/gong-zuo-xu-yao-jing-ying/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/ban-bei-shui/</loc>
+    <loc>https://exp-blog.com/insights/cheng-xu-yuan-de-bing-tai/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/feelings/zhao-bug-ji/</loc>
+    <loc>https://exp-blog.com/insights/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</loc>
+    
+    <lastmod>2020-09-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/insights/zhao-bug-ji/</loc>
     
     <lastmod>2020-09-09</lastmod>
     
@@ -199,10 +206,31 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://exp-blog.com/tags/CVE/</loc>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/</loc>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-09-09T04:52:56.906Z</updated>
+  <updated>2020-09-09T16:00:04.780Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -17,9 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CVE-2020-13933 漏洞分析</title>
+    <link href="https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/"/>
+    <id>https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/</id>
+    <published>2020-09-09T15:59:41.000Z</published>
+    <updated>2020-09-09T16:00:04.780Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;漏洞背景&quot;&gt;&lt;a href=&quot;#漏洞背景&quot; class=&quot;headerlink&quot; title=&quot;漏洞背景&quot;&gt;&lt;/a&gt;漏洞背景&lt;/h2&gt;&lt;p&gt;Apache Shiro</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="CVE" scheme="https://exp-blog.com/tags/CVE/"/>
+    
+    <category term="漏洞分析" scheme="https://exp-blog.com/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>你难道没收到我的邮件？</title>
-    <link href="https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/"/>
-    <id>https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</id>
+    <link href="https://exp-blog.com/insights/ni-nan-dao-mei-shou-dao-wo-de-you-jian/"/>
+    <id>https://exp-blog.com/insights/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</id>
     <published>2014-04-23T04:24:16.000Z</published>
     <updated>2020-09-09T04:52:56.906Z</updated>
     
@@ -45,8 +72,8 @@
   
   <entry>
     <title>找 BUG 记</title>
-    <link href="https://exp-blog.com/feelings/zhao-bug-ji/"/>
-    <id>https://exp-blog.com/feelings/zhao-bug-ji/</id>
+    <link href="https://exp-blog.com/insights/zhao-bug-ji/"/>
+    <id>https://exp-blog.com/insights/zhao-bug-ji/</id>
     <published>2014-03-22T05:40:46.000Z</published>
     <updated>2020-09-09T04:52:25.048Z</updated>
     
@@ -72,8 +99,8 @@
   
   <entry>
     <title>请还我安静的 4 小时</title>
-    <link href="https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/"/>
-    <id>https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/</id>
+    <link href="https://exp-blog.com/insights/qing-huan-wo-an-jing-de-4-xiao-shi/"/>
+    <id>https://exp-blog.com/insights/qing-huan-wo-an-jing-de-4-xiao-shi/</id>
     <published>2014-02-28T03:38:56.000Z</published>
     <updated>2020-09-09T04:53:02.302Z</updated>
     
@@ -98,10 +125,10 @@
   
   <entry>
     <title>半杯水</title>
-    <link href="https://exp-blog.com/feelings/ban-bei-shui/"/>
-    <id>https://exp-blog.com/feelings/ban-bei-shui/</id>
+    <link href="https://exp-blog.com/insights/ban-bei-shui/"/>
+    <id>https://exp-blog.com/insights/ban-bei-shui/</id>
     <published>2013-12-20T05:40:46.000Z</published>
-    <updated>2020-09-09T04:52:33.868Z</updated>
+    <updated>2020-09-09T16:02:20.851Z</updated>
     
     
       
@@ -130,8 +157,8 @@
   
   <entry>
     <title>别让你的能力成为绊脚石</title>
-    <link href="https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/"/>
-    <id>https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</id>
+    <link href="https://exp-blog.com/insights/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/"/>
+    <id>https://exp-blog.com/insights/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</id>
     <published>2013-11-15T05:40:46.000Z</published>
     <updated>2020-09-09T04:52:39.304Z</updated>
     
@@ -156,8 +183,8 @@
   
   <entry>
     <title>我们需要的，是测试而非重构</title>
-    <link href="https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/"/>
-    <id>https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</id>
+    <link href="https://exp-blog.com/insights/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/"/>
+    <id>https://exp-blog.com/insights/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</id>
     <published>2013-11-13T13:14:36.000Z</published>
     <updated>2020-09-09T04:54:10.261Z</updated>
     
@@ -186,8 +213,8 @@
   
   <entry>
     <title>月缺，梦圆。</title>
-    <link href="https://exp-blog.com/feelings/yue-que-meng-yuan/"/>
-    <id>https://exp-blog.com/feelings/yue-que-meng-yuan/</id>
+    <link href="https://exp-blog.com/insights/yue-que-meng-yuan/"/>
+    <id>https://exp-blog.com/insights/yue-que-meng-yuan/</id>
     <published>2013-09-09T06:58:35.000Z</published>
     <updated>2020-09-09T04:54:13.530Z</updated>
     
@@ -214,8 +241,8 @@
   
   <entry>
     <title>请发展你的惰性</title>
-    <link href="https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/"/>
-    <id>https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/</id>
+    <link href="https://exp-blog.com/insights/qing-fa-zhan-ni-de-duo-xing/"/>
+    <id>https://exp-blog.com/insights/qing-fa-zhan-ni-de-duo-xing/</id>
     <published>2013-08-04T08:07:46.000Z</published>
     <updated>2020-09-09T04:52:59.907Z</updated>
     
@@ -241,8 +268,8 @@
   
   <entry>
     <title>优雅的烂代码</title>
-    <link href="https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/"/>
-    <id>https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/</id>
+    <link href="https://exp-blog.com/insights/you-ya-de-lan-dai-ma/"/>
+    <id>https://exp-blog.com/insights/you-ya-de-lan-dai-ma/</id>
     <published>2013-07-28T06:23:41.000Z</published>
     <updated>2020-09-09T04:53:54.393Z</updated>
     
@@ -270,8 +297,8 @@
   
   <entry>
     <title>程序员的&quot;病态&quot;</title>
-    <link href="https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/"/>
-    <id>https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/</id>
+    <link href="https://exp-blog.com/insights/cheng-xu-yuan-de-bing-tai/"/>
+    <id>https://exp-blog.com/insights/cheng-xu-yuan-de-bing-tai/</id>
     <published>2013-07-16T14:42:15.000Z</published>
     <updated>2020-09-09T04:52:48.941Z</updated>
     
@@ -296,8 +323,8 @@
   
   <entry>
     <title>工作需要经营</title>
-    <link href="https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/"/>
-    <id>https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/</id>
+    <link href="https://exp-blog.com/insights/gong-zuo-xu-yao-jing-ying/"/>
+    <id>https://exp-blog.com/insights/gong-zuo-xu-yao-jing-ying/</id>
     <published>2013-06-18T14:48:23.000Z</published>
     <updated>2020-09-09T04:52:53.115Z</updated>
     
@@ -322,10 +349,10 @@
   
   <entry>
     <title>一位 ACMer 过来人的心得</title>
-    <link href="https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/"/>
-    <id>https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/</id>
+    <link href="https://exp-blog.com/insights/yi-wei-acmer-guo-lai-ren-de-xin-de/"/>
+    <id>https://exp-blog.com/insights/yi-wei-acmer-guo-lai-ren-de-xin-de/</id>
     <published>2011-07-28T15:39:23.000Z</published>
-    <updated>2020-09-09T04:53:18.125Z</updated>
+    <updated>2020-09-09T16:02:32.166Z</updated>
     
     
       
