@@ -22,6 +22,8 @@
             
             <tag> 沟通 </tag>
             
+            <tag> 随笔 </tag>
+            
         </tags>
       
     </entry>
@@ -45,9 +47,9 @@
       
         <tags>
             
-            <tag> BUG </tag>
+            <tag> 随笔 </tag>
             
-            <tag> C++ </tag>
+            <tag> BUG </tag>
             
         </tags>
       
@@ -72,9 +74,7 @@
       
         <tags>
             
-            <tag> 工作 </tag>
-            
-            <tag> 程序员 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -100,6 +100,8 @@
         <tags>
             
             <tag> 重构 </tag>
+            
+            <tag> 随笔 </tag>
             
             <tag> 暗时间 </tag>
             
@@ -128,7 +130,7 @@
       
         <tags>
             
-            <tag> 居安思危 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -155,6 +157,8 @@
             
             <tag> 重构 </tag>
             
+            <tag> 随笔 </tag>
+            
             <tag> 测试 </tag>
             
         </tags>
@@ -180,9 +184,7 @@
       
         <tags>
             
-            <tag> 中秋 </tag>
-            
-            <tag> 团圆 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -207,9 +209,7 @@
       
         <tags>
             
-            <tag> 工作 </tag>
-            
-            <tag> 程序员 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -263,9 +263,7 @@
       
         <tags>
             
-            <tag> BUG </tag>
-            
-            <tag> 程序员 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -290,9 +288,7 @@
       
         <tags>
             
-            <tag> 工作 </tag>
-            
-            <tag> 慎言笃行 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -318,8 +314,6 @@
         <tags>
             
             <tag> ACM </tag>
-            
-            <tag> ICPC </tag>
             
             <tag> 算法 </tag>
             

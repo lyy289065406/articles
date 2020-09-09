@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-09-08T14:54:39.758Z</updated>
+  <updated>2020-09-09T04:52:56.906Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/"/>
     <id>https://exp-blog.com/feelings/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</id>
     <published>2014-04-23T04:24:16.000Z</published>
-    <updated>2020-09-08T14:54:39.758Z</updated>
+    <updated>2020-09-09T04:52:56.906Z</updated>
     
     
       
@@ -39,6 +39,8 @@
     
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
   </entry>
   
   <entry>
@@ -46,7 +48,7 @@
     <link href="https://exp-blog.com/feelings/zhao-bug-ji/"/>
     <id>https://exp-blog.com/feelings/zhao-bug-ji/</id>
     <published>2014-03-22T05:40:46.000Z</published>
-    <updated>2020-09-08T15:13:38.981Z</updated>
+    <updated>2020-09-09T04:52:25.048Z</updated>
     
     
       
@@ -62,9 +64,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="BUG" scheme="https://exp-blog.com/tags/BUG/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="C++" scheme="https://exp-blog.com/tags/C/"/>
+    <category term="BUG" scheme="https://exp-blog.com/tags/BUG/"/>
     
   </entry>
   
@@ -73,7 +75,7 @@
     <link href="https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/"/>
     <id>https://exp-blog.com/feelings/qing-huan-wo-an-jing-de-4-xiao-shi/</id>
     <published>2014-02-28T03:38:56.000Z</published>
-    <updated>2020-09-08T14:54:18.929Z</updated>
+    <updated>2020-09-09T04:53:02.302Z</updated>
     
     
       
@@ -90,9 +92,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -101,7 +101,7 @@
     <link href="https://exp-blog.com/feelings/ban-bei-shui/"/>
     <id>https://exp-blog.com/feelings/ban-bei-shui/</id>
     <published>2013-12-20T05:40:46.000Z</published>
-    <updated>2020-09-08T14:55:13.893Z</updated>
+    <updated>2020-09-09T04:52:33.868Z</updated>
     
     
       
@@ -120,6 +120,8 @@
     
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
     <category term="暗时间" scheme="https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/"/>
     
     <category term="K.I.S.S" scheme="https://exp-blog.com/tags/K-I-S-S/"/>
@@ -131,7 +133,7 @@
     <link href="https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/"/>
     <id>https://exp-blog.com/feelings/bie-rang-ni-de-neng-li-cheng-wei-ban-jiao-shi/</id>
     <published>2013-11-15T05:40:46.000Z</published>
-    <updated>2020-09-08T15:11:21.144Z</updated>
+    <updated>2020-09-09T04:52:39.304Z</updated>
     
     
       
@@ -148,7 +150,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="居安思危" scheme="https://exp-blog.com/tags/%E5%B1%85%E5%AE%89%E6%80%9D%E5%8D%B1/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -157,7 +159,7 @@
     <link href="https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/"/>
     <id>https://exp-blog.com/feelings/wo-men-xu-yao-de-shi-ce-shi-er-fei-chong-gou/</id>
     <published>2013-11-13T13:14:36.000Z</published>
-    <updated>2020-09-08T14:56:16.505Z</updated>
+    <updated>2020-09-09T04:54:10.261Z</updated>
     
     
       
@@ -176,6 +178,8 @@
     
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
     <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
@@ -185,7 +189,7 @@
     <link href="https://exp-blog.com/feelings/yue-que-meng-yuan/"/>
     <id>https://exp-blog.com/feelings/yue-que-meng-yuan/</id>
     <published>2013-09-09T06:58:35.000Z</published>
-    <updated>2020-09-08T15:12:57.218Z</updated>
+    <updated>2020-09-09T04:54:13.530Z</updated>
     
     
       
@@ -204,9 +208,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="中秋" scheme="https://exp-blog.com/tags/%E4%B8%AD%E7%A7%8B/"/>
-    
-    <category term="团圆" scheme="https://exp-blog.com/tags/%E5%9B%A2%E5%9C%86/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -215,7 +217,7 @@
     <link href="https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/"/>
     <id>https://exp-blog.com/feelings/qing-fa-zhan-ni-de-duo-xing/</id>
     <published>2013-08-04T08:07:46.000Z</published>
-    <updated>2020-09-08T15:12:20.245Z</updated>
+    <updated>2020-09-09T04:52:59.907Z</updated>
     
     
       
@@ -233,9 +235,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -244,7 +244,7 @@
     <link href="https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/"/>
     <id>https://exp-blog.com/feelings/you-ya-de-lan-dai-ma/</id>
     <published>2013-07-28T06:23:41.000Z</published>
-    <updated>2020-09-08T15:12:28.401Z</updated>
+    <updated>2020-09-09T04:53:54.393Z</updated>
     
     
       
@@ -273,7 +273,7 @@
     <link href="https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/"/>
     <id>https://exp-blog.com/feelings/cheng-xu-yuan-de-bing-tai/</id>
     <published>2013-07-16T14:42:15.000Z</published>
-    <updated>2020-09-08T14:43:10.087Z</updated>
+    <updated>2020-09-09T04:52:48.941Z</updated>
     
     
       
@@ -290,9 +290,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="BUG" scheme="https://exp-blog.com/tags/BUG/"/>
-    
-    <category term="程序员" scheme="https://exp-blog.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -301,7 +299,7 @@
     <link href="https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/"/>
     <id>https://exp-blog.com/feelings/gong-zuo-xu-yao-jing-ying/</id>
     <published>2013-06-18T14:48:23.000Z</published>
-    <updated>2020-09-08T15:11:49.546Z</updated>
+    <updated>2020-09-09T04:52:53.115Z</updated>
     
     
       
@@ -318,9 +316,7 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="工作" scheme="https://exp-blog.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-    <category term="慎言笃行" scheme="https://exp-blog.com/tags/%E6%85%8E%E8%A8%80%E7%AC%83%E8%A1%8C/"/>
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -329,7 +325,7 @@
     <link href="https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/"/>
     <id>https://exp-blog.com/feelings/yi-wei-acmer-guo-lai-ren-de-xin-de/</id>
     <published>2011-07-28T15:39:23.000Z</published>
-    <updated>2020-09-08T15:05:43.787Z</updated>
+    <updated>2020-09-09T04:53:18.125Z</updated>
     
     
       
@@ -348,8 +344,6 @@
     
     
     <category term="ACM" scheme="https://exp-blog.com/tags/ACM/"/>
-    
-    <category term="ICPC" scheme="https://exp-blog.com/tags/ICPC/"/>
     
     <category term="算法" scheme="https://exp-blog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
