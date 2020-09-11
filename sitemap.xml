@@ -4,7 +4,7 @@
   <url>
     <loc>https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/</loc>
     
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     
   </url>
   
@@ -123,99 +123,99 @@
 
   <url>
     <loc>https://exp-blog.com/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://exp-blog.com/tags/ACM/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E8%AE%AD%E7%BB%83/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <loc>https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/K-I-S-S/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/</loc>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/tags/BUG/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/</loc>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/K-I-S-S/</loc>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/ACM/</loc>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E8%AE%AD%E7%BB%83/</loc>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/tags/CVE/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -224,14 +224,14 @@
   
   <url>
     <loc>https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2020-09-10</lastmod>
+    <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
