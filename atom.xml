@@ -44,6 +44,174 @@
   </entry>
   
   <entry>
+    <title>各种语言的一句话反弹 shell 命令</title>
+    <link href="https://exp-blog.com/safe/ge-chong-yu-yan-yi-ju-hua-fan-dan-shell/"/>
+    <id>https://exp-blog.com/safe/ge-chong-yu-yan-yi-ju-hua-fan-dan-shell/</id>
+    <published>2020-08-17T08:01:28.000Z</published>
+    <updated>2020-09-11T17:49:20.913Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;被攻击主机先监听端口&quot;&gt;&lt;a href=&quot;#被攻击主机先监听端口&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="渗透" scheme="https://exp-blog.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="反弹shell" scheme="https://exp-blog.com/tags/%E5%8F%8D%E5%BC%B9shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>威胁情报播报</title>
+    <link href="https://exp-blog.com/safe/threat-broadcast/"/>
+    <id>https://exp-blog.com/safe/threat-broadcast/</id>
+    <published>2020-05-01T04:22:36.000Z</published>
+    <updated>2020-09-11T17:56:43.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://lyy289065406.github.io/threat-broadcast/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="CVE" scheme="https://exp-blog.com/tags/CVE/"/>
+    
+    <category term="威胁情报" scheme="https://exp-blog.com/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何令永假式成真？</title>
+    <link href="https://exp-blog.com/safe/ru-he-ling-yong-jia-shi-cheng-zhen/"/>
+    <id>https://exp-blog.com/safe/ru-he-ling-yong-jia-shi-cheng-zhen/</id>
+    <published>2020-03-27T09:36:11.000Z</published>
+    <updated>2020-09-11T17:51:48.188Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近在 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="永假式" scheme="https://exp-blog.com/tags/%E6%B0%B8%E5%81%87%E5%BC%8F/"/>
+    
+    <category term="绕过" scheme="https://exp-blog.com/tags/%E7%BB%95%E8%BF%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WEB 渗透靶场整合</title>
+    <link href="https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/"/>
+    <id>https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/</id>
+    <published>2019-10-22T07:06:27.000Z</published>
+    <updated>2020-09-11T17:47:18.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;DVWA&quot;&gt;&lt;a href=&quot;#DVWA&quot; class=&quot;headerlink&quot; title=&quot;DVWA&quot;&gt;&lt;/a&gt;DVWA&lt;/h2&gt;&lt;p&gt;推荐新手首选靶场，配置简单，需下载</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="渗透" scheme="https://exp-blog.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="靶场" scheme="https://exp-blog.com/tags/%E9%9D%B6%E5%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTF 解题报告</title>
+    <link href="https://exp-blog.com/safe/ctf-solving-reports/"/>
+    <id>https://exp-blog.com/safe/ctf-solving-reports/</id>
+    <published>2019-02-10T02:13:45.000Z</published>
+    <updated>2020-09-11T18:00:07.596Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lyy289065406/CTF-Solving-Reports/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="CTF" scheme="https://exp-blog.com/tags/CTF/"/>
+    
+    <category term="解题报告" scheme="https://exp-blog.com/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>白帽子渗透测试入门资源：参考书、课程、工具、认证</title>
+    <link href="https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/"/>
+    <id>https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</id>
+    <published>2019-01-08T01:23:44.000Z</published>
+    <updated>2020-09-11T18:04:04.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="渗透" scheme="https://exp-blog.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="白帽子" scheme="https://exp-blog.com/tags/%E7%99%BD%E5%B8%BD%E5%AD%90/"/>
+    
+    <category term="Pwk" scheme="https://exp-blog.com/tags/Pwk/"/>
+    
+    <category term="OSCP" scheme="https://exp-blog.com/tags/OSCP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>你难道没收到我的邮件？</title>
     <link href="https://exp-blog.com/insights/ni-nan-dao-mei-shou-dao-wo-de-you-jian/"/>
     <id>https://exp-blog.com/insights/ni-nan-dao-mei-shou-dao-wo-de-you-jian/</id>

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://exp-blog.com/articles/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/safe/ctf-solving-reports/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/safe/threat-broadcast/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/safe/ru-he-ling-yong-jia-shi-cheng-zhen/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/safe/ge-chong-yu-yan-yi-ju-hua-fan-dan-shell/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/safe/web-shen-tou-ba-chang-zheng-he/</loc>
+    <lastmod>2020-09-11</lastmod>
+  </url>
+  <url>
     <loc>https://exp-blog.com/articles/safe/cve-2020-13933-lou-dong-fen-xi/</loc>
     <lastmod>2020-09-11</lastmod>
   </url>
