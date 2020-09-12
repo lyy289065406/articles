@@ -323,6 +323,171 @@
   </entry>
   
   <entry>
+    <title>Redis 部署笔记（单机 + 主从 + 哨兵 + 集群）</title>
+    <link href="https://exp-blog.com/db/redis-bu-shu-bi-ji/"/>
+    <id>https://exp-blog.com/db/redis-bu-shu-bi-ji/</id>
+    <published>2018-09-14T10:44:36.000Z</published>
+    <updated>2020-09-12T07:16:51.308Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1. 简介&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://exp-blog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="集群" scheme="https://exp-blog.com/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+    <category term="Redis" scheme="https://exp-blog.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>哔哩哔哩插件姬</title>
+    <link href="https://exp-blog.com/crawler/bilibili-plugin/"/>
+    <id>https://exp-blog.com/crawler/bilibili-plugin/</id>
+    <published>2018-09-13T14:41:19.000Z</published>
+    <updated>2020-09-12T08:01:13.582Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lyy289065406/bilibili-plugin/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="https://exp-blog.com/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="B站" scheme="https://exp-blog.com/tags/B%E7%AB%99/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QQ 空间爬虫（Java 版）</title>
+    <link href="https://exp-blog.com/crawler/jzone-crawler/"/>
+    <id>https://exp-blog.com/crawler/jzone-crawler/</id>
+    <published>2018-09-13T08:29:54.000Z</published>
+    <updated>2020-09-12T08:03:04.547Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lyy289065406/jzone-crawler/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="https://exp-blog.com/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="QQ" scheme="https://exp-blog.com/tags/QQ/"/>
+    
+    <category term="Java" scheme="https://exp-blog.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QQ 空间爬虫（Python 版）</title>
+    <link href="https://exp-blog.com/crawler/pyzone-crawler/"/>
+    <id>https://exp-blog.com/crawler/pyzone-crawler/</id>
+    <published>2018-09-13T03:54:02.000Z</published>
+    <updated>2020-09-12T08:03:57.506Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lyy289065406/pyzone-crawler/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="https://exp-blog.com/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="QQ" scheme="https://exp-blog.com/tags/QQ/"/>
+    
+    <category term="Python" scheme="https://exp-blog.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速部署单机 kafka 集群（win 环境）</title>
+    <link href="https://exp-blog.com/arch/kuai-su-bu-shu-dan-ji-kafka-ji-qun/"/>
+    <id>https://exp-blog.com/arch/kuai-su-bu-shu-dan-ji-kafka-ji-qun/</id>
+    <published>2018-08-03T12:03:42.000Z</published>
+    <updated>2020-09-12T07:41:15.032Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="系统架构" scheme="https://exp-blog.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+    <category term="集群" scheme="https://exp-blog.com/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+    <category term="kafka" scheme="https://exp-blog.com/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速部署单机 zookeeper 集群（win 环境）</title>
+    <link href="https://exp-blog.com/arch/kuai-su-bu-shu-dan-ji-zookeeper-ji-qun/"/>
+    <id>https://exp-blog.com/arch/kuai-su-bu-shu-dan-ji-zookeeper-ji-qun/</id>
+    <published>2018-08-03T09:37:09.000Z</published>
+    <updated>2020-09-12T07:38:38.141Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="系统架构" scheme="https://exp-blog.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+    <category term="zookeeper" scheme="https://exp-blog.com/tags/zookeeper/"/>
+    
+    <category term="集群" scheme="https://exp-blog.com/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WP 侧栏小挂件：WP Statistics 改版 &quot;文章/访问统计&quot;</title>
     <link href="https://exp-blog.com/website/wp-gua-jian-statistics/"/>
     <id>https://exp-blog.com/website/wp-gua-jian-statistics/</id>
@@ -343,9 +508,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
     <category term="Statistics" scheme="https://exp-blog.com/tags/Statistics/"/>
     
@@ -372,9 +537,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
     <category term="CSDN" scheme="https://exp-blog.com/tags/CSDN/"/>
     
@@ -456,9 +621,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
     <category term="Baidu" scheme="https://exp-blog.com/tags/Baidu/"/>
     
@@ -485,9 +650,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
     <category term="Copyright" scheme="https://exp-blog.com/tags/Copyright/"/>
     
@@ -514,9 +679,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
   </entry>
   
@@ -544,6 +709,58 @@
     <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
     <category term="LAMP" scheme="https://exp-blog.com/tags/LAMP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle学习笔记</title>
+    <link href="https://exp-blog.com/db/oracle-xue-xi-bi-ji/"/>
+    <id>https://exp-blog.com/db/oracle-xue-xi-bi-ji/</id>
+    <published>2017-03-06T03:24:55.000Z</published>
+    <updated>2020-09-12T07:04:35.270Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1. 前言&lt;/h2&gt;&lt;p&gt;本学习笔记仅涵盖了基本的 Oracle</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://exp-blog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="Oracle" scheme="https://exp-blog.com/tags/Oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2015 系统架构师复习资料</title>
+    <link href="https://exp-blog.com/arch/2015-xi-tong-jia-gou-shi-fu-xi-zi-liao/"/>
+    <id>https://exp-blog.com/arch/2015-xi-tong-jia-gou-shi-fu-xi-zi-liao/</id>
+    <published>2016-01-21T10:28:49.000Z</published>
+    <updated>2020-09-12T07:54:26.204Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;经过一年的复习，鄙人终于通过了15年的</summary>
+        
+      
+    
+    
+    
+    <category term="系统架构" scheme="https://exp-blog.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+    <category term="系统架构师" scheme="https://exp-blog.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
+    
+    <category term="软考" scheme="https://exp-blog.com/tags/%E8%BD%AF%E8%80%83/"/>
     
   </entry>
   

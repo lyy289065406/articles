@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://exp-blog.com/articles/crawler/pyzone-crawler/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/crawler/jzone-crawler/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/crawler/bilibili-plugin/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/arch/2015-xi-tong-jia-gou-shi-fu-xi-zi-liao/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/arch/kuai-su-bu-shu-dan-ji-kafka-ji-qun/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/arch/kuai-su-bu-shu-dan-ji-zookeeper-ji-qun/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/db/redis-bu-shu-bi-ji/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/db/oracle-xue-xi-bi-ji/</loc>
+    <lastmod>2020-09-12</lastmod>
+  </url>
+  <url>
     <loc>https://exp-blog.com/articles/website/gitbook-da-jian-ge-ren-wang-zhan/</loc>
     <lastmod>2020-09-12</lastmod>
   </url>
