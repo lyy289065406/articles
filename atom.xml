@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-09-11T04:56:54.085Z</updated>
+  <updated>2020-09-12T04:02:09.649Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/"/>
     <id>https://exp-blog.com/safe/cve-2020-13933-lou-dong-fen-xi/</id>
     <published>2020-09-09T15:59:41.000Z</published>
-    <updated>2020-09-11T04:56:54.085Z</updated>
+    <updated>2020-09-12T04:02:09.649Z</updated>
     
     
       
@@ -126,6 +126,33 @@
   </entry>
   
   <entry>
+    <title>使用 GitBook 在 Github 搭建个人网站</title>
+    <link href="https://exp-blog.com/website/gitbook-da-jian-ge-ren-wang-zhan/"/>
+    <id>https://exp-blog.com/website/gitbook-da-jian-ge-ren-wang-zhan/</id>
+    <published>2020-02-13T04:06:37.000Z</published>
+    <updated>2020-09-12T05:42:43.830Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;h3 id=&quot;传统的个人网站&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="GitBook" scheme="https://exp-blog.com/tags/GitBook/"/>
+    
+    <category term="Github" scheme="https://exp-blog.com/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WEB 渗透靶场整合</title>
     <link href="https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/"/>
     <id>https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/</id>
@@ -208,6 +235,315 @@
     <category term="Pwk" scheme="https://exp-blog.com/tags/Pwk/"/>
     
     <category term="OSCP" scheme="https://exp-blog.com/tags/OSCP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mariadb 周期性崩溃问题处理：Error establishing a database connection</title>
+    <link href="https://exp-blog.com/website/mariadb-zhou-qi-xing-beng-kui-chu-li-ji-lu/"/>
+    <id>https://exp-blog.com/website/mariadb-zhou-qi-xing-beng-kui-chu-li-ji-lu/</id>
+    <published>2018-12-23T11:03:51.000Z</published>
+    <updated>2020-09-12T05:30:04.468Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;建站环境：Centos7 +</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>禁用 XMLRPC 避免 WP 站点被 DDOS 或暴力登录</title>
+    <link href="https://exp-blog.com/website/jin-yong-xmlrpc-bi-mian-ddos/"/>
+    <id>https://exp-blog.com/website/jin-yong-xmlrpc-bi-mian-ddos/</id>
+    <published>2018-12-04T14:03:46.000Z</published>
+    <updated>2020-09-12T05:21:05.178Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;诱因&quot;&gt;&lt;a href=&quot;#诱因&quot; class=&quot;headerlink&quot; title=&quot;诱因&quot;&gt;&lt;/a&gt;诱因&lt;/h2&gt;&lt;p&gt;自从使用 Wordpress</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="XMLRPC" scheme="https://exp-blog.com/tags/XMLRPC/"/>
+    
+    <category term="DDOS" scheme="https://exp-blog.com/tags/DDOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WP 站点的 TTFB 过长？记一次 TTFB 的优化过程</title>
+    <link href="https://exp-blog.com/website/ji-yi-ci-ttfb-de-you-hua-guo-cheng/"/>
+    <id>https://exp-blog.com/website/ji-yi-ci-ttfb-de-you-hua-guo-cheng/</id>
+    <published>2018-09-23T12:24:45.000Z</published>
+    <updated>2020-09-12T05:18:36.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="TTFB" scheme="https://exp-blog.com/tags/TTFB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WP 侧栏小挂件：WP Statistics 改版 &quot;文章/访问统计&quot;</title>
+    <link href="https://exp-blog.com/website/wp-gua-jian-statistics/"/>
+    <id>https://exp-blog.com/website/wp-gua-jian-statistics/</id>
+    <published>2018-07-26T13:46:54.000Z</published>
+    <updated>2020-09-12T04:11:51.403Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;挂件效果&quot;&gt;&lt;a href=&quot;#挂件效果&quot; class=&quot;headerlink&quot; title=&quot;挂件效果&quot;&gt;&lt;/a&gt;挂件效果&lt;/h2&gt;&lt;p&gt;由于WP</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="Statistics" scheme="https://exp-blog.com/tags/Statistics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WP 侧栏小挂件：高仿 CSDN 的 &quot;关于我&quot;</title>
+    <link href="https://exp-blog.com/website/wp-gua-jian-csdnaboutme/"/>
+    <id>https://exp-blog.com/website/wp-gua-jian-csdnaboutme/</id>
+    <published>2018-07-26T11:30:39.000Z</published>
+    <updated>2020-09-12T04:08:43.739Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;挂件效果&quot;&gt;&lt;a href=&quot;#挂件效果&quot; class=&quot;headerlink&quot; title=&quot;挂件效果&quot;&gt;&lt;/a&gt;挂件效果&lt;/h2&gt;&lt;p&gt;此挂件是仿照CSDN的侧栏粘性挂件</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="CSDN" scheme="https://exp-blog.com/tags/CSDN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>站长工具</title>
+    <link href="https://exp-blog.com/website/site-package/"/>
+    <id>https://exp-blog.com/website/site-package/</id>
+    <published>2018-07-19T13:45:17.000Z</published>
+    <updated>2020-09-12T02:38:04.874Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://lyy289065406.github.io/site-package/&quot;&gt;正在重定向到内容页面</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="资源" scheme="https://exp-blog.com/tags/%E8%B5%84%E6%BA%90/"/>
+    
+    <category term="工具" scheme="https://exp-blog.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加速访问 WordPress：Redis 部署笔记</title>
+    <link href="https://exp-blog.com/website/jia-su-fang-wen-wordpress/"/>
+    <id>https://exp-blog.com/website/jia-su-fang-wen-wordpress/</id>
+    <published>2018-07-07T14:04:53.000Z</published>
+    <updated>2020-09-12T05:12:09.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1. 前言&lt;/h2&gt;&lt;p&gt;通过&lt;strong&gt;缓存加速</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="Redis" scheme="https://exp-blog.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WP 插件：Baidu Links Submit – 实时推送站点链接到百度</title>
+    <link href="https://exp-blog.com/website/wp-cha-jian-baidulinkssubmit/"/>
+    <id>https://exp-blog.com/website/wp-cha-jian-baidulinkssubmit/</id>
+    <published>2018-07-07T09:50:22.000Z</published>
+    <updated>2020-09-12T04:20:32.776Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;想要站点文章被百度收录，最快的方法就是主动推送文章链接到</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="Baidu" scheme="https://exp-blog.com/tags/Baidu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WP 插件：Auto Add Copyright – 被复制时自动追加版权链接</title>
+    <link href="https://exp-blog.com/website/wp-cha-jian-autoaddcopyright/"/>
+    <id>https://exp-blog.com/website/wp-cha-jian-autoaddcopyright/</id>
+    <published>2018-07-07T08:43:05.000Z</published>
+    <updated>2020-09-12T04:15:24.383Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="Copyright" scheme="https://exp-blog.com/tags/Copyright/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WordPress 插件推荐</title>
+    <link href="https://exp-blog.com/website/wordpress-cha-jian-tui-jian/"/>
+    <id>https://exp-blog.com/website/wordpress-cha-jian-tui-jian/</id>
+    <published>2018-06-29T14:41:21.000Z</published>
+    <updated>2020-09-12T04:22:48.188Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;声明&quot;&gt;&lt;a href=&quot;#声明&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="插件" scheme="https://exp-blog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LAMP + WordPress 部署笔记</title>
+    <link href="https://exp-blog.com/website/wordpress-bu-shu-bi-ji/"/>
+    <id>https://exp-blog.com/website/wordpress-bu-shu-bi-ji/</id>
+    <published>2018-06-28T12:24:45.000Z</published>
+    <updated>2020-09-12T05:09:48.773Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="LAMP" scheme="https://exp-blog.com/tags/LAMP/"/>
     
   </entry>
   
