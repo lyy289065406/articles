@@ -324,9 +324,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/articles/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/articles/medias/banner/0.jpg)');
 </script>
 
 
@@ -342,21 +340,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/articles/">39</a></span>
+    <span class="count"><a href="/articles/">44</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/articles/categories">6</a></span>
+    <span class="count"><a href="/articles/categories">8</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/articles/tags">50</a></span>
+    <span class="count"><a href="/articles/tags">61</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -372,21 +370,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/articles/">39</a></span>
+    <span class="count"><a href="/articles/">44</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/articles/categories">6</a></span>
+    <span class="count"><a href="/articles/categories">8</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/articles/tags">50</a></span>
+    <span class="count"><a href="/articles/tags">61</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -580,7 +578,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"系统架构","value":3},{"name":"爬虫","value":3},{"name":"心路历程","value":12},{"name":"安全","value":7},{"name":"网站建设","value":12},{"name":"数据库","value":2}],
+                data: [{"name":"系统架构","value":3},{"name":"爬虫","value":3},{"name":"心路历程","value":12},{"name":"逆向工程","value":2},{"name":"安全","value":7},{"name":"软件配置管理","value":3},{"name":"网站建设","value":12},{"name":"数据库","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -604,7 +602,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["随笔","WordPress","插件","重构","渗透","集群","CVE","沟通","Redis","QQ"]
+                data: ["随笔","WordPress","插件","重构","渗透","集群","版本控制","CVE","Java","沟通"]
             }
         ],
         yAxis: [
@@ -617,7 +615,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [10,10,6,3,3,3,2,2,2,2],
+                data: [10,10,6,3,3,3,3,2,2,2],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -887,6 +885,36 @@
             
             
             
+            <a href="/articles/tags/CE/">
+                <span class="chip center-align waves-effect waves-light chip-default">CE</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/RING/">
+                <span class="chip center-align waves-effect waves-light chip-default">RING</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/HOOK/">
+                <span class="chip center-align waves-effect waves-light chip-default">HOOK</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/%E9%A9%B1%E5%8A%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">驱动</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/%E5%86%85%E6%A0%B8/">
+                <span class="chip center-align waves-effect waves-light chip-default">内核</span>
+            </a>
+            
+            
+            
             <a href="/articles/tags/CTF/">
                 <span class="chip center-align waves-effect waves-light chip-default">CTF</span>
             </a>
@@ -943,6 +971,24 @@
             
             <a href="/articles/tags/%E7%BB%95%E8%BF%87/">
                 <span class="chip center-align waves-effect waves-light chip-default">绕过</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/Ansible/">
+                <span class="chip center-align waves-effect waves-light chip-default">Ansible</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                <span class="chip center-align waves-effect waves-light chip-default">版本控制</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/Git/">
+                <span class="chip center-align waves-effect waves-light chip-default">Git</span>
             </a>
             
             
@@ -1061,8 +1107,26 @@
             
             
             
+            <a href="/articles/tags/SVN/">
+                <span class="chip center-align waves-effect waves-light chip-default">SVN</span>
+            </a>
+            
+            
+            
             <a href="/articles/tags/Oracle/">
                 <span class="chip center-align waves-effect waves-light chip-default">Oracle</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                <span class="chip center-align waves-effect waves-light chip-default">嵌入式</span>
+            </a>
+            
+            
+            
+            <a href="/articles/tags/C-C/">
+                <span class="chip center-align waves-effect waves-light chip-default">C/C++</span>
             </a>
             
             
@@ -1160,7 +1224,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">103.6k</span>&nbsp;字
+                class="white-color">127.8k</span>&nbsp;字
             
             
             

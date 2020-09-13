@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://exp-blog.com/articles/re/qian-ru-shi-kai-fa-xue-xi-bi-ji/</loc>
+    <lastmod>2020-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/re/windows-nei-he-xue-xi-qing-dan/</loc>
+    <lastmod>2020-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/scm/ansibletower-bu-shu-bi-ji/</loc>
+    <lastmod>2020-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/scm/git-ming-ling-xing-an-zhuang-yu-shi-yong-bi-ji/</loc>
+    <lastmod>2020-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/articles/scm/visualsvn-shi-yong-shou-ce/</loc>
+    <lastmod>2020-09-13</lastmod>
+  </url>
+  <url>
     <loc>https://exp-blog.com/articles/crawler/pyzone-crawler/</loc>
     <lastmod>2020-09-12</lastmod>
   </url>
