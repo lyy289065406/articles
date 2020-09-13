@@ -650,7 +650,7 @@ $ sudo ./setup.sh</code></pre>
 </ul>
 <p><img src="./03.png"></p>
 <h3 id="3-3-Ansible-测试-WinRM-连接"><a href="#3-3-Ansible-测试-WinRM-连接" class="headerlink" title="3.3. Ansible 测试 WinRM 连接"></a>3.3. Ansible 测试 WinRM 连接</h3><blockquote>
-<p>注意，Ansible 主机必须已安装 pywinrm，相关步骤详见 <a target="_blank" rel="noopener" href="http://exp-blog.com/2019/01/19/pid-3070/#2">这里</a></p>
+<p>注意，Ansible 主机必须已安装 pywinrm，相关步骤详见 <a href="http://exp-blog.com/2019/01/19/pid-3070/#2">这里</a></p>
 </blockquote>
 <p><strong>测试方法：</strong>修改 Ansible 主机的配置文件 <code>/etc/ansible/hosts</code>，在其末尾添加一行（其中 <code>${win_ip}</code>、 <code>${win_username}</code>、 <code>${win_password}</code> 需根据实际情况修改）：</p>
 <pre><code>${win_ip} ansible_user="${win_username}" ansible_password="${win_password}" ansible_port="5986" ansible_connection="winrm" ansible_winrm_server_cert_validation="ignore" ansible_winrm_transport="ssl"</code></pre>
@@ -699,7 +699,7 @@ $ sudo ./setup.sh</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lyy289065406.github.io/scm/ansibletower-bu-shu-bi-ji/">https://lyy289065406.github.io/scm/ansibletower-bu-shu-bi-ji/</a>
+                    <a href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/">https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">

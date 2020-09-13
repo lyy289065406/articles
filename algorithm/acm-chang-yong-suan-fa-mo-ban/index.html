@@ -476,7 +476,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="相关索引"><a href="#相关索引" class="headerlink" title="相关索引"></a>相关索引</h2><blockquote>
-<p>全算法模板整页查看： <a href="https://lyy289065406.github.io/site-package/tool/acm-template/index.html">【国际线路】</a> <a target="_blank" rel="noopener" href="https://lyy289065406.gitee.io/site-package/tool/acm-template/index.html">【国内线路】</a></p>
+<p>全算法模板整页查看： <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/site-package/tool/acm-template/index.html">【国际线路】</a> <a target="_blank" rel="noopener" href="https://lyy289065406.gitee.io/site-package/tool/acm-template/index.html">【国内线路】</a></p>
 </blockquote>
 <table>
 <thead>
@@ -2592,4 +2592,1259 @@ loop<span class="token operator">:</span>
     <span class="token punctuation">{</span>
         <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a stack value:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>k <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">push</span><span class="token punctuation">(</span> p<span class="token punctuation">,</span> k <span class="token punctuati
+        <span class="token function">push</span><span class="token punctuation">(</span> p<span class="token punctuation">,</span> k <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 1:display()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 2:push()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 3:pop()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 4:gettop()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a your select(1-4):\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>select <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span> select <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a push a value:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>h <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">push</span><span class="token punctuation">(</span> p<span class="token punctuation">,</span> h <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        x1 <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"x1->%d\n"</span><span class="token punctuation">,</span> x1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        x2 <span class="token operator">=</span> <span class="token function">gettop</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"x2->%d"</span><span class="token punctuation">,</span> x2 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a><span id="structure-3">链表</span></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 源程序： */</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> null 0</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> ElemType<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 字符型数据*/</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> LNode
+<span class="token punctuation">{</span>
+    ElemType    data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode    <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">setnull</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+ElemType <span class="token function">get</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> ElemType x<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">int</span> <span class="token keyword">delete</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> LNode    <span class="token operator">*</span>head<span class="token punctuation">,</span> <span class="token operator">*</span>q<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">/*定义静态变量*/</span>
+    <span class="token keyword">int</span>        select<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> x4<span class="token punctuation">;</span>
+    <span class="token keyword">int</span>        i<span class="token punctuation">,</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">int</span>        m<span class="token punctuation">,</span> g<span class="token punctuation">;</span>
+    <span class="token keyword">char</span>        e<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+
+    head <span class="token operator">=</span> <span class="token function">setnull</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/*建议链表并设置为空表*/</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"请输入数据长度: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span>
+        <span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"将数据插入到单链表中: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>y <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">insert</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head<span class="token punctuation">,</span> y<span class="token punctuation">,</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>                       <span class="token comment" spellcheck="true">/*插入数据到链表*/</span>
+    <span class="token function">display</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">/*显示链表所有数据*/</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 1 求长度 length()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 2 取结点 get()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 3 求值查找 locate()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 4 删除结点 delete()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input your select: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>select <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span> select <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        x1 <span class="token operator">=</span> <span class="token function">length</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"输出单链表的长度%d "</span><span class="token punctuation">,</span> x1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"请输入要取得结点: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>m <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x2 <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head<span class="token punctuation">,</span> m <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> x2 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"请输入要查找的数据: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>e <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x3 <span class="token operator">=</span> <span class="token function">locate</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head<span class="token punctuation">,</span> e <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> x3 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"请输入要删除的结点: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>g <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x4 <span class="token operator">=</span> <span class="token keyword">delete</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head<span class="token punctuation">,</span> g <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> x4 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>head <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token function">setnull</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token operator">*</span>p <span class="token operator">=</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n        <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>q <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span> q <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        n<span class="token operator">++</span><span class="token punctuation">;</span>
+        q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+ElemType <span class="token function">get</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> j        <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>q <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span> j <span class="token operator">&lt;</span> i <span class="token operator">&amp;&amp;</span> q <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        j<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> q <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token operator">></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"位置参数不正确!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">locate</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> ElemType x <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n        <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>q <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span> q <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> q<span class="token operator">-</span><span class="token operator">></span>data <span class="token operator">!=</span> x <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        n<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> q <span class="token operator">==</span> null <span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">return</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> ElemType x<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token operator">*</span>q<span class="token punctuation">;</span>
+    s    <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> LNode<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    s<span class="token operator">-</span><span class="token operator">></span>data <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    q    <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> i <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        s<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> q<span class="token punctuation">;</span>
+        p    <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span>      <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span> j <span class="token operator">&lt;</span> i <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> j <span class="token operator">==</span> i <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            s<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"位置参数不正确!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token keyword">delete</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">int</span> i <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> j        <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>q <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token operator">*</span>t<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> i <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        t    <span class="token operator">=</span> q<span class="token punctuation">;</span>
+        <span class="token operator">*</span>p    <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span>      <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span> j <span class="token operator">&lt;</span> i <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> j <span class="token operator">==</span> i <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            t    <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> t<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"位置参数不正确!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> t <span class="token operator">=</span> null <span class="token punctuation">)</span>
+        <span class="token function">free</span><span class="token punctuation">(</span> t <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span> <span class="token keyword">struct</span> LNode <span class="token operator">*</span><span class="token operator">*</span>p <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> LNode <span class="token operator">*</span>q<span class="token punctuation">;</span>
+    q <span class="token operator">=</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"单链表显示: "</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> q <span class="token operator">==</span> null <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"链表为空!"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span> q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">==</span> null <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%c\n"</span><span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>data <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span> q<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> null <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%c->"</span><span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>data <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            q <span class="token operator">=</span> q<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"%c"</span><span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>data <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a><span id="structure-4">链栈</span></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 源程序： */</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> null 0</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> stacknode
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span>            data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> stacknode    <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> stacklink<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    stacklink    <span class="token operator">*</span>top<span class="token punctuation">;</span>
+    <span class="token keyword">int</span>        stacksize<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>stackk<span class="token punctuation">;</span>
+
+<span class="token function">initlink</span><span class="token punctuation">(</span> stackk <span class="token operator">*</span> s <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    s<span class="token operator">-</span><span class="token operator">></span>top        <span class="token operator">=</span> <span class="token punctuation">(</span>stacklink <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>stacklink<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>data    <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next    <span class="token operator">=</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">poplink</span><span class="token punctuation">(</span> stackk <span class="token operator">*</span>s <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    stackk <span class="token operator">*</span>p<span class="token punctuation">;</span> <span class="token keyword">int</span> v<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">==</span> null <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"the stackis empty\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        v    <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>data<span class="token punctuation">;</span>
+        p    <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        s<span class="token operator">-</span><span class="token operator">></span>top    <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">free</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">pushlink</span><span class="token punctuation">(</span> stackk <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">int</span> x <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    stackk <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    p        <span class="token operator">=</span> <span class="token punctuation">(</span>stacklink <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>stacklink<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    p<span class="token operator">-</span><span class="token operator">></span>data        <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    p<span class="token operator">-</span><span class="token operator">></span>next        <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+    s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next    <span class="token operator">=</span> p<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">gettop</span><span class="token punctuation">(</span> stackk <span class="token operator">*</span>s <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> e<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> s <span class="token operator">==</span> null <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"the stack is empty!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    e <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>data<span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token function">display</span><span class="token punctuation">(</span> stackk <span class="token operator">*</span> s <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    stackk <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    p <span class="token operator">=</span> s<span class="token operator">-</span><span class="token operator">></span>top<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"display the stacklink:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> s<span class="token operator">-</span><span class="token operator">></span>top <span class="token operator">=</span> null <span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"the stacklink is empty!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span> p <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"->%d"</span><span class="token punctuation">,</span> p<span class="token operator">-</span><span class="token operator">></span>data <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            p <span class="token operator">=</span> p<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span> stacklink <span class="token operator">*</span> p <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> k<span class="token punctuation">,</span> i<span class="token punctuation">,</span> select<span class="token punctuation">,</span> h<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> x2<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"create a empty stacklink!\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">initlink</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a stacklink length:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a stacklink value:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>k <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">pushlink</span><span class="token punctuation">(</span> p<span class="token punctuation">,</span> k <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 1:display()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 2:pushlink()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 3:poplink()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"select 4:gettop()\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a your select(1-4):\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>select <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span> select <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span> <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span> <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"input a push a value :\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">scanf</span><span class="token punctuation">(</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>h <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">pushlink</span><span class="token punctuation">(</span> p<span class="token punctuation">,</span> h <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span> x1 <span class="token operator">=</span> <span class="token function">poplink</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"x1->%d\n"</span><span class="token punctuation">,</span> x1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">display</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span> x2 <span class="token operator">=</span> <span class="token function">gettop</span><span class="token punctuation">(</span> p <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"x2->%d"</span><span class="token punctuation">,</span> x2 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a><span id="structure-5">二叉树</span></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 源程序 */</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> bitnode
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span>        data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> bitnode    <span class="token operator">*</span>lchild<span class="token punctuation">,</span> <span class="token operator">*</span>rchild<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>bitnode<span class="token punctuation">,</span> <span class="token operator">*</span>bitree<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">createbitree</span><span class="token punctuation">(</span> bitnode <span class="token operator">*</span><span class="token operator">*</span>t<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>n <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span>    x<span class="token punctuation">;</span>
+    bitnode <span class="token operator">*</span>q<span class="token punctuation">;</span>
+    <span class="token operator">*</span>n <span class="token operator">=</span> <span class="token operator">*</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"\n Input %d DATA:"</span><span class="token punctuation">,</span> <span class="token operator">*</span>n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> x <span class="token operator">!=</span> <span class="token string">'\n'</span> <span class="token punctuation">)</span>
+        <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> x <span class="token operator">==</span> <span class="token string">'\n'</span> <span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    q        <span class="token operator">=</span> <span class="token punctuation">(</span>bitnode <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>bitnode<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    q<span class="token operator">-</span><span class="token operator">></span>data        <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    q<span class="token operator">-</span><span class="token operator">></span>lchild    <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    q<span class="token operator">-</span><span class="token operator">></span>rchild    <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token operator">*</span>t        <span class="token operator">=</span> q<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" This Address is: %o, Data is: %c,\n Left Pointer is: %o, Right Pointer is: %o"</span><span class="token punctuation">,</span> q<span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>data<span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>lchild<span class="token punctuation">,</span> q<span class="token operator">-</span><span class="token operator">></span>rchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">createbitree</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>q<span class="token operator">-</span><span class="token operator">></span>lchild<span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">createbitree</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>q<span class="token operator">-</span><span class="token operator">></span>rchild<span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">visit</span><span class="token punctuation">(</span> bitnode <span class="token operator">*</span>e <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" Address: %o, Data: %c, Left Pointer: %o, Right Pointer: %o\n"</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> e<span class="token operator">-</span><span class="token operator">></span>data<span class="token punctuation">,</span> e<span class="token operator">-</span><span class="token operator">></span>lchild<span class="token punctuation">,</span> e<span class="token operator">-</span><span class="token operator">></span>rchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">preordertraverse</span><span class="token punctuation">(</span> bitnode <span class="token operator">*</span>t <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> t <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">visit</span><span class="token punctuation">(</span> t <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">preordertraverse</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>lchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">preordertraverse</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>rchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">countleaf</span><span class="token punctuation">(</span> bitnode <span class="token operator">*</span>t<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>c <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> t <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>lchild <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> t<span class="token operator">-</span><span class="token operator">></span>rchild <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token operator">*</span>c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">countleaf</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>lchild<span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">countleaf</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>rchild<span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">treehigh</span><span class="token punctuation">(</span> bitnode <span class="token operator">*</span>t <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> lh<span class="token punctuation">,</span> rh<span class="token punctuation">,</span> h<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> t <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token punctuation">)</span>
+        h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+        lh    <span class="token operator">=</span> <span class="token function">treehigh</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>lchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        rh    <span class="token operator">=</span> <span class="token function">treehigh</span><span class="token punctuation">(</span> t<span class="token operator">-</span><span class="token operator">></span>rchild <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        h    <span class="token operator">=</span> <span class="token punctuation">(</span>lh <span class="token operator">></span> rh <span class="token operator">?</span> lh <span class="token operator">:</span> rh<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    bitnode <span class="token operator">*</span>t<span class="token punctuation">;</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span>    n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"\n Please input TREE Data:\n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">createbitree</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>t<span class="token punctuation">,</span> <span class="token operator">&amp;</span>n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"\n This is TREE struct: \n"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">preordertraverse</span><span class="token punctuation">(</span> t <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">countleaf</span><span class="token punctuation">(</span> t<span class="token punctuation">,</span> <span class="token operator">&amp;</span>count <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"\n This TREE has %d leaves "</span><span class="token punctuation">,</span> count <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">" , High of The TREE is: %d\n"</span><span class="token punctuation">,</span> <span class="token function">treehigh</span><span class="token punctuation">(</span> t <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/algorithm/acm-chang-yong-suan-fa-mo-ban/">https://exp-blog.com/algorithm/acm-chang-yong-suan-fa-mo-ban/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ACM/">
+                                    <span class="chip bg-color">ACM</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E6%9D%BF/">
+                                    <span class="chip bg-color">模板</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/db/redis-bu-shu-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Redis 部署笔记（单机 + 主从 + 哨兵 + 集群）">
+                        
+                        <span class="card-title">Redis 部署笔记（单机 + 主从 + 哨兵 + 集群）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1. 简介Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。它有三个主要特点，使其优越于其它键值数据存储系统：
+
+Redis将其数据库完全保存在内存中，仅使用磁盘进行持久化。
+与其它键值数据存
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9B%86%E7%BE%A4/">
+                        <span class="chip bg-color">集群</span>
+                    </a>
+                    
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/algorithm/acm-jue-ban-zi-yuan-gong-kai/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ACM 绝版资源公开： 参考书、模板、讲义、指导">
+                        
+                        <span class="card-title">ACM 绝版资源公开： 参考书、模板、讲义、指导</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            经典参考书
+
+
+资源
+简介
+下载
+
+
+
+《算法导论（中文第二版）》
+案头必备的算法字典
+腾讯微云密码：ibyf9v
+
+
+《算法导论（英文第二版）》
+案头必备的算法字典
+腾讯微云密码：bc4dhq
+
+
+《程序设计导引及在线实践》
+POJ封面书
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-09-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">209.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 18074894 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/1931329474" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/1931329474" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
