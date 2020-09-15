@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://exp-blog.com/crawler/bilibili-plugin/</loc>
+    <lastmod>2020-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</loc>
+    <lastmod>2020-09-15</lastmod>
+  </url>
+  <url>
     <loc>https://exp-blog.com/lang/cpp-tu-xiang-shi-bie/</loc>
     <lastmod>2020-09-13</lastmod>
   </url>
@@ -37,19 +45,11 @@
     <lastmod>2020-09-13</lastmod>
   </url>
   <url>
-    <loc>https://exp-blog.com/crawler/bilibili-plugin/</loc>
-    <lastmod>2020-09-13</lastmod>
-  </url>
-  <url>
     <loc>https://exp-blog.com/crawler/jzone-crawler/</loc>
     <lastmod>2020-09-13</lastmod>
   </url>
   <url>
     <loc>https://exp-blog.com/crawler/pyzone-crawler/</loc>
-    <lastmod>2020-09-13</lastmod>
-  </url>
-  <url>
-    <loc>https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</loc>
     <lastmod>2020-09-13</lastmod>
   </url>
   <url>
