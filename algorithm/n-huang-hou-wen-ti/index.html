@@ -500,7 +500,10 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="http://penguin.ewu.edu/~trolfe/QueenLasVegas/Hoffman.pdf">http://penguin.ewu.edu/~trolfe/QueenLasVegas/Hoffman.pdf</a></li>
 </ul>
-<p><a class="download" href="http://download.csdn.net/download/lyy289065406/10184847" target="_blank"><i class="fa fa-cloud-download"></i>英文原文下载</a> <a class="download" href="http://download.csdn.net/download/lyy289065406/10184900" target="_blank"><i class="fa fa-cloud-download"></i>本文译文全文下载</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10184847">【英文原文下载】</a></li>
+<li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10184900">【本文译文全文下载】</a></li>
+</ul>
 <h2 id="2-问题背景"><a href="#2-问题背景" class="headerlink" title="2. 问题背景"></a>2. 问题背景</h2><p><strong>M皇后问题</strong>： 在M×M格的国际象棋上摆放M个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p>
 <p>根据场景，又有<strong>三种衍生问题</strong>：</p>
 <ul>
@@ -720,12 +723,12 @@
 <p>　　<font color="blue"><b>若n为偶数：</b></font></p>
 <ul>
 <li>把行编号 <code>1~m-1</code> 代入（B1），可得到第 <code>1~m-1</code> 行的解序列： <code>[n, n+2, ..., m-1], [2, 4, 6, ..., n-2], [n+3, n+5, ..., m-2], [1, 3, 5, ..., n+1]</code></li>
-<li>然后直接套用构造式C（增加第m行第m列），则可得到通解转换式（B3）：<br><br>　<code>[n, n+2, ..., m-1], [2, 4, 6, ..., n-2], [n+3, n+5, ..., m-2], [1, 3, 5, ..., n+1], [m]</code> …<font color="red"><b>（B3）</b></font></li>
+<li>然后直接套用构造式C（增加第m行第m列），则可得到通解转换式（B3）：<br><br>　　<code>[n, n+2, ..., m-1], [2, 4, 6, ..., n-2], [n+3, n+5, ..., m-2], [1, 3, 5, ..., n+1], [m]</code> …………………<font color="red"><b>（B3）</b></font></li>
 </ul>
 <p>　　<font color="blue"><b>若n为奇数：</b></font></p>
 <ul>
 <li>把行编号 <code>1~m-1</code> 代入（B2），可得到第 <code>1~m-1</code> 行的解序列： <code>[n, n+2, ..., m-2], [1, 3, 5, ..., n-2], [n+3, n+5, ..., m-1], [2, 4, 6, ..., n+1]</code></li>
-<li>把行编号1然后直接套用构造式C（增加第m行第m列），则可得到通解转换式（B4）：<br><br>　<code>[n, n+2, ..., m-2], [1, 3, 5, ..., n-2], [n+3, n+5, ..., m-1], [2, 4, 6, ..., n+1], [m]</code> …<font color="red"><b>（B4）</b></font></li>
+<li>把行编号1然后直接套用构造式C（增加第m行第m列），则可得到通解转换式（B4）：<br><br>　　<code>[n, n+2, ..., m-2], [1, 3, 5, ..., n-2], [n+3, n+5, ..., m-1], [2, 4, 6, ..., n+1], [m]</code> …………………<font color="red"><b>（B4）</b></font></li>
 </ul>
 <h3 id="5-3-小结：通解转换式归整"><a href="#5-3-小结：通解转换式归整" class="headerlink" title="5.3. 小结：通解转换式归整"></a>5.3. 小结：通解转换式归整</h3><img style="box-shadow: 0 0 0 0 rgb(255, 255, 255), 0 0 0 -0 rgb(255, 255, 255)" src="./10.png">
 <script>
