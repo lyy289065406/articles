@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://exp-blog.com/net/rinetd-bu-shu-bi-ji/</loc>
+    <lastmod>2020-09-21</lastmod>
+  </url>
+  <url>
     <loc>https://exp-blog.com/algorithm/n-huang-hou-wen-ti/</loc>
     <lastmod>2020-09-16</lastmod>
   </url>
@@ -146,10 +150,6 @@
   </url>
   <url>
     <loc>https://exp-blog.com/net/shadowsocks-shi-xian-wai-wang-fang-wen/</loc>
-    <lastmod>2020-09-13</lastmod>
-  </url>
-  <url>
-    <loc>https://exp-blog.com/net/rinetd-bu-shu-bi-ji/</loc>
     <lastmod>2020-09-13</lastmod>
   </url>
   <url>
