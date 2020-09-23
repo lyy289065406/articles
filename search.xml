@@ -356,9 +356,9 @@
       
         <tags>
             
-            <tag> Mariadb </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Mariadb </tag>
             
         </tags>
       
@@ -478,9 +478,9 @@
       
         <tags>
             
-            <tag> Ansible </tag>
-            
             <tag> 版本控制 </tag>
+            
+            <tag> Ansible </tag>
             
         </tags>
       
@@ -1128,11 +1128,11 @@
     
     
     <entry>
-      <title>Centos 实现端口转发：Rinetd 部署笔记</title>
+      <title>Centos 实现端口转发：rinetd 部署笔记</title>
       <link href="/net/rinetd-bu-shu-bi-ji/"/>
       <url>/net/rinetd-bu-shu-bi-ji/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然Linux本身自带的iptables可以实现端口转发功能，但其配置相对复杂。因此本文介绍另一个端口转发工具Rinetd，其安装和配置都更为简单。</p><h2 id="Rinetd部署环境"><a href="#Rinetd部署环境" class="headerlink" title="Rinetd部署环境"></a>Rinetd部署环境</h2><p>本文是基于Centos7系统部署Rinetd端口转发工具。</p><h2 id="Rinetd安装"><a href="#Rinetd安装" class="headerlink" title="Rinetd安装"></a>Rinetd安装</h2><p>到<a href="http://www.rinetd.com/">官网</a>下载最新版（v0.62），得到安装包<font color="red">rinetd.tar.gz</font> ：</p><blockquote><p>不要到 <a href="https://github.com/samhocevar/rinetd/">Github</a> 下载，Github 的版本与本文叙述的安装方式不同</p></blockquote><p>上传到Linux，本文上传位置为：</p><blockquote><p><font color="red">/usr/local/</font></p></blockquote><p>解压安装包：</p><blockquote><p>tar -zxvf <font color="red">rinetd.tar.gz</font></p></blockquote><p>由于Rinetd需要编译安装，先安装gcc编译环境：</p><blockquote><p>yum install gcc</p></blockquote><p>进入Rinetd安装目录：</p><blockquote><p>cd <font color="red">/usr/local/rinetd</font></p></blockquote><p>检查安装配置文件：</p><blockquote><p>vi Makefile</p></blockquote><p>注意配置文件中涉及到两处安装路径，一般情况下保持默认值即可：</p><pre><code>CFLAGS=-DLINUX -grinetd: rinetd.o match.o        gcc rinetd.o match.o -o rinetdinstall: rinetd        install -m 700 rinetd /usr/sbin        install -m 644 rinetd.8 /usr/man/man8</code></pre><p>但是若 /usr/man/man8 目录不存在，需要先手建：</p><blockquote><p>mkdir -p /usr/man/man8</p></blockquote><p>编译并安装：</p><blockquote><p>make &amp;&amp; make install</p></blockquote><p><font color="red">至此Rinetd安装完成</font>。</p><h2 id="Rinetd配置"><a href="#Rinetd配置" class="headerlink" title="Rinetd配置"></a>Rinetd配置</h2><p>配置端口转发规则（该文件可能不存在，直接创建即可）：</p><blockquote><p>vi /etc/rinetd.conf</p></blockquote><p>该文件每行一个转发规则，配置格式为：</p><blockquote><p>[source_address] [source_port] [destination_address] [destination_port]</p></blockquote><p>即：</p><blockquote><p>[本机IP（若非多网卡直接设为0.0.0.0）] [转发端口] [服务IP] [服务端口]</p></blockquote><p>如：</p><blockquote><p>0.0.0.0 9527 192.168.64.22 9527</p></blockquote><h2 id="Rinetd使用"><a href="#Rinetd使用" class="headerlink" title="Rinetd使用"></a>Rinetd使用</h2><p>Rinetd的启动需要指定规则配置文件，而停止需要杀掉进程：</p><blockquote><p>启动：rinetd -c /etc/rinetd.conf<br><br> 停止：killall rinetd</p></blockquote><p>查看端口转发状态：</p><blockquote><p>netstat -tanulp|grep rinetd</p></blockquote><h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><blockquote><p><a href="http://download.csdn.net/download/lyy289065406/10551468">本文全文下载</a></p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然Linux本身自带的iptables可以实现端口转发功能，但其配置相对复杂。因此本文介绍另一个端口转发工具rinetd，其安装和配置都更为简单。</p><h2 id="rinetd部署环境"><a href="#rinetd部署环境" class="headerlink" title="rinetd部署环境"></a>rinetd部署环境</h2><p>本文是基于Centos7系统部署rinetd端口转发工具。</p><h2 id="rinetd安装"><a href="#rinetd安装" class="headerlink" title="rinetd安装"></a>rinetd安装</h2><p>到<a href="http://www.rinetd.com/">官网</a>下载最新版（v0.62），得到安装包<font color="red">rinetd.tar.gz</font> ：</p><blockquote><p>注：rinetd 后来迁移到 <a href="https://github.com/samhocevar/rinetd/">Github</a> 了， Github 的版本与本文叙述的安装方式是不同的，其安装方法可参考<a href="https://www.jianshu.com/p/b8793dc98999">这篇文章</a>。</p></blockquote><p>上传到Linux，本文上传位置为：</p><blockquote><p><font color="red">/usr/local/</font></p></blockquote><p>解压安装包：</p><blockquote><p>tar -zxvf <font color="red">rinetd.tar.gz</font></p></blockquote><p>由于rinetd需要编译安装，先安装gcc编译环境：</p><blockquote><p>yum install gcc</p></blockquote><p>进入rinetd安装目录：</p><blockquote><p>cd <font color="red">/usr/local/rinetd</font></p></blockquote><p>检查安装配置文件：</p><blockquote><p>vi Makefile</p></blockquote><p>注意配置文件中涉及到两处安装路径，一般情况下保持默认值即可：</p><pre><code>CFLAGS=-DLINUX -grinetd: rinetd.o match.o        gcc rinetd.o match.o -o rinetdinstall: rinetd        install -m 700 rinetd /usr/sbin        install -m 644 rinetd.8 /usr/man/man8</code></pre><p>但是若 /usr/man/man8 目录不存在，需要先手建：</p><blockquote><p>mkdir -p /usr/man/man8</p></blockquote><p>编译并安装：</p><blockquote><p>make &amp;&amp; make install</p></blockquote><p><font color="red">至此rinetd安装完成</font>。</p><h2 id="rinetd配置"><a href="#rinetd配置" class="headerlink" title="rinetd配置"></a>rinetd配置</h2><p>配置端口转发规则（该文件可能不存在，直接创建即可）：</p><blockquote><p>vi /etc/rinetd.conf</p></blockquote><p>该文件每行一个转发规则，配置格式为：</p><blockquote><p>[source_address] [source_port] [destination_address] [destination_port]</p></blockquote><p>即：</p><blockquote><p>[本机IP（若非多网卡直接设为0.0.0.0）] [转发端口] [服务IP] [服务端口]</p></blockquote><p>如：</p><blockquote><p>0.0.0.0 9527 192.168.64.22 9527</p></blockquote><h2 id="rinetd使用"><a href="#rinetd使用" class="headerlink" title="rinetd使用"></a>rinetd使用</h2><p>默认情况下，rinetd的启动需要指定规则配置文件，而停止需要杀掉进程：</p><blockquote><p>启动：rinetd -c /etc/rinetd.conf<br>停止：killall rinetd</p></blockquote><p>查看端口转发状态：</p><blockquote><p>netstat -tanulp|grep rinetd</p></blockquote><hr><p>为了便于使用，可以把rinetd托管到<a href="https://www.xiaoz.me/archives/14458">systemd</a>：</p><blockquote><p>创建systemd服务文件：vi /etc/systemd/system/rinetd.service</p></blockquote><p>复制以下内容到 rinetd.service 文件内并保存：</p><pre><code>[Unit]Description=rinetdAfter=network.target[Service]Type=forkingExecStart=/usr/sbin/rinetd -c /etc/rinetd.conf[Install]WantedBy=multi-user.target</code></pre><blockquote><p>重载daemon使其生效：systemctl daemon-reload</p></blockquote><p>尔后就可以通过systemd管理rinetd了：</p><pre><code># 启动systemctl start rinetd# 停止systemctl stop rinetd# 重启systemctl restart rinetd# 设置开机自启systemctl enable rinetd# 取消开机自启systemctl disable rinetd</code></pre><h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><blockquote><p><a href="http://download.csdn.net/download/lyy289065406/10551468">本文全文下载</a></p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -1144,7 +1144,7 @@
       
         <tags>
             
-            <tag> Rinetd </tag>
+            <tag> rinetd </tag>
             
             <tag> 端口转发 </tag>
             
@@ -1196,9 +1196,9 @@
       
         <tags>
             
-            <tag> 重构 </tag>
-            
             <tag> 随笔 </tag>
+            
+            <tag> 重构 </tag>
             
             <tag> 暗时间 </tag>
             
@@ -1312,9 +1312,9 @@
       
         <tags>
             
-            <tag> 沟通 </tag>
-            
             <tag> 随笔 </tag>
+            
+            <tag> 沟通 </tag>
             
         </tags>
       
@@ -1416,9 +1416,9 @@
       
         <tags>
             
-            <tag> 重构 </tag>
-            
             <tag> 随笔 </tag>
+            
+            <tag> 重构 </tag>
             
             <tag> 测试 </tag>
             
@@ -1524,9 +1524,9 @@
       
         <tags>
             
-            <tag> 敏捷开发 </tag>
-            
             <tag> 沟通 </tag>
+            
+            <tag> 敏捷开发 </tag>
             
             <tag> 重构 </tag>
             
