@@ -453,14 +453,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    617
+                    802
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -534,6 +534,39 @@ install: rinetd
 <p>如：</p>
 <blockquote>
 <p>0.0.0.0 9527 192.168.64.22 9527</p>
+</blockquote>
+<hr>
+<p>官方完整的 <a target="_blank" rel="noopener" href="https://github.com/samhocevar/rinetd/blob/master/rinetd.conf">rinetd.conf</a> 配置文件模板参考如下：</p>
+<pre><code>#
+# this is the configuration file for rinetd, the internet redirection server
+#
+# you may specify global allow and deny rules here
+# only ip addresses are matched, hostnames cannot be specified here
+# the wildcards you may use are * and ?
+#
+# allow 192.168.2.*
+# deny 192.168.2.1?
+
+
+#
+# forwarding rules come here
+#
+# you may specify allow and deny rules after a specific forwarding rule
+# to apply to only that forwarding rule
+#
+# bindadress  bindport  connectaddress  connectport  options...
+# 0.0.0.0     80        192.168.1.2     80
+# 127.0.0.1   4000      127.0.0.1       3000
+# 127.0.0.1   4000/udp  127.0.0.1       22           [timeout=1200]
+# 127.0.0.1   8000/udp  192.168.1.2     8000/udp     [src=192.168.1.2,timeout=1200]
+
+# logging information
+# logfile /var/log/rinetd.log
+
+# uncomment the following line if you want web-server style logfile format
+# logcommon</code></pre>
+<blockquote>
+<p>注：非必要不建议启用日志选项，会消耗大量磁盘空间</p>
 </blockquote>
 <h2 id="rinetd使用"><a href="#rinetd使用" class="headerlink" title="rinetd使用"></a>rinetd使用</h2><p>默认情况下，rinetd的启动需要指定规则配置文件，而停止需要杀掉进程：</p>
 <blockquote>
@@ -1195,7 +1228,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">209.8k</span>&nbsp;字
+                class="white-color">210k</span>&nbsp;字
             
             
             
