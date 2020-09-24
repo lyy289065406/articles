@@ -453,14 +453,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    848
+                    884
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -491,7 +491,7 @@
 </blockquote>
 <p>由于rinetd需要编译安装，先安装gcc编译环境：</p>
 <blockquote>
-<p>yum install gcc</p>
+<p>yum install gcc gcc-c++</p>
 </blockquote>
 <p>若安装 gcc 失败，则需要先替换源并更新</p>
 <blockquote>
@@ -517,6 +517,10 @@ install: rinetd
 <p>但是若 /usr/man/man8 目录不存在，需要先手建：</p>
 <blockquote>
 <p>mkdir -p /usr/man/man8</p>
+</blockquote>
+<p><em>如果你使用的是 <a target="_blank" rel="noopener" href="https://github.com/samhocevar/rinetd/">Github</a> 上的最新版本，这里还需要多执行两条命令去创建 makefile 文件：</em></p>
+<blockquote>
+<p>./bootstrap<br>./configure</p>
 </blockquote>
 <p>编译并安装：</p>
 <blockquote>
