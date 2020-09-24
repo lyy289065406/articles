@@ -446,14 +446,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-23
+                    2020-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    802
+                    848
                 </div>
                 
 
@@ -492,6 +492,10 @@
 <p>由于rinetd需要编译安装，先安装gcc编译环境：</p>
 <blockquote>
 <p>yum install gcc</p>
+</blockquote>
+<p>若安装 gcc 失败，则需要先替换源并更新</p>
+<blockquote>
+<p>wget -O /etc/yum.repos.d/CentOS-Base.repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a><br>sed -i  ‘s/$releasever/7/g’ /etc/yum.repos.d/CentOS-Base.repo<br>yum repolist</p>
 </blockquote>
 <p>进入rinetd安装目录：</p>
 <blockquote>
@@ -1228,7 +1232,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">210k</span>&nbsp;字
+                class="white-color">210.1k</span>&nbsp;字
             
             
             
