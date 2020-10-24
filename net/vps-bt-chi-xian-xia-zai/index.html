@@ -444,6 +444,10 @@
                                 <span class="chip bg-color">BT</span>
                             </a>
                         
+                            <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">
+                                <span class="chip bg-color">离线下载</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -465,14 +469,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-28
+                    2020-10-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-24
+                    2020-10-25
                 </div>
                 
 
@@ -506,7 +510,7 @@
 <p>通过把 qBitTorrent 部署到个人的 VPS，就能离线下载到 VPS，再按需从 VPS 取回本地。</p>
 <p>而一台海外的千兆带宽 VPS ，也不是月租 $5 而已（推荐 <a target="_blank" rel="noopener" href="https://www.vultr.com/">vultr</a>）。</p>
 <p><img src="03.png"></p>
-<h2 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h2><p>为方便起见，这里已经 qBitTorrent 的相关镜像组件都封装到 <a target="_blank" rel="noopener" href="https://github.com/lyy289065406/qBitTorrent-docker">Github</a> 仓库：</p>
+<h2 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h2><p>为方便起见，这里已经把 qBitTorrent 的相关镜像组件都封装到 <a target="_blank" rel="noopener" href="https://github.com/lyy289065406/qBitTorrent-docker">Github</a> 仓库：</p>
 <table>
 <thead>
 <tr>
@@ -574,7 +578,7 @@
 <li><a target="_blank" rel="noopener" href="https://torrents.io/tracker-list/">https://torrents.io/tracker-list/</a></li>
 <li><a target="_blank" rel="noopener" href="https://newtrackon.com/list">https://newtrackon.com/list</a></li>
 </ul>
-<p>通过 <a href="update_trackers.sh"><code>update_trackers.sh</code></a> 脚本可以自动刷新 trackers 配置。</p>
+<p>通过 <code>update_trackers.sh</code> 脚本可以自动刷新 trackers 配置。</p>
 <p>建议把该脚本配置到 crontab ，每天更新一次：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">
 # 编辑定时任务
@@ -592,9 +596,9 @@ crontab -e
 <p><img src="04.png"></p>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Q1：-为什么无法下载迅雷链接或磁力链接"><a href="#Q1：-为什么无法下载迅雷链接或磁力链接" class="headerlink" title="Q1： 为什么无法下载迅雷链接或磁力链接"></a>Q1： 为什么无法下载迅雷链接或磁力链接</h3><p>qBitTorrent 并不能直接解析迅雷链接或磁力链接，它只能解析 torrent 种子文件、或种子文件的下载链接。</p>
 <p>对于迅雷链接或磁力链接，需要使用其他工具先转换为 torrent 种子文件，具体方法可参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/1440553/blog/4480497">这篇文章</a>。</p>
-<h3 id="Q2：-下载文件保存到哪里？"><a href="#Q2：-下载文件保存到哪里？" class="headerlink" title="Q2： 下载文件保存到哪里？"></a>Q2： 下载文件保存到哪里？</h3><p>仓库下的 <a href="downloads"><code>downloads</code></a> 挂载到 docker 容器，下载的文件均保存到这里。</p>
+<h3 id="Q2：-下载文件保存到哪里？"><a href="#Q2：-下载文件保存到哪里？" class="headerlink" title="Q2： 下载文件保存到哪里？"></a>Q2： 下载文件保存到哪里？</h3><p>仓库下的 <code>downloads</code> 挂载到 docker 容器，下载的文件均保存到这里。</p>
 <p>在前端可以通过 caddy 下载，在后端可以到这个目录下载。</p>
-<p>另外需要注意下载的文件大小不能超过 <a href="downloads"><code>downloads</code></a> 目录所在磁盘的空间大小。</p>
+<p>另外需要注意下载的文件大小不能超过 <code>downloads</code> 目录所在磁盘的空间大小。</p>
 <h3 id="Q3：-tracker-是什么？"><a href="#Q3：-tracker-是什么？" class="headerlink" title="Q3： tracker 是什么？"></a>Q3： tracker 是什么？</h3><p>在 BT 下载中的一个重要概念是 P2P。</p>
 <p>P2P 是 peer-to-peer 的缩写，网络中的一个 peer（正在下载资源的客户端） 如何才能找到另外志同道合的 peer，Tracker 扮演着至关重要的月老作用：Tracker 是一个 HTTP 或者 UDP 服务器，作用是帮助 peer 找到其他拥有相同资源的 peer。</p>
 <p>后来有了 DHT 网络之后，Tracker 的作用逐渐弱化，但是 Tracker 代表的这种中心化一定程度上相对 DHT 代表的去中心化效率还是比较高的。</p>
@@ -694,6 +698,10 @@ crontab -e
                             
                                 <a href="/tags/BT/">
                                     <span class="chip bg-color">BT</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">
+                                    <span class="chip bg-color">离线下载</span>
                                 </a>
                             
                         </div>
@@ -865,32 +873,37 @@ crontab -e
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/net/trojan-ke-xue-shang-wang-jiao-cheng/">
+                <a href="/website/calibre-da-jian-si-ren-shu-ku/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="trojan 科学上网教程">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="使用 calibre 搭建私人书库">
                         
-                        <span class="card-title">trojan 科学上网教程</span>
+                        <span class="card-title">使用 calibre 搭建私人书库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            trojan 简介trojan 是近两年兴起的科学上网工具，项目源码为 https://github.com/trojan-gfw。
-与强调加密和混淆的SS/SSR等工具不同，trojan 将通信流量伪装成互联网上最常见的 HTTPS 流量
+                            概要你是否面临以下困扰：
+
+想翻看曾经看过的某本小说的时候，网上已经找不到了
+即使网上找到了，因为版权原因无法在线看、甚至无法下载
+可以在线看，但是要收费
+连载小说几个月才出一册，囤了一年后却不知道自己看到哪了
+在家看小说看了一半突然要出门
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                    网络协议
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
                                 </a>
                             
                             
@@ -900,24 +913,12 @@ crontab -e
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/VPS/">
-                        <span class="chip bg-color">VPS</span>
+                    <a href="/tags/calibre/">
+                        <span class="chip bg-color">calibre</span>
                     </a>
                     
-                    <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
-                        <span class="chip bg-color">科学上网</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BF%BB%E5%A2%99/">
-                        <span class="chip bg-color">翻墙</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A2%AF%E5%AD%90/">
-                        <span class="chip bg-color">梯子</span>
-                    </a>
-                    
-                    <a href="/tags/trojan/">
-                        <span class="chip bg-color">trojan</span>
+                    <a href="/tags/%E4%B9%A6%E5%BA%93/">
+                        <span class="chip bg-color">书库</span>
                     </a>
                     
                 </div>
@@ -931,26 +932,24 @@ crontab -e
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/safe/ge-chong-yu-yan-yi-ju-hua-fan-dan-shell/">
+                <a href="/safe/cve-2020-13933-lou-dong-fen-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="各种语言的一句话反弹 shell 命令">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="CVE-2020-13933 漏洞分析">
                         
-                        <span class="card-title">各种语言的一句话反弹 shell 命令</span>
+                        <span class="card-title">CVE-2020-13933 漏洞分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            被攻击主机先监听端口这是大前提，至于怎么做就看 hacker 的能力了，最简单脚本可以用 nc ：
-nc -lvvp 9527
-攻击主机连接到服务端口JAVARuntime.getRuntime().exec(["/bin/bash","-
+                            Apache Shiro < 1.6.0 身份验证绕过漏洞： Apache Shiro 是一个强大且易用的 Java 安全框架，执行身份验证、授权、密码和会话管理，通常会和 spring 等框架一起搭配使用来开发 web 应用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-09
                             </span>
                         <span class="publish-author">
                             
@@ -967,12 +966,12 @@ nc -lvvp 9527
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B8%97%E9%80%8F/">
-                        <span class="chip bg-color">渗透</span>
+                    <a href="/tags/CVE/">
+                        <span class="chip bg-color">CVE</span>
                     </a>
                     
-                    <a href="/tags/%E5%8F%8D%E5%BC%B9shell/">
-                        <span class="chip bg-color">反弹shell</span>
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">漏洞分析</span>
                     </a>
                     
                 </div>
@@ -1216,7 +1215,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">211.2k</span>&nbsp;字
+                class="white-color">212.7k</span>&nbsp;字
             
             
             
