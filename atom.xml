@@ -64,8 +64,6 @@
     <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
     
-    <category term="trojan" scheme="https://exp-blog.com/tags/trojan/"/>
-    
     <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
     
     <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
@@ -73,6 +71,37 @@
     <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
     
     <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
+    
+    <category term="trojan" scheme="https://exp-blog.com/tags/trojan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 qBitTorrent 在 VPS 上离线下载</title>
+    <link href="https://exp-blog.com/net/vps-bt-chi-xian-xia-zai/"/>
+    <id>https://exp-blog.com/net/vps-bt-chi-xian-xia-zai/</id>
+    <published>2020-08-28T14:08:34.000Z</published>
+    <updated>2020-10-24T14:24:55.333Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+    <category term="qBitTorrent" scheme="https://exp-blog.com/tags/qBitTorrent/"/>
+    
+    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
+    
+    <category term="BT" scheme="https://exp-blog.com/tags/BT/"/>
     
   </entry>
   
@@ -379,9 +408,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
   </entry>
   
@@ -1142,13 +1171,13 @@
     
     <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
     
+    <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
+    
     <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
     
     <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
-    
-    <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
     
   </entry>
   
@@ -1226,9 +1255,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="暗时间" scheme="https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/"/>
     
@@ -1343,9 +1372,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
+    
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -1450,11 +1479,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
   </entry>
   
@@ -1564,11 +1593,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
-    
-    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

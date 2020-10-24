@@ -47,8 +47,6 @@
       
         <tags>
             
-            <tag> trojan </tag>
-            
             <tag> VPS </tag>
             
             <tag> 科学上网 </tag>
@@ -56,6 +54,37 @@
             <tag> 翻墙 </tag>
             
             <tag> 梯子 </tag>
+            
+            <tag> trojan </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>利用 qBitTorrent 在 VPS 上离线下载</title>
+      <link href="/net/vps-bt-chi-xian-xia-zai/"/>
+      <url>/net/vps-bt-chi-xian-xia-zai/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>种子和磁力链接是现在使用最为广泛的资源下载形式了，但有时即使找到了种子资源，也会面临墙、网速、高额收费等限制问题，导致难以顺利下载。</p><p>qBitTorrent 是一款开源免费的种子和磁力链接下载工具，支持 Windows、Mac 和 Linux 平台，功能非常强大。</p><p>通过把 qBitTorrent 部署到个人的 VPS，就能离线下载到 VPS，再按需从 VPS 取回本地。</p><p>而一台海外的千兆带宽 VPS ，也不是月租 $5 而已（推荐 <a href="https://www.vultr.com/">vultr</a>）。</p><p><img src="03.png"></p><h2 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h2><p>为方便起见，这里已经 qBitTorrent 的相关镜像组件都封装到 <a href="https://github.com/lyy289065406/qBitTorrent-docker">Github</a> 仓库：</p><table><thead><tr><th align="center">镜像</th><th align="center">用途</th><th align="center">服务端口</th><th align="left">端口说明</th></tr></thead><tbody><tr><td align="center"><a href="https://github.com/qbittorrent/qBittorrent">qBitTorrent</a></td><td align="center">用于 BT 下载资源到 VPS</td><td align="center">8080</td><td align="left">WEB 管理界面</td></tr><tr><td align="center">-</td><td align="center">-</td><td align="center">8081</td><td align="left">用于 P2P 连接的最小端口，默认 6881(-6889)，<br>但 6881 已被大部分资源站拉黑，<br>故设置为另一个最小端口</td></tr><tr><td align="center">-</td><td align="center">-</td><td align="center">9000</td><td align="left">用于内部共享私有种子的端口</td></tr><tr><td align="center"><a href="https://github.com/caddyserver/caddy">caddy</a></td><td align="center">用于从 VPS 上拉回资源到本地</td><td align="center">9090</td><td align="left">资源文件的浏览界面</td></tr><tr><td align="center"><a href="https://www.nginx.com/">nginx</a></td><td align="center">反向代理 qBitTorrent 和 caddy 服务</td><td align="center">80</td><td align="left">项目说明页面</td></tr></tbody></table><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><h3 id="1-项目构建"><a href="#1-项目构建" class="headerlink" title="1. 项目构建"></a>1. 项目构建</h3><ul><li>宿主机安装 docker、docker-compose</li><li>宿主机安全组/防火墙（iptables/firewall）放行这些端口的入口流量： 80、8080、8081-8089、8081-8089/udp、9000、9090</li><li>下载仓库： <code>git clone https://github.com/lyy289065406/qBitTorrent-docker /usr/local/qBitTorrent-docker</code></li><li>打开仓库目录： <code>cd /usr/local/qBitTorrent-docker</code></li><li>构建镜像并运行： <code>caddy_user=admin caddy_pass=123456 docker-compose up -d</code></li></ul><blockquote><p>caddy 的账号密码按需设置即可；qBittorrent 的密码因为使用 PBKDF2 算法，又没有提供生成密码的命令行工具，故只能在 WEB 页面上修改。</p></blockquote><h3 id="2-配置-qBitTorrent"><a href="#2-配置-qBitTorrent" class="headerlink" title="2. 配置 qBitTorrent"></a>2. 配置 qBitTorrent</h3><ul><li>登录 WEB 管理页面：<code>http://${vps-ip}/bt/</code>（或 <code>http://${vps-ip}:8080</code>）</li><li>默认登录账密: <code>admin / adminadmin</code></li><li>修改默认密码: 【选项】 -&gt; 【Web UI】 -&gt; 【验证】</li><li>修改 tracker 列表： 【选项】 -&gt; 【BitTorrent】 -&gt; 【自动添加以下 tracker 到新的 torrent】</li></ul><blockquote><p>更多配置可参考《<a href="https://zhuanlan.zhihu.com/p/64254201">专业磁力种子下载工具 qBittorrent 使用教程</a>》</p></blockquote><p><img src="01.png"></p><p><img src="02.png"></p><h3 id="3-配置定时更新-trackers"><a href="#3-配置定时更新-trackers" class="headerlink" title="3. 配置定时更新 trackers"></a>3. 配置定时更新 trackers</h3><p>通过 trackers 可以优化下载速度，但是 trackers 是有有效时限的，在以下地方可以获取最新的 trackers 列表：</p><ul><li><a href="https://github.com/ngosang/trackerslist">https://github.com/ngosang/trackerslist</a></li><li><a href="https://torrents.io/tracker-list/">https://torrents.io/tracker-list/</a></li><li><a href="https://newtrackon.com/list">https://newtrackon.com/list</a></li></ul><p>通过 <a href="update_trackers.sh"><code>update_trackers.sh</code></a> 脚本可以自动刷新 trackers 配置。</p><p>建议把该脚本配置到 crontab ，每天更新一次：</p><pre class="line-numbers language-shell"><code class="language-shell"># 编辑定时任务crontab -e# 每天更新一次 trackers0 1 * * * /bin/sh /usr/local/qBitTorrent-docker/update_trackers.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="4-使用-caddy-浏览已下载文件"><a href="#4-使用-caddy-浏览已下载文件" class="headerlink" title="4. 使用 caddy 浏览已下载文件"></a>4. 使用 caddy 浏览已下载文件</h3><ul><li>登录 WEB 页面：<code>http://${vps-ip}/list/</code> 或 <code>http://${vps-ip}:9090</code></li><li>默认 BasicAuth 登录账密: <code>admin / 123456</code></li></ul><blockquote><p>BasicAuth 的账号密码在第 1 步构建项目时已配置好</p></blockquote><p><img src="04.png"></p><h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Q1：-为什么无法下载迅雷链接或磁力链接"><a href="#Q1：-为什么无法下载迅雷链接或磁力链接" class="headerlink" title="Q1： 为什么无法下载迅雷链接或磁力链接"></a>Q1： 为什么无法下载迅雷链接或磁力链接</h3><p>qBitTorrent 并不能直接解析迅雷链接或磁力链接，它只能解析 torrent 种子文件、或种子文件的下载链接。</p><p>对于迅雷链接或磁力链接，需要使用其他工具先转换为 torrent 种子文件，具体方法可参考<a href="https://my.oschina.net/u/1440553/blog/4480497">这篇文章</a>。</p><h3 id="Q2：-下载文件保存到哪里？"><a href="#Q2：-下载文件保存到哪里？" class="headerlink" title="Q2： 下载文件保存到哪里？"></a>Q2： 下载文件保存到哪里？</h3><p>仓库下的 <a href="downloads"><code>downloads</code></a> 挂载到 docker 容器，下载的文件均保存到这里。</p><p>在前端可以通过 caddy 下载，在后端可以到这个目录下载。</p><p>另外需要注意下载的文件大小不能超过 <a href="downloads"><code>downloads</code></a> 目录所在磁盘的空间大小。</p><h3 id="Q3：-tracker-是什么？"><a href="#Q3：-tracker-是什么？" class="headerlink" title="Q3： tracker 是什么？"></a>Q3： tracker 是什么？</h3><p>在 BT 下载中的一个重要概念是 P2P。</p><p>P2P 是 peer-to-peer 的缩写，网络中的一个 peer（正在下载资源的客户端） 如何才能找到另外志同道合的 peer，Tracker 扮演着至关重要的月老作用：Tracker 是一个 HTTP 或者 UDP 服务器，作用是帮助 peer 找到其他拥有相同资源的 peer。</p><p>后来有了 DHT 网络之后，Tracker 的作用逐渐弱化，但是 Tracker 代表的这种中心化一定程度上相对 DHT 代表的去中心化效率还是比较高的。</p><blockquote><p>详见《<a href="https://0ranga.com/2018/08/27/bt-tracker/">BT 增强建议之 Tracker</a>》</p></blockquote><h3 id="Q4：-忘记-qBitTorrent-的登录密码怎么办？"><a href="#Q4：-忘记-qBitTorrent-的登录密码怎么办？" class="headerlink" title="Q4： 忘记 qBitTorrent 的登录密码怎么办？"></a>Q4： 忘记 qBitTorrent 的登录密码怎么办？</h3><p>进入 docker_torrent 容器，修改 <code>/config/qBittorrent/qBittorrent.conf</code> 文件，删除 <code>WebUI/Password_PBKDF2</code> 配置项，然后重启进程即可还原为默认密码 <code>adminadmin</code>。</p><h3 id="Q5：-可以用手机管理-qBitTorrent-吗？"><a href="#Q5：-可以用手机管理-qBitTorrent-吗？" class="headerlink" title="Q5： 可以用手机管理 qBitTorrent 吗？"></a>Q5： 可以用手机管理 qBitTorrent 吗？</h3><p>使用 <a href="https://cn.computerspywarescanner.com/art9494-transdrone-remotely-control-multiple-torrent-clients-from-android">transdrone</a> 即可。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> qBitTorrent </tag>
+            
+            <tag> VPS </tag>
+            
+            <tag> BT </tag>
             
         </tags>
       
@@ -356,9 +385,9 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> Mariadb </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -1113,13 +1142,13 @@
             
             <tag> VPS </tag>
             
+            <tag> SS </tag>
+            
             <tag> 科学上网 </tag>
             
             <tag> 翻墙 </tag>
             
             <tag> 梯子 </tag>
-            
-            <tag> SS </tag>
             
         </tags>
       
@@ -1196,9 +1225,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> 重构 </tag>
+            
+            <tag> 随笔 </tag>
             
             <tag> 暗时间 </tag>
             
@@ -1312,9 +1341,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> 沟通 </tag>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -1416,11 +1445,11 @@
       
         <tags>
             
+            <tag> 重构 </tag>
+            
             <tag> 随笔 </tag>
             
             <tag> 测试 </tag>
-            
-            <tag> 重构 </tag>
             
         </tags>
       
@@ -1524,11 +1553,11 @@
       
         <tags>
             
+            <tag> 敏捷开发 </tag>
+            
             <tag> 沟通 </tag>
             
             <tag> 重构 </tag>
-            
-            <tag> 敏捷开发 </tag>
             
         </tags>
       
