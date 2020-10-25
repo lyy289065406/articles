@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://exp-blog.com/safe/android-ni-xiang-xue-xi-bi-ji/</loc>
+    <loc>https://exp-blog.com/re/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</loc>
     
     <lastmod>2020-10-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</loc>
+    <loc>https://exp-blog.com/re/android-ni-xiang-xue-xi-bi-ji/</loc>
     
     <lastmod>2020-10-25</lastmod>
     
@@ -928,6 +928,34 @@
   </url>
   
   <url>
+    <loc>https://exp-blog.com/tags/Android/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E9%80%86%E5%90%91/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E5%A3%B3/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://exp-blog.com/tags/CE/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
@@ -957,34 +985,6 @@
   
   <url>
     <loc>https://exp-blog.com/tags/%E5%86%85%E6%A0%B8/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/Android/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E9%80%86%E5%90%91/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/%E5%A3%B3/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
