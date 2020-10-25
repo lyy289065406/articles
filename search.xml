@@ -76,9 +76,9 @@
       
         <tags>
             
-            <tag> qBitTorrent </tag>
-            
             <tag> VPS </tag>
+            
+            <tag> qBitTorrent </tag>
             
             <tag> BT </tag>
             
@@ -346,6 +346,35 @@
     
     
     <entry>
+      <title>Android APP 反编译入门学习笔记</title>
+      <link href="/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/"/>
+      <url>/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><table><thead><tr><th align="left">内容</th><th align="left">资料/链接</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">ApkTool + dex2jar + JD-GUI</td><td align="left">《<a href="https://www.devio.org/2018/05/08/Android-reverse-engineering-for-mac/">(Mac)反编译Android APK详细操作指南</a>》</td><td align="left">Apk 反编译工具（入门级，较繁琐）</td></tr><tr><td align="left">Jadx</td><td align="left"><a href="https://github.com/skylot/jadx">Github</a></td><td align="left">Apk 反编译工具（推荐）</td></tr><tr><td align="left">脱壳原理介绍</td><td align="left">《<a href="https://www.bigfog.info/2018/04/15/Apk%E8%84%B1%E5%A3%B3%E7%AE%80%E4%BB%8B/">APK脱壳简介</a>》</td><td align="left">调试 → 找到入口点 → 脱壳 → 修复</td></tr><tr><td align="left">ApkScan</td><td align="left">《<a href="https://xz.aliyun.com/t/2095">APK查壳工具PKID</a>》</td><td align="left">查壳工具</td></tr></tbody></table><blockquote><p>【加壳】 也称 “加固”， 是指在一个主程序的外面再包裹上另一段代码，用于保护里面的主程序不不被非法修改或反编译。它们一般都是先于主程序运行、拿到控制权，然后完成它们保护主程序的任务。</p></blockquote><p><img src="00.jpg"></p><h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><h3 id="练习-1-（无壳-已完成）"><a href="#练习-1-（无壳-已完成）" class="headerlink" title="练习 1 （无壳 - 已完成）"></a>练习 1 （无壳 - 已完成）</h3><table><thead><tr><th align="center">条件</th><th align="left">说明</th></tr></thead><tbody><tr><td align="center">APK</td><td align="left">3.6.4-xxx-store.apk</td></tr><tr><td align="center">目标</td><td align="left">找到登录 Token</td></tr><tr><td align="center">工具</td><td align="left">ApkTool + dex2jar + JD-GUI</td></tr></tbody></table><p>对 APK 解包 <code>unzip 3.6.4-xxx-store.apk</code> 得到 12 个 classesN.dex 文件：</p><p><img src="01.jpg"></p><p>使用 d2j-dex2jar 工具把这 12 个 dex 文件转换成 jar 包 <code>./d2j-dex2jar.sh *.dex</code>：</p><p><img src="02.jpg"></p><p>使用 JD-GUI 反编译这些 jar 包，不难找到 Token 在 classes9-dex2jar.jar 里面的 <code>com.xxx.store.BuildConfig.class</code> ：</p><p><img src="03.jpg"></p><h3 id="练习-2-（无壳-已完成）"><a href="#练习-2-（无壳-已完成）" class="headerlink" title="练习 2 （无壳 - 已完成）"></a>练习 2 （无壳 - 已完成）</h3><table><thead><tr><th align="center">条件</th><th align="left">说明</th></tr></thead><tbody><tr><td align="center">APK</td><td align="left">xxx.go.v4.v4.1.2.apk</td></tr><tr><td align="center">目标</td><td align="left">找到激活 Token</td></tr><tr><td align="center">工具</td><td align="left">Jadx</td></tr></tbody></table><p>直接使用 Jadx 打开 3.6.4-xxx-store.apk 即可实现反编译。</p><p>在 <code>xxx.pilot.active.xxxActiveController.class</code> 和 <code>xxx.pilot.active.b.class</code> 可以找到特征非常明显的激活 Token ，激活逻辑在 <code>xxx.pilot.active.b.class</code> 下面，对该 Token 实现了调用。</p><p><img src="04.jpg"></p><p><img src="05.jpg"></p><p><img src="06.jpg"></p><h3 id="练习-3-（有壳-未完成）"><a href="#练习-3-（有壳-未完成）" class="headerlink" title="练习 3 （有壳 - 未完成）"></a>练习 3 （有壳 - 未完成）</h3><table><thead><tr><th align="center">条件</th><th align="left">说明</th></tr></thead><tbody><tr><td align="center">APK</td><td align="left">3.6.4-xxx-store-梆梆加固.apk</td></tr><tr><td align="center">目标</td><td align="left">找到登录 Token</td></tr><tr><td align="center">工具</td><td align="left">ApkScan + Jadx</td></tr></tbody></table><p>使用 ApkScan 查壳，发现 APK 使用了【梆梆企业版】进行加固：</p><p><img src="07.jpg"></p><blockquote><p>未完待续……</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 反编译 </tag>
+            
+            <tag> 壳 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WEB 渗透靶场整合</title>
       <link href="/safe/web-shen-tou-ba-chang-zheng-he/"/>
       <url>/safe/web-shen-tou-ba-chang-zheng-he/</url>
@@ -443,9 +472,9 @@
       
         <tags>
             
-            <tag> Mariadb </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Mariadb </tag>
             
         </tags>
       
@@ -1198,9 +1227,9 @@
       
         <tags>
             
-            <tag> VPS </tag>
-            
             <tag> SS </tag>
+            
+            <tag> VPS </tag>
             
             <tag> 科学上网 </tag>
             

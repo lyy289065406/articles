@@ -93,9 +93,9 @@
     <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
     
-    <category term="qBitTorrent" scheme="https://exp-blog.com/tags/qBitTorrent/"/>
-    
     <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
+    
+    <category term="qBitTorrent" scheme="https://exp-blog.com/tags/qBitTorrent/"/>
     
     <category term="BT" scheme="https://exp-blog.com/tags/BT/"/>
     
@@ -363,6 +363,38 @@
   </entry>
   
   <entry>
+    <title>Android APP 反编译入门学习笔记</title>
+    <link href="https://exp-blog.com/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/"/>
+    <id>https://exp-blog.com/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</id>
+    <published>2019-11-21T11:40:00.000Z</published>
+    <updated>2020-10-25T05:11:18.605Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Android" scheme="https://exp-blog.com/tags/Android/"/>
+    
+    <category term="反编译" scheme="https://exp-blog.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+    <category term="壳" scheme="https://exp-blog.com/tags/%E5%A3%B3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WEB 渗透靶场整合</title>
     <link href="https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/"/>
     <id>https://exp-blog.com/safe/web-shen-tou-ba-chang-zheng-he/</id>
@@ -466,9 +498,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
-    
     <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
     
   </entry>
   
@@ -1227,9 +1259,9 @@
     <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
     
-    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
-    
     <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
+    
+    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
     
     <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
