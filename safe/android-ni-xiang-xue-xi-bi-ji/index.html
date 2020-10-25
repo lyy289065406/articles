@@ -483,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    14 分
                 </div>
                 
 
@@ -880,7 +880,48 @@
 <p>使用 jadx 打开签名后的 YZ.apk，可以确认到刚才的签名信息：</p>
 <p><img src="18.jpg"></p>
 <p>在模拟器上安装 YZ.apk 并运行，成功绕过 root 检测。</p>
-<h2 id="【目标-2】-通过-abServer-签名验证"><a href="#【目标-2】-通过-abServer-签名验证" class="headerlink" title="【目标 2】 通过 abServer 签名验证"></a>【目标 2】 通过 abServer 签名验证</h2><script>
+<h2 id="【目标-2】-通过-abServer-签名验证"><a href="#【目标-2】-通过-abServer-签名验证" class="headerlink" title="【目标 2】 通过 abServer 签名验证"></a>【目标 2】 通过 abServer 签名验证</h2><h3 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h3><ul>
+<li>在模拟器运行 YZ，并在 YZ 中执行某些操作</li>
+<li>利用 Burp Suite 对模拟器抓包</li>
+<li>观察所执行的操作对应触发的 HTTP 请求</li>
+<li>通过 HTTP 请求的特征（URL、参数等）在反编译代码中定位大概位置</li>
+<li>找到 HTTP 请求参数中 signature 签名值的来源，分析其生成算法</li>
+<li>篡改 HTTP 请求参数并对其签名，并通过算法生成新的 signature 并发送到服务器，实现中间人攻击</li>
+</ul>
+<h3 id="B-2-解题过程"><a href="#B-2-解题过程" class="headerlink" title="B.2. 解题过程"></a>B.2. 解题过程</h3><h4 id="B-2-1-搭建抓包环境"><a href="#B-2-1-搭建抓包环境" class="headerlink" title="B.2.1. 搭建抓包环境"></a>B.2.1. 搭建抓包环境</h4><p><strong>【搭建 xposed 环境（可选）】</strong></p>
+<p>在安卓模拟器上安装 Xposed，再安装 Inspeckage 和 TrustMeAlready 模块，然后通过 Inspeckage 启动 YZ ：</p>
+<p><img src="19.jpg"></p>
+<p>MAC 下的相关命令：</p>
+<ul>
+<li>重启 adb 服务并连接到 adb shell： <code>adb kill-server &amp;&amp; adb server &amp;&amp; adb shell</code></li>
+<li>转发 Inspeckage 的 web 服务端口：<code>adb forward tcp:8008 tcp:8008</code></li>
+<li>转发 Inspeckage 的 LogCat 服务端口：<code>adb forward tcp:8887 tcp:8887</code></li>
+</ul>
+<p><img src="20.jpg"></p>
+<p>此时通过浏览器打开 <a target="_blank" rel="noopener" href="http://127.0.0.1:8008/">http://127.0.0.1:8008/</a> 即可查看 YZ 详细的 APP 信息：</p>
+<p><img src="21.jpg"></p>
+<p><strong>【搭建 Burp Suite 环境（必须）】</strong></p>
+<p>依次点选：Burp Suite → Proxy → Options → Proxy Listeners → Add → Binding</p>
+<ul>
+<li>【Bind to port】 随便填写即可（如当前为 8080）</li>
+<li>【Bind to address】 选择 Specific address 并选择局域网 IP （如当前为 192.168.1.104）</li>
+</ul>
+<p><img src="22.jpg"></p>
+<p>在网易 MuMu 依次点选： 设置 → WLAN → 长按 → 修改网络 → 高级选型 → 代理 → 手动</p>
+<ul>
+<li>【代理服务器主机名】 填写 Burp Suite 监听的 IP （如当前为 192.168.1.104）</li>
+<li>【代理服务器端口】 填写 Burp Suite 监听的端口（如当前为 8080）</li>
+</ul>
+<p><img src="23.jpg"></p>
+<p>如上配置好后，即可从 Burp Suite → Proxy →  HTTP history 查看抓到的各个 HTTP 请求：</p>
+<p><img src="24.jpg"></p>
+<h4 id="B-2-2-观察-amp-分析包特征"><a href="#B-2-2-观察-amp-分析包特征" class="headerlink" title="B.2.2. 观察 &amp; 分析包特征"></a>B.2.2. 观察 &amp; 分析包特征</h4><p>不难发现，在启动 YZ 后，已经发出了相当一部分 HTTP 请求。观察这些请求参数的特征，几乎都带了 token 和 signature 两个参数。</p>
+<p>测试发现：</p>
+<ul>
+<li>token：当前会话的固定值，每次重新登录 YZ 后会变化</li>
+<li>signature：<br>  o 大部分都是 32 位，形似 MD5<br>  o 少量（如 <code>/bifrost/msg/scanWithSecurityMsg</code>） 是一个 RSA 的数字签名 （事实上从代码发现，签名用的是 SHA256withRSA，加密用的是 AES ）<br>  o 直接计算请求参数的 MD5 ，与 signature 并不一致，说明 signature 加了 salt<br>  o 不同请求的 signature 都不一样，但重发同一个请求，服务端返回都是成功的，说明 signature 没有用时间作为 salt<br>  o 修改请求参数中的任意内容并发送，服务端返回 400: signature is empty or is not equal ，结合前面几点推测，salt 可能是一个固定值<br>  o 修改 token 并发送，服务端返回 401: token is empty or not exists，推测 signature 计算过程中并没有 token 参与</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1501,7 +1542,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">216.7k</span>&nbsp;字
+                class="white-color">217.4k</span>&nbsp;字
             
             
             
