@@ -483,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    4.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    19 分
                 </div>
                 
 
@@ -645,7 +645,7 @@
 </tr>
 </tbody></table>
 <p>##【目标 A】绕过 root 限制</p>
-<h3 id="A-1-解题思路"><a href="#A-1-解题思路" class="headerlink" title="A.1. 解题思路"></a>A.1. 解题思路</h3><p>通过文章《<a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a>》可以知道，apk 的 root 检测都是通过（java）代码实现的，因此要绕过 root 的思路也很直白了：</p>
+<h2 id="A-1-解题思路"><a href="#A-1-解题思路" class="headerlink" title="A.1. 解题思路"></a>A.1. 解题思路</h2><p>通过文章《<a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a>》可以知道，apk 的 root 检测都是通过（java）代码实现的，因此要绕过 root 的思路也很直白了：</p>
 <ul>
 <li>反编译 apk 安装包</li>
 <li>找到 root 检测代码</li>
@@ -654,7 +654,7 @@
 <li>apk 自签名（apk 有防篡改机制，所有文件都会生成 hash 校验码，签名目的是重新生成这些校验码）</li>
 <li>在启用 root 的模拟器上验证</li>
 </ul>
-<h3 id="A-2-解题过程"><a href="#A-2-解题过程" class="headerlink" title="A.2. 解题过程"></a>A.2. 解题过程</h3><h4 id="A-2-1-找到-root-检测入口"><a href="#A-2-1-找到-root-检测入口" class="headerlink" title="A.2.1. 找到 root 检测入口"></a>A.2.1. 找到 root 检测入口</h4><p>首先需要 root 检测入口的点在哪。</p>
+<h2 id="A-2-解题过程"><a href="#A-2-解题过程" class="headerlink" title="A.2. 解题过程"></a>A.2. 解题过程</h2><h3 id="A-2-1-找到-root-检测入口"><a href="#A-2-1-找到-root-检测入口" class="headerlink" title="A.2.1. 找到 root 检测入口"></a>A.2.1. 找到 root 检测入口</h3><p>首先需要 root 检测入口的点在哪。</p>
 <p>使用模拟器安装 YZ.apk 并运行，会提示【禁止在 Root 设备运行】，然后会直接关掉 APP 进程，而明显这就是我们需要绕过的逻辑。</p>
 <p><img src="01.jpg"></p>
 <p>鉴于已经有明显的检测提示【禁止在Root设备运行】，那么使用 jadx 反编译 YZ.apk，然后直接搜索源码哪里出现这个字符串即可，检测逻辑必定在附近。</p>
@@ -686,7 +686,7 @@
 <li><code>warn_emulator_disabled</code> = “禁止在模拟器上运行”</li>
 </ul>
 <p><img src="07.jpg"></p>
-<h4 id="A-2-2-修改-root-检测逻辑（java源码）"><a href="#A-2-2-修改-root-检测逻辑（java源码）" class="headerlink" title="A.2.2. 修改 root 检测逻辑（java源码）"></a>A.2.2. 修改 root 检测逻辑（java源码）</h4><p>其实从源码不难解读到：</p>
+<h3 id="A-2-2-修改-root-检测逻辑（java源码）"><a href="#A-2-2-修改-root-检测逻辑（java源码）" class="headerlink" title="A.2.2. 修改 root 检测逻辑（java源码）"></a>A.2.2. 修改 root 检测逻辑（java源码）</h3><p>其实从源码不难解读到：</p>
 <ul>
 <li><code>e.b()</code> 是用于检测模拟器的</li>
 <li><code>e.a()</code> 是用于检测 root 的</li>
@@ -698,7 +698,7 @@
 <p>但是修改 java 源码后，使用 <code>apktool b yz_jadx</code> 命令重新编译打包会报错：【brut.directory.PathNotExist: apktool.yml】</p>
 <p><img src="09.jpg"></p>
 <p>从 <a target="_blank" rel="noopener" href="https://github.com/eleydur0g13/apktool/issues/9">Github issue</a> 找到原因，这是因为 yz_jadx 是通过 jadx 逆向得到的项目，亦即 yz_jadx 并不是 <code>apktool d</code> 命令逆向生成的，导致 apktool 找不到 apktool.yml 文件，从而无法重新打包。</p>
-<h4 id="A-2-3-修改-root-检测逻辑（Smali中间码）"><a href="#A-2-3-修改-root-检测逻辑（Smali中间码）" class="headerlink" title="A.2.3. 修改 root 检测逻辑（Smali中间码）"></a>A.2.3. 修改 root 检测逻辑（Smali中间码）</h4><p>于是这里变更逆向的方法：使用 <code>apktool d YZ.apk</code> 命令反编译 YZ.apk ，得到目录名为 YZ 项目。</p>
+<h3 id="A-2-3-修改-root-检测逻辑（Smali中间码）"><a href="#A-2-3-修改-root-检测逻辑（Smali中间码）" class="headerlink" title="A.2.3. 修改 root 检测逻辑（Smali中间码）"></a>A.2.3. 修改 root 检测逻辑（Smali中间码）</h3><p>于是这里变更逆向的方法：使用 <code>apktool d YZ.apk</code> 命令反编译 YZ.apk ，得到目录名为 YZ 项目。</p>
 <p>在目录下果然可以找到 apktool.yml 文件，在里面还记录了每个类的 JDK 编译版本为 8 （即 1.8）。</p>
 <p><img src="10.jpg"></p>
 <p>需要注意的是，使用 apktool 逆向出来的代码不是 java，而是名为 smali 的中间码。</p>
@@ -862,12 +862,12 @@
 </tr>
 </tbody></table>
 <p><img src="12.jpg"></p>
-<h4 id="A-2-4-重新编译打包"><a href="#A-2-4-重新编译打包" class="headerlink" title="A.2.4. 重新编译打包"></a>A.2.4. 重新编译打包</h4><p>因为前面已经从 apktool.yml 知道这个 apk 原本是使用 JDK 1.8 编译的，</p>
+<h3 id="A-2-4-重新编译打包"><a href="#A-2-4-重新编译打包" class="headerlink" title="A.2.4. 重新编译打包"></a>A.2.4. 重新编译打包</h3><p>因为前面已经从 apktool.yml 知道这个 apk 原本是使用 JDK 1.8 编译的，</p>
 <p>重新编译前需要注意设置系统环境变量，把 JDK 版本切换到 1.8 ：</p>
 <p><img src="13.jpg"></p>
 <p>执行命令 apktool b YZ，在目录 YZ/dist/ 下会生成新的 YZ.apk 文件 ：</p>
 <p><img src="14.jpg"></p>
-<h4 id="A-2-5-签名"><a href="#A-2-5-签名" class="headerlink" title="A.2.5. 签名"></a>A.2.5. 签名</h4><p>新生成的 YZ.apk 是不能够安装的，原因是安卓有防篡改机制，会把所有文件的 Hash 校验码记录到 META-INF/MANIFEST.MF 文件。</p>
+<h3 id="A-2-5-签名"><a href="#A-2-5-签名" class="headerlink" title="A.2.5. 签名"></a>A.2.5. 签名</h3><p>新生成的 YZ.apk 是不能够安装的，原因是安卓有防篡改机制，会把所有文件的 Hash 校验码记录到 META-INF/MANIFEST.MF 文件。</p>
 <p>而刚刚我们修改过代码，Hash 校验码必定已经改变。</p>
 <p>而对安装包签名目的之一是重新生成 META-INF/MANIFEST.MF 。</p>
 <p><img src="15.jpg"></p>
@@ -882,7 +882,7 @@
 <p><img src="18.jpg"></p>
 <p>在模拟器上安装 YZ.apk 并运行，成功绕过 root 检测。</p>
 <p>##【目标 2】通过 abServer 签名验证</p>
-<h3 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h3><ul>
+<h2 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h2><ul>
 <li>在模拟器运行 YZ，并在 YZ 中执行某些操作</li>
 <li>利用 Burp Suite 对模拟器抓包</li>
 <li>观察所执行的操作对应触发的 HTTP 请求</li>
@@ -890,8 +890,7 @@
 <li>找到 HTTP 请求参数中 signature 签名值的来源，分析其生成算法</li>
 <li>篡改 HTTP 请求参数并对其签名，并通过算法生成新的 signature 并发送到服务器，实现中间人攻击</li>
 </ul>
-<h3 id="B-2-解题过程"><a href="#B-2-解题过程" class="headerlink" title="B.2. 解题过程"></a>B.2. 解题过程</h3><h4 id="B-2-1-搭建抓包环境"><a href="#B-2-1-搭建抓包环境" class="headerlink" title="B.2.1. 搭建抓包环境"></a>B.2.1. 搭建抓包环境</h4><p><strong>【搭建 xposed 环境（可选）】</strong></p>
-<p>在安卓模拟器上安装 Xposed，再安装 Inspeckage 和 TrustMeAlready 模块，然后通过 Inspeckage 启动 YZ ：</p>
+<h2 id="B-2-解题过程"><a href="#B-2-解题过程" class="headerlink" title="B.2. 解题过程"></a>B.2. 解题过程</h2><h3 id="B-2-1-搭建抓包环境"><a href="#B-2-1-搭建抓包环境" class="headerlink" title="B.2.1. 搭建抓包环境"></a>B.2.1. 搭建抓包环境</h3><h4 id="B-2-1-1-搭建-xposed-环境（可选）"><a href="#B-2-1-1-搭建-xposed-环境（可选）" class="headerlink" title="B.2.1.1. 搭建 xposed 环境（可选）"></a>B.2.1.1. 搭建 xposed 环境（可选）</h4><p>在安卓模拟器上安装 Xposed，再安装 Inspeckage 和 TrustMeAlready 模块，然后通过 Inspeckage 启动 YZ ：</p>
 <p><img src="19.jpg"></p>
 <p>MAC 下的相关命令：</p>
 <ul>
@@ -902,8 +901,7 @@
 <p><img src="20.jpg"></p>
 <p>此时通过浏览器打开 <a target="_blank" rel="noopener" href="http://127.0.0.1:8008/">http://127.0.0.1:8008/</a> 即可查看 YZ 详细的 APP 信息：</p>
 <p><img src="21.jpg"></p>
-<p><strong>【搭建 Burp Suite 环境（必须）】</strong></p>
-<p>依次点选：Burp Suite → Proxy → Options → Proxy Listeners → Add → Binding</p>
+<h4 id="B-2-1-2-搭建-Burp-Suite-环境（必须）"><a href="#B-2-1-2-搭建-Burp-Suite-环境（必须）" class="headerlink" title="B.2.1.2. 搭建 Burp Suite 环境（必须）"></a>B.2.1.2. 搭建 Burp Suite 环境（必须）</h4><p>依次点选：Burp Suite → Proxy → Options → Proxy Listeners → Add → Binding</p>
 <p>-【Bind to port】随便填写即可（如当前为 8080）<br>-【Bind to address】选择 Specific address 并选择局域网 IP （如当前为 192.168.1.104）</p>
 <p><img src="22.jpg"></p>
 <p>在网易 MuMu 依次点选： 设置 → WLAN → 长按 → 修改网络 → 高级选型 → 代理 → 手动</p>
@@ -911,14 +909,14 @@
 <p><img src="23.jpg"></p>
 <p>如上配置好后，即可从 Burp Suite → Proxy →  HTTP history 查看抓到的各个 HTTP 请求：</p>
 <p><img src="24.jpg"></p>
-<h4 id="B-2-2-观察-amp-分析包特征"><a href="#B-2-2-观察-amp-分析包特征" class="headerlink" title="B.2.2. 观察 &amp; 分析包特征"></a>B.2.2. 观察 &amp; 分析包特征</h4><p>不难发现，在启动 YZ 后，已经发出了相当一部分 HTTP 请求。观察这些请求参数的特征，几乎都带了 token 和 signature 两个参数。</p>
+<h3 id="B-2-2-观察-amp-分析包特征"><a href="#B-2-2-观察-amp-分析包特征" class="headerlink" title="B.2.2. 观察 &amp; 分析包特征"></a>B.2.2. 观察 &amp; 分析包特征</h3><p>不难发现，在启动 YZ 后，已经发出了相当一部分 HTTP 请求。观察这些请求参数的特征，几乎都带了 token 和 signature 两个参数。</p>
 <p>测试发现：</p>
 <ul>
 <li>token：当前会话的固定值，每次重新登录 YZ 后会变化</li>
 <li>signature：<br>  o 大部分都是 32 位，形似 MD5<br>  o 少量（如 <code>/bifrost/msg/scanWithSecurityMsg</code>） 是一个 RSA 的数字签名 （事实上从代码发现，签名用的是 SHA256withRSA，加密用的是 AES ）<br>  o 直接计算请求参数的 MD5 ，与 signature 并不一致，说明 signature 加了 salt<br>  o 不同请求的 signature 都不一样，但重发同一个请求，服务端均返回成功，说明 signature 没有用时间作为 salt<br>  o 修改请求参数中的任意内容并发送，服务端返回 400: signature is empty or is not equal ，结合前面几点推测，salt 可能是一个固定值<br>  o 修改 token 并发送，服务端返回 401: token is empty or not exists，推测 signature 的计算过程中并没有 token 参与</li>
 </ul>
 <p><img src="25.jpg"></p>
-<h4 id="B-2-3-代码逆向分析"><a href="#B-2-3-代码逆向分析" class="headerlink" title="B.2.3. 代码逆向分析"></a>B.2.3. 代码逆向分析</h4><p>从前一节分析已经知道，signature 含有两种（甚至以上的形式）：MD5 和 RSA 。</p>
+<h3 id="B-2-3-代码逆向分析"><a href="#B-2-3-代码逆向分析" class="headerlink" title="B.2.3. 代码逆向分析"></a>B.2.3. 代码逆向分析</h3><p>从前一节分析已经知道，signature 含有两种（甚至以上的形式）：MD5 和 RSA 。</p>
 <p>要实现题目要求的中间人攻击，则需要成功伪造签名，亦即需要找到 signature 的计算方法。</p>
 <p>简单起见，下面以 MD5 形式的 signature 作为目标展开分析。</p>
 <p>这里从修改 YZ 个人信息入手，例如修改【电话】。</p>
@@ -976,6 +974,39 @@
 <li>函数【<code>public Response intercept(Chain chain)</code>】中涉及了 POST/GET 请求下关于 token 和 signature 的处理逻辑</li>
 </ul>
 <p><img src="33.jpg"></p>
+<h3 id="B-2-4-签名算法"><a href="#B-2-4-签名算法" class="headerlink" title="B.2.4. 签名算法"></a>B.2.4. 签名算法</h3><p>分析这块代码可知，signature 一共有三种算法：</p>
+<ul>
+<li>POST 请求有两种算法</li>
+<li>GET 请求有一种算法（暂时不关注，下面就不分析了）</li>
+</ul>
+<p><img src="34.jpg"></p>
+<p>针对 POST 方法的 signature 的两种具体算法分析如下：</p>
+<ul>
+<li><code>signature = RSA(rsakey, token + params + millis)</code>   （暂时不关注，不再详细分析）</li>
+<li><code>signature = MD5("params" + params + "DnWX83SksBoctyoVDmEkyEDuzB6i2RUyWY4A9m**********xxxhin31rzDU")</code></li>
+</ul>
+<p><img src="35.jpg"></p>
+<p><img src="36.jpg"></p>
+<p>回到最开始的抓包请求：</p>
+<ul>
+<li>Method: POST</li>
+<li>URL： <code>/xxx-abService/ab/employee/phone</code></li>
+<li>token: 4E07B642-5209-CE11-52AB-3326EE2E0899</li>
+<li>params: <code>{"phoneNumber":"***********","userName":"******"}</code></li>
+<li>signature: da7ba0142b4a8d746147dd386c021725</li>
+</ul>
+<p>随便找一个 MD5 计算工具（如 <a target="_blank" rel="noopener" href="http://www.jsons.cn/md5/s/">http://www.jsons.cn/md5/s/</a> ），代入前面的公式计算，若得到相同的 signature，说明成功得到 signature 的签名算法，可以实现中间人攻击。</p>
+<blockquote>
+<p>注：测试发现 signature 必须全小写，大写不能通过验证。</p>
+</blockquote>
+<p><img src="37.jpg"></p>
+<p><img src="38.jpg"></p>
+<h3 id="B-2-5-实现中间人改包"><a href="#B-2-5-实现中间人改包" class="headerlink" title="B.2.5. 实现中间人改包"></a>B.2.5. 实现中间人改包</h3><ul>
+<li>修改 params 为 <code>{"phoneNumber":"00000000000","userName":"******"}</code></li>
+<li>计算 signature 签名值为 993fee1a8f4ca2a54fbc5ec589ede5bd</li>
+<li>通过 Burp Suite 发送请求，修改个人信息成功。</li>
+</ul>
+<p><img src="39.jpg"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1597,7 +1628,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">218.5k</span>&nbsp;字
+                class="white-color">218.8k</span>&nbsp;字
             
             
             
