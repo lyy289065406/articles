@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://exp-blog.com/re/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</loc>
+    <loc>https://exp-blog.com/re/android-ni-xiang-xue-xi-bi-ji/</loc>
     
     <lastmod>2020-10-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://exp-blog.com/re/android-ni-xiang-xue-xi-bi-ji/</loc>
+    <loc>https://exp-blog.com/re/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</loc>
     
     <lastmod>2020-10-25</lastmod>
     
@@ -1089,27 +1089,6 @@
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/GitBook/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/Github/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://exp-blog.com/tags/Mariadb/</loc>
-    <lastmod>2020-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://exp-blog.com/tags/WordPress/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
@@ -1145,21 +1124,21 @@
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/LAMP/</loc>
+    <loc>https://exp-blog.com/tags/Mariadb/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/calibre/</loc>
+    <loc>https://exp-blog.com/tags/GitBook/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/%E4%B9%A6%E5%BA%93/</loc>
+    <loc>https://exp-blog.com/tags/Github/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1180,7 +1159,14 @@
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/Redis/</loc>
+    <loc>https://exp-blog.com/tags/calibre/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/%E4%B9%A6%E5%BA%93/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1201,7 +1187,7 @@
   </url>
   
   <url>
-    <loc>https://exp-blog.com/tags/TTFB/</loc>
+    <loc>https://exp-blog.com/tags/Redis/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1292,6 +1278,13 @@
   </url>
   
   <url>
+    <loc>https://exp-blog.com/tags/LAMP/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://exp-blog.com/tags/Oracle/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
@@ -1300,6 +1293,13 @@
   
   <url>
     <loc>https://exp-blog.com/tags/WinDBG/</loc>
+    <lastmod>2020-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://exp-blog.com/tags/TTFB/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
