@@ -483,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -863,6 +863,23 @@
 <p><img src="12.jpg"></p>
 <h4 id="A-2-4-重新编译打包"><a href="#A-2-4-重新编译打包" class="headerlink" title="A.2.4. 重新编译打包"></a>A.2.4. 重新编译打包</h4><p>因为前面已经从 apktool.yml 知道这个 apk 原本是使用 JDK 1.8 编译的，</p>
 <p>重新编译前需要注意设置系统环境变量，把 JDK 版本切换到 1.8 ：</p>
+<p><img src="13.jpg"></p>
+<p>执行命令 apktool b YZ，在目录 YZ/dist/ 下会生成新的 YZ.apk 文件 ：</p>
+<p><img src="14.jpg"></p>
+<h4 id="A-2-5-签名"><a href="#A-2-5-签名" class="headerlink" title="A.2.5. 签名"></a>A.2.5. 签名</h4><p>新生成的 YZ.apk 是不能够安装的，原因是安卓有防篡改机制，会把所有文件的 Hash 校验码记录到 META-INF/MANIFEST.MF 文件。</p>
+<p>而刚刚我们修改过代码，Hash 校验码必定已经改变。</p>
+<p>而对安装包签名目的之一是重新生成 META-INF/MANIFEST.MF 。</p>
+<p><img src="15.jpg"></p>
+<p>签名采用自签名即可，可以直接使用 JDK 自带的工具执行。</p>
+<p>首先生成证书：<code>keytool -genkey -alias demo.keystore -keyalg RSA -validity 40000 -keystore demo.keystore</code></p>
+<p>根据提示随便填写即可。</p>
+<p><img src="16.jpg"></p>
+<p>然后使用这个证书对刚才重新编译的 YZ.apk 自签名：<code>jarsigner -verbose -keystore demo.keystore YZ.apk demo.keystore</code></p>
+<p>得到最终的 YZ.apk。</p>
+<p><img src="17.jpg"></p>
+<p>使用 jadx 打开签名后的 YZ.apk，可以确认到刚才的签名信息：</p>
+<p><img src="18.jpg"></p>
+<p>在模拟器上安装 YZ.apk 并运行，成功绕过 root 检测。</p>
 <h2 id="【目标-2】-通过-abServer-签名验证"><a href="#【目标-2】-通过-abServer-签名验证" class="headerlink" title="【目标 2】 通过 abServer 签名验证"></a>【目标 2】 通过 abServer 签名验证</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1484,7 +1501,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">216.5k</span>&nbsp;字
+                class="white-color">216.7k</span>&nbsp;字
             
             
             
