@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    754
+                    833
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -509,24 +509,24 @@
 <span class="token comment" spellcheck="true">// </span>
 <span class="token comment" spellcheck="true">// 以下代码为标准c++代码,我在vc++2003.net上运行无误 </span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span> </span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span> </span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;map></span> </span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cctype></span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string&gt;</span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;map&gt;</span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cctype&gt;</span> </span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span> 
 <span class="token keyword">const</span> <span class="token keyword">int</span> ture<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> 
 <span class="token keyword">const</span> <span class="token keyword">int</span> flase<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> 
 
-map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span><span class="token keyword">double</span><span class="token operator">></span> table<span class="token punctuation">;</span> 
+map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span><span class="token keyword">double</span><span class="token operator">&gt;</span> table<span class="token punctuation">;</span> 
 
 
 <span class="token comment" spellcheck="true">/////////////////////////////////////////////////////////////// </span>
 <span class="token comment" spellcheck="true">//计算器输入允许的词法 </span>
-<span class="token keyword">enum</span> Token_value<span class="token punctuation">{</span> 
+<span class="token keyword">enum</span> Token_value<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     NAME<span class="token punctuation">,</span> NUMBER<span class="token punctuation">,</span> END<span class="token punctuation">,</span> 
     PLUS<span class="token operator">=</span><span class="token string">'+'</span><span class="token punctuation">,</span> MINUS<span class="token operator">=</span><span class="token string">'-'</span><span class="token punctuation">,</span> MUL<span class="token operator">=</span><span class="token string">'*'</span><span class="token punctuation">,</span> DIV<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">,</span> 
     PRINT<span class="token operator">=</span><span class="token string">';'</span><span class="token punctuation">,</span> ASSIGN<span class="token operator">=</span><span class="token string">'='</span><span class="token punctuation">,</span> LP<span class="token operator">=</span><span class="token string">'('</span><span class="token punctuation">,</span> RP<span class="token operator">=</span><span class="token string">')'</span><span class="token punctuation">,</span> 
-<span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span> 
 
 <span class="token comment" spellcheck="true">/////////////////////////////////////////////////////////////// </span>
 <span class="token comment" spellcheck="true">//分析器 加和减 </span>
@@ -557,11 +557,11 @@ string string_value<span class="token punctuation">;</span> <span class="token c
 <span class="token keyword">int</span> no_of_errors<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录错误个数 </span>
 
 
-<span class="token keyword">double</span> <span class="token function">expr</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+<span class="token keyword">double</span> <span class="token function">expr</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token keyword">double</span> left<span class="token operator">=</span><span class="token function">term</span><span class="token punctuation">(</span> get<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
     <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token punctuation">)</span> 
-        <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token keyword">case</span> PLUS<span class="token operator">:</span> 
             left<span class="token operator">+</span><span class="token operator">=</span><span class="token function">term</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">;</span> 
             <span class="token keyword">break</span><span class="token punctuation">;</span> 
@@ -570,63 +570,63 @@ string string_value<span class="token punctuation">;</span> <span class="token c
             <span class="token keyword">break</span><span class="token punctuation">;</span> 
         <span class="token keyword">default</span><span class="token operator">:</span> 
             <span class="token keyword">return</span> left<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-<span class="token punctuation">}</span> 
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
-<span class="token keyword">double</span> <span class="token function">term</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+<span class="token keyword">double</span> <span class="token function">term</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token keyword">double</span> left<span class="token operator">=</span><span class="token function">prim</span><span class="token punctuation">(</span>get<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
     <span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token punctuation">)</span> 
-        <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token keyword">case</span> MUL<span class="token operator">:</span> 
             left<span class="token operator">*</span><span class="token operator">=</span><span class="token function">prim</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">;</span> 
             <span class="token keyword">break</span><span class="token punctuation">;</span> 
         <span class="token keyword">case</span> DIV<span class="token operator">:</span> 
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">double</span> d<span class="token operator">=</span><span class="token function">prim</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">double</span> d<span class="token operator">=</span><span class="token function">prim</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
                 left<span class="token operator">/</span><span class="token operator">=</span>d<span class="token punctuation">;</span> 
                 <span class="token keyword">break</span><span class="token punctuation">;</span> 
-            <span class="token punctuation">}</span> 
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
             <span class="token keyword">return</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"divide by 0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">default</span><span class="token operator">:</span> 
             <span class="token keyword">return</span> left<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-<span class="token punctuation">}</span> 
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
 
-<span class="token keyword">double</span> <span class="token function">prim</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+<span class="token keyword">double</span> <span class="token function">prim</span><span class="token punctuation">(</span><span class="token keyword">bool</span> get<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token keyword">if</span><span class="token punctuation">(</span>get<span class="token punctuation">)</span> <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-    <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-    <span class="token keyword">case</span> NUMBER<span class="token operator">:</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">switch</span><span class="token punctuation">(</span>curr_tok<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
+    <span class="token keyword">case</span> NUMBER<span class="token operator">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token keyword">double</span> v<span class="token operator">=</span>number_value<span class="token punctuation">;</span> 
         <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">return</span> v<span class="token punctuation">;</span> 
-                 <span class="token punctuation">}</span> 
-    <span class="token keyword">case</span> NAME<span class="token operator">:</span> <span class="token punctuation">{</span> 
+                 <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+    <span class="token keyword">case</span> NAME<span class="token operator">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token keyword">double</span><span class="token operator">&amp;</span> v<span class="token operator">=</span>table<span class="token punctuation">[</span>string_value<span class="token punctuation">]</span><span class="token punctuation">;</span> 
         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span>ASSIGN<span class="token punctuation">)</span> 
             v<span class="token operator">=</span><span class="token function">expr</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">return</span> v<span class="token punctuation">;</span> 
-               <span class="token punctuation">}</span> 
+               <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
     <span class="token keyword">case</span> MINUS<span class="token operator">:</span> 
         <span class="token keyword">return</span> <span class="token operator">-</span><span class="token function">prim</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token keyword">case</span> LP<span class="token operator">:</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">case</span> LP<span class="token operator">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token keyword">double</span> e<span class="token operator">=</span><span class="token function">expr</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">if</span><span class="token punctuation">(</span>curr_tok<span class="token operator">!=</span>RP<span class="token punctuation">)</span> 
             <span class="token keyword">return</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">") expected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">return</span> e<span class="token punctuation">;</span> 
-             <span class="token punctuation">}</span> 
+             <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
     <span class="token keyword">default</span><span class="token operator">:</span> 
         <span class="token keyword">return</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"primary expected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-<span class="token punctuation">}</span> 
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
-Token_value <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+Token_value <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token keyword">char</span> ch<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> 
-    cin<span class="token operator">>></span>ch<span class="token punctuation">;</span> 
+    cin<span class="token operator">&gt;&gt;</span>ch<span class="token punctuation">;</span> 
 
-    <span class="token keyword">switch</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">switch</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span> 
         <span class="token keyword">return</span> curr_tok<span class="token operator">=</span>END<span class="token punctuation">;</span> 
     <span class="token keyword">case</span> <span class="token string">';'</span><span class="token operator">:</span> 
@@ -649,41 +649,41 @@ Token_value <span class="token function">get_token</span><span class="token punc
     <span class="token keyword">case</span> <span class="token string">'9'</span><span class="token operator">:</span> 
     <span class="token keyword">case</span> <span class="token string">'.'</span><span class="token operator">:</span> 
         cin<span class="token punctuation">.</span><span class="token function">putback</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        cin<span class="token operator">>></span>number_value<span class="token punctuation">;</span> 
+        cin<span class="token operator">&gt;&gt;</span>number_value<span class="token punctuation">;</span> 
         <span class="token keyword">return</span> curr_tok<span class="token operator">=</span>NUMBER<span class="token punctuation">;</span> 
     <span class="token keyword">default</span><span class="token operator">:</span> 
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isalpha</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isalpha</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
             cin<span class="token punctuation">.</span><span class="token function">putback</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-            cin<span class="token operator">>></span>string_value<span class="token punctuation">;</span> 
+            cin<span class="token operator">&gt;&gt;</span>string_value<span class="token punctuation">;</span> 
             <span class="token keyword">return</span> curr_tok<span class="token operator">=</span>NAME<span class="token punctuation">;</span> 
-        <span class="token punctuation">}</span> 
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
         <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"bad token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">return</span> curr_tok<span class="token operator">=</span>PRINT<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-<span class="token punctuation">}</span> 
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">double</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span>
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     no_of_errors<span class="token operator">++</span><span class="token punctuation">;</span> 
     cerr<span class="token operator">&lt;&lt;</span><span class="token string">"error: "</span><span class="token operator">&lt;&lt;</span>s<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> 
     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     table<span class="token punctuation">[</span><span class="token string">"pi"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">3.1415926</span><span class="token punctuation">;</span> 
     table<span class="token punctuation">[</span><span class="token string">"e"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.718281828</span><span class="token punctuation">;</span> 
 
-    <span class="token keyword">while</span><span class="token punctuation">(</span>cin<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cin<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
         <span class="token function">get_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
         <span class="token keyword">if</span><span class="token punctuation">(</span>curr_tok<span class="token operator">==</span>END<span class="token punctuation">)</span> 
             <span class="token keyword">break</span><span class="token punctuation">;</span> 
         <span class="token keyword">if</span><span class="token punctuation">(</span>curr_tok<span class="token operator">==</span>PRINT<span class="token punctuation">)</span> 
             <span class="token keyword">continue</span><span class="token punctuation">;</span> 
         cout<span class="token operator">&lt;&lt;</span><span class="token function">expr</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
     <span class="token keyword">return</span> no_of_errors<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/lyy289065406/The-C-Programming-Language/tree/master/TCPL-Desktop-Calculator">Gitbub 源码</a></li>
@@ -1291,7 +1291,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

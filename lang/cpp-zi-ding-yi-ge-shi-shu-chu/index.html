@@ -600,11 +600,11 @@
 <h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><p>给定一个整数，分别用十进制、八进制、十六进制的形式输出；</p>
 <p>再给定一个浮点数，分别采用科学计数法和小数形式输出。</p>
 <p>源程序代码如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iomanip></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iomanip&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">;</span>
   <span class="token keyword">float</span> f<span class="token operator">=</span><span class="token number">3.1415926539798</span><span class="token punctuation">;</span>
   cout<span class="token operator">&lt;&lt;</span><span class="token string">"用不同的进制数输出数字30:"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
@@ -622,21 +622,21 @@
   cout<span class="token operator">&lt;&lt;</span><span class="token function">setprecision</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>scientific<span class="token operator">&lt;&lt;</span>f<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//用科学计数法形式输出f值，6位小数。</span>
   cout<span class="token operator">&lt;&lt;</span><span class="token function">setprecision</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>fixed<span class="token operator">&lt;&lt;</span>f<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//用小数形式输出f值，5位小数。</span>
   <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//从程序调用pause命令，pause的功能就是在命令行输出一行类似"Press any  return 0;            key to exit."的字，等待用户按一个键然后返回。</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="附：控制符的生命周期"><a href="#附：控制符的生命周期" class="headerlink" title="附：控制符的生命周期"></a>附：控制符的生命周期</h2><p>编译器<strong>默认输入输出的整型都是十进制</strong>。</p>
 <p><font color="red">一旦改变进制形式，将保持改变后的进制模式，直至下一次的改变进制为止</font>。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> k<span class="token punctuation">,</span>m<span class="token punctuation">,</span>p<span class="token punctuation">;</span>
-cin<span class="token operator">>></span> p<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//默认十进制输入</span>
-cin<span class="token operator">>></span>hex<span class="token operator">>></span>k<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//十六进制输入；</span>
-cin<span class="token operator">>></span>m<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//依然是十六进制输入；</span>
-cin<span class="token operator">>></span>dec<span class="token operator">>></span>p<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//恢复十进制输入</span>
+cin<span class="token operator">&gt;&gt;</span> p<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//默认十进制输入</span>
+cin<span class="token operator">&gt;&gt;</span>hex<span class="token operator">&gt;&gt;</span>k<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//十六进制输入；</span>
+cin<span class="token operator">&gt;&gt;</span>m<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//依然是十六进制输入；</span>
+cin<span class="token operator">&gt;&gt;</span>dec<span class="token operator">&gt;&gt;</span>p<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//恢复十进制输入</span>
 cout<span class="token operator">&lt;&lt;</span>k<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//默认十进制输出（不是因为前一个语句中dec的关系）</span>
 cout<span class="token operator">&lt;&lt;</span>oct<span class="token operator">&lt;&lt;</span>k<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//八进制输出；</span>
 cout<span class="token operator">&lt;&lt;</span>m<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//依然是八进制输出</span>
 cout<span class="token operator">&lt;&lt;</span>dec<span class="token operator">&lt;&lt;</span>p<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//恢复十进制输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>另外需要注意的是，<font color="red"><strong>输入流cin</strong> 的进制形式 与 <strong>输出流cout</strong> 的进制形式 <strong>互不干扰</strong></font>。</p>
 <p>例如：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">cin<span class="token operator">>></span>hex<span class="token operator">>></span>k<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 十六进制输入</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp">cin<span class="token operator">&gt;&gt;</span>hex<span class="token operator">&gt;&gt;</span>k<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 十六进制输入</span>
 cout<span class="token operator">&lt;&lt;</span>k<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// 只要这个是同一函数中第一次执行的cout，就是默认十进制输出，不受cin的hex干扰</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
 <p>上面的特性对 istringstream，ostringstream和iostringstream 所定义的变量也适用，而且在利用 istringstream，ostringstream 转换格式时，应活用此方法。</p>
@@ -908,8 +908,8 @@ cout<span class="token operator">&lt;&lt;</span>k<span class="token punctuation"
                     <div class="summary block-with-text">
                         
                             cin用法1： 最基本，也是最常用的用法，输入一个数字或字符(不接受空字符作为字符输入，当输入字符为空字符时，会不断重复要求输入，直至输入字符非空后，通过回车结束输入)：
-#include &lt;iostream>
-using std::
+#include &lt;iostream&gt;
+using st
                         
                     </div>
                     <div class="publish-info">
@@ -1231,7 +1231,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

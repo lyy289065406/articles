@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.2k
+                    11.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    48 分
+                    49 分
                 </div>
                 
 
@@ -525,7 +525,7 @@ scl <span class="token function">enable</span> rh-ruby23 <span class="token func
 
 <span class="token comment" spellcheck="true"># 若前面安装ruby版本过低就会报错：</span>
 <span class="token comment" spellcheck="true"># ERROR:  Error installing redis:</span>
-<span class="token comment" spellcheck="true">#         redis requires Ruby version >= 2.2.2.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">#         redis requires Ruby version &gt;= 2.2.2.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>查看gem版本：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">gem -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><font color="red">至此前置环境就安装完成了，下面开始讲述Redis四种模式的部署。</font></p>
@@ -599,7 +599,7 @@ dbfilename dump.rdb　　<span class="token comment" spellcheck="true"># Redis�
 <h3 id="4-4-测试"><a href="#4-4-测试" class="headerlink" title="4.4. 测试"></a>4.4. 测试</h3><p>然后通过Redis测试客户端命令<code>redis-cli</code>连接到Redis实例：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-4.0.10/src/         <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 6379        <span class="token comment" spellcheck="true"># 连接到Redis</span>
-172.168.10.63:6379<span class="token operator">></span> info                <span class="token comment" spellcheck="true"># 查看Redis信息</span>
+172.168.10.63:6379<span class="token operator">&gt;</span> info                <span class="token comment" spellcheck="true"># 查看Redis信息</span>
 
 <span class="token comment" spellcheck="true"># Server</span>
 redis_version:4.0.10
@@ -735,22 +735,22 @@ slaveof 127.0.0.1 6379    <span class="token comment" spellcheck="true"># 标注
 ./redis-cli -h 127.0.0.1 -p 6381     <span class="token comment" spellcheck="true"># 连接到Redis从机</span>
 ./redis-cli -h 127.0.0.1 -p 6382     <span class="token comment" spellcheck="true"># 连接到Redis从机</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>分别在四个Redis测试客户端执行get命令，获取键名为site的数据：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> get site
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">&gt;</span> get site
 <span class="token punctuation">(</span>nil<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 由于是新部署的Redis集群，该键值必定不存在</span>
-127.0.0.1:6380<span class="token operator">></span> get site
+127.0.0.1:6380<span class="token operator">&gt;</span> get site
 <span class="token punctuation">(</span>nil<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 由于是新部署的Redis集群，该键值必定不存在</span>
-127.0.0.1:6381<span class="token operator">></span> get site
+127.0.0.1:6381<span class="token operator">&gt;</span> get site
 <span class="token punctuation">(</span>nil<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 由于是新部署的Redis集群，该键值必定不存在</span>
-127.0.0.1:6382<span class="token operator">></span> get site
+127.0.0.1:6382<span class="token operator">&gt;</span> get site
 <span class="token punctuation">(</span>nil<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 由于是新部署的Redis集群，该键值必定不存在</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>现在在Redis<font color="red">主机6379</font>的客户端<strong>写入数据</strong>（执行set命令，为键site设置数据）：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> site http://exp-blog.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">&gt;</span> <span class="token keyword">set</span> site http://exp-blog.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>再在三台Redis<font color="blue">从机 6380 ~ 6382 </font>的客户端<strong>读取数据</strong>（执行get命令，获取键名为site的数据）。由于经过主从数据同步，此时三台从机都能取到值：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6380<span class="token operator">></span> get site
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6380<span class="token operator">&gt;</span> get site
 <span class="token string">"http://exp-blog.com"</span>
-127.0.0.1:6381<span class="token operator">></span> get site
+127.0.0.1:6381<span class="token operator">&gt;</span> get site
 <span class="token string">"http://exp-blog.com"</span>
-127.0.0.1:6382<span class="token operator">></span> get site
+127.0.0.1:6382<span class="token operator">&gt;</span> get site
 <span class="token string">"http://exp-blog.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><font color="red">至此Redis主从模式部署完成。</font></p>
 <p>下一阶段哨兵模式的部署是基于主从模式的，可以暂且不用停止Redis进程。</p>
@@ -860,13 +860,13 @@ sentinel failover-timeout exp-blog.com 180000<span aria-hidden="true" class="lin
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-ms/src/             <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 
 ./redis-cli -h 127.0.0.1 -p 26380        <span class="token comment" spellcheck="true"># 连接到哨兵机26380</span>
-127.0.0.1:26380<span class="token operator">></span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
+127.0.0.1:26380<span class="token operator">&gt;</span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
 
 ./redis-cli -h 127.0.0.1 -p 26381        <span class="token comment" spellcheck="true"># 连接到哨兵机26381</span>
-127.0.0.1:26381<span class="token operator">></span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
+127.0.0.1:26381<span class="token operator">&gt;</span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
 
 ./redis-cli -h 127.0.0.1 -p 26382        <span class="token comment" spellcheck="true"># 连接到哨兵机26382</span>
-127.0.0.1:26382<span class="token operator">></span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
+127.0.0.1:26382<span class="token operator">&gt;</span> info sentinel           <span class="token comment" spellcheck="true"># 查看监控信息</span>
 
 
 <span class="token comment" spellcheck="true"># 三台哨兵的返回信息是一致的：</span>
@@ -880,11 +880,11 @@ master0:name<span class="token operator">=</span>exp-blog.com,status<span class=
 <p>现在尝试终止Redis主机进程（6379端口节点）来模拟主机下线：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-ms/src/             <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 6379        <span class="token comment" spellcheck="true"># 连接到Redis主机</span>
-127.0.0.1:6379<span class="token operator">></span> <span class="token function">shutdown</span>                <span class="token comment" spellcheck="true"># 终止Redis服务</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+127.0.0.1:6379<span class="token operator">&gt;</span> <span class="token function">shutdown</span>                <span class="token comment" spellcheck="true"># 终止Redis服务</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>然后连接到任意一台哨兵机，查看当前的监控信息：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-ms/src/             <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 26380       <span class="token comment" spellcheck="true"># 连接到哨兵机26380</span>
-127.0.0.1:26380<span class="token operator">></span> info sentinel          <span class="token comment" spellcheck="true"># 查看监控信息</span>
+127.0.0.1:26380<span class="token operator">&gt;</span> info sentinel          <span class="token comment" spellcheck="true"># 查看监控信息</span>
 
 <span class="token comment" spellcheck="true"># 返回监控信息</span>
 sentinel_masters:1
@@ -896,7 +896,7 @@ master0:name<span class="token operator">=</span>exp-blog.com,status<span class=
 <p>不难发现主机变成了<code>127.0.0.1:6382</code>，登陆这台主机查看主从信息：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-ms/src/             <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 6382        <span class="token comment" spellcheck="true"># 连接到Redis主机</span>
-127.0.0.1:6382<span class="token operator">></span> info replication        <span class="token comment" spellcheck="true"># 查看主从信息</span>
+127.0.0.1:6382<span class="token operator">&gt;</span> info replication        <span class="token comment" spellcheck="true"># 查看主从信息</span>
 
 <span class="token comment" spellcheck="true"># 返回主从信息</span>
 role:master
@@ -910,7 +910,7 @@ slave1:ip<span class="token operator">=</span>127.0.0.1,port<span class="token o
 <p>再登陆新主机127.0.0.1:6382查看主从信息：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-ms/src/             <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 6382        <span class="token comment" spellcheck="true"># 连接到Redis主机</span>
-127.0.0.1:6382<span class="token operator">></span> info replication        <span class="token comment" spellcheck="true"># 查看主从信息</span>
+127.0.0.1:6382<span class="token operator">&gt;</span> info replication        <span class="token comment" spellcheck="true"># 查看主从信息</span>
 
 <span class="token comment" spellcheck="true"># 返回主从信息</span>
 role:master
@@ -934,7 +934,7 @@ slave2:ip<span class="token operator">=</span>127.0.0.1,port<span class="token o
 
 <span class="token comment" spellcheck="true"># 启动函数</span>
 start<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
   ./redis-server <span class="token punctuation">..</span>/redis-6379.conf  <span class="token operator">&amp;</span>
   ./redis-server <span class="token punctuation">..</span>/redis-6380.conf  <span class="token operator">&amp;</span>
   ./redis-server <span class="token punctuation">..</span>/redis-6381.conf  <span class="token operator">&amp;</span>
@@ -943,12 +943,12 @@ start<span class="token punctuation">(</span><span class="token punctuation">)</
   ./redis-sentinel <span class="token punctuation">..</span>/sentinel-26381.conf  <span class="token operator">&amp;</span>
   ./redis-sentinel <span class="token punctuation">..</span>/sentinel-26382.conf  <span class="token operator">&amp;</span>
   <span class="token keyword">echo</span> <span class="token string">"all running"</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
 
 <span class="token comment" spellcheck="true"># 停止函数</span>
 stop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"redis"</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"grep"</span> <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$2</span>}'</span><span class="token operator">|</span> <span class="token keyword">while</span> <span class="token function">read</span> pid 
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+ <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"redis"</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"grep"</span> <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$2</span>&amp;#125;'</span><span class="token operator">|</span> <span class="token keyword">while</span> <span class="token function">read</span> pid 
  <span class="token keyword">do</span>
     C_PID<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> --no-heading $pid <span class="token operator">|</span> <span class="token function">wc</span> -l<span class="token variable">)</span></span>
     <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$C_PID</span> <span class="token operator">==</span> <span class="token string">"1"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
@@ -959,7 +959,7 @@ stop<span class="token punctuation">(</span><span class="token punctuation">)</s
     <span class="token keyword">fi</span>
  <span class="token keyword">done</span>
  <span class="token keyword">echo</span> <span class="token string">"all dead"</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
 
 <span class="token comment" spellcheck="true"># 脚本入口参数 start|stop|restart</span>
 <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
@@ -974,7 +974,7 @@ stop
 start
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 *<span class="token punctuation">)</span>
-<span class="token function">printf</span> <span class="token string">'Usage: %s {start|stop|restart}\n'</span><span class="token string">"<span class="token variable">$prog</span>"</span>
+<span class="token function">printf</span> <span class="token string">'Usage: %s &amp;#123;start|stop|restart&amp;#125;\n'</span><span class="token string">"<span class="token variable">$prog</span>"</span>
 <span class="token keyword">exit</span> 1
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1128,28 +1128,28 @@ cluster-node-timeout 15000<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>这里需要注意，与前面单机/主从/哨兵模式不同的是，客户端命令<code>redis-cli</code>需要增加一个<code>-c</code>参数，表示是连接到集群，这样客户端的读写行为才是在整个集群中可见的。</p>
 <p>若不加<code>-c</code>参数虽然也可连接，但是仅仅是连接到当前的节点，是无法进行数据读写的（除非所读写的数据的键值，经过Hash计算得到的slot槽号，刚好在这个节点里面）。</p>
 <p>现在在6390节点执行get命令，获取键名为site的数据：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6390<span class="token operator">></span> get site
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6390<span class="token operator">&gt;</span> get site
 <span class="token punctuation">(</span>nil<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 由于是新部署的Redis集群，该键值必定不存在</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>然后在6390节点<strong>写入数据</strong>（执行set命令，为键site设置数据）：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6390<span class="token operator">></span> <span class="token keyword">set</span> site http://exp-blog.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6390<span class="token operator">&gt;</span> <span class="token keyword">set</span> site http://exp-blog.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>再通过Redis测试客户端命令<code>redis-cli</code>连接到集群另一个节点：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-4.0.10/src/           <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -c -h 127.0.0.1 -p 6395       <span class="token comment" spellcheck="true"># 以集群方式连接到Redis-6395节点</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>在6395节点执行get命令，获取键名为site的数据（经过集群节点转发请求，可以取到数据）：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6395<span class="token operator">></span> get site
+<pre class="line-numbers language-bash"><code class="language-bash">127.0.0.1:6395<span class="token operator">&gt;</span> get site
 <span class="token string">"http://exp-blog.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>现在尝试一下<strong>不以集群方式连接</strong>到节点6395，会发生什么：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/redis-4.0.10/src/               <span class="token comment" spellcheck="true"># 切换到启动脚本目录</span>
 ./redis-cli -h 127.0.0.1 -p 6395              <span class="token comment" spellcheck="true"># 以单点方式连接到Redis-6395节点（无-c参数）</span>
 
-127.0.0.1:6395<span class="token operator">></span> get site                      <span class="token comment" spellcheck="true"># 获取键值为site的数据</span>
+127.0.0.1:6395<span class="token operator">&gt;</span> get site                      <span class="token comment" spellcheck="true"># 获取键值为site的数据</span>
 <span class="token punctuation">(</span>error<span class="token punctuation">)</span> MOVED 9421 127.0.0.1:6392             <span class="token comment" spellcheck="true"># 报错：该数据在6392节点的9421槽位</span>
 
-127.0.0.1:6395<span class="token operator">></span> <span class="token keyword">set</span> site http://exp-blog.com  <span class="token comment" spellcheck="true"># 设置键为site的值</span>
+127.0.0.1:6395<span class="token operator">&gt;</span> <span class="token keyword">set</span> site http://exp-blog.com  <span class="token comment" spellcheck="true"># 设置键为site的值</span>
 <span class="token punctuation">(</span>error<span class="token punctuation">)</span> MOVED 9421 127.0.0.1:6392             <span class="token comment" spellcheck="true"># 报错：该键应该设置到6392节点的9421槽位</span>
 
 <span class="token comment" spellcheck="true"># 有些版本的报错信息是这样的，意思是相同的：</span>
-<span class="token comment" spellcheck="true"># -> Redirected to slot [9421] located at 127.0.0.1:6392</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true"># -&gt; Redirected to slot [9421] located at 127.0.0.1:6392</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>之所以会发生这种情况，其实最开始的Redis Cluster架构介绍的时候就已经解释了原因了：</p>
 <p>Redis Cluster没有使用一致性Hash，而是采用slot（槽）的概念，一共分成16384个槽。在构建集群时，这些槽会不重复地平均被分配到集群中的主节点。</p>
 <p>在读写数据时，Redis Cluster会先计算该数据的键值的slot号，然后再把读写请求分配到该slot号所属的Redis节点。</p>
@@ -1172,20 +1172,20 @@ cluster-node-timeout 15000<span aria-hidden="true" class="line-numbers-rows"><sp
 
 <span class="token comment" spellcheck="true"># 启动函数</span>
 start<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-  <span class="token variable">${cluster_path}</span>/redis-6390/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6390/redis.conf  <span class="token operator">&amp;</span>
-  <span class="token variable">${cluster_path}</span>/redis-6391/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6391/redis.conf  <span class="token operator">&amp;</span>
-  <span class="token variable">${cluster_path}</span>/redis-6392/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6392/redis.conf  <span class="token operator">&amp;</span>
-  <span class="token variable">${cluster_path}</span>/redis-6393/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6393/redis.conf  <span class="token operator">&amp;</span>
-  <span class="token variable">${cluster_path}</span>/redis-6394/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6394/redis.conf  <span class="token operator">&amp;</span>
-  <span class="token variable">${cluster_path}</span>/redis-6395/src/redis-server <span class="token variable">${cluster_path}</span>/redis-6395/redis.conf  <span class="token operator">&amp;</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6390/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6390/redis.conf  &amp;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6391/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6391/redis.conf  &amp;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6392/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6392/redis.conf  &amp;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6393/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6393/redis.conf  &amp;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6394/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6394/redis.conf  &amp;</span>
+  $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;cluster_path&amp;#125;/redis-6395/src/redis-server $&amp;#123;cluster_path&amp;#125;/redis-6395/redis.conf  &amp;</span>
   <span class="token keyword">echo</span> <span class="token string">"all running"</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
 
 <span class="token comment" spellcheck="true"># 停止函数</span>
 stop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"redis"</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"grep"</span> <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$2</span>}'</span><span class="token operator">|</span> <span class="token keyword">while</span> <span class="token function">read</span> pid 
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+ <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"redis"</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"grep"</span> <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$2</span>&amp;#125;'</span><span class="token operator">|</span> <span class="token keyword">while</span> <span class="token function">read</span> pid 
  <span class="token keyword">do</span>
     C_PID<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> --no-heading $pid <span class="token operator">|</span> <span class="token function">wc</span> -l<span class="token variable">)</span></span>
     <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$C_PID</span> <span class="token operator">==</span> <span class="token string">"1"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
@@ -1196,7 +1196,7 @@ stop<span class="token punctuation">(</span><span class="token punctuation">)</s
     <span class="token keyword">fi</span>
  <span class="token keyword">done</span>
  <span class="token keyword">echo</span> <span class="token string">"all dead"</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
 
 <span class="token comment" spellcheck="true"># 脚本入口参数 start|stop|restart</span>
 <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
@@ -1211,7 +1211,7 @@ stop
 start
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 *<span class="token punctuation">)</span>
-<span class="token function">printf</span> <span class="token string">'Usage: %s {start|stop|restart}\n'</span><span class="token string">"<span class="token variable">$prog</span>"</span>
+<span class="token function">printf</span> <span class="token string">'Usage: %s &amp;#123;start|stop|restart&amp;#125;\n'</span><span class="token string">"<span class="token variable">$prog</span>"</span>
 <span class="token keyword">exit</span> 1
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1227,11 +1227,11 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 <p>● 汉化配置文件sentinel-chs.conf下载：<a target="_blank" rel="noopener" href="https://share.weiyun.com/5eFlsU6">https://share.weiyun.com/5eFlsU6</a> 密码：4vr68i ●</p>
 </blockquote>
 <h2 id="9-附：Jedis客户端封装"><a href="#9-附：Jedis客户端封装" class="headerlink" title="9. 附：Jedis客户端封装"></a>9. 附：Jedis客户端封装</h2><p>官方提供的Jedis的POM如下：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>redis.clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.9.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>redis.clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.9.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Jedis是在Java中比较强大的Redis客户端连接工具，暴露了很多Redis的API接口，能够很灵活地操作Redis。但是也正由于暴露了太多Redis的连接细节、过份灵活，在生产环境中使用并不方便。</p>
 <p>为了解决这些缺点，使之更易于使用，我在2.9.0版本之上做了封装，其主要特点有：</p>
 <ul>
@@ -1252,18 +1252,18 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 <span class="token keyword">import</span> exp<span class="token punctuation">.</span>libs<span class="token punctuation">.</span>warp<span class="token punctuation">.</span>db<span class="token punctuation">.</span>redis<span class="token punctuation">.</span>bean<span class="token punctuation">.</span>RedisSet<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * &lt;PRE>
+ * &lt;PRE&gt;
  * RedisClient测试/场景演示.
- * &lt;/PRE>
- * &lt;B>PROJECT : &lt;/B> exp-libs
- * &lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
+ * &lt;/PRE&gt;
+ * &lt;B&gt;PROJECT : &lt;/B&gt; exp-libs
+ * &lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
  * @version   2018-07-31
  * @author    EXP: 272629724@qq.com
  * @since     jdk版本：jdk1.6
  */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestRedisClient</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestRedisClient</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
         <span class="token comment" spellcheck="true">/*********************** Redis连接样例 ***********************/</span>
 
@@ -1298,7 +1298,7 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token comment" spellcheck="true">// RedisMap示例</span>
         <span class="token keyword">final</span> String REDIS_MAP_KEY <span class="token operator">=</span> <span class="token string">"REDIS_MAP_KEY"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 这个Map对象在Redis中的键值</span>
-        RedisMap<span class="token operator">&lt;</span>SerialObject<span class="token operator">></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisMap</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">></span><span class="token punctuation">(</span>REDIS_MAP_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RedisMap<span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisMap</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span><span class="token punctuation">(</span>REDIS_MAP_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
         map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"site"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"http://exp-blog.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"mail"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"289065406@qq.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1308,7 +1308,7 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token comment" spellcheck="true">// RedisList示例</span>
         <span class="token keyword">final</span> String REDIS_LIST_KEY <span class="token operator">=</span> <span class="token string">"REDIS_LIST_KEY"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 这个List对象在Redis中的键值</span>
-        RedisList<span class="token operator">&lt;</span>SerialObject<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisList</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">></span><span class="token punctuation">(</span>REDIS_LIST_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RedisList<span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisList</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span><span class="token punctuation">(</span>REDIS_LIST_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
         list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"EXP-LIST"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1316,7 +1316,7 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token comment" spellcheck="true">// RedisSet示例</span>
         <span class="token keyword">final</span> String REDIS_SET_KEY <span class="token operator">=</span> <span class="token string">"REDIS_SET_KEY"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 这个Set对象在Redis中的键值</span>
-        RedisSet<span class="token operator">&lt;</span>SerialObject<span class="token operator">></span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisSet</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">></span><span class="token punctuation">(</span>REDIS_SET_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RedisSet<span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisSet</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span><span class="token punctuation">(</span>REDIS_SET_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
         set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"http://exp-blog.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"289065406@qq.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1325,7 +1325,7 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token comment" spellcheck="true">// RedisObj示例</span>
         <span class="token keyword">final</span> String REDIS_OBJ_KEY <span class="token operator">=</span> <span class="token string">"REDIS_OBJ_KEY"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 这个Obj对象在Redis中的键值</span>
-        RedisObj<span class="token operator">&lt;</span>SerialObject<span class="token operator">></span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisObj</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">></span><span class="token punctuation">(</span>REDIS_OBJ_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RedisObj<span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisObj</span><span class="token operator">&lt;</span>SerialObject<span class="token operator">&gt;</span><span class="token punctuation">(</span>REDIS_OBJ_KEY<span class="token punctuation">,</span> redis<span class="token punctuation">)</span><span class="token punctuation">;</span>
         obj<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SerialObject</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">"EXP-OBJ"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1334,16 +1334,16 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token comment" spellcheck="true">// 断开redis连接</span>
         redis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
     <span class="token comment" spellcheck="true">/**
-     * &lt;pre>
+     * &lt;pre&gt;
      * 测试用的序列化对象.
      * 必须实现java.io.Serializable接口
-     * &lt;/pre>
+     * &lt;/pre&gt;
      */</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SerialObject</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SerialObject</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
         <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span>6911765769239092862L<span class="token punctuation">;</span>
 
@@ -1351,18 +1351,18 @@ sh redis-cluster.sh restart  <span class="token comment" spellcheck="true"># 重
 
         <span class="token keyword">private</span> String value<span class="token punctuation">;</span>
 
-        <span class="token keyword">private</span> <span class="token function">SerialObject</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> String value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token function">SerialObject</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> String value<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
             <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> id <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> value<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="10-资源下载"><a href="#10-资源下载" class="headerlink" title="10. 资源下载"></a>10. 资源下载</h2><ul>
 <li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10665855">本文全文下载</a></li>
 <li><a target="_blank" rel="noopener" href="https://share.weiyun.com/5EbAOfV">文中配置文件/脚本下载（密码：359wqw）</a></li>
@@ -1980,7 +1980,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    28 分
                 </div>
                 
 
@@ -691,7 +691,7 @@
 <p>① 虚拟机开机后，正常登陆到Win7系统桌面（若已按照上文配置，当前所登陆到的Win7系统正处于【测试模式】，可以通过桌面右下角的水印验证，如图 8所示。某些系统会屏蔽这个水印，此时可以通过命令【bcdedit /enum】确认testsigning的值是否为Yes以判断系统当前是否处于测试模式）。</p>
 <p><img src="./38.png" alt="测试模式水印"></p>
 <p>② 如图 9和图 10所示，以管理员身份运行DOS控制台在控制台中依次输入以下命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /copy <span class="token punctuation">{</span>current<span class="token punctuation">}</span> /d <span class="token string">"Win7-双机调试模式"</span>    // 这是系统副本的名字，任意即可
+<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /copy <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;current&amp;#125; /d "Win7-双机调试模式"    // 这是系统副本的名字，任意即可</span>
 bcdedit /timeout 10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>这两条命令的作用是把当前所登陆的操作系统，复制一份副本，命名为【Win7-双机调试模式】。新的系统会出现在开机时的操作系统列表中，该列表的呈现时间为10秒。</p>
 <p><img src="./39.png" alt="使用管理员运行DOS"></p>
@@ -884,19 +884,19 @@ END</code></pre>
 <blockquote>
 <p><strong><em>注：</em></strong><br><em>在64位驱动工程中混合汇编编译的方式，暂时只适用于VS2010。</em><br><em>在VS2008的驱动工程中，即使使用相同步骤配置，其DDK的build.bat脚本却无法调用MASM编译器ml64.exe对\</em>.asm汇编文件进行编译，亦即在编译*.cpp时无法自动得到*.asm的目标文件并进行LINK。*</p>
 </blockquote>
-<h2 id="13-附录4：常见异常解决方案"><a href="#13-附录4：常见异常解决方案" class="headerlink" title="13. 附录4：常见异常解决方案"></a>13. 附录4：常见异常解决方案</h2><h3 id="13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8"><a href="#13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8" class="headerlink" title="13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8"></a>13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h></span> </span>
+<h2 id="13-附录4：常见异常解决方案"><a href="#13-附录4：常见异常解决方案" class="headerlink" title="13. 附录4：常见异常解决方案"></a>13. 附录4：常见异常解决方案</h2><h3 id="13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8"><a href="#13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8" class="headerlink" title="13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8"></a>13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h&gt;</span> </span>
 
 VOID <span class="token function">DriverUnload</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"load Driver\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 NTSTATUS <span class="token function">DriverEntry</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">,</span>PUNICODE_STRING reg_path<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"Hello, WDK Demo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    driver<span class="token operator">-</span><span class="token operator">></span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
+    driver<span class="token operator">-</span><span class="token operator">&gt;</span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
     <span class="token keyword">return</span> STATUS_SUCCESS<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上述驱动程序源码为例，在使用VS2008 / VS2010 编译时报错如下：</p>
 <blockquote>
 <p>1&gt;DDKBLD: ================ Build warnings =======================<br>1&gt;1&gt;BufferOverflowK.lib(gs_support.obj) : <font color="red">error LNK2019: unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8</font><br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\bufferoverflowk.lib(gs_support.obj) : error LNK2019: unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8<br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\objchk_win7_x86\i386\HelloDDK.sys : fatal error LNK1120: 1 unresolved externals<br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\objchk_win7_x86\i386\helloddk.sys : error LNK1120: 1 unresolved externals<br>1&gt;DDKBLD: =======================================================</p>
@@ -909,20 +909,20 @@ NTSTATUS <span class="token function">DriverEntry</span><span class="token punct
 <p>extern “C”提醒编译器要使用C编译格式编译DriverEntry函数，这样编译生成的函数名称为“_DriverEntry@8”，链接器即可正确地识别出符号了。</p>
 <p>需要注意的是，若报错的不是函数DriverEntry ，而是其他函数XXX，则也需要在前面添加extern “C”修饰符。</p>
 <p>修改后的代码如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h></span> </span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h&gt;</span> </span>
 
 VOID <span class="token function">DriverUnload</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"load Driver\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span> 
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">extern</span> <span class="token string">"C"</span>
 NTSTATUS <span class="token function">DriverEntry</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">,</span>PUNICODE_STRING reg_path<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span> 
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
     <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"Hello, WDK Demo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    driver<span class="token operator">-</span><span class="token operator">></span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
+    driver<span class="token operator">-</span><span class="token operator">&gt;</span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
     <span class="token keyword">return</span> STATUS_SUCCESS<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="13-2-GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows"><a href="#13-2-GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows" class="headerlink" title="13.2. GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows"></a>13.2. GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows</h3><p>GuestOS安装VirtualKD后，若再使用以下命令关闭系统的测试模式，则会出现如图 36所示的情况，无法登入系统，错误代码为<font color="red">0xc0000428</font>。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">bcdedit /set testsigning off    // 关闭系统测试模式<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./66.png" alt="无法启动Windows"></p>
@@ -1544,7 +1544,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -499,7 +499,7 @@
             <div id="articleContent">
                 <h2 id="令人头痛的陈年老BUG（序章）"><a href="#令人头痛的陈年老BUG（序章）" class="headerlink" title="令人头痛的陈年老BUG（序章）"></a>令人头痛的陈年老BUG（序章）</h2><p>前几天，码农朋友甲（下文简称“甲”）拿着我5年前发表在某博文的代码问我：“这段代码是有bug吧？”下面就是他给我指出来的一段C++代码，大家可以先尝试能不能找到甲看到的bug：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> solve<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Initial</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     TimeStamp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">// 时间戳</span>
     DFN <span class="token operator">=</span> new <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 搜索次序</span>
     Low <span class="token operator">=</span> new <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 能够回溯的最早次序号</span>
@@ -513,21 +513,21 @@
 
     sp <span class="token operator">=</span> new Shrink_point<span class="token punctuation">[</span>N<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 缩点（极大强连通分量）</span>
     <span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token keyword">void</span> solve<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">setIntArrayVal</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> array<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token function">memset</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> val<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">*</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>诚然，突然要我查一段几年前写下的代码是否有bug，我内心是比较抗拒的——尤其是我自己写的代码（我对自己还是有相当自信的）——毕竟人的弱点就是不善于揭发自己的短处。不过这都只是次要的心理因素。</p>
 <p>归根结底，所谓打铁趁热，bug也是越早发现越好，**<em>新代码的bug总是要比历史代码的bug更容易处理**</em>。而面对这个陈年老bug，我已经完全忘记了我在5年前写这段代码的思绪，所以要我马上就应付甲的质疑是不可能的。与其再花费一番周折琢磨我自己的代码，我干脆直接就举手投问：“所有测试用例运行可以通过，是哪里有bug呢？”</p>
 <h2 id="因注释而蔓延"><a href="#因注释而蔓延" class="headerlink" title="因注释而蔓延"></a>因注释而蔓延</h2><p>甲告诉我，是memset函数使用错误：在C++中，函数memset的作用是对一段连续的内存块赋值，即赋值的单位是字节，换而言之memset只能用于字节数组，但int数组不是字节数组。</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> solve<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">setIntArrayVal</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> array<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token function">memset</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> val<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">*</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>老实说，我很高兴甲会如此仔细的看我5年前的代码。而且毫无疑问，他的观点是正确的。但是也不见得我就是错的。因为早在那时我就已经知道memset函数的局限所在，但我坚持要用这个函数做数组的初始化，是因为我看中了它的效率——</p>
 <p>相对于逐个赋值的方法初始化数组元素、memset的效率要高得多，因为从寻址次数来看，前者的时间复杂度是O(n)、后者是O(1)，更何况当时所解决问题的n是上千万级别的。虽然我把memset用在非字节数组，只要我保证初始化的值只为0就不会有任何问题。事实上也是如此。</p>
 <p>于是我自信满满地告诉甲，单纯断章取义地看我这个方法，确实是一个bug。但如果整体地去看我的代码就恰恰相反，**<em>我只是利用了bug，并得到了更高效的处理**</em>。</p>
@@ -837,12 +837,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B2%9F%E9%80%9A/">
-                        <span class="chip bg-color">沟通</span>
-                    </a>
-                    
                     <a href="/tags/%E9%9A%8F%E7%AC%94/">
                         <span class="chip bg-color">随笔</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B2%9F%E9%80%9A/">
+                        <span class="chip bg-color">沟通</span>
                     </a>
                     
                 </div>
@@ -1139,7 +1139,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

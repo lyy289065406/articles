@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    459
+                    464
                 </div>
                 
 
@@ -498,13 +498,13 @@
 <h2 id="std-endl"><a href="#std-endl" class="headerlink" title="std::endl"></a>std::endl</h2><p>它在建立一个新的行的同时，还会自动刷新输出缓冲区 <code>flush()</code>。</p>
 <h2 id="n"><a href="#n" class="headerlink" title="\n"></a>\n</h2><p>它仅仅是建立一个新的行，并不会刷新输出缓冲区。</p>
 <h2 id="实例比较"><a href="#实例比较" class="headerlink" title="实例比较"></a>实例比较</h2><p>下面看一段小程序：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     std<span class="token operator">::</span>cout<span class="token operator">&lt;&lt;</span><span class="token string">"Testing 1"</span><span class="token operator">&lt;&lt;</span>std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
     std<span class="token operator">::</span>cout<span class="token operator">&lt;&lt;</span><span class="token string">"Testing 2"</span><span class="token operator">&lt;&lt;</span><span class="token string">'\n'</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个程序的输出结果为;</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">Testing <span class="token number">1</span>
 Testing <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1128,7 +1128,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

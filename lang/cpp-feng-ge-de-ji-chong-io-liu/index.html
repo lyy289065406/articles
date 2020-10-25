@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -508,11 +508,11 @@
 </ul>
 <p><img src="./01.png"></p>
 <p>下面通过一个例子理解这个流程：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     ostringstream oss<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//声明ostringstream对象oss</span>
     oss <span class="token operator">&lt;&lt;</span> <span class="token string">"abcd"</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//向oss放入第一个字符串</span>
     oss <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//注意，必须放入字符串，即使是单个字符也要使用双引号，支持空字符</span>
@@ -524,19 +524,19 @@
     oss <span class="token operator">&lt;&lt;</span> <span class="token string">"who"</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//输出流后，oss的内容并不会被清空，可以继续在原有的流末尾插入新的字符串</span>
     cout <span class="token operator">&lt;&lt;</span> oss<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//这里是为了说明"换行符放到流oss的里面与放在cout最后是一样的"</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第一次输出：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">abcd efghijklm89zxcvbn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>第二次输出：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">abcd efghijklm89zxcvbn
 who<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>上例其实就是一个格式化输出的例子，下面简单介绍ostringstream类型转换的功能：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     string Str1<span class="token punctuation">,</span> Str2<span class="token punctuation">;</span>
     ostringstream oss<span class="token punctuation">;</span>
 
@@ -569,7 +569,7 @@ who<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     oss <span class="token operator">&lt;&lt;</span> <span class="token string">"fg"</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//左移运算符&lt;&lt;是紧接上一个.str()或.put()的指针位置后插入</span>
     cout<span class="token operator">&lt;&lt;</span> oss<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出结果：defgpo</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>ostringstream 对象只支持 &lt;&lt; 操作符，可以用来进行格式化的输出，并能够方便的将各种类型转换为string类型。</p>
 </blockquote>
@@ -585,12 +585,12 @@ who<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 </ul>
 <p><img src="./02.png"></p>
 <p>下面通过一个例子理解这个流程：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> a<span class="token punctuation">;</span>
     <span class="token keyword">double</span> b<span class="token punctuation">;</span>
     string Str1<span class="token punctuation">,</span> Str2<span class="token punctuation">;</span>
@@ -600,10 +600,10 @@ who<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                                <span class="token comment" spellcheck="true">//  iss.str("abc 123 bcd 456 sss 999");</span>
                                <span class="token comment" spellcheck="true">//扩展: iss对象支持对C语言流的操作，所以也可以进行如下的赋值</span>
                                <span class="token comment" spellcheck="true">//       iss.str(Input.c_str( ));</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span> iss <span class="token operator">>></span> Str1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//当赋值不为 NULL时执行（其实就是判断iss的指针是否指向栈底）</span>
-    <span class="token punctuation">{</span>                   <span class="token comment" spellcheck="true">//循环提取iss中的字符串对Str1重复赋值</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span> iss <span class="token operator">&gt;&gt;</span> Str1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//当赋值不为 NULL时执行（其实就是判断iss的指针是否指向栈底）</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>                   <span class="token comment" spellcheck="true">//循环提取iss中的字符串对Str1重复赋值</span>
         cout <span class="token operator">&lt;&lt;</span> Str1 <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//对Str1的每次赋值进行输出</span>
-    <span class="token punctuation">}</span>                          <span class="token comment" spellcheck="true">//输出：abc</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>                          <span class="token comment" spellcheck="true">//输出：abc</span>
                                <span class="token comment" spellcheck="true">//    123</span>
                                <span class="token comment" spellcheck="true">//    bcd</span>
                                <span class="token comment" spellcheck="true">//    456</span>
@@ -615,24 +615,24 @@ who<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                  <span class="token comment" spellcheck="true">//这里若使用iss.str("");清空iss内存是无补于事的，即使清空内存再重新赋值（不论是原来的字符串还是新的字符串），iss指针始终指向栈底，iss依然无法对外赋值</span>
     iss<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span>Input<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//对iss重新赋值，这里赋值为原来的字符串Input (注意iss不像oss，新的赋值是会覆盖旧的值，而不是插入到流的最后)</span>
                       <span class="token comment" spellcheck="true">//iss有一个很奇怪的现象，笔者现在也无法想通，仅仅使用iss.clear();初始化指针而不重新赋值，iss依然不能对外赋值，必须“iss指针初始化，iss重新赋值”都执行了，iss才可以重新在栈顶开始对外赋值，两步缺一不可。除非重新定义一个istringstream对象 </span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>iss <span class="token operator">>></span> Str1 <span class="token operator">>></span> a<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//当且仅当iss的内存为字符串常量（即已知的字符串流）时，才可以使用这种赋值方式，否则会使当类型不匹配时(如string到int)，iss会丢失对外赋值</span>
-                          <span class="token comment" spellcheck="true">//由于已知Input中的字符串为"abc 123 bcd 456 sss 999"，由此规律可以使用iss >>Str1>>a这种对外输出方式，这是因为iss同样具有类型转换功能，虽然iss存储的必定是string型，但当字符串为整型形式的数据（形式是整型，但实际依然是string型）时，允许赋值到整型变量中并转换为int型。同样对double型也适用</span>
-    <span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>iss <span class="token operator">&gt;&gt;</span> Str1 <span class="token operator">&gt;&gt;</span> a<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//当且仅当iss的内存为字符串常量（即已知的字符串流）时，才可以使用这种赋值方式，否则会使当类型不匹配时(如string到int)，iss会丢失对外赋值</span>
+                          <span class="token comment" spellcheck="true">//由于已知Input中的字符串为"abc 123 bcd 456 sss 999"，由此规律可以使用iss &gt;&gt;Str1&gt;&gt;a这种对外输出方式，这是因为iss同样具有类型转换功能，虽然iss存储的必定是string型，但当字符串为整型形式的数据（形式是整型，但实际依然是string型）时，允许赋值到整型变量中并转换为int型。同样对double型也适用</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         cout <span class="token operator">&lt;&lt;</span> Str1 <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出：abc 123</span>
                                             <span class="token comment" spellcheck="true">//    bcd 456</span>
                                             <span class="token comment" spellcheck="true">//    sss 999</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     iss<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     iss<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token string">"abc 1.20 def 3.13159267 bmp 0.5432899 cji 123456.889"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>iss <span class="token operator">>></span> Str2 <span class="token operator">>></span> b<span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">//测试iss字符串中含有double型时是否能成功转换类型</span>
-    <span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>iss <span class="token operator">&gt;&gt;</span> Str2 <span class="token operator">&gt;&gt;</span> b<span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">//测试iss字符串中含有double型时是否能成功转换类型</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         cout <span class="token operator">&lt;&lt;</span> Str2 <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出：abc 1.2</span>
                                            <span class="token comment" spellcheck="true">//     def 3.13159</span>
                                            <span class="token comment" spellcheck="true">//     bmp 0.54329</span>
                                            <span class="token comment" spellcheck="true">//     cji 123457</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10545201">本文全文下载</a></p>
 </blockquote>
@@ -1221,7 +1221,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

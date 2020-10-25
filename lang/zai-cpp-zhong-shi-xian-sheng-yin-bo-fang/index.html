@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -571,43 +571,43 @@ HWAVEOUT hWaveOut<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 打开波形文件</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>m_hmmio<span class="token operator">=</span><span class="token function">mmioOpen</span><span class="token punctuation">(</span>szFileName<span class="token punctuation">,</span><span class="token constant">NULL</span><span class="token punctuation">,</span>MMIO_READ<span class="token operator">|</span>MMIO_ALLOCBUF<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to open the file."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 错误处理函数</span>
     <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 检查打开文件是否是声音文件</span>
 mmckinfoParent<span class="token punctuation">.</span>fccType <span class="token operator">=</span><span class="token function">mmioFOURCC</span><span class="token punctuation">(</span>’W’<span class="token punctuation">,</span>’A’<span class="token punctuation">,</span>’V’<span class="token punctuation">,</span>’E’<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">mmioDescend</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span><span class="token punctuation">(</span>LPMMCKINFO<span class="token punctuation">)</span><span class="token operator">&amp;</span>mmckinfoParent<span class="token punctuation">,</span><span class="token constant">NULL</span><span class="token punctuation">,</span>MMIO_FINDRIFF<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// NOT WAVE FILE AND QUIT</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 寻找 fmt 块</span>
 mmckinfoSubChunk<span class="token punctuation">.</span>ckid <span class="token operator">=</span><span class="token function">mmioFOURCC</span><span class="token punctuation">(</span>’f’<span class="token punctuation">,</span>’m’<span class="token punctuation">,</span>’t’<span class="token punctuation">,</span>’ ’<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">mmioDescend</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span><span class="token operator">&amp;</span>mmckinfoSubChunk<span class="token punctuation">,</span><span class="token operator">&amp;</span>mmckinfoParent<span class="token punctuation">,</span>MMIO_FINDCHUNK<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Can't  find 'fmt' chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 获得 fmt 块的大小，申请内存</span>
 dwFmtSize<span class="token operator">=</span>mmckinfoSubChunk<span class="token punctuation">.</span>cksize <span class="token punctuation">;</span>
 m_hFormat<span class="token operator">=</span><span class="token function">LocalAlloc</span><span class="token punctuation">(</span>LMEM_MOVEABLE<span class="token punctuation">,</span><span class="token function">LOWORD</span><span class="token punctuation">(</span>dwFmtSize<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>m_hFormat<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// failed alloc memory</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 lpFormat<span class="token operator">=</span><span class="token punctuation">(</span>WAVEFORMATEX<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">LocalLock</span><span class="token punctuation">(</span>m_hFormat<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>lpFormat<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// failed to lock the memory</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token function">mmioRead</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span><span class="token punctuation">(</span>HPSTR<span class="token punctuation">)</span>lpFormat<span class="token punctuation">,</span>dwFmtSize<span class="token punctuation">)</span><span class="token operator">!=</span>dwFmtSize<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// failed to read format chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 离开 fmt 块</span>
 <span class="token function">mmioAscend</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span><span class="token operator">&amp;</span>mmckinfoSubChunk<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -615,62 +615,62 @@ lpFormat<span class="token operator">=</span><span class="token punctuation">(</
 <span class="token comment" spellcheck="true">//寻找 data块</span>
 mmckinfoSubChunk<span class="token punctuation">.</span>ckid<span class="token operator">=</span><span class="token function">mmioFOURCC</span><span class="token punctuation">(</span>’d’<span class="token punctuation">,</span>’a’<span class="token punctuation">,</span>’t’<span class="token punctuation">,</span>’a’<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">mmioDescend</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span><span class="token operator">&amp;</span>mmckinfoSubChunk<span class="token punctuation">,</span><span class="token operator">&amp;</span>mmckinfoParent<span class="token punctuation">,</span>MMIO_FINDCHUNK<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Can't find 'data' chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 获得 data块的大小</span>
 m_dwDataSize<span class="token operator">=</span>mmckinfoSubChunk<span class="token punctuation">.</span>cksize <span class="token punctuation">;</span>
 m_dwDataOffset <span class="token operator">=</span>mmckinfoSubChunk<span class="token punctuation">.</span>dwDataOffset <span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span>m_dwDataSize<span class="token operator">==</span><span class="token number">0L</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// no data in the 'data' chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 为音频数据分配内存</span>
 lpData<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">char</span><span class="token punctuation">[</span>m_dwDataSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>lpData<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// faile</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">mmioSeek</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span>SoundOffset<span class="token punctuation">,</span>SEEK_SET<span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Failed to read the data chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 m_WaveLong<span class="token operator">=</span><span class="token function">mmioRead</span><span class="token punctuation">(</span>m_hmmio<span class="token punctuation">,</span>lpData<span class="token punctuation">,</span>SoundLong<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span>m_WaveLong<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Failed to read the data chunk</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 检查音频设备，返回音频输出设备的性能</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">waveOutGetDeVCaps</span><span class="token punctuation">(</span>WAVE_MAPPER<span class="token punctuation">,</span><span class="token operator">&amp;</span>pwoc<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>WAVEOUTCAPS<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Unable to allocate or lock memory</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 检查音频输出设备是否能播放指定的音频文件</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">waveOutOpen</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hWaveOut<span class="token punctuation">,</span>DevsNum<span class="token punctuation">,</span>lpFormat<span class="token punctuation">,</span><span class="token constant">NULL</span><span class="token punctuation">,</span><span class="token constant">NULL</span><span class="token punctuation">,</span>CALLBACK_NULL<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Failed to OPEN the wave out devices</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 准备待播放的数据</span>
 pWaveOutHdr<span class="token punctuation">.</span>lpData <span class="token operator">=</span><span class="token punctuation">(</span>HPSTR<span class="token punctuation">)</span>lpData<span class="token punctuation">;</span>
 pWaveOutHdr<span class="token punctuation">.</span>dwBufferLength <span class="token operator">=</span>m_WaveLong<span class="token punctuation">;</span>
 pWaveOutHdr<span class="token punctuation">.</span>dwFlags <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">waveOutPrepareHeader</span><span class="token punctuation">(</span>hWaveOut<span class="token punctuation">,</span><span class="token operator">&amp;</span>pWaveOutHdr<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>WAVEHDR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Failed to prepare the wave data buffer</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 播放音频数据文件</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">waveOutWrite</span><span class="token punctuation">(</span>hWaveOut<span class="token punctuation">,</span><span class="token operator">&amp;</span>pWaveOutHdr<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>WAVEHDR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Failed to write the wave data buffer</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// 关闭音频输出设备,释放内存</span>
 <span class="token function">waveOutReset</span><span class="token punctuation">(</span>hWaveOut<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1298,7 +1298,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

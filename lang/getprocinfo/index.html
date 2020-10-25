@@ -479,14 +479,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    16 分
                 </div>
                 
 
@@ -518,15 +518,15 @@
  * 
  ***************************************************************************************/</span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tlhelp32.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tchar.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tlhelp32.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tchar.h&gt;</span></span>
 
 
 
 <span class="token comment" spellcheck="true">/* 进程信息结构体: https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32
-typedef struct tagPROCESSENTRY32 {
+typedef struct tagPROCESSENTRY32 &amp;#123;
 　　DWORD dwSize;                    // 此进程的结构体大小（字节）
 　　DWORD cntUsage;                  // 进程的引用计数（已废弃，固定值0）
 　　DWORD th32ProcessID;             // 进程号
@@ -536,12 +536,12 @@ typedef struct tagPROCESSENTRY32 {
 　　DWORD th32ParentProcessID;       // 父进程号
 　　LONG pcPriClassBase;             // 此进程所创建的线程优先级
 　　DWORD dwFlags;                   // （已废弃，固定值0）
-　　TCHAR szExeFile[MAX_PATH];       // 进程的可执行文件的名称（不含路径，完整路径可通过 MODULEENTRY32->szExePath 获取）
-} PROCESSENTRY32, *PPROCESSENTRY32;
+　　TCHAR szExeFile[MAX_PATH];       // 进程的可执行文件的名称（不含路径，完整路径可通过 MODULEENTRY32-&gt;szExePath 获取）
+&amp;#125; PROCESSENTRY32, *PPROCESSENTRY32;
 */</span>
 
 <span class="token comment" spellcheck="true">/* 进程模块结构体: https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32
-typedef struct tagMODULEENTRY32 {
+typedef struct tagMODULEENTRY32 &amp;#123;
   DWORD   dwSize;                           // 此模块的结构体大小（字节）
   DWORD   th32ModuleID;                     // 模块ID（已废弃，固定值1）
   DWORD   th32ProcessID;                    // 所属进程的进程号
@@ -552,7 +552,7 @@ typedef struct tagMODULEENTRY32 {
   HMODULE hModule;                          // 该模块在所属进程中的句柄
   char    szModule[MAX_MODULE_NAME32 + 1];  // 模块名称
   char    szExePath[MAX_PATH];              // 模块路径
-} MODULEENTRY32;
+&amp;#125; MODULEENTRY32;
 */</span>
 
 
@@ -561,7 +561,7 @@ typedef struct tagMODULEENTRY32 {
 <span class="token keyword">void</span> <span class="token function">printProc</span><span class="token punctuation">(</span>PROCESSENTRY32 pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 打印进程信息到控制台</span>
 <span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>DWORD pid<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// 获取进程归属用户</span>
 bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
-<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 宽字符 -> ASCII字符</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 宽字符 -&gt; ASCII字符</span>
 bool <span class="token function">startwith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> substr<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 判断 str 是否以 substr 开头（忽略大小写）</span>
 
 
@@ -569,73 +569,73 @@ bool <span class="token function">startwith</span><span class="token punctuation
 <span class="token comment" spellcheck="true">/**
  * argc: 入参个数(至少为1: 第0个为执行文件文件名)
  * argv: 入参列表。当 argc!=3 时打印所有进程; 当 argc==3 时:
- *   -id {pid} : 打印进程号为 pid 的进程信息
- *   -name {pname} : 打印进程名为以 pname 开头的进程信息（忽略大小写，若有多个则只打印第一个）
+ *   -id &amp;#123;pid&amp;#125; : 打印进程号为 pid 的进程信息
+ *   -name &amp;#123;pname&amp;#125; : 打印进程名为以 pname 开头的进程信息（忽略大小写，若有多个则只打印第一个）
  */</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 提取入参</span>
     <span class="token keyword">int</span> exPid <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 期望查询的进程号</span>
     <span class="token keyword">char</span><span class="token operator">*</span> exPname <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 期望查询的进程名</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>argc <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>argc <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             exPid <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             exPname <span class="token operator">=</span> argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 拍摄当前系统所有进程快照</span>
     HANDLE hProcess <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CreateToolhelp32Snapshot</span><span class="token punctuation">(</span>TH32CS_SNAPPROCESS<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Error] Fail to take processes snapshot.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     PROCESSENTRY32 pe32<span class="token punctuation">;</span>
     pe32<span class="token punctuation">.</span>dwSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
     BOOL hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32First</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 进程快照列表迭代器</span>
 
     <span class="token comment" spellcheck="true">// 打印特定进程信息</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>exPid <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token function">strlen</span><span class="token punctuation">(</span>exPname<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>exPid <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token function">strlen</span><span class="token punctuation">(</span>exPname<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             DWORD pid <span class="token operator">=</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">;</span>
             <span class="token keyword">char</span><span class="token operator">*</span> pname <span class="token operator">=</span> <span class="token function">toChar</span><span class="token punctuation">(</span>pe32<span class="token punctuation">.</span>szExeFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>DWORD<span class="token punctuation">)</span> exPid<span class="token punctuation">)</span> <span class="token operator">==</span> pid <span class="token operator">||</span> <span class="token function">startwith</span><span class="token punctuation">(</span>pname<span class="token punctuation">,</span> exPname<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>DWORD<span class="token punctuation">)</span> exPid<span class="token punctuation">)</span> <span class="token operator">==</span> pid <span class="token operator">||</span> <span class="token function">startwith</span><span class="token punctuation">(</span>pname<span class="token punctuation">,</span> exPname<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
                 <span class="token function">printProc</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
                 flag <span class="token operator">=</span> true<span class="token punctuation">;</span>
                 <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
             delete<span class="token punctuation">[</span><span class="token punctuation">]</span> pname<span class="token punctuation">;</span>
             hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32Next</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span>flag <span class="token operator">==</span> false<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>flag <span class="token operator">==</span> false<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Error] The process is not exists.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 打印所有进程信息</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token function">printProc</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
             hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32Next</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 清除快照对象</span>
     <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CloseHandle</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// system("pause");</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
 <span class="token comment" spellcheck="true">// 打印系统异常</span>
-<span class="token keyword">void</span> <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">void</span> <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     DWORD errId<span class="token punctuation">;</span>
     TCHAR errMsg<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     TCHAR<span class="token operator">*</span> p<span class="token punctuation">;</span>
@@ -647,15 +647,15 @@ bool <span class="token function">startwith</span><span class="token punctuation
                     errMsg<span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     p <span class="token operator">=</span> errMsg<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">></span> <span class="token number">31</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">==</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">++</span>p<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">do</span> <span class="token punctuation">{</span> <span class="token operator">*</span>p<span class="token operator">--</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">while</span><span class="token punctuation">(</span>p <span class="token operator">>=</span> errMsg <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">==</span> <span class="token string">'.'</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">&lt;</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">&gt;</span> <span class="token number">31</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">==</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token operator">++</span>p<span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">do</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token operator">*</span>p<span class="token operator">--</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">while</span><span class="token punctuation">(</span>p <span class="token operator">&gt;=</span> errMsg <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">==</span> <span class="token string">'.'</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">&lt;</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">_tprintf</span><span class="token punctuation">(</span><span class="token function">TEXT</span><span class="token punctuation">(</span><span class="token string">"[Error %d] %s\n"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> errId<span class="token punctuation">,</span> errMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
 <span class="token comment" spellcheck="true">// 打印进程信息到控制台</span>
-<span class="token keyword">void</span> <span class="token function">printProc</span><span class="token punctuation">(</span>PROCESSENTRY32 pe32<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">void</span> <span class="token function">printProc</span><span class="token punctuation">(</span>PROCESSENTRY32 pe32<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Process Info]\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"name: %s\n"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>pe32<span class="token punctuation">.</span>szExeFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"pid: %u\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -667,115 +667,115 @@ bool <span class="token function">startwith</span><span class="token punctuation
 
     <span class="token comment" spellcheck="true">// 拍摄当前进程模块列表快照</span>
     HANDLE hModule <span class="token operator">=</span> <span class="token function">CreateToolhelp32Snapshot</span><span class="token punctuation">(</span>TH32CS_SNAPMODULE<span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>hModule <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hModule <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// printf("[Error] Fail to take process snapshot\n");</span>
         <span class="token comment" spellcheck="true">// printSysError();</span>
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"path: \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         MODULEENTRY32 me<span class="token punctuation">;</span>
         me<span class="token punctuation">.</span>dwSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>MODULEENTRY32<span class="token punctuation">)</span><span class="token punctuation">;</span>
         BOOL hasNext <span class="token operator">=</span> <span class="token function">Module32First</span><span class="token punctuation">(</span>hModule<span class="token punctuation">,</span> <span class="token operator">&amp;</span>me<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 进程模块列表迭代器</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 第一个模块即进程自身, 可从中提取其可执行文件的完整路径</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 第一个模块即进程自身, 可从中提取其可执行文件的完整路径</span>
             <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"path: %s\n"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>szExePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CloseHandle</span><span class="token punctuation">(</span>hModule<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"==================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
 <span class="token comment" spellcheck="true">// 获取进程归属用户</span>
-<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>DWORD pid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>DWORD pid<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span><span class="token operator">*</span> owner <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">513</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token operator">*</span>owner <span class="token operator">=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span>
 
     HANDLE hProcess <span class="token operator">=</span> <span class="token function">OpenProcess</span><span class="token punctuation">(</span>PROCESS_QUERY_INFORMATION<span class="token punctuation">,</span> FALSE<span class="token punctuation">,</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> owner<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     HANDLE hToken <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
     DWORD dwSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    TCHAR szUserName<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    TCHAR szDomain<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    TCHAR szUserName<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token number">0</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    TCHAR szDomain<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token number">0</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
     DWORD dwDomainSize <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">;</span>
     DWORD dwNameSize <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">;</span>
     SID_NAME_USE SNU<span class="token punctuation">;</span>
     PTOKEN_USER pTokenUser <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-    __try <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">OpenProcessToken</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> TOKEN_QUERY<span class="token punctuation">,</span> <span class="token operator">&amp;</span>hToken<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    __try <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">OpenProcessToken</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> TOKEN_QUERY<span class="token punctuation">,</span> <span class="token operator">&amp;</span>hToken<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             __leave<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> ERROR_INSUFFICIENT_BUFFER<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> ERROR_INSUFFICIENT_BUFFER<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
                 __leave<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
         pTokenUser <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
         pTokenUser <span class="token operator">=</span> <span class="token punctuation">(</span>PTOKEN_USER<span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             __leave<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             __leave<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">LookupAccountSid</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> pTokenUser<span class="token operator">-></span>User<span class="token punctuation">.</span>Sid<span class="token punctuation">,</span> szUserName<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwNameSize<span class="token punctuation">,</span> szDomain<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwDomainSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>SNU<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">LookupAccountSid</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> pTokenUser<span class="token operator">-&gt;</span>User<span class="token punctuation">.</span>Sid<span class="token punctuation">,</span> szUserName<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwNameSize<span class="token punctuation">,</span> szDomain<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwDomainSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>SNU<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token function">sprintf</span><span class="token punctuation">(</span>owner<span class="token punctuation">,</span> <span class="token string">"%s\\%s\0"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>szDomain<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>szUserName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span> __finally <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> __finally <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token function">free</span><span class="token punctuation">(</span>pTokenUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> owner<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
 <span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
-bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         flag <span class="token operator">=</span> true<span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         flag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">stricmp</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
-<span class="token comment" spellcheck="true">// 宽字符 -> ASCII字符</span>
-<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 宽字符 -&gt; ASCII字符</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">WideCharToMultiByte</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _wchar<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span><span class="token operator">*</span> _char <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">WideCharToMultiByte</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _wchar<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> _char<span class="token punctuation">,</span> len<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
     <span class="token keyword">return</span> _char<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 
 
 <span class="token comment" spellcheck="true">// 判断 str 是否以 substr 开头（忽略大小写）</span>
-bool <span class="token function">startwith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> substr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+bool <span class="token function">startwith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> substr<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>str <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> substr <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>str <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> substr <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>substr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             flag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">strnicmp</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> substr<span class="token punctuation">,</span> len<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="PowserShell-源码"><a href="#PowserShell-源码" class="headerlink" title="PowserShell 源码"></a>PowserShell 源码</h2><pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># get_process.ps1 </span>
 <span class="token comment" spellcheck="true">#</span>
 <span class="token comment" spellcheck="true"># 进程信息查询脚本</span>
@@ -797,49 +797,49 @@ bool <span class="token function">startwith</span><span class="token punctuation
 
 
 <span class="token comment" spellcheck="true"># 获取进程对象</span>
-<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc <span class="token punctuation">{</span>
+<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc &amp;<span class="token comment" spellcheck="true">#123;</span>
     <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=<span class="token operator">-</span>1<span class="token punctuation">,</span> <span class="token namespace">[string]</span><span class="token variable">$name</span>=<span class="token string">""</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">Try</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">-gt</span> <span class="token operator">-</span>1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">Try</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">-gt</span> <span class="token operator">-</span>1<span class="token punctuation">)</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
             <span class="token variable">$process</span> = <span class="token function">Get-Process</span> <span class="token operator">-</span>Id <span class="token variable">$id</span> <span class="token operator">-</span>ErrorAction Stop
 
-        <span class="token punctuation">}</span> <span class="token keyword">else</span>  <span class="token punctuation">{</span>
+        &amp;<span class="token comment" spellcheck="true">#125; else  &amp;#123;</span>
             <span class="token variable">$process</span> = <span class="token function">Get-Process</span> <span class="token operator">-</span>Name <span class="token variable">$name</span> <span class="token operator">-</span>ErrorAction Stop
-        <span class="token punctuation">}</span>
+        &amp;<span class="token comment" spellcheck="true">#125;</span>
 
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token namespace">[Microsoft.PowerShell.Commands.ProcessCommandException]</span> <span class="token punctuation">{</span>
+    &amp;<span class="token comment" spellcheck="true">#125; catch [Microsoft.PowerShell.Commands.ProcessCommandException] &amp;#123;</span>
         <span class="token function">Write-Warning</span> <span class="token string">"Process [id=<span class="token variable">$id</span>][name=<span class="token variable">$name</span>] has not exist"</span>
 
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span>
+    &amp;<span class="token comment" spellcheck="true">#125; catch &amp;#123;</span>
         <span class="token function">Write-Warning</span> <span class="token string">"Find Process[id=<span class="token variable">$id</span>][name=<span class="token variable">$name</span>] Error"</span>
-    <span class="token punctuation">}</span>
+    &amp;<span class="token comment" spellcheck="true">#125;</span>
     <span class="token keyword">return</span> <span class="token variable">$process</span>
-<span class="token punctuation">}</span>
+&amp;<span class="token comment" spellcheck="true">#125;</span>
 
 <span class="token comment" spellcheck="true"># 获取进程属主</span>
-<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc<span class="token operator">-</span>Owner <span class="token punctuation">{</span>
+<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc<span class="token operator">-</span>Owner &amp;<span class="token comment" spellcheck="true">#123;</span>
     <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=<span class="token operator">-</span>1<span class="token punctuation">)</span>
 
     <span class="token variable">$owner</span> = <span class="token string">""</span>
-    <span class="token keyword">Try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">Try</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
         <span class="token variable">$info</span> = <span class="token punctuation">(</span><span class="token function">Get-WmiObject</span> <span class="token operator">-</span><span class="token keyword">Class</span> Win32_Process <span class="token operator">-</span><span class="token keyword">Filter</span> <span class="token string">"Handle=<span class="token variable">$id</span>"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>GetOwner<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">.</span>ReturnValue <span class="token operator">-eq</span> 2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">.</span>ReturnValue <span class="token operator">-eq</span> 2<span class="token punctuation">)</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
             <span class="token variable">$owner</span> = <span class="token string">'Unknow/Unknow'</span>
 
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token variable">$owner</span> = <span class="token string">'{0}/{1}'</span> <span class="token operator">-</span>f <span class="token variable">$info</span><span class="token punctuation">.</span>Domain<span class="token punctuation">,</span> <span class="token variable">$info</span><span class="token punctuation">.</span>User
-        <span class="token punctuation">}</span>
+        &amp;<span class="token comment" spellcheck="true">#125; else &amp;#123;</span>
+            <span class="token variable">$owner</span> = <span class="token string">'&amp;#123;0&amp;#125;/&amp;#123;1&amp;#125;'</span> <span class="token operator">-</span>f <span class="token variable">$info</span><span class="token punctuation">.</span>Domain<span class="token punctuation">,</span> <span class="token variable">$info</span><span class="token punctuation">.</span>User
+        &amp;<span class="token comment" spellcheck="true">#125;</span>
 
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span>
+    &amp;<span class="token comment" spellcheck="true">#125; catch &amp;#123;</span>
         <span class="token function">Write-Warning</span> <span class="token string">"Find Process[id=<span class="token variable">$id</span>]'s owner Error"</span>
-    <span class="token punctuation">}</span>
+    &amp;<span class="token comment" spellcheck="true">#125;</span>
     <span class="token keyword">return</span> <span class="token variable">$owner</span>
-<span class="token punctuation">}</span>
+&amp;<span class="token comment" spellcheck="true">#125;</span>
 
 
 <span class="token variable">$process</span> = Get<span class="token operator">-</span>Proc <span class="token operator">-</span>id <span class="token variable">$id</span> <span class="token operator">-</span>name <span class="token variable">$name</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$process</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$process</span><span class="token punctuation">)</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
     <span class="token variable">$owner</span> = Get<span class="token operator">-</span>Proc<span class="token operator">-</span>Owner <span class="token operator">-</span>id <span class="token variable">$id</span>
     <span class="token variable">$process_inst</span> = Get<span class="token operator">-</span>CimInstance Win32_Process <span class="token operator">-</span><span class="token keyword">Filter</span> <span class="token string">"ProcessId = '<span class="token variable">$id</span>'"</span>
     <span class="token variable">$fid</span> = <span class="token variable">$process_inst</span><span class="token punctuation">.</span>ParentProcessId
@@ -911,7 +911,7 @@ bool <span class="token function">startwith</span><span class="token punctuation
     <span class="token function">Write-Host</span> <span class="token string">"ProductVersion ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>ProductVersion
     <span class="token comment" spellcheck="true"># Write-Host "PSConfiguration =" $process.PSConfiguration</span>
     <span class="token comment" spellcheck="true"># Write-Host "PSResources =" $process.PSResources</span>
-<span class="token punctuation">}</span>
+&amp;<span class="token comment" spellcheck="true">#125;</span>
 
 
 
@@ -953,66 +953,66 @@ bool <span class="token function">startwith</span><span class="token punctuation
 <span class="token comment" spellcheck="true"># WaitForExit                Method         bool WaitForExit(int milliseconds), void WaitForExit()</span>
 <span class="token comment" spellcheck="true"># WaitForInputIdle           Method         bool WaitForInputIdle(int milliseconds), bool WaitForInputIdle()</span>
 <span class="token comment" spellcheck="true"># __NounName                 NoteProperty   System.String __NounName=Process</span>
-<span class="token comment" spellcheck="true"># BasePriority               Property       int BasePriority {get;}</span>
-<span class="token comment" spellcheck="true"># Container                  Property       System.ComponentModel.IContainer Container {get;}</span>
-<span class="token comment" spellcheck="true"># EnableRaisingEvents        Property       bool EnableRaisingEvents {get;set;}</span>
-<span class="token comment" spellcheck="true"># ExitCode                   Property       int ExitCode {get;}</span>
-<span class="token comment" spellcheck="true"># ExitTime                   Property       datetime ExitTime {get;}</span>
-<span class="token comment" spellcheck="true"># Handle                     Property       System.IntPtr Handle {get;}</span>
-<span class="token comment" spellcheck="true"># HandleCount                Property       int HandleCount {get;}</span>
-<span class="token comment" spellcheck="true"># HasExited                  Property       bool HasExited {get;}</span>
-<span class="token comment" spellcheck="true"># Id                         Property       int Id {get;}</span>
-<span class="token comment" spellcheck="true"># MachineName                Property       string MachineName {get;}</span>
-<span class="token comment" spellcheck="true"># MainModule                 Property       System.Diagnostics.ProcessModule MainModule {get;}</span>
-<span class="token comment" spellcheck="true"># MainWindowHandle           Property       System.IntPtr MainWindowHandle {get;}</span>
-<span class="token comment" spellcheck="true"># MainWindowTitle            Property       string MainWindowTitle {get;}</span>
-<span class="token comment" spellcheck="true"># MaxWorkingSet              Property       System.IntPtr MaxWorkingSet {get;set;}</span>
-<span class="token comment" spellcheck="true"># MinWorkingSet              Property       System.IntPtr MinWorkingSet {get;set;}</span>
-<span class="token comment" spellcheck="true"># Modules                    Property       System.Diagnostics.ProcessModuleCollection Modules {get;}</span>
-<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize   Property       int NonpagedSystemMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize64 Property       long NonpagedSystemMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PagedMemorySize            Property       int PagedMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># PagedMemorySize64          Property       long PagedMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PagedSystemMemorySize      Property       int PagedSystemMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># PagedSystemMemorySize64    Property       long PagedSystemMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PeakPagedMemorySize        Property       int PeakPagedMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># PeakPagedMemorySize64      Property       long PeakPagedMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PeakVirtualMemorySize      Property       int PeakVirtualMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># PeakVirtualMemorySize64    Property       long PeakVirtualMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PeakWorkingSet             Property       int PeakWorkingSet {get;}</span>
-<span class="token comment" spellcheck="true"># PeakWorkingSet64           Property       long PeakWorkingSet64 {get;}</span>
-<span class="token comment" spellcheck="true"># PriorityBoostEnabled       Property       bool PriorityBoostEnabled {get;set;}</span>
-<span class="token comment" spellcheck="true"># PriorityClass              Property       System.Diagnostics.ProcessPriorityClass PriorityClass {get;set;}</span>
-<span class="token comment" spellcheck="true"># PrivateMemorySize          Property       int PrivateMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># PrivateMemorySize64        Property       long PrivateMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># PrivilegedProcessorTime    Property       timespan PrivilegedProcessorTime {get;}</span>
-<span class="token comment" spellcheck="true"># ProcessName                Property       string ProcessName {get;}</span>
-<span class="token comment" spellcheck="true"># ProcessorAffinity          Property       System.IntPtr ProcessorAffinity {get;set;}</span>
-<span class="token comment" spellcheck="true"># Responding                 Property       bool Responding {get;}</span>
-<span class="token comment" spellcheck="true"># SessionId                  Property       int SessionId {get;}</span>
-<span class="token comment" spellcheck="true"># Site                       Property       System.ComponentModel.ISite Site {get;set;}</span>
-<span class="token comment" spellcheck="true"># StandardError              Property       System.IO.StreamReader StandardError {get;}</span>
-<span class="token comment" spellcheck="true"># StandardInput              Property       System.IO.StreamWriter StandardInput {get;}</span>
-<span class="token comment" spellcheck="true"># StandardOutput             Property       System.IO.StreamReader StandardOutput {get;}</span>
-<span class="token comment" spellcheck="true"># StartInfo                  Property       System.Diagnostics.ProcessStartInfo StartInfo {get;set;}</span>
-<span class="token comment" spellcheck="true"># StartTime                  Property       datetime StartTime {get;}</span>
-<span class="token comment" spellcheck="true"># SynchronizingObject        Property       System.ComponentModel.ISynchronizeInvoke SynchronizingObject {get;set;}</span>
-<span class="token comment" spellcheck="true"># Threads                    Property       System.Diagnostics.ProcessThreadCollection Threads {get;}</span>
-<span class="token comment" spellcheck="true"># TotalProcessorTime         Property       timespan TotalProcessorTime {get;}</span>
-<span class="token comment" spellcheck="true"># UserProcessorTime          Property       timespan UserProcessorTime {get;}</span>
-<span class="token comment" spellcheck="true"># VirtualMemorySize          Property       int VirtualMemorySize {get;}</span>
-<span class="token comment" spellcheck="true"># VirtualMemorySize64        Property       long VirtualMemorySize64 {get;}</span>
-<span class="token comment" spellcheck="true"># WorkingSet                 Property       int WorkingSet {get;}</span>
-<span class="token comment" spellcheck="true"># WorkingSet64               Property       long WorkingSet64 {get;}</span>
-<span class="token comment" spellcheck="true"># PSConfiguration            PropertySet    PSConfiguration {Name, Id, PriorityClass, FileVersion}</span>
-<span class="token comment" spellcheck="true"># PSResources                PropertySet    PSResources {Name, Id, Handlecount, WorkingSet, NonPagedMemorySize, PagedM...</span>
-<span class="token comment" spellcheck="true"># Company                    ScriptProperty System.Object Company {get=$this.Mainmodule.FileVersionInfo.CompanyName;}</span>
-<span class="token comment" spellcheck="true"># CPU                        ScriptProperty System.Object CPU {get=$this.TotalProcessorTime.TotalSeconds;}</span>
-<span class="token comment" spellcheck="true"># Description                ScriptProperty System.Object Description {get=$this.Mainmodule.FileVersionInfo.FileDescri...</span>
-<span class="token comment" spellcheck="true"># FileVersion                ScriptProperty System.Object FileVersion {get=$this.Mainmodule.FileVersionInfo.FileVersion;}</span>
-<span class="token comment" spellcheck="true"># Path                       ScriptProperty System.Object Path {get=$this.Mainmodule.FileName;}</span>
-<span class="token comment" spellcheck="true"># Product                    ScriptProperty System.Object Product {get=$this.Mainmodule.FileVersionInfo.ProductName;}</span>
-<span class="token comment" spellcheck="true"># ProductVersion             ScriptProperty System.Object ProductVersion {get=$this.Mainmodule.FileVersionInfo.Product...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true"># BasePriority               Property       int BasePriority &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Container                  Property       System.ComponentModel.IContainer Container &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># EnableRaisingEvents        Property       bool EnableRaisingEvents &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># ExitCode                   Property       int ExitCode &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># ExitTime                   Property       datetime ExitTime &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Handle                     Property       System.IntPtr Handle &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># HandleCount                Property       int HandleCount &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># HasExited                  Property       bool HasExited &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Id                         Property       int Id &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MachineName                Property       string MachineName &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MainModule                 Property       System.Diagnostics.ProcessModule MainModule &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MainWindowHandle           Property       System.IntPtr MainWindowHandle &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MainWindowTitle            Property       string MainWindowTitle &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MaxWorkingSet              Property       System.IntPtr MaxWorkingSet &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># MinWorkingSet              Property       System.IntPtr MinWorkingSet &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Modules                    Property       System.Diagnostics.ProcessModuleCollection Modules &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize   Property       int NonpagedSystemMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize64 Property       long NonpagedSystemMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PagedMemorySize            Property       int PagedMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PagedMemorySize64          Property       long PagedMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PagedSystemMemorySize      Property       int PagedSystemMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PagedSystemMemorySize64    Property       long PagedSystemMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakPagedMemorySize        Property       int PeakPagedMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakPagedMemorySize64      Property       long PeakPagedMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakVirtualMemorySize      Property       int PeakVirtualMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakVirtualMemorySize64    Property       long PeakVirtualMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakWorkingSet             Property       int PeakWorkingSet &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PeakWorkingSet64           Property       long PeakWorkingSet64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PriorityBoostEnabled       Property       bool PriorityBoostEnabled &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PriorityClass              Property       System.Diagnostics.ProcessPriorityClass PriorityClass &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PrivateMemorySize          Property       int PrivateMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PrivateMemorySize64        Property       long PrivateMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PrivilegedProcessorTime    Property       timespan PrivilegedProcessorTime &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># ProcessName                Property       string ProcessName &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># ProcessorAffinity          Property       System.IntPtr ProcessorAffinity &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Responding                 Property       bool Responding &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># SessionId                  Property       int SessionId &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Site                       Property       System.ComponentModel.ISite Site &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># StandardError              Property       System.IO.StreamReader StandardError &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># StandardInput              Property       System.IO.StreamWriter StandardInput &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># StandardOutput             Property       System.IO.StreamReader StandardOutput &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># StartInfo                  Property       System.Diagnostics.ProcessStartInfo StartInfo &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># StartTime                  Property       datetime StartTime &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># SynchronizingObject        Property       System.ComponentModel.ISynchronizeInvoke SynchronizingObject &amp;#123;get;set;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Threads                    Property       System.Diagnostics.ProcessThreadCollection Threads &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># TotalProcessorTime         Property       timespan TotalProcessorTime &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># UserProcessorTime          Property       timespan UserProcessorTime &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># VirtualMemorySize          Property       int VirtualMemorySize &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># VirtualMemorySize64        Property       long VirtualMemorySize64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># WorkingSet                 Property       int WorkingSet &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># WorkingSet64               Property       long WorkingSet64 &amp;#123;get;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PSConfiguration            PropertySet    PSConfiguration &amp;#123;Name, Id, PriorityClass, FileVersion&amp;#125;</span>
+<span class="token comment" spellcheck="true"># PSResources                PropertySet    PSResources &amp;#123;Name, Id, Handlecount, WorkingSet, NonPagedMemorySize, PagedM...</span>
+<span class="token comment" spellcheck="true"># Company                    ScriptProperty System.Object Company &amp;#123;get=$this.Mainmodule.FileVersionInfo.CompanyName;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># CPU                        ScriptProperty System.Object CPU &amp;#123;get=$this.TotalProcessorTime.TotalSeconds;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Description                ScriptProperty System.Object Description &amp;#123;get=$this.Mainmodule.FileVersionInfo.FileDescri...</span>
+<span class="token comment" spellcheck="true"># FileVersion                ScriptProperty System.Object FileVersion &amp;#123;get=$this.Mainmodule.FileVersionInfo.FileVersion;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Path                       ScriptProperty System.Object Path &amp;#123;get=$this.Mainmodule.FileName;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># Product                    ScriptProperty System.Object Product &amp;#123;get=$this.Mainmodule.FileVersionInfo.ProductName;&amp;#125;</span>
+<span class="token comment" spellcheck="true"># ProductVersion             ScriptProperty System.Object ProductVersion &amp;#123;get=$this.Mainmodule.FileVersionInfo.Product...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1625,7 +1625,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

@@ -611,22 +611,22 @@
 <li>GitHub Page 不允许站点路径以下划线开头，因此在 commit 前需要把 <code>_book</code> 重命名为 <code>book</code></li>
 <li>GitHub Page 的站点主页是仓库的根目录，而 GitBook 的站点主页是在 <code>_book</code> 目录下，为了统一主页，可以在 GitHub 仓库根目录添加一个 <code>index.html</code> 文件，内容如下：</li>
 </ul>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>noarchive<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span> 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>author<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>EXP<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span> 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>IE<span class="token punctuation">=</span>edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>EXP-BLOG<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>noarchive<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>author<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>EXP<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>IE<span class="token punctuation">=</span>edge<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>EXP-BLOG<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
 
-        <span class="token comment" spellcheck="true">&lt;!-- 自动从 Github Pages 的首页跳转到 GitBook 的首页 --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>refresh<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0; url<span class="token punctuation">=</span>./gitbook/book/index.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token comment" spellcheck="true">&lt;!-- 自动从 Github Pages 的首页跳转到 GitBook 的首页 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>refresh<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0; url<span class="token punctuation">=</span>./gitbook/book/index.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="站点优化：安装-GitBook-插件"><a href="#站点优化：安装-GitBook-插件" class="headerlink" title="站点优化：安装 GitBook 插件"></a>站点优化：安装 GitBook 插件</h2><p>GitBook 的精粹在于丰富的插件以扩展其功能，插件可通过工作目录下的 <a target="_blank" rel="noopener" href="https://github.com/lyy289065406/exp-blog/blob/master/gitbook/book.json"><code>book.json</code></a> 配置并控制，相关说明见 <a target="_blank" rel="noopener" href="https://docs.gitbook.com/v2-changes/important-differences#plugins">官方文档</a>。</p>
 <p>推荐 GitBook 安装的插件可参考 <a target="_blank" rel="noopener" href="http://gitbook.zhangjikai.com/plugins.html">这份清单</a> 。</p>
 <p>根据插件命名约定，若 <strong>插件名称</strong> 为 <code>prism</code> ，则其对应 <strong>安装包名称</strong> 为 <code>gitbook-plugin-prism</code> 。</p>
@@ -966,37 +966,59 @@ C++当时看到题干，条件反射就想到了
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/lang/getsysmon/">
+                <a href="/safe/android-ni-xiang-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="获取 Sysmon 事件信息">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Android 逆向学习笔记">
                         
-                        <span class="card-title">获取 Sysmon 事件信息</span>
+                        <span class="card-title">Android 逆向学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            相关资源
-Sysmon 官方文档： https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+                            练习
 
 
-get_sysmon_event.exe 下载
+条项
+说明
 
-C++ 源码/*****
+
+
+APP
+YZ.apk
+
+
+目标 A
+绕过 root限制
+
+
+目标 B
+拿到 abService 签名 key 并通过中间人改至少改一个包（通过签名验证）
+
+
+参考资料
+
+
+内容
+说明
+
+
+
+Android Stu
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BC%80%E5%8F%91-%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    开发/语言
+                            <a href="/categories/%E5%AE%89%E5%85%A8/" class="post-category">
+                                    安全
                                 </a>
                             
                             
@@ -1006,16 +1028,20 @@ C++ 源码/*****
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-C/">
-                        <span class="chip bg-color">C/C++</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/PowerShell/">
-                        <span class="chip bg-color">PowerShell</span>
+                    <a href="/tags/%E9%80%86%E5%90%91/">
+                        <span class="chip bg-color">逆向</span>
                     </a>
                     
-                    <a href="/tags/Sysmon/">
-                        <span class="chip bg-color">Sysmon</span>
+                    <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">
+                        <span class="chip bg-color">反编译</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A3%B3/">
+                        <span class="chip bg-color">壳</span>
                     </a>
                     
                 </div>
@@ -1259,7 +1285,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -494,56 +494,56 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><strong>用法1：</strong> 最基本，也是最常用的用法，输入一个数字或字符(不接受空字符作为字符输入，当输入字符为空字符时，会不断重复要求输入，直至输入字符非空后，通过回车结束输入)：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> std<span class="token operator">::</span>cin<span class="token punctuation">;</span>
 <span class="token keyword">using</span> std<span class="token operator">::</span>cout<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 要求程序中出现几种标准库函数，就要用名字空间说明几次，这种</span>
 <span class="token keyword">using</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 做法等价于using namespace std; 因为对大程序比较麻烦，不推荐用</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> a<span class="token punctuation">;</span>
     <span class="token keyword">char</span> b<span class="token punctuation">;</span>
-    cin<span class="token operator">>></span>a<span class="token operator">>></span>b<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// cin允许这种"连续输入"模式</span>
+    cin<span class="token operator">&gt;&gt;</span>a<span class="token operator">&gt;&gt;</span>b<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// cin允许这种"连续输入"模式</span>
     cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span><span class="token string">','</span><span class="token operator">&lt;&lt;</span>b<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>&gt; 输入：2[回车]a[回车]
 &gt; 输出：2,a</code></pre>
 <p><strong>用法2：</strong> 接受一个字符串，遇“空格”、“TAB”、“回车”都结束：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> a<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    cin<span class="token operator">>></span>a<span class="token punctuation">;</span>
+    cin<span class="token operator">&gt;&gt;</span>a<span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>&gt; 输入：jkljkljkl
 &gt; 输出：jkljkljkl
 &gt; 输入：jkljkl jkljkl    // 遇空格结束
 &gt; 输出：jkljkl</code></pre>
 <h2 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h2><p><strong>用法1：</strong> cin.get(字符变量名) 可以用来接收字符：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
     ch<span class="token operator">=</span>cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//或者cin.get(ch);</span>
     cout<span class="token operator">&lt;&lt;</span>ch<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>&gt; 输入：jljkljkl
 &gt; 输出：j</code></pre>
 <p><strong>用法2：</strong> cin.get(字符数组名,串长) 用来接收一行字符串，可以接收空格：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> a<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>&gt; 输入：jkl jkl jkl
 &gt; 输出：jkl jkl jkl
 &gt; 输入：abcdeabcdeabcdeabcdeabcde　　（输入25个字符）
@@ -557,15 +557,15 @@
 <p><em>注：</em> 此用法会在“<a href="#toc-heading-7">附一</a>”通过比较cin.get()与cin.getline()的不同详细而举例说明</p>
 </blockquote>
 <h2 id="cin-getline"><a href="#cin-getline" class="headerlink" title="cin.getline()"></a>cin.getline()</h2><p><strong>用法1：</strong> 接受一个字符串，可以接收空格并输出：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> m<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     cin<span class="token punctuation">.</span><span class="token function">getline</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>输入：jkljkljkl
 输出：jklj   （接受5个字符到m中，其中最后一个为'\0'，所以只看到4个字符输出）</code></pre>
 <p>如果把5改成20：</p>
@@ -574,24 +574,24 @@
 输入：jklf fjlsjf fjsdklf
 输出：jklf fjlsjf fjsdklf</code></pre>
 <p><strong>用法2：</strong> 当用在多维数组中的时候，也可以用cin.getline(m[i],20)之类的用法：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> m<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n请输入第"</span><span class="token operator">&lt;&lt;</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token string">"个字符串："</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
         cin<span class="token punctuation">.</span><span class="token function">getline</span><span class="token punctuation">(</span>m<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"输出m["</span><span class="token operator">&lt;&lt;</span>j<span class="token operator">&lt;&lt;</span><span class="token string">"]的值:"</span><span class="token operator">&lt;&lt;</span>m<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>输入第1个字符串：kskr1
 输入第2个字符串：kskr2
 输入第3个字符串：kskr3
@@ -602,16 +602,16 @@
 <p><em>注： cin.getline()功能的扩展说明</em><br> 　　cin.getline()实际上有三个参数，cin.getline(char对象地址，串长，’结束字符’)<br> 　　① 当第三个参数省略时，系统默认为’\0’<br> 　　② 如果把例子中cin.getline()改为cin.getline(m,5,’a’);<br> 　　　　当输入jlkjkljkl时，输出jklj ； 输入jkaljkljkl时，输出jk<br> 　　③ cin.getline()至少要有前2个参数，且只能和char(或char*)定义的字符串地址搭配，不能和string定义的字符串地址搭配</p>
 </blockquote>
 <h2 id="getline"><a href="#getline" class="headerlink" title="getline()"></a>getline()</h2><p><strong>只有一种用法</strong>：接受一个字符串，可以接收空格并输出（需 #include &lt;string&gt;）：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     string str<span class="token punctuation">;</span>
     <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>str<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>输入：jkljkljkl   （按2次回车后输出，至于为什么，在“附页二”会详细解释）
 输出：jkljkljkl
 输入：jkl jfksldfj jklsjfl    （按2次回车后输出）
@@ -620,16 +620,16 @@
 <p><em>注：</em><br> 　　① getline()和cin.getline()类似，但是cin.getline()属于istream流，而getline()属于string流，是不一样的两个函数。<br> 　　② getline(cin,string对象地址) 中的字符串地址只能和string定义的字符串地址搭配，不能和char(或char*)定义的字符串地址搭配。这与cin.getline()相反。</p>
 </blockquote>
 <h2 id="gets"><a href="#gets" class="headerlink" title="gets()"></a>gets()</h2><p><strong>用法1：</strong> 接受一个字符串，可以接收空格并输出（需 <code>#include &lt;string&gt;</code>）：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> m<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">gets</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//不能写成m=gets();</span>
     cout<span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>输入：jkljkljkl
 输出：jkljkljkl
 输入：jkl jkl jkl
@@ -638,24 +638,24 @@
 <p><em>注：gets(char对象地址)</em><br> 　　gets()只能和char(或char*)定义的字符串地址搭配，不能和string定义的字符串地址搭配</p>
 </blockquote>
 <p><strong>用法2：</strong> 类似cin.getline()里面的一个例子，gets()同样可以用在多维数组里面：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> m<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n请输入第"</span><span class="token operator">&lt;&lt;</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token string">"个字符串："</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
         <span class="token function">gets</span><span class="token punctuation">(</span>m<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"输出m["</span><span class="token operator">&lt;&lt;</span>j<span class="token operator">&lt;&lt;</span><span class="token string">"]的值:"</span><span class="token operator">&lt;&lt;</span>m<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>请输入第1个字符串：
 kskr1
 请输入第2个字符串：
@@ -666,15 +666,15 @@ kskr3
 输出m[1]的值:kskr2
 输出m[2]的值:kskr3</code></pre>
 <h2 id="getchar"><a href="#getchar" class="headerlink" title="getchar()"></a>getchar()</h2><p><strong>只有一种用法</strong>：接受一个字符（需 #include <string>）：</string></p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
     ch<span class="token operator">=</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//不能写成getchar(ch);</span>
     cout<span class="token operator">&lt;&lt;</span>ch<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>输入：jkljkljkl
 输出：j</code></pre>
 <blockquote>
@@ -682,11 +682,11 @@ kskr3
 </blockquote>
 <h2 id="附一：-cin-get-与cin-getline-的异同"><a href="#附一：-cin-get-与cin-getline-的异同" class="headerlink" title="附一： cin.get()与cin.getline()的异同"></a>附一： cin.get()与cin.getline()的异同</h2><p><strong>相同点：</strong> cin.get ()和cin.getline()都是对输入的面向行的读取,即一次读取整行而不是单个数字或字符。</p>
 <p><strong>不同点一：</strong> cin.get()每次读取一整行并把由Enter键生成的换行符留在输入队列中，如：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> SIZE <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter your name:"</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> name<span class="token punctuation">[</span>SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
     cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -696,7 +696,7 @@ kskr3
     cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>address<span class="token punctuation">,</span>SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//这里直接读入了上次输入的回车符，因而不允许用户再输入了</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"address:"</span> <span class="token operator">&lt;&lt;</span> address<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>输出：</p>
 <pre><code>Enter your name:jimmyi shi
 name:jimmyi shi
@@ -708,12 +708,12 @@ Enter your address:address:</code></pre>
 <li>② 可以把第一次调用的cin.get()函数组合式地写为cin.get(name,SIZE).get();直接吃掉换行符</li>
 </ul>
 <p><strong>不同点二：</strong> cin.getline()每次读取一整行并把由Enter键生成的换行符抛弃，如：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 <span class="token keyword">using</span> std<span class="token operator">::</span>cin<span class="token punctuation">;</span>
 <span class="token keyword">using</span> std<span class="token operator">::</span>cout<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> SIZE <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter your name:"</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> name<span class="token punctuation">[</span>SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
     cin<span class="token punctuation">.</span><span class="token function">getline</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -722,7 +722,7 @@ Enter your address:address:</code></pre>
     <span class="token keyword">char</span> address<span class="token punctuation">[</span>SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
     cin<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>address<span class="token punctuation">,</span>SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"address:"</span> <span class="token operator">&lt;&lt;</span> address<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>输出：</p>
 <pre><code>Enter your name:jimmyi shi
 name:jimmyi shi
@@ -747,16 +747,16 @@ address:YN QJ</code></pre>
 cout<span class="token operator">&lt;&lt;</span>str<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如：输入abcd，第一次回车，abcd被存放到输入缓冲区，此时程序仍然停留在执行语句getline(cin,str);中，第二次回车，abcd被str读取保存，空字符(回车符)被送到输入缓冲区，然后getline(cin,str);执行完毕，跳到cout语句，输出str:  abcd。</p>
 <p>以下这个小程序在第一次调用getline(cin,line)时需要输入2个信息流，以后每输入新的信息流，最就会输出上一次输入的信息流，可以体验一下什么是队列：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     string line<span class="token punctuation">;</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span>line<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// getline函数将istream参数作为返回值，和输入操作符一样也把它用作判断条件</span>
         cout<span class="token operator">&lt;&lt;</span>line<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10533718">本文全文下载</a></p>
 </blockquote>
@@ -1355,7 +1355,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

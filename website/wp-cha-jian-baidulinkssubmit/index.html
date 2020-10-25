@@ -541,18 +541,18 @@
 <p>/wp-content/plugins/baidu-links-submit/log/submits.log</p>
 </blockquote>
 <p>若<strong>推送成功</strong>返回的报文日志是这样的（其中remain表示当天的剩余配额，success表示已成功推送的数量）：</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token property">"remain"</span><span class="token operator">:</span> <span class="token number">4999999</span><span class="token punctuation">,</span>
   <span class="token property">"success"</span><span class="token operator">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>若推送返回的报文日志是这样的（<strong>not_same_site非空</strong>），则是提交失败：</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token property">"remain"</span><span class="token operator">:</span> <span class="token number">5000000</span><span class="token punctuation">,</span>
   <span class="token property">"success"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
   <span class="token property">"not_same_site"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"http://www.exp-blog.com/website/wp-cha-jian-baidulinkssubmit/"</span>
   <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发生这种情况是因为百度认为<strong>当前站点推送了不属于该站点的链接</strong>，这是不允许的。而原因很可能就是 WordPress设置的站点名称 与 百度站长平台设置的站点名称 不一致引起的，<strong>处理方法</strong>见前文 <a href="#%E2%91%A0-%E6%B3%A8%E5%86%8C%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF%E5%B9%B3%E5%8F%B0">① 注册百度站长平台</a>。</p>
 <h2 id="关于重复推送"><a href="#关于重复推送" class="headerlink" title="关于重复推送"></a>关于重复推送</h2><p>每篇文章在推送到百度后，文章的<font color="red"><strong>自定义栏目会多出一个值Baidusubmit</strong></font>， true表示推送成功，false表示推送失败。</p>
 <p>推送成功的文章不会再次推送链接（即使更新过内容），而推送失败的文章，在下次更新时会尝试重新推送。</p>
@@ -1165,7 +1165,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             

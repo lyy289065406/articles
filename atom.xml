@@ -153,13 +153,13 @@
     
     <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
     
-    <category term="trojan" scheme="https://exp-blog.com/tags/trojan/"/>
-    
     <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
     
     <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
+    
+    <category term="trojan" scheme="https://exp-blog.com/tags/trojan/"/>
     
   </entry>
   
@@ -273,6 +273,40 @@
   </entry>
   
   <entry>
+    <title>Android 逆向学习笔记</title>
+    <link href="https://exp-blog.com/safe/android-ni-xiang-xue-xi-bi-ji/"/>
+    <id>https://exp-blog.com/safe/android-ni-xiang-xue-xi-bi-ji/</id>
+    <published>2020-01-28T10:38:24.000Z</published>
+    <updated>2020-10-25T09:10:31.358Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;练习&quot;&gt;&lt;a href=&quot;#练习&quot; class=&quot;headerlink&quot; title=&quot;练习&quot;&gt;&lt;/a&gt;练习&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th</summary>
+        
+      
+    
+    
+    
+    <category term="安全" scheme="https://exp-blog.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Android" scheme="https://exp-blog.com/tags/Android/"/>
+    
+    <category term="逆向" scheme="https://exp-blog.com/tags/%E9%80%86%E5%90%91/"/>
+    
+    <category term="反编译" scheme="https://exp-blog.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+    <category term="壳" scheme="https://exp-blog.com/tags/%E5%A3%B3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>获取 Sysmon 事件信息</title>
     <link href="https://exp-blog.com/lang/getsysmon/"/>
     <id>https://exp-blog.com/lang/getsysmon/</id>
@@ -367,7 +401,7 @@
     <link href="https://exp-blog.com/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/"/>
     <id>https://exp-blog.com/safe/androidapp-fan-bian-yi-ru-men-xue-xi-bi-ji/</id>
     <published>2019-11-21T11:40:00.000Z</published>
-    <updated>2020-10-25T05:18:17.716Z</updated>
+    <updated>2020-10-25T09:10:05.239Z</updated>
     
     
       
@@ -387,6 +421,8 @@
     
     
     <category term="Android" scheme="https://exp-blog.com/tags/Android/"/>
+    
+    <category term="逆向" scheme="https://exp-blog.com/tags/%E9%80%86%E5%90%91/"/>
     
     <category term="反编译" scheme="https://exp-blog.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     
@@ -498,9 +534,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
-    
     <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
+    
+    <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
     
   </entry>
   
@@ -1261,13 +1297,13 @@
     
     <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
     
+    <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
+    
     <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
     
     <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
-    
-    <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
     
   </entry>
   
@@ -1345,9 +1381,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
-    
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
     <category term="暗时间" scheme="https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/"/>
     
@@ -1462,9 +1498,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
-    
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
   </entry>
   
@@ -1569,11 +1605,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
-    
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
   </entry>
   
@@ -1683,11 +1719,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
-    
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

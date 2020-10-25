@@ -686,20 +686,20 @@ module helloidl{
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//HelloImpl.java</span>
 <span class="token keyword">import</span> helloidl<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloImpl</span> <span class="token keyword">extends</span> <span class="token class-name">HelloPOA</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> String <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloImpl</span> <span class="token keyword">extends</span> <span class="token class-name">HelloPOA</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> String <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token string">"\nHello world !!\n"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="6-3-4-2-HelloServer-java"><a href="#6-3-4-2-HelloServer-java" class="headerlink" title="6.3.4.2. HelloServer.java"></a>6.3.4.2. HelloServer.java</h5><p>Servant仅是实现代码，而Server是包含main()函数的可执行的代码。Server的主要任务就是创建所需的Servant，同时通知POA已准备就绪，可以接受客户方的请求。</p>
 <p>新建一个文件HelloServer.java，代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//HelloServer.java</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span>CORBA<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span>PortableServer<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServer</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServer</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
             <span class="token comment" spellcheck="true">// 初始化ORB</span>
             ORB orb <span class="token operator">=</span> ORB<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -709,7 +709,7 @@ module helloidl{
                     <span class="token punctuation">.</span><span class="token function">resolve_initial_references</span><span class="token punctuation">(</span><span class="token string">"RootPOA"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
             <span class="token comment" spellcheck="true">// 持久的POA创建策略</span>
-            org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span>CORBA<span class="token punctuation">.</span>Policy<span class="token punctuation">[</span><span class="token punctuation">]</span> policies <span class="token operator">=</span> <span class="token punctuation">{</span>  rootPOA<span class="token punctuation">.</span><span class="token function">create_lifespan_policy</span><span class="token punctuation">(</span>LifespanPolicyValue<span class="token punctuation">.</span>PERSISTENT<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span>CORBA<span class="token punctuation">.</span>Policy<span class="token punctuation">[</span><span class="token punctuation">]</span> policies <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>  rootPOA<span class="token punctuation">.</span><span class="token function">create_lifespan_policy</span><span class="token punctuation">(</span>LifespanPolicyValue<span class="token punctuation">.</span>PERSISTENT<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 
             <span class="token comment" spellcheck="true">// 使用正确的策略创建myPOA</span>
             POA myPOA <span class="token operator">=</span> rootPOA<span class="token punctuation">.</span><span class="token function">create_POA</span><span class="token punctuation">(</span><span class="token string">"hello_world_poa"</span><span class="token punctuation">,</span> rootPOA
@@ -732,22 +732,22 @@ module helloidl{
             <span class="token comment" spellcheck="true">// 等待进入的请求</span>
             orb<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ERROR: "</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="6-3-5-编写Client端的接口实现代码"><a href="#6-3-5-编写Client端的接口实现代码" class="headerlink" title="6.3.5. 编写Client端的接口实现代码"></a>6.3.5. 编写Client端的接口实现代码</h4><h5 id="6-3-5-1-HelloClient"><a href="#6-3-5-1-HelloClient" class="headerlink" title="6.3.5.1. HelloClient"></a>6.3.5.1. HelloClient</h5><p>Client程序就是客户方的可执行程序，它需要使用到Server方的服务。</p>
 <p>新建一个文件HelloClient.java，代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//HelloClient.java</span>
 <span class="token keyword">import</span> helloidl<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span>CORBA<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloClient</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloClient</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">static</span> Hello helloImpl<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
             <span class="token comment" spellcheck="true">// 初始化ORB</span>
             ORB orb <span class="token operator">=</span> ORB<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -761,12 +761,12 @@ module helloidl{
             <span class="token comment" spellcheck="true">// 输出结果</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>manager<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ERROR : "</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="6-3-6-程序的编译和运行"><a href="#6-3-6-程序的编译和运行" class="headerlink" title="6.3.6. 程序的编译和运行"></a>6.3.6. 程序的编译和运行</h4><p>编译客户端和服务端程序并运行，步骤如下：</p>
 <ul>
 <li>（1）把3个java文件HelloImpl.java、HelloServer.java和HelloClient放到目录D:\corba_test下；</li>
@@ -1403,7 +1403,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.8k</span>&nbsp;字
+                class="white-color">219.3k</span>&nbsp;字
             
             
             
