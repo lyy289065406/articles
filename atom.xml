@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-10-25T02:40:49.316Z</updated>
+  <updated>2020-10-25T02:49:32.772Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>如何使用浏览器进行远程开发</title>
-    <link href="https://exp-blog.com/website/ru-he-shi-yong-liu-lan-qi-jin-xing-yuan-cheng-kai-fa/"/>
-    <id>https://exp-blog.com/website/ru-he-shi-yong-liu-lan-qi-jin-xing-yuan-cheng-kai-fa/</id>
+    <link href="https://exp-blog.com/tools/ru-he-shi-yong-liu-lan-qi-jin-xing-yuan-cheng-kai-fa/"/>
+    <id>https://exp-blog.com/tools/ru-he-shi-yong-liu-lan-qi-jin-xing-yuan-cheng-kai-fa/</id>
     <published>2020-10-23T09:00:27.000Z</published>
-    <updated>2020-10-25T02:40:49.316Z</updated>
+    <updated>2020-10-25T02:49:32.772Z</updated>
     
     
       
@@ -34,7 +34,7 @@
     
     
     
-    <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    <category term="开发/工具" scheme="https://exp-blog.com/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="vscode" scheme="https://exp-blog.com/tags/vscode/"/>
@@ -466,9 +466,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
   </entry>
   
@@ -535,6 +535,33 @@
   </entry>
   
   <entry>
+    <title>Ansible-Tower 部署笔记</title>
+    <link href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/"/>
+    <id>https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</id>
+    <published>2018-11-22T08:21:46.000Z</published>
+    <updated>2020-09-13T01:33:10.920Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为时下最流行的自动化运维工具之一，Ansible</summary>
+        
+      
+    
+    
+    
+    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
+    
+    
+    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
+    
+    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WINDOWS 内核学习顺序指引清单</title>
     <link href="https://exp-blog.com/re/windows-nei-he-xue-xi-qing-dan/"/>
     <id>https://exp-blog.com/re/windows-nei-he-xue-xi-qing-dan/</id>
@@ -564,33 +591,6 @@
     <category term="驱动" scheme="https://exp-blog.com/tags/%E9%A9%B1%E5%8A%A8/"/>
     
     <category term="内核" scheme="https://exp-blog.com/tags/%E5%86%85%E6%A0%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ansible-Tower 部署笔记</title>
-    <link href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/"/>
-    <id>https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</id>
-    <published>2018-11-22T08:21:46.000Z</published>
-    <updated>2020-09-13T01:33:10.920Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为时下最流行的自动化运维工具之一，Ansible</summary>
-        
-      
-    
-    
-    
-    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
-    
-    
-    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
-    
-    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
@@ -1539,9 +1539,9 @@
     
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
-    
     <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
   </entry>
   
@@ -1653,9 +1653,9 @@
     
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
-    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
-    
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
