@@ -483,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -694,8 +694,7 @@
 <p>而最开始在模拟器上运行 YZ.apk 所诱发的提示【禁止在Root设备运行】，明显就是 <code>k.a((int) R.string.warn_root_disabled);</code> 这行代码执行结果。</p>
 <p>那么要达到无法检测 root 的目标，只需要让 <code>k.a()</code> 所在的条件分支代码无法执行即可，例如这样修改代码：</p>
 <p><img src="08.jpg"></p>
-<p>但是修改 java 源码后，使用 <code>apktool b yz_jadx</code> 命令重新编译打包会报错：</p>
-<p>【brut.directory.PathNotExist: apktool.yml】</p>
+<p>但是修改 java 源码后，使用 <code>apktool b yz_jadx</code> 命令重新编译打包会报错：【brut.directory.PathNotExist: apktool.yml】</p>
 <p><img src="09.jpg"></p>
 <p>从 <a target="_blank" rel="noopener" href="https://github.com/eleydur0g13/apktool/issues/9">Github issue</a> 找到原因，这是因为 yz_jadx 是通过 jadx 逆向得到的项目，亦即 yz_jadx 并不是 <code>apktool d</code> 命令逆向生成的，导致 apktool 找不到 apktool.yml 文件，从而无法重新打包。</p>
 <h4 id="A-2-3-修改-root-检测逻辑（Smali中间码）"><a href="#A-2-3-修改-root-检测逻辑（Smali中间码）" class="headerlink" title="A.2.3. 修改 root 检测逻辑（Smali中间码）"></a>A.2.3. 修改 root 检测逻辑（Smali中间码）</h4><p>于是这里变更逆向的方法：使用 <code>apktool d YZ.apk</code> 命令反编译 YZ.apk ，得到目录名为 YZ 项目。</p>
@@ -835,6 +834,35 @@
 <td align="left">无条件跳转到 <code>:goto_0</code> 位置</td>
 </tr>
 </tbody></table>
+<p>更具体的对应关系见下图：</p>
+<p><img src="11.jpg"></p>
+<p>有了对应关系，结合前面修改 java 代码的思路，其实就很容易修改 smali 代码了：</p>
+<ul>
+<li>方案1：只要使得在执行 <code>if (z)</code> 时（对应上表16行），令 <code>z == false</code> 即可</li>
+<li>方案2：直接注释/删除掉终止进程的代码（对应上表17行）</li>
+</ul>
+<p>方案2其实是最简单的，但是我有个顾虑就是：smali 用 .line 标记了对应 java 源码的行数，我担心 smali 会像汇编一样，如果不使用类似 nop 的空语句去填充会使得重编译后的文件无法执行。</p>
+<p>因此我采用了方案1，不改动代码行数的前提下，通过跳转实现条件分支的绕过。</p>
+<p>其实方法也很简单，只需要把上表第 10 行和第 13 行的 <code>if-eqz</code> 条件跳转改成无条件跳转即可。</p>
+<table>
+<thead>
+<tr>
+<th align="left">修改前</th>
+<th align="left">修改后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>if-eqz v2, :cond_0</code></td>
+<td align="left"><code>goto :cond_0</code></td>
+</tr>
+<tr>
+<td align="left"><code>if-eqz v2, :cond_2</code></td>
+<td align="left"><code>goto :cond_2</code></td>
+</tr>
+</tbody></table>
+<p><img src="12.jpg"></p>
+<h4 id="A-2-4-重新编译打包"><a href="#A-2-4-重新编译打包" class="headerlink" title="A.2.4. 重新编译打包"></a>A.2.4. 重新编译打包</h4><p>因为前面已经从 apktool.yml 知道这个 apk 原本是使用 JDK 1.8 编译的，</p>
+<p>重新编译前需要注意设置系统环境变量，把 JDK 版本切换到 1.8 ：</p>
 <h2 id="【目标-2】-通过-abServer-签名验证"><a href="#【目标-2】-通过-abServer-签名验证" class="headerlink" title="【目标 2】 通过 abServer 签名验证"></a>【目标 2】 通过 abServer 签名验证</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1456,7 +1484,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">216.2k</span>&nbsp;字
+                class="white-color">216.5k</span>&nbsp;字
             
             
             
