@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
 
@@ -558,11 +558,11 @@
 <p><img src="./02.png"></p>
 <p><img src="./03.png"></p>
 <h2 id="7-使用Java测试zookeeper集群"><a href="#7-使用Java测试zookeeper集群" class="headerlink" title="7. 使用Java测试zookeeper集群"></a>7. 使用Java测试zookeeper集群</h2><h3 id="7-1-官方样例"><a href="#7-1-官方样例" class="headerlink" title="7.1. 官方样例"></a>7.1. 官方样例</h3><p>官方的Maven原生构件：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.4.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>zookeeper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.4.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>官方测试代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>CreateMode<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>WatchedEvent<span class="token punctuation">;</span>
@@ -572,22 +572,22 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Stat<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * &lt;PRE&gt;
+ * &lt;PRE>
  * apache-zookeeper测试
- * &lt;/PRE&gt;
- * &lt;B&gt;PROJECT : &lt;/B&gt; zookeeper
- * &lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
+ * &lt;/PRE>
+ * &lt;B>PROJECT : &lt;/B> zookeeper
+ * &lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
  * @version   2018-08-02
  * @author    EXP: 272629724@qq.com
  * @since     jdk版本：jdk1.6
  */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestZooKeeper</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestZooKeeper</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         <span class="token keyword">new</span> <span class="token class-name">TestZooKeeper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         <span class="token keyword">final</span> String CHARSET <span class="token operator">=</span> <span class="token string">"UTF-8"</span><span class="token punctuation">;</span>
 
         <span class="token comment" spellcheck="true">/* 连接到zookeeper集群 */</span>
@@ -600,21 +600,21 @@
          * 阻塞等待连接到zookeeper集群.
          * 若zookeeper已经启动一段时间是不需要循环检测的，此方法目的是兼容zookeeper刚刚启动的情况.
          */</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>zk<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ZooKeeper<span class="token punctuation">.</span>States<span class="token punctuation">.</span>CONNECTED<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>zk<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ZooKeeper<span class="token punctuation">.</span>States<span class="token punctuation">.</span>CONNECTED<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         <span class="token comment" spellcheck="true">/* 若zookeeper节点不存在，则创建之 */</span>
         String nodePath <span class="token operator">=</span> <span class="token string">"/zk-test-node"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 节点位置</span>
         Stat stat <span class="token operator">=</span> zk<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>stat <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>stat <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             String nodeData <span class="token operator">=</span> <span class="token string">"http://exp-blog.com"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 节点数据</span>
 
             <span class="token comment" spellcheck="true">// 创建一个持久化节点(即在zookeeper服务停止后依然可以保存该节点数据)</span>
             <span class="token comment" spellcheck="true">// 与之相对的则是 CreateMode.EPHEMERAL 临时节点(即在zookeeper服务停止后该节点数据丢失)</span>
             zk<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">,</span> nodeData<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span>CHARSET<span class="token punctuation">)</span><span class="token punctuation">,</span> 
                     ZooDefs<span class="token punctuation">.</span>Ids<span class="token punctuation">.</span>OPEN_ACL_UNSAFE<span class="token punctuation">,</span> CreateMode<span class="token punctuation">.</span>PERSISTENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         <span class="token comment" spellcheck="true">/* 从zookeeper节点上读取数据 */</span>
         <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> zk<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> stat<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -623,52 +623,52 @@
 
         <span class="token comment" spellcheck="true">/* 断开zookeeper连接 */</span>
         zk<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
-     * &lt;PRE&gt;
+     * &lt;PRE>
      * zookeeper节点监视器(当节点发生变化时, 会触发此监视器)
-     * &lt;/PRE&gt;
-     * &lt;B&gt;PROJECT : &lt;/B&gt; zookeeper
-     * &lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
+     * &lt;/PRE>
+     * &lt;B>PROJECT : &lt;/B> zookeeper
+     * &lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
      * @version   2018-08-02
      * @author    EXP: 272629724@qq.com
      * @since     jdk版本：jdk1.6
      */</span>
-    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">NodeWatcher</span> <span class="token keyword">implements</span> <span class="token class-name">Watcher</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">NodeWatcher</span> <span class="token keyword">implements</span> <span class="token class-name">Watcher</span> <span class="token punctuation">{</span>
 
         <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span>WatchedEvent event<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span>WatchedEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"path:"</span> <span class="token operator">+</span> event<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"type:"</span> <span class="token operator">+</span> event<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"stat:"</span> <span class="token operator">+</span> event<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="7-2-Github样例（更精简的zk客户端）"><a href="#7-2-Github样例（更精简的zk客户端）" class="headerlink" title="7.2. Github样例（更精简的zk客户端）"></a>7.2. Github样例（更精简的zk客户端）</h3><p>zkclient的Maven构件：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.github.adyliu<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>zkclient<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.1.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.github.adyliu<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>zkclient<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.1.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>zkclient测试代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>zkclient<span class="token punctuation">.</span>ZkClient<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * &lt;PRE&gt;
+ * &lt;PRE>
  * zkClient测试
- * &lt;/PRE&gt;
- * &lt;B&gt;PROJECT : &lt;/B&gt; zookeeper
- * &lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
+ * &lt;/PRE>
+ * &lt;B>PROJECT : &lt;/B> zookeeper
+ * &lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
  * @version   2018-08-02
  * @author    EXP: 272629724@qq.com
  * @since     jdk版本：jdk1.6
  */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestZooKeeperClient</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestZooKeeperClient</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
 
         <span class="token comment" spellcheck="true">/* 连接到zookeeper集群 */</span>
         <span class="token keyword">final</span> String ZK_CONN_STR <span class="token operator">=</span> <span class="token string">"127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"</span><span class="token punctuation">;</span>
@@ -676,20 +676,20 @@
 
         <span class="token comment" spellcheck="true">/* 若zookeeper节点不存在，则创建之 */</span>
         String nodePath <span class="token operator">=</span> <span class="token string">"/zk-test-node"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 节点位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>zkClient<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>zkClient<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             String nodeData <span class="token operator">=</span> <span class="token string">"http://exp-blog.com"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 节点数据</span>
 
             <span class="token comment" spellcheck="true">// 创建一个持久化节点(即在zookeeper服务停止后依然可以保存该节点数据)</span>
             <span class="token comment" spellcheck="true">// 与之相对的则是 createEphemeral 临时节点(即在zookeeper服务停止后该节点数据丢失)</span>
             zkClient<span class="token punctuation">.</span><span class="token function">createPersistent</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">,</span> nodeData<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         <span class="token comment" spellcheck="true">/* 从zookeeper节点上读取数据 */</span>
         String nodeData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>zkClient<span class="token punctuation">.</span><span class="token function">readData</span><span class="token punctuation">(</span>nodePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>nodeData<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
 <li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10580590">本文全文下载</a></li>
 <li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10580686">ZKInspector 下载</a></li>
@@ -1295,7 +1295,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

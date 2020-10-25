@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    15 分
                 </div>
                 
 
@@ -534,13 +534,13 @@
 </tbody></table>
 <p><img src="./01.png" alt="BMP图像的文件结构"></p>
 <h3 id="P1-位图文件头：BITMAPFILEHEADER"><a href="#P1-位图文件头：BITMAPFILEHEADER" class="headerlink" title="P1. 位图文件头：BITMAPFILEHEADER"></a>P1. 位图文件头：BITMAPFILEHEADER</h3><p>这部分是一个结构体，其定义如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagBITMAPFILEHEADER <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagBITMAPFILEHEADER <span class="token punctuation">{</span>
     WORD           bfType<span class="token punctuation">;</span>
     DWORD          bfSize<span class="token punctuation">;</span>
     WORD           bfReserved1<span class="token punctuation">;</span>
     WORD           bfReserved2<span class="token punctuation">;</span>
     DWORD bfOffBits<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> BITMAPFILEHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> BITMAPFILEHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个结构的长度是固定的，为14个字节（WORD为无符号16位整数，DWORD为无符号32位整数），各个域的说明如下：</p>
 <table>
 <thead>
@@ -583,7 +583,7 @@
 </tr>
 </tbody></table>
 <h3 id="P2-位图信息头：BITMAPINFOHEADER"><a href="#P2-位图信息头：BITMAPINFOHEADER" class="headerlink" title="P2. 位图信息头：BITMAPINFOHEADER"></a>P2. 位图信息头：BITMAPINFOHEADER</h3><p>这部分也是一个结构体，其定义如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagBITMAPINFOHEADER <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagBITMAPINFOHEADER <span class="token punctuation">{</span>
     DWORD  biSize<span class="token punctuation">;</span>
     LONG        biWidth<span class="token punctuation">;</span>
     LONG        biHeight<span class="token punctuation">;</span>
@@ -595,7 +595,7 @@
     LONG        biYPelsPerMeter<span class="token punctuation">;</span>
     DWORD       biClrUsed<span class="token punctuation">;</span>
     DWORD       biClrImportant<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> BITMAPINFOHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> BITMAPINFOHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个结构的长度是固定的，为40个字节（LONG为32位整数），各个域的说明如下：</p>
 <table>
 <thead>
@@ -677,12 +677,12 @@
 <p>前面已经说过，有些位图（如真彩色图）是不需要调色板的，即在 位图信息头BITMAPINFOHEADER 的后面直接就是位图数据。</p>
 <p>调色板实际上是一个数组，共有biClrUsed个元素（如果该值为零，则有$\small{2^{biBitCount}}$个元素）。</p>
 <p>数组中每个元素的类型是一个RGBQUAD结构，占4个字节，其定义如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagRGBQUAD <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagRGBQUAD <span class="token punctuation">{</span>
 BYTE    rgbBlue<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//该颜色的蓝色分量</span>
 BYTE    rgbGreen<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//该颜色的绿色分量</span>
 BYTE    rgbRed<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//该颜色的红色分量</span>
 BYTE    rgbReserved<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//保留值</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> RGBQUAD<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> RGBQUAD<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="P4-实际的位图数据"><a href="#P4-实际的位图数据" class="headerlink" title="P4. 实际的位图数据"></a>P4. 实际的位图数据</h3><p>对于<strong>用到调色板</strong>的位图，图象数据就是该象素颜在调色板中的索引值。</p>
 <p>而对于<strong>不用调色板</strong>的位图，又分为2色、16色、256色位图和真彩色位图：</p>
 <ul>
@@ -701,14 +701,14 @@ BYTE    rgbReserved<span class="token punctuation">;</span>     <span class="tok
 </blockquote>
 <h2 id="读取BMP位图并简单处理"><a href="#读取BMP位图并简单处理" class="headerlink" title="读取BMP位图并简单处理"></a>读取BMP位图并简单处理</h2><p>当了解了这些后，就可以编程读取BMP位图了。其像素信息，可以存储在一个一维数组里面，以后处理图片就是直接对这个数组进行处理。</p>
 <p>下面是示例源码：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;math.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iomanip.h&gt;</span> </span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fstream.h&gt;</span></span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;math.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iomanip.h></span> </span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fstream.h></span></span>
 
 <span class="token comment" spellcheck="true">//---</span>
 <span class="token comment" spellcheck="true">//以下该模块是完成BMP图像(彩色图像是24bit RGB各8bit)的像素获取，并存在文件名为xiang_su_zhi.txt中</span>
@@ -723,7 +723,7 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
 <span class="token comment" spellcheck="true">//-------</span>
 <span class="token comment" spellcheck="true">//读图像的位图数据、宽、高、颜色表及每像素位数等数据进内存，存放在相应的全局变量中</span>
 <span class="token keyword">bool</span> <span class="token function">readBmp</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>bmpName<span class="token punctuation">)</span> 
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>bmpName<span class="token punctuation">,</span><span class="token string">"rb"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//二进制读方式打开指定的图像文件</span>
 
     <span class="token keyword">if</span><span class="token punctuation">(</span>fp<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
@@ -746,7 +746,7 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
     <span class="token keyword">int</span> lineByte<span class="token operator">=</span><span class="token punctuation">(</span>bmpWidth <span class="token operator">*</span> biBitCount<span class="token operator">/</span><span class="token number">8</span><span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">4</span><span class="token operator">*</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//灰度图像有颜色表，且颜色表表项为256</span>
 
     <span class="token keyword">if</span><span class="token punctuation">(</span>biBitCount<span class="token operator">==</span><span class="token number">8</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
 
         <span class="token comment" spellcheck="true">//申请颜色表所需要的空间，读颜色表进内存</span>
 
@@ -754,7 +754,7 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
 
         <span class="token function">fread</span><span class="token punctuation">(</span>pColorTable<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>RGBQUAD<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">256</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">//申请位图数据所需要的空间，读位图数据进内存</span>
     pBmpBuf<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token punctuation">[</span>lineByte <span class="token operator">*</span> bmpHeight<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -764,12 +764,12 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
     <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//关闭文件</span>
 
     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//读取文件成功</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//-----</span>
 <span class="token comment" spellcheck="true">//给定一个图像位图数据、宽、高、颜色表指针及每像素所占的位数等信息,将其写到指定文件中</span>
 <span class="token keyword">bool</span> <span class="token function">saveBmp</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>bmpName<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>imgBuf<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">,</span> <span class="token keyword">int</span> biBitCount<span class="token punctuation">,</span> RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
 
     <span class="token comment" spellcheck="true">//如果位图数据指针为0，则没有数据传入，函数返回</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>imgBuf<span class="token punctuation">)</span>
@@ -848,12 +848,12 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
 
     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//----</span>
 <span class="token comment" spellcheck="true">//以下为像素的读取函数</span>
 <span class="token keyword">void</span> <span class="token function">doIt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
 
     <span class="token comment" spellcheck="true">//读入指定BMP文件进内存</span>
     <span class="token keyword">char</span> readPath<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"nv.BMP"</span><span class="token punctuation">;</span>
@@ -874,7 +874,7 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
     ofstream <span class="token function">outfile</span><span class="token punctuation">(</span><span class="token string">"图像像素.txt"</span><span class="token punctuation">,</span>ios<span class="token operator">::</span>in<span class="token operator">|</span>ios<span class="token operator">::</span>trunc<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">if</span><span class="token punctuation">(</span>biBitCount<span class="token operator">==</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//对于灰度图像</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>              
+    <span class="token punctuation">{</span>              
     <span class="token comment" spellcheck="true">//</span>
     <span class="token comment" spellcheck="true">//以下完成图像的分割成8*8小单元，并把像素值存储到指定文本中。由于BMP图像的像素数据是从</span>
     <span class="token comment" spellcheck="true">//左下角：由左往右，由上往下逐行扫描的</span>
@@ -884,66 +884,66 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
         <span class="token comment" spellcheck="true">//int L2=0;</span>
         <span class="token comment" spellcheck="true">//int fen_ge=8;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> fen_ge_hang<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>fen_ge_hang<span class="token operator">&lt;</span><span class="token number">8</span><span class="token punctuation">;</span>fen_ge_hang<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//64*64矩阵行循环</span>
-        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">{</span> 
             <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> fen_ge_lie<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>fen_ge_lie<span class="token operator">&lt;</span><span class="token number">8</span><span class="token punctuation">;</span>fen_ge_lie<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//64*64列矩阵循环</span>
-            <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> 
+            <span class="token punctuation">{</span> 
             <span class="token comment" spellcheck="true">//--------</span>
-                <span class="token keyword">for</span><span class="token punctuation">(</span>L1<span class="token operator">=</span>hang<span class="token punctuation">;</span>L1<span class="token operator">&gt;</span>hang<span class="token number">-8</span><span class="token punctuation">;</span>L1<span class="token operator">--</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//8*8矩阵行</span>
-                <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span>L1<span class="token operator">=</span>hang<span class="token punctuation">;</span>L1<span class="token operator">></span>hang<span class="token number">-8</span><span class="token punctuation">;</span>L1<span class="token operator">--</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//8*8矩阵行</span>
+                <span class="token punctuation">{</span>
                     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> L2<span class="token operator">=</span>lie<span class="token punctuation">;</span>L2<span class="token operator">&lt;</span>lie<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">;</span>L2<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//8*8矩阵列</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">{</span>
                         m<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">(</span>pBmpBuf<span class="token operator">+</span>L1<span class="token operator">*</span>lineByte<span class="token operator">+</span>L2<span class="token punctuation">)</span><span class="token punctuation">;</span>
                         outfile<span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>
                         count_xiang_su<span class="token operator">++</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span><span class="token punctuation">(</span>count_xiang_su<span class="token operator">%</span><span class="token number">8</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//每8*8矩阵读入文本文件</span>
-                        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">{</span>
                             outfile<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-                        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
             <span class="token comment" spellcheck="true">//---------</span>
                 hang<span class="token operator">=</span><span class="token number">63</span><span class="token operator">-</span>fen_ge_hang<span class="token operator">*</span><span class="token number">8</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//64*64矩阵行变换</span>
                 lie<span class="token operator">+</span><span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//64*64矩阵列变换</span>
                     <span class="token comment" spellcheck="true">//该一行（64）由8个8*8矩阵的行组成</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
             hang<span class="token operator">-</span><span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//64*64矩阵的列变换</span>
             lie<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//64*64juzhen</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">//double xiang_su[2048];</span>
     <span class="token comment" spellcheck="true">//ofstream outfile("xiang_su_zhi.txt",ios::in|ios::trunc);</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>outfile<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"open error!"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
         <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>biBitCount<span class="token operator">==</span><span class="token number">24</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//彩色图像</span>
+    <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//彩色图像</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>bmpHeight<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">{</span>
             <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>bmpWidth<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">{</span>
                 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>k<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//每像素RGB三个分量分别置0才变成黑色</span>
-                <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">{</span>
                     <span class="token comment" spellcheck="true">//*(pBmpBuf+i*lineByte+j*3+k)-=40;</span>
                     m<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">(</span>pBmpBuf<span class="token operator">+</span>i<span class="token operator">*</span>lineByte<span class="token operator">+</span>j<span class="token operator">*</span><span class="token number">3</span><span class="token operator">+</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
                     outfile<span class="token operator">&lt;&lt;</span>m<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>
                     count_xiang_su<span class="token operator">++</span><span class="token punctuation">;</span>
                     <span class="token keyword">if</span><span class="token punctuation">(</span>count_xiang_su<span class="token operator">%</span><span class="token number">8</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">{</span>
                         outfile<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
                 <span class="token comment" spellcheck="true">//n++;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
                 n<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"总的像素个素为:"</span><span class="token operator">&lt;&lt;</span>n<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
         cout<span class="token operator">&lt;&lt;</span><span class="token string">"----"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">//将图像数据存盘</span>
     <span class="token keyword">char</span> writePath<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"nvcpy.BMP"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//图片处理后再存储</span>
@@ -955,12 +955,12 @@ RGBQUAD <span class="token operator">*</span>pColorTable<span class="token punct
 
     <span class="token keyword">if</span><span class="token punctuation">(</span>biBitCount<span class="token operator">==</span><span class="token number">8</span><span class="token punctuation">)</span>
         <span class="token keyword">delete</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>pColorTable<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token function">doIt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="关于图像识别"><a href="#关于图像识别" class="headerlink" title="关于图像识别"></a>关于图像识别</h2><p>在图像识别领域中（如验证码识别），常规的图像<strong>处理流程</strong>是：灰度化/二值化、去噪（包括嘈点和干扰线）、字符分隔、字符归一化、识别训练。</p>
 <p>其中<strong>灰度化/二值化</strong>其实都是为去噪做准备的，毕竟相对于彩色图像，黑白图像在进行噪点识别时会更简单、运算量也少。</p>
 <p><strong>去噪</strong>的方法有很多，常见的有：</p>
@@ -1582,7 +1582,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

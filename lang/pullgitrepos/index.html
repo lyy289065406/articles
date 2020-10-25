@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    867
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -506,7 +506,7 @@
 
 <span class="token comment" spellcheck="true"># 命令参数定义</span>
 DOMAIN<span class="token operator">=</span><span class="token string">"www.xyz.com/repository"</span>
-GITURL<span class="token operator">=</span><span class="token string">"https://$&amp;#123;DOMAIN&amp;#125;"</span>               # -a: Git 仓库地址
+GITURL<span class="token operator">=</span><span class="token string">"https://<span class="token variable">${DOMAIN}</span>"</span>               <span class="token comment" spellcheck="true"># -a: Git 仓库地址</span>
 GITBRANCH<span class="token operator">=</span><span class="token string">"master"</span>                       <span class="token comment" spellcheck="true"># -b: Git 仓库分支名称</span>
 GITUSER<span class="token operator">=</span><span class="token string">"user@abc.com"</span>                   <span class="token comment" spellcheck="true"># -u: Git 仓库账号</span>
 GITPASS<span class="token operator">=</span><span class="token string">"123456"</span>                         <span class="token comment" spellcheck="true"># -p: Git 仓库密码</span>
@@ -516,18 +516,18 @@ TARGET<span class="token operator">=</span><span class="token string">"/tmp/repo
 
 <span class="token comment" spellcheck="true"># 使用说明</span>
 usage<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+<span class="token punctuation">{</span>
   <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF
     -h            This help message.
-    -a &lt;url&gt;      Git Repository URL. (Default: "$&amp;#123;GITURL&amp;#125;")
-    -b &lt;branch&gt;   Git Repository Branch. (Default: "$&amp;#123;GITBRANCH&amp;#125;")
-    -u &lt;username&gt; Git Repository Username. (Default: "$&amp;#123;GITUSER&amp;#125;")
-    -p &lt;password&gt; Git Repository Password. (Default: "$&amp;#123;GITPASS&amp;#125;")
-    -v &lt;tag&gt;      Git Repository Tag Version. (Default: "$&amp;#123;GITTAG&amp;#125;")
-    -t &lt;path&gt;     Save Git Repository Directory. (Default: "$&amp;#123;TARGET&amp;#125;")
+    -a &lt;url>      Git Repository URL. (Default: "<span class="token variable">${GITURL}</span>")
+    -b &lt;branch>   Git Repository Branch. (Default: "<span class="token variable">${GITBRANCH}</span>")
+    -u &lt;username> Git Repository Username. (Default: "<span class="token variable">${GITUSER}</span>")
+    -p &lt;password> Git Repository Password. (Default: "<span class="token variable">${GITPASS}</span>")
+    -v &lt;tag>      Git Repository Tag Version. (Default: "<span class="token variable">${GITTAG}</span>")
+    -t &lt;path>     Save Git Repository Directory. (Default: "<span class="token variable">${TARGET}</span>")
 EOF</span>
   <span class="token keyword">exit</span> 0
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+<span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true"># [ "$1" = "" ] &amp;&amp; usage</span>
 <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">"-h"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> usage
 <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">"-H"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> usage
@@ -557,36 +557,36 @@ EOF</span>
 
 
 
-<span class="token comment" spellcheck="true"># 标记目标路径 $&amp;#123;TARGET&amp;#125; 是否已存在 Git Repository</span>
+<span class="token comment" spellcheck="true"># 标记目标路径 ${TARGET} 是否已存在 Git Repository</span>
 <span class="token function">export</span> EXIST_GITLAB<span class="token operator">=</span><span class="token string">"F"</span>
 
 <span class="token comment" spellcheck="true"># 判断存储路径是否存在 ".." , 避免入参路径穿越</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125; =~ ".." ]] ; then</span>
-  <span class="token keyword">echo</span> <span class="token string">"Error: target path '$&amp;#123;TARGET&amp;#125;' exists path crossing risk (Please remove all '..' !!!)"</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${TARGET}</span> <span class="token operator">=</span>~ <span class="token string">".."</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">echo</span> <span class="token string">"Error: target path '<span class="token variable">${TARGET}</span>' exists path crossing risk (Please remove all '..' !!!)"</span>
   <span class="token keyword">exit</span> 1
 <span class="token keyword">fi</span>
 
 <span class="token comment" spellcheck="true"># 禁止直接使用一、二级目录(如 /, /tmp, /home 等)，必须至少是三级目录</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125; =~ ^/[a-zA-Z0-9]*$ ]] ; then</span>
-  <span class="token keyword">echo</span> <span class="token string">"Error: target path '$&amp;#123;TARGET&amp;#125;' must be a three-level directory at least, eg: /tmp/repository"</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${TARGET}</span> <span class="token operator">=</span>~ ^/<span class="token punctuation">[</span>a-zA-Z0-9<span class="token punctuation">]</span>*$ <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">echo</span> <span class="token string">"Error: target path '<span class="token variable">${TARGET}</span>' must be a three-level directory at least, eg: /tmp/repository"</span>
   <span class="token keyword">exit</span> 1
 <span class="token keyword">fi</span>
 
 <span class="token comment" spellcheck="true"># 要求存储项目的目录为空目录, 确保把相关操作控制在该目录内</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -d $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125; ] ; then</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -d <span class="token variable">${TARGET}</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
   <span class="token keyword">:</span> <span class="token comment" spellcheck="true"># 目录不存在</span>
 
-<span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable"><span class="token variable">`</span><span class="token function">ls</span> -A $<span class="token operator">&amp;</span>#123<span class="token punctuation">;</span>TARGET<span class="token operator">&amp;</span>#125<span class="token punctuation">;</span><span class="token variable">`</span></span>"</span> <span class="token operator">=</span> <span class="token string">""</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+<span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable"><span class="token variable">`</span><span class="token function">ls</span> -A $<span class="token punctuation">{</span>TARGET<span class="token punctuation">}</span><span class="token variable">`</span></span>"</span> <span class="token operator">=</span> <span class="token string">""</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
   <span class="token keyword">:</span> <span class="token comment" spellcheck="true"># 目录存在但是为空</span>
 
 <span class="token keyword">else</span>
 
   <span class="token comment" spellcheck="true"># 检查目标目录是否已存在仓库</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token punctuation">$(</span>cat $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125;/.git/config | grep 'url') =~ $&amp;#123;DOMAIN&amp;#125; ]] ; then</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token punctuation">$(</span>cat <span class="token variable">${TARGET}</span>/.git/config <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'url'</span><span class="token punctuation">)</span> <span class="token operator">=</span>~ <span class="token variable">${DOMAIN}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
     EXIST_GITLAB<span class="token operator">=</span><span class="token string">"T"</span>
 
   <span class="token keyword">else</span>
-    <span class="token keyword">echo</span> <span class="token string">"Error: target path '$&amp;#123;TARGET&amp;#125;' already exists and is not an empty directory."</span>
+    <span class="token keyword">echo</span> <span class="token string">"Error: target path '<span class="token variable">${TARGET}</span>' already exists and is not an empty directory."</span>
     <span class="token keyword">exit</span> 1
   <span class="token keyword">fi</span>
 <span class="token keyword">fi</span>
@@ -596,33 +596,33 @@ EOF</span>
 
 
 <span class="token comment" spellcheck="true"># 删除 url 地址开头的 http 标识</span>
-<span class="token function">export</span> GITURI<span class="token operator">=</span>$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITURL#https://&amp;#125;</span>
-GITURI<span class="token operator">=</span>$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITURI#http://&amp;#125;</span>
+<span class="token function">export</span> GITURI<span class="token operator">=</span>$<span class="token punctuation">{</span>GITURL<span class="token comment" spellcheck="true">#https://}</span>
+GITURI<span class="token operator">=</span>$<span class="token punctuation">{</span>GITURI<span class="token comment" spellcheck="true">#http://}</span>
 
 <span class="token comment" spellcheck="true"># 把 username 和 password 里面的 @ 字符编码为 %40</span>
-GITUSER<span class="token operator">=</span>$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITUSER//@/%40&amp;#125;</span>
-GITPASS<span class="token operator">=</span>$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITPASS//@/%40&amp;#125;</span>
+GITUSER<span class="token operator">=</span><span class="token variable">${GITUSER//@/%40}</span>
+GITPASS<span class="token operator">=</span><span class="token variable">${GITPASS//@/%40}</span>
 
 <span class="token keyword">echo</span> <span class="token string">"---------- Input Params ----------"</span>
-<span class="token keyword">echo</span> <span class="token string">"Git Repository URL = $&amp;#123;GITURL&amp;#125;"</span>
-<span class="token keyword">echo</span> <span class="token string">"Git Repository Branch = $&amp;#123;GITBRANCH&amp;#125;"</span>
-<span class="token keyword">echo</span> <span class="token string">"Git Repository User = $&amp;#123;GITUSER&amp;#125;"</span>
-<span class="token comment" spellcheck="true"># echo "Git Repository Pass = $&amp;#123;GITPASS&amp;#125;"</span>
+<span class="token keyword">echo</span> <span class="token string">"Git Repository URL = <span class="token variable">${GITURL}</span>"</span>
+<span class="token keyword">echo</span> <span class="token string">"Git Repository Branch = <span class="token variable">${GITBRANCH}</span>"</span>
+<span class="token keyword">echo</span> <span class="token string">"Git Repository User = <span class="token variable">${GITUSER}</span>"</span>
+<span class="token comment" spellcheck="true"># echo "Git Repository Pass = ${GITPASS}"</span>
 <span class="token keyword">echo</span> <span class="token string">"Git Repository Pass = ********"</span>
-<span class="token keyword">echo</span> <span class="token string">"Git Repository Tag Version = $&amp;#123;GITTAG&amp;#125;"</span>
-<span class="token keyword">echo</span> <span class="token string">"Save Directory = $&amp;#123;TARGET&amp;#125;"</span>
+<span class="token keyword">echo</span> <span class="token string">"Git Repository Tag Version = <span class="token variable">${GITTAG}</span>"</span>
+<span class="token keyword">echo</span> <span class="token string">"Save Directory = <span class="token variable">${TARGET}</span>"</span>
 <span class="token keyword">echo</span> <span class="token string">"----------------------------------"</span>
 
 
 
 
 <span class="token comment" spellcheck="true"># 从 Git 仓库拉取项目</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;EXIST_GITLAB&amp;#125; = "F" ] ; then</span>
-  <span class="token keyword">echo</span> <span class="token string">"Pulling Git Repository from $&amp;#123;GITURL&amp;#125; ..."</span>
-  <span class="token function">git</span> clone https://$<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITUSER&amp;#125;:$&amp;#123;GITPASS&amp;#125;@$&amp;#123;GITURI&amp;#125; $&amp;#123;TARGET&amp;#125;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${EXIST_GITLAB}</span> <span class="token operator">=</span> <span class="token string">"F"</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">echo</span> <span class="token string">"Pulling Git Repository from <span class="token variable">${GITURL}</span> ..."</span>
+  <span class="token function">git</span> clone https://<span class="token variable">${GITUSER}</span><span class="token keyword">:</span><span class="token variable">${GITPASS}</span>@<span class="token variable">${GITURI}</span> <span class="token variable">${TARGET}</span>
 
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> -d $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125; ] ; then</span>
-    <span class="token keyword">echo</span> <span class="token string">"Git Repository has been saved to : $&amp;#123;TARGET&amp;#125;"</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> -d <span class="token variable">${TARGET}</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token keyword">echo</span> <span class="token string">"Git Repository has been saved to : <span class="token variable">${TARGET}</span>"</span>
 
   <span class="token keyword">else</span>
     <span class="token keyword">echo</span> <span class="token string">"Error: Pull Git Repository Failed."</span>
@@ -634,54 +634,54 @@ GITPASS<span class="token operator">=</span>$<span class="token operator">&amp;<
 
 <span class="token comment" spellcheck="true"># 更新 master 最新的代码以及 branch 、 tag 等信息</span>
 <span class="token keyword">echo</span> <span class="token string">"Update Git Repository ..."</span>
-<span class="token function">cd</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;TARGET&amp;#125;</span>
+<span class="token function">cd</span> <span class="token variable">${TARGET}</span>
 <span class="token function">git</span> checkout master
 <span class="token function">git</span> pull
 
 
 
 <span class="token comment" spellcheck="true"># 切换 branch</span>
-<span class="token comment" spellcheck="true"># git checkout &lt;branch&gt;</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"$&amp;#123;GITTAG&amp;#125;"</span> <span class="token operator">=</span> <span class="token string">"latest"</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
-  <span class="token keyword">echo</span> <span class="token string">"Switch to branch $&amp;#123;GITBRANCH&amp;#125; ..."</span>
-  branch<span class="token operator">=</span><span class="token punctuation">$(</span>git branch -a <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITBRANCH&amp;#125;)</span>
-  <span class="token keyword">echo</span> <span class="token string">"$&amp;#123;branch&amp;#125;"</span>
+<span class="token comment" spellcheck="true"># git checkout &lt;branch></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${GITTAG}</span>"</span> <span class="token operator">=</span> <span class="token string">"latest"</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">echo</span> <span class="token string">"Switch to branch <span class="token variable">${GITBRANCH}</span> ..."</span>
+  branch<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> branch -a <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token punctuation">{</span>GITBRANCH<span class="token punctuation">}</span><span class="token variable">)</span></span>
+  <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">${branch}</span>"</span>
 
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"$&amp;#123;branch&amp;#125;"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    <span class="token function">git</span> checkout $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITBRANCH&amp;#125; # 切换分支</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"<span class="token variable">${branch}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token function">git</span> checkout <span class="token variable">${GITBRANCH}</span> <span class="token comment" spellcheck="true"># 切换分支</span>
     <span class="token function">git</span> pull        <span class="token comment" spellcheck="true"># 更新到分支的最新版本</span>
 
   <span class="token keyword">else</span>
-    <span class="token keyword">echo</span> <span class="token string">"Error: branch '$&amp;#123;GITBRANCH&amp;#125;' is not exists."</span>
+    <span class="token keyword">echo</span> <span class="token string">"Error: branch '<span class="token variable">${GITBRANCH}</span>' is not exists."</span>
     <span class="token keyword">exit</span> 1
   <span class="token keyword">fi</span>
 
 <span class="token comment" spellcheck="true"># 切换 tag (注意 tag 是基线，不需要也不能通过 pull 更新代码)</span>
-<span class="token comment" spellcheck="true"># git checkout -b &lt;local_branch&gt; &lt;tag&gt;</span>
+<span class="token comment" spellcheck="true"># git checkout -b &lt;local_branch> &lt;tag></span>
 <span class="token keyword">else</span>
-  <span class="token keyword">echo</span> <span class="token string">"Switch to tag $&amp;#123;GITTAG&amp;#125; ..."</span>
-  tag<span class="token operator">=</span><span class="token punctuation">$(</span>git tag <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITTAG&amp;#125;)</span>
-  branch<span class="token operator">=</span><span class="token punctuation">$(</span>git branch -a <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITTAG&amp;#125;)</span>
+  <span class="token keyword">echo</span> <span class="token string">"Switch to tag <span class="token variable">${GITTAG}</span> ..."</span>
+  tag<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> tag <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token punctuation">{</span>GITTAG<span class="token punctuation">}</span><span class="token variable">)</span></span>
+  branch<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> branch -a <span class="token operator">|</span> <span class="token function">grep</span> $<span class="token punctuation">{</span>GITTAG<span class="token punctuation">}</span><span class="token variable">)</span></span>
 
   <span class="token comment" spellcheck="true"># 若 tag 存在</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"$&amp;#123;tag&amp;#125;"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"<span class="token variable">${tag}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
 
     <span class="token comment" spellcheck="true"># 若未创建该 tag 对应的本地分支，则创建并切换到该分支</span>
-    <span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"$&amp;#123;branch&amp;#125;"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-      <span class="token function">git</span> checkout -b $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITTAG&amp;#125; $&amp;#123;GITTAG&amp;#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">${branch}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+      <span class="token function">git</span> checkout -b <span class="token variable">${GITTAG}</span> <span class="token variable">${GITTAG}</span>
 
     <span class="token comment" spellcheck="true"># 若已创建该 tag 对应的本地分支，则直接切换到该分支</span>
     <span class="token keyword">else</span>
-      <span class="token function">git</span> checkout $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;GITTAG&amp;#125;</span>
+      <span class="token function">git</span> checkout <span class="token variable">${GITTAG}</span>
     <span class="token keyword">fi</span>
 
   <span class="token keyword">else</span>
-    <span class="token keyword">echo</span> <span class="token string">"Error: tag '$&amp;#123;GITTAG&amp;#125;' is not exists."</span>
+    <span class="token keyword">echo</span> <span class="token string">"Error: tag '<span class="token variable">${GITTAG}</span>' is not exists."</span>
     <span class="token keyword">exit</span> 1
   <span class="token keyword">fi</span>
 <span class="token keyword">fi</span>
 
-<span class="token keyword">echo</span> <span class="token string">"Finish: Git Repository has been updated to : $&amp;#123;TARGET&amp;#125;"</span>
+<span class="token keyword">echo</span> <span class="token string">"Finish: Git Repository has been updated to : <span class="token variable">${TARGET}</span>"</span>
 <span class="token keyword">exit</span> 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1033,12 +1033,12 @@ GITPASS<span class="token operator">=</span>$<span class="token operator">&amp;<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WordPress/">
-                        <span class="chip bg-color">WordPress</span>
-                    </a>
-                    
                     <a href="/tags/Mariadb/">
                         <span class="chip bg-color">Mariadb</span>
+                    </a>
+                    
+                    <a href="/tags/WordPress/">
+                        <span class="chip bg-color">WordPress</span>
                     </a>
                     
                 </div>
@@ -1282,7 +1282,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

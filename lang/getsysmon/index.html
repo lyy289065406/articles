@@ -479,14 +479,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    9 分
                 </div>
                 
 
@@ -520,16 +520,16 @@
  *  ./get_sysmon_event.exe 
  *                          -limit 100   : 一次查询的数量上限（可选，默认值100）
  *                          -query str   : 查询字符串，语法形式形如：
- *    "Event/System[TimeCreated[@SystemTime&lt;'2019-12-16T08:00:00.000000000Z'] and TimeCreated[@SystemTime&gt;'2019-12-05T00:00:00.000000000Z'] and EventID=3]"
+ *    "Event/System[TimeCreated[@SystemTime&lt;'2019-12-16T08:00:00.000000000Z'] and TimeCreated[@SystemTime>'2019-12-05T00:00:00.000000000Z'] and EventID=3]"
  * 
  *************************************************************************************************************/</span>
 
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sddl.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;locale.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;winevt.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sddl.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;locale.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;winevt.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">pragma</span> comment(lib, "wevtapi.lib") </span><span class="token comment" spellcheck="true">// winevt.h 库文件</span>
 
 
@@ -545,7 +545,7 @@
 
 bool <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">// 检测字符串是否为空</span>
 bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
-LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// ASCII字符 -&gt; 宽字符</span>
+LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// ASCII字符 -> 宽字符</span>
 <span class="token keyword">void</span> <span class="token function">delUnASCII</span><span class="token punctuation">(</span>LPWSTR wstr<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// 把非 ASCII 字符替换成 ?</span>
 
 LPWSTR <span class="token function">toEvtQuery</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 根据脚本入参生成系统事件查询条件语句</span>
@@ -556,259 +556,259 @@ DWORD <span class="token function">printEvent</span><span class="token punctuati
 
 
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     LPWSTR channel <span class="token operator">=</span> EVENT_CHANNEL<span class="token punctuation">;</span>
     LPWSTR evtQuery <span class="token operator">=</span> <span class="token function">toEvtQuery</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     EVT_HANDLE hEvents <span class="token operator">=</span> <span class="token function">EvtQuery</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> channel<span class="token punctuation">,</span> evtQuery<span class="token punctuation">,</span> EvtQueryChannelPath <span class="token operator">|</span> EvtQueryReverseDirection<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">==</span> hEvents<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">==</span> hEvents<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         DWORD errId <span class="token operator">=</span> <span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>ERROR_EVT_CHANNEL_NOT_FOUND <span class="token operator">==</span> errId<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ERROR_EVT_CHANNEL_NOT_FOUND <span class="token operator">==</span> errId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] The channel was not found: %s\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">,</span> channel<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>ERROR_EVT_INVALID_QUERY <span class="token operator">==</span> errId<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>ERROR_EVT_INVALID_QUERY <span class="token operator">==</span> errId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] The query is invalid: %s\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">,</span> evtQuery<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
             <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] EvtQuery failed.\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
         <span class="token function">printEvents</span><span class="token punctuation">(</span>hEvents<span class="token punctuation">,</span> _evtLimit<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">EvtClose</span><span class="token punctuation">(</span>hEvents<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">// system("pause");</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 根据脚本入参生成系统事件查询条件语句</span>
-LPWSTR <span class="token function">toEvtQuery</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+LPWSTR <span class="token function">toEvtQuery</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> eventId <span class="token operator">=</span> EVENTID_PROCESS_CREATE<span class="token punctuation">;</span>
     <span class="token keyword">char</span><span class="token operator">*</span> startTime <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span><span class="token operator">*</span> endTime <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span><span class="token operator">*</span> query <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-limit"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-limit"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             _evtLimit <span class="token operator">=</span> <span class="token punctuation">(</span>DWORD<span class="token punctuation">)</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             _evtLimit <span class="token operator">=</span> <span class="token punctuation">(</span>_evtLimit <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">?</span> EVENT_LIMIT <span class="token punctuation">:</span> _evtLimit<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             eventId <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             eventId <span class="token operator">=</span> <span class="token punctuation">(</span>eventId <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> EVENTID_PROCESS_CREATE <span class="token punctuation">:</span> eventId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-ts"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-ts"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             startTime <span class="token operator">=</span> argv<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-te"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-te"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             endTime <span class="token operator">=</span> argv<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-query"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-query"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             query <span class="token operator">=</span> argv<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token function">toLPWSTR</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token function">toLPWSTR</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span> <span class="token punctuation">:</span>
         <span class="token function">toEvtQuery</span><span class="token punctuation">(</span>eventId<span class="token punctuation">,</span> startTime<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 生成系统事件查询条件语句</span>
-LPWSTR <span class="token function">toEvtQuery</span><span class="token punctuation">(</span><span class="token keyword">int</span> eventId<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> startTime<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> endTime<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+LPWSTR <span class="token function">toEvtQuery</span><span class="token punctuation">(</span><span class="token keyword">int</span> eventId<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> startTime<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> endTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">char</span><span class="token operator">*</span> evtQuery <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         evtQuery <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         evtQuery <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">26</span> <span class="token operator">+</span> <span class="token number">62</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d and TimeCreated[@SystemTime&gt;'%s'] and TimeCreated[@SystemTime&lt;'%s']]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">,</span> startTime<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d and TimeCreated[@SystemTime>'%s'] and TimeCreated[@SystemTime&lt;'%s']]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">,</span> startTime<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         evtQuery <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">26</span> <span class="token operator">+</span> <span class="token number">62</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d and TimeCreated[@SystemTime&gt;'%s']]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">,</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d and TimeCreated[@SystemTime>'%s']]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">,</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>endTime<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         evtQuery <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">26</span> <span class="token operator">+</span> <span class="token number">62</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token function">sprintf</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">,</span> <span class="token string">"Event/System[EventID=%d and TimeCreated[@SystemTime&lt;'%s']]\0"</span><span class="token punctuation">,</span> eventId<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token function">toLPWSTR</span><span class="token punctuation">(</span>evtQuery<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 打印查询得到的系统事件列表</span>
-DWORD <span class="token function">printEvents</span><span class="token punctuation">(</span>EVT_HANDLE hEvents<span class="token punctuation">,</span> DWORD limit<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+DWORD <span class="token function">printEvents</span><span class="token punctuation">(</span>EVT_HANDLE hEvents<span class="token punctuation">,</span> DWORD limit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     DWORD errId <span class="token operator">=</span> ERROR_SUCCESS<span class="token punctuation">;</span>
     DWORD _iterNum <span class="token operator">=</span> <span class="token punctuation">(</span>EVENT_ITERATOR <span class="token operator">&lt;=</span> limit <span class="token operator">?</span> EVENT_ITERATOR <span class="token punctuation">:</span> limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     DWORD cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 累计迭代获得的事件数</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>cnt <span class="token operator">&lt;</span> limit<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cnt <span class="token operator">&lt;</span> limit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         DWORD num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 本次迭代获得的事件数</span>
         EVT_HANDLE<span class="token operator">*</span> evtCache <span class="token operator">=</span> new EVT_HANDLE<span class="token punctuation">[</span>_iterNum<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 缓存</span>
 
         <span class="token comment" spellcheck="true">// 提取事件列表</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">EvtNext</span><span class="token punctuation">(</span>hEvents<span class="token punctuation">,</span> _iterNum<span class="token punctuation">,</span> evtCache<span class="token punctuation">,</span> INFINITE<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">EvtNext</span><span class="token punctuation">(</span>hEvents<span class="token punctuation">,</span> _iterNum<span class="token punctuation">,</span> evtCache<span class="token punctuation">,</span> INFINITE<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             errId <span class="token operator">=</span> <span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">!=</span> ERROR_NO_MORE_ITEMS<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">!=</span> ERROR_NO_MORE_ITEMS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] EvtNext failed.\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
             delete<span class="token punctuation">[</span><span class="token punctuation">]</span> evtCache<span class="token punctuation">;</span>
             <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         <span class="token comment" spellcheck="true">// 迭代打印</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>DWORD i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num <span class="token operator">&amp;&amp;</span> cnt <span class="token operator">&lt;</span> limit<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> cnt<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>DWORD i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num <span class="token operator">&amp;&amp;</span> cnt <span class="token operator">&lt;</span> limit<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> cnt<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             errId <span class="token operator">=</span> <span class="token function">printEvent</span><span class="token punctuation">(</span>evtCache<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">==</span> ERROR_SUCCESS<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">==</span> ERROR_SUCCESS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token function">EvtClose</span><span class="token punctuation">(</span>evtCache<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                 evtCache<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
                 <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
             <span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
         delete<span class="token punctuation">[</span><span class="token punctuation">]</span> evtCache<span class="token punctuation">;</span>
         <span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> errId<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">/* 打印单个系统事件
  *
-&lt;Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"&gt;
-  &lt;System&gt;
-    &lt;Provider Name="Microsoft-Windows-Sysmon" Guid="&amp;#123;5770385F-C22A-43E0-BF4C-06F5698FFBD9&amp;#125;"/&gt;
-    &lt;EventID&gt;1&lt;/EventID&gt;
-    &lt;Version&gt;5&lt;/Version&gt;
-    &lt;Level&gt;4&lt;/Level&gt;
-    &lt;Task&gt;1&lt;/Task&gt;
-    &lt;Opcode&gt;0&lt;/Opcode&gt;
-    &lt;Keywords&gt;0x8000000000000000&lt;/Keywords&gt;
-    &lt;TimeCreated SystemTime="2019-12-17T10:26:56.242881800Z"/&gt;
-    &lt;EventRecordID&gt;50077&lt;/EventRecordID&gt;
-    &lt;Correlation/&gt;
-    &lt;Execution ProcessID="1280" ThreadID="1904"/&gt;
-    &lt;Channel&gt;Microsoft-Windows-Sysmon/Operational&lt;/Channel&gt;
-    &lt;Computer&gt;WIN-S1B6IAK3UN2&lt;/Computer&gt;
-    &lt;Security UserID="S-1-5-18"/&gt;
-  &lt;/System&gt;
-  &lt;EventData&gt;
-    &lt;Data Name="RuleName"/&gt;
-    &lt;Data Name="UtcTime"&gt;2019-12-17 10:26:56.242&lt;/Data&gt;
-    &lt;Data Name="ProcessGuid"&gt;&amp;#123;68E7DA22-AD70-5DF8-0000-0010428D1D01&amp;#125;&lt;/Data&gt;
-    &lt;Data Name="ProcessId"&gt;16256&lt;/Data&gt;
-    &lt;Data Name="Image"&gt;C:\\Program Files\\Sublime Text 3\\sublime_text.exe&lt;/Data&gt;
-    &lt;Data Name="FileVersion"&gt;3188&lt;/Data&gt;
-    &lt;Data Name="Description"&gt;Sublime Text&lt;/Data&gt;
-    &lt;Data Name="Product"&gt;Sublime Text&lt;/Data&gt;
-    &lt;Data Name="Company"&gt;Sublime HQ Pty Ltd&lt;/Data&gt;
-    &lt;Data Name="OriginalFileName"&gt;sublime_text.exe&lt;/Data&gt;
-    &lt;Data Name="CommandLine"&gt;"/C/Program Files/Sublime Text 3/sublime_text.exe" "--crawl" "14516:crawl:11"&lt;/Data&gt;
-    &lt;Data Name="CurrentDirectory"&gt;C:\\Program Files\\Sublime Text 3\\&lt;/Data&gt;
-    &lt;Data Name="User"&gt;WIN-S1B6IAK3UN2\\Administrator&lt;/Data&gt;
-    &lt;Data Name="LogonGuid"&gt;&amp;#123;68E7DA22-383A-5DF8-0000-0020CBFF0200&amp;#125;&lt;/Data&gt;
-    &lt;Data Name="LogonId"&gt;0x2ffcb&lt;/Data&gt;
-    &lt;Data Name="TerminalSessionId"&gt;2&lt;/Data&gt;
-    &lt;Data Name="IntegrityLevel"&gt;High&lt;/Data&gt;
-    &lt;Data Name="Hashes"&gt;SHA256=450AD9A507403C5A3BA42DC6E1910E84E886200AFD190BF4B0B5B95FC066F7E1&lt;/Data&gt;
-    &lt;Data Name="ParentProcessGuid"&gt;&amp;#123;68E7DA22-A908-5DF8-0000-0010A0B40F01&amp;#125;&lt;/Data&gt;
-    &lt;Data Name="ParentProcessId"&gt;14516&lt;/Data&gt;
-    &lt;Data Name="ParentImage"&gt;C:\\Program Files\\Sublime Text 3\\sublime_text.exe&lt;/Data&gt;
-    &lt;Data Name="ParentCommandLine"&gt;"C:\\Program Files\\Sublime Text 3\\sublime_text.exe"&lt;/Data&gt;
-  &lt;/EventData&gt;
-&lt;/Event&gt;
+&lt;Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  &lt;System>
+    &lt;Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}"/>
+    &lt;EventID>1&lt;/EventID>
+    &lt;Version>5&lt;/Version>
+    &lt;Level>4&lt;/Level>
+    &lt;Task>1&lt;/Task>
+    &lt;Opcode>0&lt;/Opcode>
+    &lt;Keywords>0x8000000000000000&lt;/Keywords>
+    &lt;TimeCreated SystemTime="2019-12-17T10:26:56.242881800Z"/>
+    &lt;EventRecordID>50077&lt;/EventRecordID>
+    &lt;Correlation/>
+    &lt;Execution ProcessID="1280" ThreadID="1904"/>
+    &lt;Channel>Microsoft-Windows-Sysmon/Operational&lt;/Channel>
+    &lt;Computer>WIN-S1B6IAK3UN2&lt;/Computer>
+    &lt;Security UserID="S-1-5-18"/>
+  &lt;/System>
+  &lt;EventData>
+    &lt;Data Name="RuleName"/>
+    &lt;Data Name="UtcTime">2019-12-17 10:26:56.242&lt;/Data>
+    &lt;Data Name="ProcessGuid">{68E7DA22-AD70-5DF8-0000-0010428D1D01}&lt;/Data>
+    &lt;Data Name="ProcessId">16256&lt;/Data>
+    &lt;Data Name="Image">C:\\Program Files\\Sublime Text 3\\sublime_text.exe&lt;/Data>
+    &lt;Data Name="FileVersion">3188&lt;/Data>
+    &lt;Data Name="Description">Sublime Text&lt;/Data>
+    &lt;Data Name="Product">Sublime Text&lt;/Data>
+    &lt;Data Name="Company">Sublime HQ Pty Ltd&lt;/Data>
+    &lt;Data Name="OriginalFileName">sublime_text.exe&lt;/Data>
+    &lt;Data Name="CommandLine">"/C/Program Files/Sublime Text 3/sublime_text.exe" "--crawl" "14516:crawl:11"&lt;/Data>
+    &lt;Data Name="CurrentDirectory">C:\\Program Files\\Sublime Text 3\\&lt;/Data>
+    &lt;Data Name="User">WIN-S1B6IAK3UN2\\Administrator&lt;/Data>
+    &lt;Data Name="LogonGuid">{68E7DA22-383A-5DF8-0000-0020CBFF0200}&lt;/Data>
+    &lt;Data Name="LogonId">0x2ffcb&lt;/Data>
+    &lt;Data Name="TerminalSessionId">2&lt;/Data>
+    &lt;Data Name="IntegrityLevel">High&lt;/Data>
+    &lt;Data Name="Hashes">SHA256=450AD9A507403C5A3BA42DC6E1910E84E886200AFD190BF4B0B5B95FC066F7E1&lt;/Data>
+    &lt;Data Name="ParentProcessGuid">{68E7DA22-A908-5DF8-0000-0010A0B40F01}&lt;/Data>
+    &lt;Data Name="ParentProcessId">14516&lt;/Data>
+    &lt;Data Name="ParentImage">C:\\Program Files\\Sublime Text 3\\sublime_text.exe&lt;/Data>
+    &lt;Data Name="ParentCommandLine">"C:\\Program Files\\Sublime Text 3\\sublime_text.exe"&lt;/Data>
+  &lt;/EventData>
+&lt;/Event>
  */</span>
-DWORD <span class="token function">printEvent</span><span class="token punctuation">(</span>EVT_HANDLE hEvent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+DWORD <span class="token function">printEvent</span><span class="token punctuation">(</span>EVT_HANDLE hEvent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     DWORD errId <span class="token operator">=</span> ERROR_SUCCESS<span class="token punctuation">;</span>
     DWORD dwBufferSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     DWORD dwBufferUsed <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     DWORD dwPropertyCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     LPWSTR pRenderedContent <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">EvtRender</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> hEvent<span class="token punctuation">,</span> EvtRenderEventXml<span class="token punctuation">,</span> dwBufferSize<span class="token punctuation">,</span> pRenderedContent<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwBufferUsed<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwPropertyCount<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">EvtRender</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> hEvent<span class="token punctuation">,</span> EvtRenderEventXml<span class="token punctuation">,</span> dwBufferSize<span class="token punctuation">,</span> pRenderedContent<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwBufferUsed<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwPropertyCount<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         errId <span class="token operator">=</span> <span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">==</span> ERROR_INSUFFICIENT_BUFFER<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">==</span> ERROR_INSUFFICIENT_BUFFER<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             dwBufferSize <span class="token operator">=</span> dwBufferUsed<span class="token punctuation">;</span>
             pRenderedContent <span class="token operator">=</span> <span class="token punctuation">(</span>LPWSTR<span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>dwBufferSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token function">EvtRender</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> hEvent<span class="token punctuation">,</span> EvtRenderEventXml<span class="token punctuation">,</span> dwBufferSize<span class="token punctuation">,</span> pRenderedContent<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwBufferUsed<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwPropertyCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
                 <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] malloc failed.\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">)</span><span class="token punctuation">;</span>
                 errId <span class="token operator">=</span> ERROR_OUTOFMEMORY<span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">!=</span> ERROR_SUCCESS<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>errId <span class="token operator">!=</span> ERROR_SUCCESS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"[Error %lu] EvtRender failed.\n"</span><span class="token punctuation">,</span> errId<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">if</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">delUnASCII</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"%ls\n"</span><span class="token punctuation">,</span> pRenderedContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">wprintf</span><span class="token punctuation">(</span>L<span class="token string">"==================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">free</span><span class="token punctuation">(</span>pRenderedContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
         errId <span class="token operator">=</span> ERROR_SUCCESS<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> errId<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 检测字符串是否为空</span>
-bool <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+bool <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>str <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> <span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
-bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         flag <span class="token operator">=</span> true<span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         flag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">stricmp</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
-<span class="token comment" spellcheck="true">// ASCII字符 -&gt; 宽字符</span>
-LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// ASCII字符 -> 宽字符</span>
+LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> dwLen <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> nwLen <span class="token operator">=</span> <span class="token function">MultiByteToWideChar</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> dwLen<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     LPWSTR lpwstr <span class="token operator">=</span> new WCHAR<span class="token punctuation">[</span>dwLen<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">MultiByteToWideChar</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> dwLen<span class="token punctuation">,</span> lpwstr<span class="token punctuation">,</span> nwLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> lpwstr<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 
 
 <span class="token comment" spellcheck="true">// 把非 ASCII 字符替换成 ?</span>
-<span class="token keyword">void</span> <span class="token function">delUnASCII</span><span class="token punctuation">(</span>LPWSTR wstr<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">delUnASCII</span><span class="token punctuation">(</span>LPWSTR wstr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     wchar_t<span class="token operator">*</span> p <span class="token operator">=</span> wstr<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">127</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">127</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token string">'?'</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         p<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="PowerShell-源码"><a href="#PowerShell-源码" class="headerlink" title="PowerShell 源码"></a>PowerShell 源码</h2><pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># get_sysmon_event.ps1</span>
 <span class="token comment" spellcheck="true">#</span>
 <span class="token comment" spellcheck="true"># sysmon事件查询脚本</span>
@@ -846,16 +846,16 @@ LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuatio
 <span class="token comment" spellcheck="true"># s: &lt;=0 的整数，标识查询 s 秒内的事件</span>
 <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=1<span class="token punctuation">,</span><span class="token namespace">[int]</span><span class="token variable">$limit</span>=100<span class="token punctuation">,</span><span class="token namespace">[int]</span><span class="token variable">$h</span>=0<span class="token punctuation">,</span><span class="token namespace">[int]</span><span class="token variable">$m</span>=5<span class="token punctuation">,</span><span class="token namespace">[int]</span><span class="token variable">$s</span>=0<span class="token punctuation">)</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">-lt</span> 1<span class="token punctuation">)</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">-lt</span> 1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token variable">$id</span>=1
-&amp;<span class="token comment" spellcheck="true">#125;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$limit</span> <span class="token operator">-lt</span> 1<span class="token punctuation">)</span> &amp;<span class="token comment" spellcheck="true">#123;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$limit</span> <span class="token operator">-lt</span> 1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token variable">$limit</span>=100
-&amp;<span class="token comment" spellcheck="true">#125;</span>
+<span class="token punctuation">}</span>
 
 
-<span class="token variable">$args</span> = @&amp;<span class="token comment" spellcheck="true">#123;&amp;#125;</span>
+<span class="token variable">$args</span> = @<span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token variable">$args</span><span class="token punctuation">.</span>Add<span class="token punctuation">(</span><span class="token string">"logname"</span><span class="token punctuation">,</span> <span class="token string">"Microsoft-Windows-Sysmon/Operational"</span><span class="token punctuation">)</span>
 <span class="token variable">$args</span><span class="token punctuation">.</span>Add<span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span>
 <span class="token variable">$args</span><span class="token punctuation">.</span>Add<span class="token punctuation">(</span><span class="token string">"StartTime"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">Get-Date</span><span class="token punctuation">)</span><span class="token punctuation">.</span>AddHours<span class="token punctuation">(</span><span class="token operator">-</span><span class="token variable">$h</span><span class="token punctuation">)</span><span class="token punctuation">.</span>AddMinutes<span class="token punctuation">(</span><span class="token operator">-</span><span class="token variable">$m</span><span class="token punctuation">)</span><span class="token punctuation">.</span>AddSeconds<span class="token punctuation">(</span><span class="token operator">-</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -863,7 +863,7 @@ LPWSTR <span class="token function">toLPWSTR</span><span class="token punctuatio
 
 
 Get<span class="token operator">-</span>WinEvent <span class="token operator">-</span>FilterHashtable <span class="token variable">$args</span> <span class="token operator">-</span>MaxEvents <span class="token variable">$limit</span> <span class="token punctuation">|</span> <span class="token function">Format-Table</span> <span class="token operator">-</span>Property message <span class="token operator">-</span>Wrap
-<span class="token comment" spellcheck="true"># Get-WinEvent -FilterHashtable $args -MaxEvents $limit | Where&amp;#123;$_.Message -notmatch 'keyword'&amp;#125; | Format-Table -Property message -Wrap</span>
+<span class="token comment" spellcheck="true"># Get-WinEvent -FilterHashtable $args -MaxEvents $limit | Where{$_.Message -notmatch 'keyword'} | Format-Table -Property message -Wrap</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1163,11 +1163,12 @@ YZ.apk
 
 
 内容
+推荐度
 说明
 
 
 
-Android Stu
+Android
                         
                     </div>
                     <div class="publish-info">
@@ -1505,7 +1506,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

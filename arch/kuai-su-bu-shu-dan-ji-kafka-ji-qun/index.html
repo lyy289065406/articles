@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    16 分
                 </div>
                 
 
@@ -548,17 +548,17 @@
 <p>在kafka运行期间调用这个脚本，即可创建一个消息主题（命令参数中只需指定zookeeper集群中任意一台机器即可）。</p>
 <p>但是这种创建主题的方式比较麻烦，建议还是通过代码执行主题创建。而且这个版本的kafka默认是可以自动创建主题的，就更没有这个必要了。</p>
 <h2 id="7-使用Java测试kafka消息发布-订阅"><a href="#7-使用Java测试kafka消息发布-订阅" class="headerlink" title="7. 使用Java测试kafka消息发布/订阅"></a>7. 使用Java测试kafka消息发布/订阅</h2><p>官方的Maven原生构件：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>kafka_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>kafka_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>kafka-clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>kafka-clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>生产者样例代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Properties<span class="token punctuation">;</span>
 
@@ -568,41 +568,41 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>common<span class="token punctuation">.</span>serialization<span class="token punctuation">.</span>StringSerializer<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * &lt;PRE&gt;
+ * &lt;PRE>
  * kafka生产者样例
- * &lt;/PRE&gt;
- * &lt;br/&gt;&lt;B&gt;PROJECT : &lt;/B&gt; kafka
- * &lt;br/&gt;&lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
+ * &lt;/PRE>
+ * &lt;br/>&lt;B>PROJECT : &lt;/B> kafka
+ * &lt;br/>&lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
  * @version   2018-08-02
  * @author    EXP: 272629724@qq.com
  * @since     jdk版本：jdk1.6
  */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoProducer</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoProducer</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         <span class="token keyword">final</span> String KAFKA_SOCKET <span class="token operator">=</span> <span class="token string">"127.0.0.1:9092"</span><span class="token punctuation">;</span>
         <span class="token keyword">final</span> String TOPIC <span class="token operator">=</span> <span class="token string">"exp-topic-test"</span><span class="token punctuation">;</span>
 
         DemoProducer producer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DemoProducer</span><span class="token punctuation">(</span>KAFKA_SOCKET<span class="token punctuation">)</span><span class="token punctuation">;</span>
         producer<span class="token punctuation">.</span><span class="token function">produce</span><span class="token punctuation">(</span>TOPIC<span class="token punctuation">)</span><span class="token punctuation">;</span>
         producer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/** kafka生产者对象 */</span>
-    <span class="token keyword">private</span> KafkaProducer<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> producer<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> KafkaProducer<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> producer<span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">/**
      * 构造函数
      * @param kafkaSocket
      */</span>
-    <span class="token keyword">private</span> <span class="token function">DemoProducer</span><span class="token punctuation">(</span>String kafkaSocket<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token function">DemoProducer</span><span class="token punctuation">(</span>String kafkaSocket<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         Properties props <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ProducerConfig<span class="token punctuation">.</span>BOOTSTRAP_SERVERS_CONFIG<span class="token punctuation">,</span> kafkaSocket<span class="token punctuation">)</span><span class="token punctuation">;</span>
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ProducerConfig<span class="token punctuation">.</span>VALUE_SERIALIZER_CLASS_CONFIG<span class="token punctuation">,</span> StringSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ProducerConfig<span class="token punctuation">.</span>KEY_SERIALIZER_CLASS_CONFIG<span class="token punctuation">,</span> StringSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">this</span><span class="token punctuation">.</span>producer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">KafkaProducer</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>producer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">KafkaProducer</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
      * 连续发送消息到指定主题
@@ -610,21 +610,21 @@
      *         （当前版本的kafka默认会自动创建不存在的主题, 无需预建）
      * @throws Exception
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">produce</span><span class="token punctuation">(</span><span class="token keyword">final</span> String TOPIC<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">produce</span><span class="token punctuation">(</span><span class="token keyword">final</span> String TOPIC<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             String data <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"[%s] http://exp-blog.com"</span><span class="token punctuation">,</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            ProducerRecord<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> msg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProducerRecord</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span><span class="token punctuation">(</span>TOPIC<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ProducerRecord<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> msg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProducerRecord</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">(</span>TOPIC<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
             producer<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
             Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         producer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>消费者样例代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Arrays<span class="token punctuation">;</span>
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Properties<span class="token punctuation">;</span>
@@ -637,28 +637,28 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>common<span class="token punctuation">.</span>serialization<span class="token punctuation">.</span>StringSerializer<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * &lt;PRE&gt;
+ * &lt;PRE>
  * kafka消费者样例
- * &lt;/PRE&gt;
- * &lt;br/&gt;&lt;B&gt;PROJECT : &lt;/B&gt; kafka
- * &lt;br/&gt;&lt;B&gt;SUPPORT : &lt;/B&gt; &lt;a href="http://www.exp-blog.com" target="_blank"&gt;www.exp-blog.com&lt;/a&gt; 
+ * &lt;/PRE>
+ * &lt;br/>&lt;B>PROJECT : &lt;/B> kafka
+ * &lt;br/>&lt;B>SUPPORT : &lt;/B> &lt;a href="http://www.exp-blog.com" target="_blank">www.exp-blog.com&lt;/a> 
  * @version   2018-08-02
  * @author    EXP: 272629724@qq.com
  * @since     jdk版本：jdk1.6
  */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoConsumer</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoConsumer</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         <span class="token keyword">final</span> String KAFKA_SOCKET <span class="token operator">=</span> <span class="token string">"127.0.0.1:9092"</span><span class="token punctuation">;</span>
         <span class="token keyword">final</span> String TOPIC <span class="token operator">=</span> <span class="token string">"exp-topic-test"</span><span class="token punctuation">;</span>
         <span class="token keyword">final</span> String GROUP_ID <span class="token operator">=</span> <span class="token string">"group-1"</span><span class="token punctuation">;</span>
 
         DemoConsumer consumer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DemoConsumer</span><span class="token punctuation">(</span>KAFKA_SOCKET<span class="token punctuation">,</span> GROUP_ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
         consumer<span class="token punctuation">.</span><span class="token function">consume</span><span class="token punctuation">(</span>TOPIC<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/** kafka消费者对象 */</span>
-    <span class="token keyword">private</span> Consumer<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> consumer<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Consumer<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> consumer<span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">/**
      * 构造函数
@@ -667,7 +667,7 @@
      *         （一个Topic可以对应多个Group, 不论是多播还是单播, kafka只会把消息发到Group, 
      *           Consumer只能收到它所在的Group的消息）
      */</span>
-    <span class="token keyword">private</span> <span class="token function">DemoConsumer</span><span class="token punctuation">(</span>String kafkaSocket<span class="token punctuation">,</span> String groupId<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token function">DemoConsumer</span><span class="token punctuation">(</span>String kafkaSocket<span class="token punctuation">,</span> String groupId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         Properties props <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ConsumerConfig<span class="token punctuation">.</span>BOOTSTRAP_SERVERS_CONFIG<span class="token punctuation">,</span> kafkaSocket<span class="token punctuation">)</span><span class="token punctuation">;</span>
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ConsumerConfig<span class="token punctuation">.</span>GROUP_ID_CONFIG<span class="token punctuation">,</span> groupId<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -680,8 +680,8 @@
         props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>ConsumerConfig<span class="token punctuation">.</span>VALUE_DESERIALIZER_CLASS_CONFIG<span class="token punctuation">,</span> 
                 StringSerializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">this</span><span class="token punctuation">.</span>consumer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">KafkaConsumer</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>consumer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">KafkaConsumer</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
      * 从指定主题连续消费消息
@@ -689,26 +689,26 @@
      * @throws Exception 
      */</span>
     <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"deprecation"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">consume</span><span class="token punctuation">(</span><span class="token keyword">final</span> String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> TOPICS<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">consume</span><span class="token punctuation">(</span><span class="token keyword">final</span> String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> TOPICS<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         consumer<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>TOPICS<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 可同时消费多个topic</span>
 
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            ConsumerRecords<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> records <span class="token operator">=</span> consumer<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span>ConsumerRecord<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">&gt;</span> record <span class="token operator">:</span> records<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ConsumerRecords<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> records <span class="token operator">=</span> consumer<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span>ConsumerRecord<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> record <span class="token operator">:</span> records<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 String msg <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"offset = %d, key = %s, value = %s"</span><span class="token punctuation">,</span> 
                         record<span class="token punctuation">.</span><span class="token function">offset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> record<span class="token punctuation">.</span><span class="token function">key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> record<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
                 Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         consumer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="8-附录1：kafka常见的错误与解决方法"><a href="#8-附录1：kafka常见的错误与解决方法" class="headerlink" title="8. 附录1：kafka常见的错误与解决方法"></a>8. 附录1：kafka常见的错误与解决方法</h2><p>Kafka运维填坑：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d2cbaae38014">https://www.jianshu.com/p/d2cbaae38014</a></p>
 <h2 id="9-附录2：server-properties参数说明"><a href="#9-附录2：server-properties参数说明" class="headerlink" title="9. 附录2：server.properties参数说明"></a>9. 附录2：server.properties参数说明</h2><table>
 <thead>
@@ -1547,7 +1547,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             

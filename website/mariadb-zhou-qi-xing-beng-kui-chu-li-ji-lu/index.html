@@ -432,12 +432,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/WordPress/">
-                                <span class="chip bg-color">WordPress</span>
-                            </a>
-                        
                             <a href="/tags/Mariadb/">
                                 <span class="chip bg-color">Mariadb</span>
+                            </a>
+                        
+                            <a href="/tags/WordPress/">
+                                <span class="chip bg-color">WordPress</span>
                             </a>
                         
                     </div>
@@ -563,10 +563,10 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">dd</span> if<span class="token operator">=</span>/dev/zero of<span class="token operator">=</span>/home/swap bs<span class="token operator">=</span>1024 count<span class="token operator">=</span>4096000
 
 <span class="token comment" spellcheck="true"># 命令参数解析</span>
-<span class="token comment" spellcheck="true"># if=&lt;文件&gt;：代表输入文件，默认从stdin中读取输入。/dev/zero 是一个字符设备，会不断返回0值字节（\0）</span>
-<span class="token comment" spellcheck="true"># of=&lt;文件&gt;：代表输出文件，默认以stdout作为输出</span>
-<span class="token comment" spellcheck="true"># bs=&lt;单个块的字节数&gt;：交换分区的读写是以block（块）为单位的，每个block的大小默认为1K，即1024字节</span>
-<span class="token comment" spellcheck="true"># count=&lt;块数&gt;：交换分区文件的block数，count*bs就是交换分区的大小</span>
+<span class="token comment" spellcheck="true"># if=&lt;文件>：代表输入文件，默认从stdin中读取输入。/dev/zero 是一个字符设备，会不断返回0值字节（\0）</span>
+<span class="token comment" spellcheck="true"># of=&lt;文件>：代表输出文件，默认以stdout作为输出</span>
+<span class="token comment" spellcheck="true"># bs=&lt;单个块的字节数>：交换分区的读写是以block（块）为单位的，每个block的大小默认为1K，即1024字节</span>
+<span class="token comment" spellcheck="true"># count=&lt;块数>：交换分区文件的block数，count*bs就是交换分区的大小</span>
 
 <span class="token comment" spellcheck="true"># 若创建成功则返回：</span>
 <span class="token comment" spellcheck="true"># 4096000+0 records in</span>
@@ -630,14 +630,14 @@
 <pre class="line-numbers language-bash"><code class="language-bash">systemctl start crond.service   <span class="token comment" spellcheck="true"># 启动crontab服务</span>
 systemctl stop crond.service    <span class="token comment" spellcheck="true"># 停止crontab服务</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>使用<code>crontab -e</code>命令在crontab添加一行计划任务（拷贝下面的命令到末尾保存即可）：<font color="red">每分钟对Mariadb进程进行检查，若进程不存在则重新启动数据库服务</font>：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">*/1 * * * * <span class="token keyword">if</span> <span class="token punctuation">[</span> -z `ps -ef<span class="token operator">|</span><span class="token function">grep</span> mariadb<span class="token operator">|</span><span class="token function">grep</span> -v <span class="token function">grep</span><span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$2</span>&amp;#125;'</span>` <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> systemctl start mariadb<span class="token punctuation">;</span><span class="token keyword">fi</span>
+<pre class="line-numbers language-bash"><code class="language-bash">*/1 * * * * <span class="token keyword">if</span> <span class="token punctuation">[</span> -z `ps -ef<span class="token operator">|</span><span class="token function">grep</span> mariadb<span class="token operator">|</span><span class="token function">grep</span> -v <span class="token function">grep</span><span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$2</span>}'</span>` <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> systemctl start mariadb<span class="token punctuation">;</span><span class="token keyword">fi</span>
 
 <span class="token comment" spellcheck="true"># 此计划任务解释：</span>
 <span class="token comment" spellcheck="true"># */1 * * * *： 是cron表达式，这里表示每分钟执行一次。cron的语法可自行谷歌或百度</span>
 <span class="token comment" spellcheck="true"># ps -ef：表示查看当前运行中的进程列表</span>
 <span class="token comment" spellcheck="true"># grep mariadb：表示仅保留包含mariadb关键字的进程</span>
 <span class="token comment" spellcheck="true"># grep -v grep：表示排除包含grep关键字的进程</span>
-<span class="token comment" spellcheck="true"># awk '&amp;#123;print $2&amp;#125;'：表示提取进程号</span>
+<span class="token comment" spellcheck="true"># awk '{print $2}'：表示提取进程号</span>
 <span class="token comment" spellcheck="true"># -z：表示判断进程号是否为空</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重载或重启crontab使配置生效：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">systemctl reload crond.service   <span class="token comment" spellcheck="true"># 重载crontab配置</span>
@@ -731,12 +731,12 @@ systemctl restart crond.service   <span class="token comment" spellcheck="true">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/WordPress/">
-                                    <span class="chip bg-color">WordPress</span>
-                                </a>
-                            
                                 <a href="/tags/Mariadb/">
                                     <span class="chip bg-color">Mariadb</span>
+                                </a>
+                            
+                                <a href="/tags/WordPress/">
+                                    <span class="chip bg-color">WordPress</span>
                                 </a>
                             
                         </div>
@@ -1272,7 +1272,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">219.3k</span>&nbsp;字
+                class="white-color">216.4k</span>&nbsp;字
             
             
             
