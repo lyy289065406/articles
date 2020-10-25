@@ -483,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    18 分
                 </div>
                 
 
@@ -644,7 +644,8 @@
 <td align="left">用于抓包和中间人攻击</td>
 </tr>
 </tbody></table>
-<h2 id="【目标-A】-绕过-root-限制"><a href="#【目标-A】-绕过-root-限制" class="headerlink" title="【目标 A】 绕过 root 限制"></a>【目标 A】 绕过 root 限制</h2><h3 id="A-1-解题思路"><a href="#A-1-解题思路" class="headerlink" title="A.1. 解题思路"></a>A.1. 解题思路</h3><p>通过文章《<a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a>》可以知道，apk 的 root 检测都是通过（java）代码实现的，因此要绕过 root 的思路也很直白了：</p>
+<p>##【目标 A】绕过 root 限制</p>
+<h3 id="A-1-解题思路"><a href="#A-1-解题思路" class="headerlink" title="A.1. 解题思路"></a>A.1. 解题思路</h3><p>通过文章《<a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a>》可以知道，apk 的 root 检测都是通过（java）代码实现的，因此要绕过 root 的思路也很直白了：</p>
 <ul>
 <li>反编译 apk 安装包</li>
 <li>找到 root 检测代码</li>
@@ -880,7 +881,8 @@
 <p>使用 jadx 打开签名后的 YZ.apk，可以确认到刚才的签名信息：</p>
 <p><img src="18.jpg"></p>
 <p>在模拟器上安装 YZ.apk 并运行，成功绕过 root 检测。</p>
-<h2 id="【目标-2】-通过-abServer-签名验证"><a href="#【目标-2】-通过-abServer-签名验证" class="headerlink" title="【目标 2】 通过 abServer 签名验证"></a>【目标 2】 通过 abServer 签名验证</h2><h3 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h3><ul>
+<p>##【目标 2】通过 abServer 签名验证</p>
+<h3 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h3><ul>
 <li>在模拟器运行 YZ，并在 YZ 中执行某些操作</li>
 <li>利用 Burp Suite 对模拟器抓包</li>
 <li>观察所执行的操作对应触发的 HTTP 请求</li>
@@ -902,16 +904,10 @@
 <p><img src="21.jpg"></p>
 <p><strong>【搭建 Burp Suite 环境（必须）】</strong></p>
 <p>依次点选：Burp Suite → Proxy → Options → Proxy Listeners → Add → Binding</p>
-<ul>
-<li>【Bind to port】 随便填写即可（如当前为 8080）</li>
-<li>【Bind to address】 选择 Specific address 并选择局域网 IP （如当前为 192.168.1.104）</li>
-</ul>
+<p>-【Bind to port】随便填写即可（如当前为 8080）<br>-【Bind to address】选择 Specific address 并选择局域网 IP （如当前为 192.168.1.104）</p>
 <p><img src="22.jpg"></p>
 <p>在网易 MuMu 依次点选： 设置 → WLAN → 长按 → 修改网络 → 高级选型 → 代理 → 手动</p>
-<ul>
-<li>【代理服务器主机名】 填写 Burp Suite 监听的 IP （如当前为 192.168.1.104）</li>
-<li>【代理服务器端口】 填写 Burp Suite 监听的端口（如当前为 8080）</li>
-</ul>
+<p>-【代理服务器主机名】填写 Burp Suite 监听的 IP （如当前为 192.168.1.104）<br>-【代理服务器端口】填写 Burp Suite 监听的端口（如当前为 8080）</p>
 <p><img src="23.jpg"></p>
 <p>如上配置好后，即可从 Burp Suite → Proxy →  HTTP history 查看抓到的各个 HTTP 请求：</p>
 <p><img src="24.jpg"></p>
@@ -919,8 +915,67 @@
 <p>测试发现：</p>
 <ul>
 <li>token：当前会话的固定值，每次重新登录 YZ 后会变化</li>
-<li>signature：<br>  o 大部分都是 32 位，形似 MD5<br>  o 少量（如 <code>/bifrost/msg/scanWithSecurityMsg</code>） 是一个 RSA 的数字签名 （事实上从代码发现，签名用的是 SHA256withRSA，加密用的是 AES ）<br>  o 直接计算请求参数的 MD5 ，与 signature 并不一致，说明 signature 加了 salt<br>  o 不同请求的 signature 都不一样，但重发同一个请求，服务端返回都是成功的，说明 signature 没有用时间作为 salt<br>  o 修改请求参数中的任意内容并发送，服务端返回 400: signature is empty or is not equal ，结合前面几点推测，salt 可能是一个固定值<br>  o 修改 token 并发送，服务端返回 401: token is empty or not exists，推测 signature 计算过程中并没有 token 参与</li>
+<li>signature：<br>  o 大部分都是 32 位，形似 MD5<br>  o 少量（如 <code>/bifrost/msg/scanWithSecurityMsg</code>） 是一个 RSA 的数字签名 （事实上从代码发现，签名用的是 SHA256withRSA，加密用的是 AES ）<br>  o 直接计算请求参数的 MD5 ，与 signature 并不一致，说明 signature 加了 salt<br>  o 不同请求的 signature 都不一样，但重发同一个请求，服务端均返回成功，说明 signature 没有用时间作为 salt<br>  o 修改请求参数中的任意内容并发送，服务端返回 400: signature is empty or is not equal ，结合前面几点推测，salt 可能是一个固定值<br>  o 修改 token 并发送，服务端返回 401: token is empty or not exists，推测 signature 的计算过程中并没有 token 参与</li>
 </ul>
+<p><img src="25.jpg"></p>
+<h4 id="B-2-3-代码逆向分析"><a href="#B-2-3-代码逆向分析" class="headerlink" title="B.2.3. 代码逆向分析"></a>B.2.3. 代码逆向分析</h4><p>从前一节分析已经知道，signature 含有两种（甚至以上的形式）：MD5 和 RSA 。</p>
+<p>要实现题目要求的中间人攻击，则需要成功伪造签名，亦即需要找到 signature 的计算方法。</p>
+<p>简单起见，下面以 MD5 形式的 signature 作为目标展开分析。</p>
+<p>这里从修改 YZ 个人信息入手，例如修改【电话】。</p>
+<p>保存修改后，在 Burp Suite 捕获到 URL 为【/xxx-abService/ab/employee/phone】的请求。</p>
+<p><img src="26.jpg"></p>
+<p>在逆向的 java 代码中全局查找关键字【/xxx-abService/ab/employee/phone】</p>
+<p>可以从 <code>src/main/java/com/xxx/oooooooooo/core/d/f.java</code> 类中找到唯一值【UPDATE_USER_PHONE(“/xxx-abService/ab/employee/phone”)】</p>
+<p>而且很明显，<code>src/main/java/com/xxx/oooooooooo/core/d/f.java</code> 类是定义了所有 URL 的枚举对象。</p>
+<blockquote>
+<p>注：为了便于分析代码逻辑（调用跳转等），建议先把逆向代码导入 Eclipse 等 IDE 再分析。</p>
+</blockquote>
+<p><img src="27.jpg"></p>
+<p>再全局查找关键字【UPDATE_USER_PHONE】，可以从 <code>src/main/java/com/xxx/oooooooooo/core/d/d.java</code> 类中找到唯一调用它的函数【<code>public c&lt;UserPhoneResponse&gt; c(String str, String str2)</code>】。</p>
+<p>简单分析代码可以知道：</p>
+<ul>
+<li><code>src/main/java/com/xxx/oooooooooo/core/d/d.java</code> 类是 abService 所有 API 的接口实现</li>
+<li>【<code>public c&lt;UserPhoneResponse&gt; c(String str, String str2)</code>】函数是接口  “<code>/xxx-abService/ab/employee/phone</code>“ 的实现</li>
+<li>该函数的主要作用是构造接口的 HTTP 请求参数 params （Builder 类使用了构造者模式，其作用就是填充 HTTP 结构体的内容）</li>
+<li>从实现逻辑看，只是构造了参数 params ，而 token 和 signature 参数并未被构造</li>
+<li>观察其他接口实现的函数，均未构造 token 和 signature 参数</li>
+<li>推测 token 和 signature 被封装到同一个地方实现，而最可疑的就是【<code>return a( .... )</code>】函数</li>
+</ul>
+<p><img src="28.jpg"></p>
+<p>因为逆向代码被混淆的关系，出现了很多同名类、同名方法，导致 Eclipse 的函数调用跳转功能出现偏差。</p>
+<p>若直接跳转到【<code>return a( .... )</code>】函数的实现，会跳到一个接口【<code>com.xxx.oooooooooo.data.api.g.java</code>】定义的方法【<code>c&lt;GroupsResponse&gt; a(long j, int i);</code>】</p>
+<p>事实上从函数定义的入参表就可以发现，这是不对的（当时分析代码的时候就被这里卡住了好长时间）。</p>
+<p><img src="29.jpg"></p>
+<p>因此这里只能通过人工分析【<code>return a( .... )</code>】函数的实现位置：</p>
+<ul>
+<li>由于函数 a 在调用时没有声明类名，它应该不是静态方法，因此应该在父类或本类中</li>
+<li>从实际传给函数 a 的入参推测，其函数定义应该形如【<code>c&lt;T&gt; a(Class&lt;T&gt; xxx, Builder yyy)</code>】</li>
+<li>但是因为代码混淆导致变量名随机化的关系，这个函数定义中可以确定用于全局搜索的部分只有【<code>&gt; a(Class&lt;</code>】<br>根据这些特征搜索，发现该函数的实现就是在本类的最开头的位置，名为【<code>private &lt;RESULT extends NoProguard&gt; c&lt;RESULT&gt; a(Class&lt;RESULT&gt; cls, Builder builder)</code>】</li>
+</ul>
+<p><img src="30.jpg"></p>
+<p>但是从设个函数中并不能直观地看到 token 和 signature 被构造的痕迹，不过可以发现 builder 参数确实被送到函数 a(builder) 中被处理了。</p>
+<p>遗憾的是，同样因为混淆的关系，这些 a 类、a 方法全部都关联到了错误的位置。</p>
+<p>不过可以从侧面分析还是可以得到一些信息的：</p>
+<ul>
+<li>首先这是一个模板函数，函数的出参命名为 <code>&lt;RESULT&gt;</code>，因此猜测【<code>this.f4523c.a( ... )</code>】原本应该是类似于【<code>response = this.APIs.call( request )</code>】的定义</li>
+<li>f4523c 的对象类型为 <code>com.xxx.oooooooooo.data.api.e.java</code> 类，这个类有不少诸如 ApiResponse、HttpResponse 的处理，佐证了前面的猜想</li>
+</ul>
+<p><img src="31.jpg"></p>
+<p>那么问题的关键再次回到函数【<code>this.f4523c.a( ... )</code>】的入参【<code>new a( ... )</code>】</p>
+<p>这个类定义在哪里? 它很可能就是为 Builder 添加  token 和 signature 的关键。</p>
+<p><img src="32.jpg"></p>
+<p>这里其实还有一个隐晦的提示，在 Java 中：</p>
+<ul>
+<li>同一个类中若 import 两个同名类，至少其中一个要使用全类路径</li>
+<li>同 package 下的非私有类可以无需 import 直接使用</li>
+</ul>
+<p>而【<code>new a( ... )</code>】的使用方式极可能就是后者，于是在 d.java 类的相同 package 下找到了 <code>src/main/java/com/xxx/oooooooooo/core/d/a.java</code> 类。</p>
+<p>在这个类中发现一些特征极可能就是我们要找的：</p>
+<ul>
+<li>import 中的 okhttp3 是用于处理 HTTP 请求的</li>
+<li>函数【<code>public Response intercept(Chain chain)</code>】中涉及了 POST/GET 请求下关于 token 和 signature 的处理逻辑</li>
+</ul>
+<p><img src="33.jpg"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1542,7 +1597,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">217.4k</span>&nbsp;字
+                class="white-color">218.5k</span>&nbsp;字
             
             
             
