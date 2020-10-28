@@ -54,17 +54,49 @@
   <li class="hide-on-med-and-down nav-item">
     
     <a href="/" class="waves-effect waves-light">
+
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
       <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Tags</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Categories</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Archives</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -93,39 +125,6 @@
       </li>
       
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
     
   </li>
   
@@ -190,12 +189,46 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-home"></i>
+				<i class="fa-fw fas fa-home"></i>
 			
 			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Tags</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Categories</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Archives</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -231,39 +264,6 @@
                 </li>
               
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
           
         </li>
         
@@ -428,37 +428,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/C-C/" title="C/C++: 15">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="C/C++" style="background-color: #F9EBEA;">C/C++
-                        <span class="tag-length">15</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%A4%A7%E6%95%B0/" title="大数: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="大数" style="background-color: #F5EEF8;">大数
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="水仙花数: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="水仙花数" style="background-color: #D5F5E3;">水仙花数
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/ACM/" title="ACM: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="ACM" style="background-color: #E8F8F5;">ACM
+                            data-tagname="ACM" style="background-color: #F9EBEA;">ACM
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -467,7 +440,34 @@
                 <a href="/tags/%E8%AE%BA%E6%96%87/" title="论文: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="论文" style="background-color: #FEF9E7;">论文
+                            data-tagname="论文" style="background-color: #F5EEF8;">论文
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/C-C/" title="C/C++: 15">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="C/C++" style="background-color: #D5F5E3;">C/C++
+                        <span class="tag-length">15</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%A4%A7%E6%95%B0/" title="大数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="大数" style="background-color: #E8F8F5;">大数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="水仙花数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="水仙花数" style="background-color: #FEF9E7;">水仙花数
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -581,11 +581,11 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" title="敏捷开发: 1">
+                <a href="/tags/%E6%B5%8B%E8%AF%95/" title="测试: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="敏捷开发" style="background-color: #85C1E9;">敏捷开发
-                        <span class="tag-length">1</span>
+                            data-tagname="测试" style="background-color: #F8C471;">测试
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -599,11 +599,20 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%B5%8B%E8%AF%95/" title="测试: 2">
+                <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" title="敏捷开发: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="测试" style="background-color: #F8C471;">测试
-                        <span class="tag-length">2</span>
+                            data-tagname="敏捷开发" style="background-color: #85C1E9;">敏捷开发
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/BUG/" title="BUG: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="BUG" style="background-color: #F5EEF8;">BUG
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -621,15 +630,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="K.I.S.S" style="background-color: #D7BDE2;">K.I.S.S
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/BUG/" title="BUG: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="BUG" style="background-color: #F5EEF8;">BUG
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -806,10 +806,10 @@
                 </a>
                 
                 
-                <a href="/tags/qBitTorrent/" title="qBitTorrent: 1">
+                <a href="/tags/SS/" title="SS: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="qBitTorrent" style="background-color: #82E0AA;">qBitTorrent
+                            data-tagname="SS" style="background-color: #FEF9E7;">SS
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -820,33 +820,6 @@
                              chip-default "
                             data-tagname="VPS" style="background-color: #D7BDE2;">VPS
                         <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/BT/" title="BT: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="BT" style="background-color: #F9E79F;">BT
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/" title="离线下载: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="离线下载" style="background-color: #D5F5E3;">离线下载
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/SS/" title="SS: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="SS" style="background-color: #FEF9E7;">SS
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -878,20 +851,38 @@
                 </a>
                 
                 
-                <a href="/tags/trojan/" title="trojan: 1">
+                <a href="/tags/qBitTorrent/" title="qBitTorrent: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="trojan" style="background-color: #F8F9F9;">trojan
+                            data-tagname="qBitTorrent" style="background-color: #82E0AA;">qBitTorrent
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/CTF/" title="CTF: 2">
+                <a href="/tags/BT/" title="BT: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="CTF" style="background-color: #D7BDE2;">CTF
-                        <span class="tag-length">2</span>
+                            data-tagname="BT" style="background-color: #F9E79F;">BT
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/" title="离线下载: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="离线下载" style="background-color: #D5F5E3;">离线下载
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/trojan/" title="trojan: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="trojan" style="background-color: #F8F9F9;">trojan
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -937,6 +928,15 @@
                              chip-default "
                             data-tagname="内核" style="background-color: #F9E79F;">内核
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/CTF/" title="CTF: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="CTF" style="background-color: #D7BDE2;">CTF
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -995,20 +995,20 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%B0%B8%E5%81%87%E5%BC%8F/" title="永假式: 1">
+                <a href="/tags/Ansible/" title="Ansible: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="永假式" style="background-color: #F5EEF8;">永假式
+                             chip-active "
+                            data-tagname="Ansible" style="background-color: #F9E79F;">Ansible
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E7%BB%95%E8%BF%87/" title="绕过: 1">
+                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" title="版本控制: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="绕过" style="background-color: #F8F9F9;">绕过
-                        <span class="tag-length">1</span>
+                            data-tagname="版本控制" style="background-color: #F9E79F;">版本控制
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -1035,42 +1035,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="远程开发" style="background-color: #82E0AA;">远程开发
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Ansible/" title="Ansible: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="Ansible" style="background-color: #F9E79F;">Ansible
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" title="版本控制: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="版本控制" style="background-color: #F9E79F;">版本控制
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/GitBook/" title="GitBook: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="GitBook" style="background-color: #82E0AA;">GitBook
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Github/" title="Github: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Github" style="background-color: #FEF9E7;">Github
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1112,6 +1076,24 @@
                 </a>
                 
                 
+                <a href="/tags/GitBook/" title="GitBook: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="GitBook" style="background-color: #82E0AA;">GitBook
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Github/" title="Github: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Github" style="background-color: #FEF9E7;">Github
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/Mariadb/" title="Mariadb: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1148,6 +1130,15 @@
                 </a>
                 
                 
+                <a href="/tags/LAMP/" title="LAMP: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="LAMP" style="background-color: #D7BDE2;">LAMP
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/XMLRPC/" title="XMLRPC: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1166,10 +1157,19 @@
                 </a>
                 
                 
-                <a href="/tags/LAMP/" title="LAMP: 1">
+                <a href="/tags/calibre/" title="calibre: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="LAMP" style="background-color: #D7BDE2;">LAMP
+                            data-tagname="calibre" style="background-color: #D5F5E3;">calibre
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E4%B9%A6%E5%BA%93/" title="书库: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="书库" style="background-color: #A3E4D7;">书库
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1283,37 +1283,19 @@
                 </a>
                 
                 
-                <a href="/tags/calibre/" title="calibre: 1">
+                <a href="/tags/%E6%B0%B8%E5%81%87%E5%BC%8F/" title="永假式: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="calibre" style="background-color: #D5F5E3;">calibre
+                            data-tagname="永假式" style="background-color: #F5EEF8;">永假式
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E4%B9%A6%E5%BA%93/" title="书库: 1">
+                <a href="/tags/%E7%BB%95%E8%BF%87/" title="绕过: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="书库" style="background-color: #A3E4D7;">书库
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Oracle/" title="Oracle: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Oracle" style="background-color: #D5F5E3;">Oracle
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/TTFB/" title="TTFB: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="TTFB" style="background-color: #E8F8F5;">TTFB
+                            data-tagname="绕过" style="background-color: #F8F9F9;">绕过
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1328,10 +1310,28 @@
                 </a>
                 
                 
+                <a href="/tags/Oracle/" title="Oracle: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Oracle" style="background-color: #D5F5E3;">Oracle
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/WinDBG/" title="WinDBG: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="WinDBG" style="background-color: #F9E79F;">WinDBG
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/TTFB/" title="TTFB: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="TTFB" style="background-color: #E8F8F5;">TTFB
                         <span class="tag-length">1</span>
                     </span>
                 </a>

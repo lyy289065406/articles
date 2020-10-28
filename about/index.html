@@ -54,17 +54,49 @@
   <li class="hide-on-med-and-down nav-item">
     
     <a href="/" class="waves-effect waves-light">
+
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
       <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Tags</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Categories</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Archives</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -93,39 +125,6 @@
       </li>
       
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
     
   </li>
   
@@ -190,12 +189,46 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-home"></i>
+				<i class="fa-fw fas fa-home"></i>
 			
 			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Tags</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Categories</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Archives</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -231,39 +264,6 @@
                 </li>
               
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
           
         </li>
         
@@ -669,7 +669,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"算法","value":8},{"name":"爬虫","value":3},{"name":"系统架构","value":3},{"name":"心路历程","value":12},{"name":"开发/语言","value":17},{"name":"网络协议","value":5},{"name":"逆向工程","value":6},{"name":"安全","value":7},{"name":"开发/工具","value":1},{"name":"软件配置管理","value":3},{"name":"网站建设","value":13},{"name":"数据库","value":2}],
+                data: [{"name":"算法","value":8},{"name":"爬虫","value":3},{"name":"系统架构","value":3},{"name":"心路历程","value":12},{"name":"开发/语言","value":17},{"name":"网络协议","value":5},{"name":"逆向工程","value":6},{"name":"安全","value":7},{"name":"软件配置管理","value":3},{"name":"开发/工具","value":1},{"name":"网站建设","value":13},{"name":"数据库","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -939,6 +939,18 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/ACM/">
+                <span class="chip center-align waves-effect waves-light chip-default">ACM</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%AE%BA%E6%96%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">论文</span>
+            </a>
+            
+            
+            
             <a href="/tags/C-C/">
                 <span class="chip center-align waves-effect waves-light chip-default">C/C++</span>
             </a>
@@ -953,18 +965,6 @@
             
             <a href="/tags/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/">
                 <span class="chip center-align waves-effect waves-light chip-default">水仙花数</span>
-            </a>
-            
-            
-            
-            <a href="/tags/ACM/">
-                <span class="chip center-align waves-effect waves-light chip-default">ACM</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E8%AE%BA%E6%96%87/">
-                <span class="chip center-align waves-effect waves-light chip-default">论文</span>
             </a>
             
             
@@ -1041,8 +1041,8 @@
             
             
             
-            <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
-                <span class="chip center-align waves-effect waves-light chip-default">敏捷开发</span>
+            <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">测试</span>
             </a>
             
             
@@ -1053,8 +1053,14 @@
             
             
             
-            <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">测试</span>
+            <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+                <span class="chip center-align waves-effect waves-light chip-default">敏捷开发</span>
+            </a>
+            
+            
+            
+            <a href="/tags/BUG/">
+                <span class="chip center-align waves-effect waves-light chip-default">BUG</span>
             </a>
             
             
@@ -1067,12 +1073,6 @@
             
             <a href="/tags/K-I-S-S/">
                 <span class="chip center-align waves-effect waves-light chip-default">K.I.S.S</span>
-            </a>
-            
-            
-            
-            <a href="/tags/BUG/">
-                <span class="chip center-align waves-effect waves-light chip-default">BUG</span>
             </a>
             
             
@@ -1191,32 +1191,14 @@
             
             
             
-            <a href="/tags/qBitTorrent/">
-                <span class="chip center-align waves-effect waves-light chip-default">qBitTorrent</span>
+            <a href="/tags/SS/">
+                <span class="chip center-align waves-effect waves-light chip-default">SS</span>
             </a>
             
             
             
             <a href="/tags/VPS/">
                 <span class="chip center-align waves-effect waves-light chip-default">VPS</span>
-            </a>
-            
-            
-            
-            <a href="/tags/BT/">
-                <span class="chip center-align waves-effect waves-light chip-default">BT</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">
-                <span class="chip center-align waves-effect waves-light chip-default">离线下载</span>
-            </a>
-            
-            
-            
-            <a href="/tags/SS/">
-                <span class="chip center-align waves-effect waves-light chip-default">SS</span>
             </a>
             
             
@@ -1239,14 +1221,26 @@
             
             
             
-            <a href="/tags/trojan/">
-                <span class="chip center-align waves-effect waves-light chip-default">trojan</span>
+            <a href="/tags/qBitTorrent/">
+                <span class="chip center-align waves-effect waves-light chip-default">qBitTorrent</span>
             </a>
             
             
             
-            <a href="/tags/CTF/">
-                <span class="chip center-align waves-effect waves-light chip-default">CTF</span>
+            <a href="/tags/BT/">
+                <span class="chip center-align waves-effect waves-light chip-default">BT</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">
+                <span class="chip center-align waves-effect waves-light chip-default">离线下载</span>
+            </a>
+            
+            
+            
+            <a href="/tags/trojan/">
+                <span class="chip center-align waves-effect waves-light chip-default">trojan</span>
             </a>
             
             
@@ -1277,6 +1271,12 @@
             
             <a href="/tags/%E5%86%85%E6%A0%B8/">
                 <span class="chip center-align waves-effect waves-light chip-default">内核</span>
+            </a>
+            
+            
+            
+            <a href="/tags/CTF/">
+                <span class="chip center-align waves-effect waves-light chip-default">CTF</span>
             </a>
             
             
@@ -1317,14 +1317,14 @@
             
             
             
-            <a href="/tags/%E6%B0%B8%E5%81%87%E5%BC%8F/">
-                <span class="chip center-align waves-effect waves-light chip-default">永假式</span>
+            <a href="/tags/Ansible/">
+                <span class="chip center-align waves-effect waves-light chip-default">Ansible</span>
             </a>
             
             
             
-            <a href="/tags/%E7%BB%95%E8%BF%87/">
-                <span class="chip center-align waves-effect waves-light chip-default">绕过</span>
+            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                <span class="chip center-align waves-effect waves-light chip-default">版本控制</span>
             </a>
             
             
@@ -1343,30 +1343,6 @@
             
             <a href="/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/">
                 <span class="chip center-align waves-effect waves-light chip-default">远程开发</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Ansible/">
-                <span class="chip center-align waves-effect waves-light chip-default">Ansible</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
-                <span class="chip center-align waves-effect waves-light chip-default">版本控制</span>
-            </a>
-            
-            
-            
-            <a href="/tags/GitBook/">
-                <span class="chip center-align waves-effect waves-light chip-default">GitBook</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Github/">
-                <span class="chip center-align waves-effect waves-light chip-default">Github</span>
             </a>
             
             
@@ -1395,6 +1371,18 @@
             
             
             
+            <a href="/tags/GitBook/">
+                <span class="chip center-align waves-effect waves-light chip-default">GitBook</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Github/">
+                <span class="chip center-align waves-effect waves-light chip-default">Github</span>
+            </a>
+            
+            
+            
             <a href="/tags/Mariadb/">
                 <span class="chip center-align waves-effect waves-light chip-default">Mariadb</span>
             </a>
@@ -1419,6 +1407,12 @@
             
             
             
+            <a href="/tags/LAMP/">
+                <span class="chip center-align waves-effect waves-light chip-default">LAMP</span>
+            </a>
+            
+            
+            
             <a href="/tags/XMLRPC/">
                 <span class="chip center-align waves-effect waves-light chip-default">XMLRPC</span>
             </a>
@@ -1431,8 +1425,14 @@
             
             
             
-            <a href="/tags/LAMP/">
-                <span class="chip center-align waves-effect waves-light chip-default">LAMP</span>
+            <a href="/tags/calibre/">
+                <span class="chip center-align waves-effect waves-light chip-default">calibre</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%B9%A6%E5%BA%93/">
+                <span class="chip center-align waves-effect waves-light chip-default">书库</span>
             </a>
             
             
@@ -1509,26 +1509,14 @@
             
             
             
-            <a href="/tags/calibre/">
-                <span class="chip center-align waves-effect waves-light chip-default">calibre</span>
+            <a href="/tags/%E6%B0%B8%E5%81%87%E5%BC%8F/">
+                <span class="chip center-align waves-effect waves-light chip-default">永假式</span>
             </a>
             
             
             
-            <a href="/tags/%E4%B9%A6%E5%BA%93/">
-                <span class="chip center-align waves-effect waves-light chip-default">书库</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Oracle/">
-                <span class="chip center-align waves-effect waves-light chip-default">Oracle</span>
-            </a>
-            
-            
-            
-            <a href="/tags/TTFB/">
-                <span class="chip center-align waves-effect waves-light chip-default">TTFB</span>
+            <a href="/tags/%E7%BB%95%E8%BF%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">绕过</span>
             </a>
             
             
@@ -1539,8 +1527,20 @@
             
             
             
+            <a href="/tags/Oracle/">
+                <span class="chip center-align waves-effect waves-light chip-default">Oracle</span>
+            </a>
+            
+            
+            
             <a href="/tags/WinDBG/">
                 <span class="chip center-align waves-effect waves-light chip-default">WinDBG</span>
+            </a>
+            
+            
+            
+            <a href="/tags/TTFB/">
+                <span class="chip center-align waves-effect waves-light chip-default">TTFB</span>
             </a>
             
             
