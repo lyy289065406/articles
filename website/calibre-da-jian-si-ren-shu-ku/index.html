@@ -559,7 +559,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-25
+                    2020-12-08
                 </div>
                 
 
@@ -644,7 +644,7 @@
 <p>构建时设置的是 calibre 后端管理页面的账密，calibre-web 前端账密只能在 CMS 上修改。</p>
 </blockquote>
 <h3 id="2-配置-calibre"><a href="#2-配置-calibre" class="headerlink" title="2. 配置 calibre"></a>2. 配置 calibre</h3><ul>
-<li>登录后端管理页面：<code>http://${vps-ip}/mgr/</code>（或 <code>http://${vps-ip}:8080</code>）</li>
+<li>登录后端管理页面：<code>http://${server-ip}/mgr/</code>（或 <code>http://${server-ip}:8080</code>）</li>
 <li>默认登录账密: <code>admin / admin123</code></li>
 <li>参考下图，根据向导进行初始化设置（必须记得配置路径为 <code>/config/Calibre Library</code>，该路径用于存储 calibre 的配置库，默认挂载到宿主机的 <code>data</code> 目录）</li>
 </ul>
@@ -656,7 +656,7 @@
 </blockquote>
 <p><img src="03.png"></p>
 <h3 id="4-配置-calibre-web"><a href="#4-配置-calibre-web" class="headerlink" title="4. 配置 calibre-web"></a>4. 配置 calibre-web</h3><ul>
-<li>登录前端 CMS 页面：<code>http://${vps-ip}/cms/</code>（或 <code>http://${vps-ip}:8083</code>）</li>
+<li>登录前端 CMS 页面：<code>http://${server-ip}/cms/</code>（或 <code>http://${server-ip}:8083</code>）</li>
 <li>默认登录账密: <code>admin / admin123</code></li>
 <li>根据向导设置 calibre 配置库路径，路径就是前面的 <code>/config/Calibre Library</code></li>
 <li>成功登录后即可看到在后端管理页面导入的电子书</li>
@@ -671,7 +671,7 @@
 <p>之后点击任意一本电子书，会多出一个【在线阅读】按钮：</p>
 <p><img src="07.png"></p>
 <p><img src="08.png"></p>
-<h3 id="2-手机阅读"><a href="#2-手机阅读" class="headerlink" title="2. 手机阅读"></a>2. 手机阅读</h3><p>calibre-web 提供了 OPDS 协议的服务地址：<code>http://${vps-ip}/cms/opds/</code>（或 <code>http://${vps-ip}:8083/opds/</code>）。</p>
+<h3 id="2-手机阅读"><a href="#2-手机阅读" class="headerlink" title="2. 手机阅读"></a>2. 手机阅读</h3><p>calibre-web 提供了 OPDS 协议的服务地址：<code>http://${server-ip}/cms/opds/</code>（或 <code>http://${server-ip}:8083/opds/</code>）。</p>
 <p>换言之所有支持 OPDS 协议的 APP 都可以对接到 calibre-web 获取书库中的电子书，例如这些 APP ：</p>
 <table>
 <thead>
@@ -1043,32 +1043,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/net/vps-bt-chi-xian-xia-zai/">
+                <a href="/safe/cve-2020-13933-lou-dong-fen-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="利用 qBitTorrent 在 VPS 上离线下载">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="CVE-2020-13933 漏洞分析">
                         
-                        <span class="card-title">利用 qBitTorrent 在 VPS 上离线下载</span>
+                        <span class="card-title">CVE-2020-13933 漏洞分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概要种子和磁力链接是现在使用最为广泛的资源下载形式了，但有时即使找到了种子资源，也会面临墙、网速、高额收费等限制问题，导致难以顺利下载。
-qBitTorrent 是一款开源免费的种子和磁力链接下载工具，支持 Windows、Mac 和 Li
+                            Apache Shiro < 1.6.0 身份验证绕过漏洞： Apache Shiro 是一个强大且易用的 Java 安全框架，执行身份验证、授权、密码和会话管理，通常会和 spring 等框架一起搭配使用来开发 web 应用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                    网络协议
+                            <a href="/categories/%E5%AE%89%E5%85%A8/" class="post-category">
+                                    安全
                                 </a>
                             
                             
@@ -1078,20 +1077,12 @@ qBitTorrent 是一款开源免费的种子和磁力链接下载工具，支持 W
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/qBitTorrent/">
-                        <span class="chip bg-color">qBitTorrent</span>
+                    <a href="/tags/CVE/">
+                        <span class="chip bg-color">CVE</span>
                     </a>
                     
-                    <a href="/tags/VPS/">
-                        <span class="chip bg-color">VPS</span>
-                    </a>
-                    
-                    <a href="/tags/BT/">
-                        <span class="chip bg-color">BT</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">
-                        <span class="chip bg-color">离线下载</span>
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">漏洞分析</span>
                     </a>
                     
                 </div>
@@ -1335,7 +1326,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">221.5k</span>&nbsp;字
+                class="white-color">216k</span>&nbsp;字
             
             
             

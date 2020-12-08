@@ -77,7 +77,7 @@
     <link href="https://exp-blog.com/website/calibre-da-jian-si-ren-shu-ku/"/>
     <id>https://exp-blog.com/website/calibre-da-jian-si-ren-shu-ku/</id>
     <published>2020-10-11T01:22:36.000Z</published>
-    <updated>2020-10-25T01:46:43.592Z</updated>
+    <updated>2020-12-08T11:14:00.669Z</updated>
     
     
       
@@ -96,37 +96,6 @@
     <category term="calibre" scheme="https://exp-blog.com/tags/calibre/"/>
     
     <category term="书库" scheme="https://exp-blog.com/tags/%E4%B9%A6%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用 qBitTorrent 在 VPS 上离线下载</title>
-    <link href="https://exp-blog.com/net/vps-bt-chi-xian-xia-zai/"/>
-    <id>https://exp-blog.com/net/vps-bt-chi-xian-xia-zai/</id>
-    <published>2020-10-07T11:24:23.000Z</published>
-    <updated>2020-10-25T01:36:47.958Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-    <category term="qBitTorrent" scheme="https://exp-blog.com/tags/qBitTorrent/"/>
-    
-    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
-    
-    <category term="BT" scheme="https://exp-blog.com/tags/BT/"/>
-    
-    <category term="离线下载" scheme="https://exp-blog.com/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/"/>
     
   </entry>
   
@@ -154,39 +123,6 @@
     <category term="CVE" scheme="https://exp-blog.com/tags/CVE/"/>
     
     <category term="漏洞分析" scheme="https://exp-blog.com/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>trojan 科学上网教程</title>
-    <link href="https://exp-blog.com/net/trojan-ke-xue-shang-wang-jiao-cheng/"/>
-    <id>https://exp-blog.com/net/trojan-ke-xue-shang-wang-jiao-cheng/</id>
-    <published>2020-08-28T14:08:34.000Z</published>
-    <updated>2020-09-13T06:18:56.739Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;trojan-简介&quot;&gt;&lt;a href=&quot;#trojan-简介&quot; class=&quot;headerlink&quot; title=&quot;trojan 简介&quot;&gt;&lt;/a&gt;trojan</summary>
-        
-      
-    
-    
-    
-    <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
-    
-    <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-    <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
-    
-    <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
-    
-    <category term="trojan" scheme="https://exp-blog.com/tags/trojan/"/>
     
   </entry>
   
@@ -561,9 +497,9 @@
     <category term="网站建设" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
-    
     <category term="Mariadb" scheme="https://exp-blog.com/tags/Mariadb/"/>
+    
+    <category term="WordPress" scheme="https://exp-blog.com/tags/WordPress/"/>
     
   </entry>
   
@@ -572,7 +508,7 @@
     <link href="https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/"/>
     <id>https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</id>
     <published>2018-12-16T09:39:34.000Z</published>
-    <updated>2020-09-15T14:43:07.922Z</updated>
+    <updated>2020-12-08T11:14:50.601Z</updated>
     
     
       
@@ -777,7 +713,7 @@
     <link href="https://exp-blog.com/db/redis-bu-shu-bi-ji/"/>
     <id>https://exp-blog.com/db/redis-bu-shu-bi-ji/</id>
     <published>2018-09-14T10:44:36.000Z</published>
-    <updated>2020-09-12T07:16:51.308Z</updated>
+    <updated>2020-12-08T11:14:29.138Z</updated>
     
     
       
@@ -1049,7 +985,7 @@
     <link href="https://exp-blog.com/website/jia-su-fang-wen-wordpress/"/>
     <id>https://exp-blog.com/website/jia-su-fang-wen-wordpress/</id>
     <published>2018-07-07T14:04:53.000Z</published>
-    <updated>2020-09-12T05:12:09.202Z</updated>
+    <updated>2020-12-08T11:14:44.268Z</updated>
     
     
       
@@ -1302,39 +1238,6 @@
   </entry>
   
   <entry>
-    <title>Shadowsocks 客户端 + Privoxy 实现外网访问</title>
-    <link href="https://exp-blog.com/net/shadowsocks-shi-xian-wai-wang-fang-wen/"/>
-    <id>https://exp-blog.com/net/shadowsocks-shi-xian-wai-wang-fang-wen/</id>
-    <published>2017-07-04T13:44:47.000Z</published>
-    <updated>2020-09-13T06:16:52.827Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1. 前言&lt;/h2&gt;&lt;p&gt;首先声明本文是 &lt;font</summary>
-        
-      
-    
-    
-    
-    <category term="网络协议" scheme="https://exp-blog.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-    <category term="VPS" scheme="https://exp-blog.com/tags/VPS/"/>
-    
-    <category term="SS" scheme="https://exp-blog.com/tags/SS/"/>
-    
-    <category term="科学上网" scheme="https://exp-blog.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-    <category term="翻墙" scheme="https://exp-blog.com/tags/%E7%BF%BB%E5%A2%99/"/>
-    
-    <category term="梯子" scheme="https://exp-blog.com/tags/%E6%A2%AF%E5%AD%90/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Centos 实现端口转发：rinetd 部署笔记</title>
     <link href="https://exp-blog.com/net/rinetd-bu-shu-bi-ji/"/>
     <id>https://exp-blog.com/net/rinetd-bu-shu-bi-ji/</id>
@@ -1408,9 +1311,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="暗时间" scheme="https://exp-blog.com/tags/%E6%9A%97%E6%97%B6%E9%97%B4/"/>
     
@@ -1525,9 +1428,9 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
-    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
+    
+    <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -1632,11 +1535,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
+    
     <category term="随笔" scheme="https://exp-blog.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="测试" scheme="https://exp-blog.com/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-    <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
     
   </entry>
   
@@ -1746,11 +1649,11 @@
     <category term="心路历程" scheme="https://exp-blog.com/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     
     
+    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
     <category term="沟通" scheme="https://exp-blog.com/tags/%E6%B2%9F%E9%80%9A/"/>
     
     <category term="重构" scheme="https://exp-blog.com/tags/%E9%87%8D%E6%9E%84/"/>
-    
-    <category term="敏捷开发" scheme="https://exp-blog.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
