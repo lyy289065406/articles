@@ -495,9 +495,9 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> Mariadb </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -1302,9 +1302,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> 重构 </tag>
+            
+            <tag> 随笔 </tag>
             
             <tag> 暗时间 </tag>
             
@@ -1418,9 +1418,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> 沟通 </tag>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -1522,11 +1522,11 @@
       
         <tags>
             
+            <tag> 重构 </tag>
+            
             <tag> 随笔 </tag>
             
             <tag> 测试 </tag>
-            
-            <tag> 重构 </tag>
             
         </tags>
       
@@ -1630,11 +1630,11 @@
       
         <tags>
             
+            <tag> 敏捷开发 </tag>
+            
             <tag> 沟通 </tag>
             
             <tag> 重构 </tag>
-            
-            <tag> 敏捷开发 </tag>
             
         </tags>
       
