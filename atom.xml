@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2020-12-22T05:41:03.456Z</updated>
+  <updated>2020-12-22T14:05:38.847Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://exp-blog.com/safe/cve-2019-5475-lou-dong-fen-xi/"/>
     <id>https://exp-blog.com/safe/cve-2019-5475-lou-dong-fen-xi/</id>
     <published>2020-12-20T07:41:17.000Z</published>
-    <updated>2020-12-22T05:41:03.456Z</updated>
+    <updated>2020-12-22T14:05:38.847Z</updated>
     
     
       
@@ -593,6 +593,33 @@
   </entry>
   
   <entry>
+    <title>Ansible-Tower 部署笔记</title>
+    <link href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/"/>
+    <id>https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</id>
+    <published>2018-11-22T08:21:46.000Z</published>
+    <updated>2020-09-13T01:33:10.920Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为时下最流行的自动化运维工具之一，Ansible</summary>
+        
+      
+    
+    
+    
+    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
+    
+    
+    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
+    
+    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WINDOWS 内核学习顺序指引清单</title>
     <link href="https://exp-blog.com/re/windows-nei-he-xue-xi-qing-dan/"/>
     <id>https://exp-blog.com/re/windows-nei-he-xue-xi-qing-dan/</id>
@@ -622,33 +649,6 @@
     <category term="驱动" scheme="https://exp-blog.com/tags/%E9%A9%B1%E5%8A%A8/"/>
     
     <category term="内核" scheme="https://exp-blog.com/tags/%E5%86%85%E6%A0%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ansible-Tower 部署笔记</title>
-    <link href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/"/>
-    <id>https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</id>
-    <published>2018-11-22T08:21:46.000Z</published>
-    <updated>2020-09-13T01:33:10.920Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为时下最流行的自动化运维工具之一，Ansible</summary>
-        
-      
-    
-    
-    
-    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
-    
-    
-    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    
-    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
     
   </entry>
   
