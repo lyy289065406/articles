@@ -570,7 +570,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    834
+                    858
                 </div>
                 
 
@@ -602,7 +602,7 @@
 <p>安装 Docker 后，Docker 会自动创建 2 个发行版：</p>
 <ul>
 <li>docker-desktop： 存储在 <code>%LOCALAPPDATA%\Docker\wsl\distro</code></li>
-<li>docker-desktop-data： 存储在 <code>%LOCALAPPDATA%\Docker\wsl\data</code>，占用空间的元凶</li>
+<li>docker-desktop-data： 存储在 <code>%LOCALAPPDATA%\Docker\wsl\data</code>（占用空间的元凶）</li>
 </ul>
 <p>在 WSL1 时代，几乎都是使用第三方工具 LxRunOffline 进行迁移，但是这个工具到了 WSL2 时代就不能用了：实践证明，LxRunOffline 确实可以迁移自己安装的发行版，却迁移不了 Docker 自动创建的 2 个发行版。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>其实用 WSL 命令就可以简单实现迁移，操作步骤如下：</p>
@@ -630,18 +630,25 @@
 <span class="token comment" spellcheck="true"># target: 期望迁移的目录</span>
 <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$target</span>=<span class="token string">"D:\wsl\docker"</span><span class="token punctuation">)</span>
 
+<span class="token function">Write-Host</span> <span class="token string">"Stop docker ..."</span>
 net stop <span class="token string">"com.docker.service"</span>
+
+<span class="token function">Write-Host</span> <span class="token string">"Stop wsl ..."</span>
 wsl <span class="token operator">--</span>shutdown
 
+<span class="token function">Write-Host</span> <span class="token string">"Move docker-desktop-data image ..."</span>
 wsl <span class="token operator">--</span>export docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span> <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span><span class="token punctuation">.</span>tar
 wsl <span class="token operator">--</span>unregister docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span>
 wsl <span class="token operator">--</span>import docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span> <span class="token variable">$target</span>\<span class="token keyword">data</span>\ <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span><span class="token punctuation">.</span>tar <span class="token operator">--</span>version 2
 <span class="token function">Remove-Item</span> <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token operator">-</span><span class="token keyword">data</span><span class="token punctuation">.</span>tar <span class="token operator">-</span>recurse
 
+<span class="token function">Write-Host</span> <span class="token string">"Move docker-desktop image ..."</span>
 wsl <span class="token operator">--</span>export docker<span class="token operator">-</span>desktop <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token punctuation">.</span>tar
 wsl <span class="token operator">--</span>unregister docker<span class="token operator">-</span>desktop
 wsl <span class="token operator">--</span>import docker<span class="token operator">-</span>desktop <span class="token variable">$target</span>\distro\ <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token punctuation">.</span>tar <span class="token operator">--</span>version 2
-<span class="token function">Remove-Item</span> <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token punctuation">.</span>tar <span class="token operator">-</span>recurse<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">Remove-Item</span> <span class="token variable">$target</span>\tmp\docker<span class="token operator">-</span>desktop<span class="token punctuation">.</span>tar <span class="token operator">-</span>recurse
+
+<span class="token function">Write-Host</span> <span class="token string">"Finish."</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1247,7 +1254,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">220.3k</span>&nbsp;字
+                class="white-color">220.4k</span>&nbsp;字
             
             
             
