@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>如何清洗 Github 提交历史 ？</title>
+      <link href="/tools/qing-xi-github-ti-jiao-li-shi/"/>
+      <url>/tools/qing-xi-github-ti-jiao-li-shi/</url>
+      
+        <content type="html"><![CDATA[<p>当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：</p><pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <FILEPATH>' --prune-empty --tag-name-filter cat -- --allgit push origin master --forcerm -rf .git/refs/original/git reflog expire --expire=now --allgit gc --prune=nowgit gc --aggressive --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但若这类文件非常多的时候，一个可选的方法时直接清空所有历史记录：</p><pre class="line-numbers language-shell"><code class="language-shell">rm -rf .gitgit initgit add -Agit commit -m "clear history"git remote add origin <GITHUB_REPO_URL>git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发/工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WSL2 迁移 Docker 镜像存储位置</title>
       <link href="/container/wsl2-qian-yi-docker-cun-chu-wei-zhi/"/>
       <url>/container/wsl2-qian-yi-docker-cun-chu-wei-zhi/</url>
@@ -646,9 +671,9 @@
       
         <tags>
             
-            <tag> 版本控制 </tag>
-            
             <tag> Ansible </tag>
+            
+            <tag> 版本控制 </tag>
             
         </tags>
       
