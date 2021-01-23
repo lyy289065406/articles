@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>使用 mstream 搭建私人云音乐库</title>
+      <link href="/website/mstream-da-jian-si-ren-yun-yin-le-ku/"/>
+      <url>/website/mstream-da-jian-si-ren-yun-yin-le-ku/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>你是否面临以下困扰：</p><ul><li>想听以前某首音乐的时候，网上已经找不到了</li><li>即使网上找到了，因为版权原因无法在线听、甚至无法下载</li><li>可以在线听，但是要收费</li><li>在家、公司、手机都要专门为不同的音乐软件设置同一个曲库</li><li>……</li></ul><p>其实只需要使用 <a href="https://github.com/IrosTheBeggar/mStream">mStream</a> 搭建一个私人云音乐，这些问题就迎刃而解了：mStream 是采用 NodeJS 编写的，支持 mp3、flac 等多种格式的音乐流媒体服务器，它附带一个 RESTful JSON API 和内置的 Web GUI，可以在任何浏览器上访问您的云歌单。</p><p><img src="01.png"></p><h2 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h2><p>为方便起见，这里已经把相关镜像组件都封装到 Github 仓库 <a href="https://github.com/lyy289065406/seafile-docker">seafile-docker</a>。</p><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><h3 id="1-项目构建"><a href="#1-项目构建" class="headerlink" title="1. 项目构建"></a>1. 项目构建</h3><ul><li>宿主机安装 docker、docker-compose</li><li>宿主机安全组/防火墙（iptables/firewall）放行 9000 端口的入口流量</li><li>下载仓库： <code>git clone https://github.com/lyy289065406/mstream-docker /usr/local/mstream-docker</code></li><li>打开仓库目录： <code>cd /usr/local/mstream-docker</code></li><li>构建镜像并运行： <code>./run.sh -u admin -p admin123</code></li><li>浏览器访问 <a href="http://127.0.0.1:9000/">http://127.0.0.1:9000</a> 即可使用</li></ul><blockquote><p>构建时设置的是 mStream 前端的登录账密</p></blockquote><h3 id="2-导入本地离线音乐"><a href="#2-导入本地离线音乐" class="headerlink" title="2. 导入本地离线音乐"></a>2. 导入本地离线音乐</h3><p>直接把音乐文件放到宿主机的 <a href="https://github.com/lyy289065406/mstream-docker/tree/master/music"><code>music</code></a> 目录，即可在前端的【File Explorer】找到这些音乐文件。</p><blockquote><p>因版权关系越来越多音乐难以下载，可以到 <a href="https://www.3esh-online.com/">https://www.3esh-online.com/</a> 搜索并免费下载音乐，下载后可把音乐文件存储到另一个 Repo（如 <a href="https://github.com/lyy289065406/music-library">music-library</a>），使用时再通过 git clone 拉取到 <a href="music"><code>music</code></a> 目录</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站建设 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mstream </tag>
+            
+            <tag> 云音乐 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何清洗 Github 提交历史 ？</title>
       <link href="/tools/qing-xi-github-ti-jiao-li-shi/"/>
       <url>/tools/qing-xi-github-ti-jiao-li-shi/</url>
       
-        <content type="html"><![CDATA[<p>当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：</p><pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <FILEPATH>' --prune-empty --tag-name-filter cat -- --allgit push origin master --forcerm -rf .git/refs/original/git reflog expire --expire=now --allgit gc --prune=nowgit gc --aggressive --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但若这类文件非常多的时候，一个可选的方法时直接清空所有历史记录：</p><pre class="line-numbers language-shell"><code class="language-shell">rm -rf .gitgit initgit add -Agit commit -m "clear history"git remote add origin <GITHUB_REPO_URL>git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<p>当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：</p><pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch ${FILEPATH}' --prune-empty --tag-name-filter cat -- --allgit push origin master --forcerm -rf .git/refs/original/git reflog expire --expire=now --allgit gc --prune=nowgit gc --aggressive --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但若这类文件非常多的时候，一个可选的方法时直接清空所有历史记录：</p><pre class="line-numbers language-shell"><code class="language-shell">rm -rf .gitgit initgit add -Agit commit -m "clear history"git remote add origin ${GITHUB_REPO_URL}git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -21,6 +48,33 @@
         <tags>
             
             <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用 seafile 搭建私人云盘</title>
+      <link href="/website/seafile-da-jian-si-ren-yun-pan/"/>
+      <url>/website/seafile-da-jian-si-ren-yun-pan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>你是否面临以下困扰：</p><ul><li>免费云盘越来越少了</li><li>百度云盘限速越来越过分了</li><li>上传到云盘的文件被服务商泄露了、删掉了</li><li>不得已用 U 盘、QQ 给小伙伴共享文件</li><li>……</li></ul><p>其实只需要使用 <a href="https://github.com/haiwen/seafile">seafile</a> 搭建一个私人云盘，这些问题就迎刃而解了：Seafile 是一款开源的企业云盘，注重可靠性和性能，支持文件同步或者直接挂载到本地访问。</p><p><img src="01.png"></p><h2 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h2><p>为方便起见，这里已经把相关镜像组件都封装到 Github 仓库 <a href="https://github.com/lyy289065406/seafile-docker">seafile-docker</a>：</p><table><thead><tr><th align="center">镜像</th><th align="center">用途</th><th align="center">服务端口</th></tr></thead><tbody><tr><td align="center">seafile</td><td align="center">seafile 前端</td><td align="center">80</td></tr><tr><td align="center">mariadb</td><td align="center">seafile 数据库</td><td align="center">3306</td></tr><tr><td align="center">memcached</td><td align="center">seafile 缓存</td><td align="center">-</td></tr></tbody></table><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><ul><li>宿主机安装 docker、docker-compose</li><li>宿主机安全组/防火墙（iptables/firewall）放行 80/443 端口的入口流量</li><li>下载仓库： <code>git clone https://github.com/lyy289065406/seafile-docker /usr/local/seafile-docker</code></li><li>打开仓库目录： <code>cd /usr/local/seafile-docker</code></li><li>构建镜像并运行： <code>./run.sh -u admin -p admin123</code></li><li>浏览器访问 <a href="http://127.0.0.1/">http://127.0.0.1:80</a> 即可使用</li></ul><blockquote><p>构建时设置的是 seafile 前端的登录账密，另 80 服务端口不可变更，否则文件无法下载</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站建设 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> seafile </tag>
+            
+            <tag> 云盘 </tag>
             
         </tags>
       
@@ -671,9 +725,9 @@
       
         <tags>
             
-            <tag> Ansible </tag>
-            
             <tag> 版本控制 </tag>
+            
+            <tag> Ansible </tag>
             
         </tags>
       

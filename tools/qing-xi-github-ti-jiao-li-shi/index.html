@@ -562,7 +562,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    189
+                    191
                 </div>
                 
 
@@ -585,7 +585,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <FILEPATH>' --prune-empty --tag-name-filter cat -- --all
+<pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch ${FILEPATH}' --prune-empty --tag-name-filter cat -- --all
 git push origin master --force
 rm -rf .git/refs/original/
 git reflog expire --expire=now --all
@@ -596,7 +596,7 @@ git gc --aggressive --prune=now<span aria-hidden="true" class="line-numbers-rows
 git init
 git add -A
 git commit -m "clear history"
-git remote add origin <GITHUB_REPO_URL>
+git remote add origin ${GITHUB_REPO_URL}
 git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -848,49 +848,58 @@ git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/tools/qing-xi-github-ti-jiao-li-shi/">
+                <a href="/website/mstream-da-jian-si-ren-yun-yin-le-ku/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="如何清洗 Github 提交历史 ？">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="使用 mstream 搭建私人云音乐库">
                         
-                        <span class="card-title">如何清洗 Github 提交历史 ？</span>
+                        <span class="card-title">使用 mstream 搭建私人云音乐库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：
-git filter-branch --force --index-filter 'git rm --cached --ign
+                            概要你是否面临以下困扰：
+
+想听以前某首音乐的时候，网上已经找不到了
+即使网上找到了，因为版权原因无法在线听、甚至无法下载
+可以在线听，但是要收费
+在家、公司、手机都要专门为不同的音乐软件设置同一个曲库
+……
+
+其实只需要使用 mStrea
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发/工具
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/mstream/">
+                        <span class="chip bg-color">mstream</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%91%E9%9F%B3%E4%B9%90/">
+                        <span class="chip bg-color">云音乐</span>
                     </a>
                     
                 </div>
@@ -904,32 +913,39 @@ git filter-branch --force --index-filter 'git rm --cached --ign
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/container/wsl2-qian-yi-docker-cun-chu-wei-zhi/">
+                <a href="/website/seafile-da-jian-si-ren-yun-pan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="WSL2 迁移 Docker 镜像存储位置">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="使用 seafile 搭建私人云盘">
                         
-                        <span class="card-title">WSL2 迁移 Docker 镜像存储位置</span>
+                        <span class="card-title">使用 seafile 搭建私人云盘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言自从 Win 10 推出 WSL2 之后，Docker Desktop 就默认使用 WSL2 运行了，此时通过 Hyper-V 无法再设置 Docker 镜像的存储位置，而且 Docker Desktop 的镜像位置设置项也不见了。
-这
+                            概要你是否面临以下困扰：
+
+免费云盘越来越少了
+百度云盘限速越来越过分了
+上传到云盘的文件被服务商泄露了、删掉了
+不得已用 U 盘、QQ 给小伙伴共享文件
+……
+
+其实只需要使用 seafile 搭建一个私人云盘，这些问题就迎刃而解了：Se
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AE%B9%E5%99%A8/" class="post-category">
-                                    容器
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
                                 </a>
                             
                             
@@ -939,16 +955,12 @@ git filter-branch --force --index-filter 'git rm --cached --ign
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/seafile/">
+                        <span class="chip bg-color">seafile</span>
                     </a>
                     
-                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                        <span class="chip bg-color">容器</span>
-                    </a>
-                    
-                    <a href="/tags/WSL/">
-                        <span class="chip bg-color">WSL</span>
+                    <a href="/tags/%E4%BA%91%E7%9B%98/">
+                        <span class="chip bg-color">云盘</span>
                     </a>
                     
                 </div>
@@ -1192,7 +1204,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">220.6k</span>&nbsp;字
+                class="white-color">221.4k</span>&nbsp;字
             
             
             
