@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2021-01-24T10:14:18.150Z</updated>
+  <updated>2021-02-08T10:25:08.201Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用 kOps 在 AWS 部署 k8s 集群</title>
+    <link href="https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/"/>
+    <id>https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/</id>
+    <published>2021-02-08T11:42:55.000Z</published>
+    <updated>2021-02-08T10:25:08.201Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="容器" scheme="https://exp-blog.com/categories/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+    <category term="容器" scheme="https://exp-blog.com/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+    <category term="kubernetes" scheme="https://exp-blog.com/tags/kubernetes/"/>
+    
+    <category term="k8s" scheme="https://exp-blog.com/tags/k8s/"/>
+    
+    <category term="kops" scheme="https://exp-blog.com/tags/kops/"/>
+    
+    <category term="aws" scheme="https://exp-blog.com/tags/aws/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 mstream 搭建私人云音乐库</title>
