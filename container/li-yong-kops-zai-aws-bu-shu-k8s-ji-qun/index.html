@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    18 分
                 </div>
                 
 
@@ -833,9 +833,12 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 </blockquote>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，我们只需访问这个地址即可访问 dashboard：</p>
 <p><code>https://&lt;master-ip&gt;:&lt;apiserver-port&gt;/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code></p>
-<p>其中 <code>&lt;master-ip&gt;</code> 为 <code>kubectl cluster-info</code> 命令查询到 Kubernetes master 域名，<br><code>&lt;apiserver-port&gt;</code> 为 443</p>
+<p>其中 <code>&lt;master-ip&gt;</code> 为 <code>kubectl cluster-info</code> 命令查询到 Kubernetes master 域名（实际上这是 lb 的地址，不是 master 的），<br><code>&lt;apiserver-port&gt;</code> 为 443</p>
 <p>但是事实上无法访问，会一直报错 401 Unauthorized</p>
 <p>原因是在 1.16 版本之后，kube-apiserver 必须要认证后方可访问，但是我们部署集群时，因为是测试环境，所以没有配置证书、甚至 BasicAuth 也没有配置，所以从公网是无法访问的。</p>
+<blockquote>
+<p>注意修改安全组准入策略</p>
+</blockquote>
 <hr>
 <p>那么测试环境有没有简单的方式呢？</p>
 <p>是有的。 我们在 kOps 的服务器上做一个代理转发：</p>
@@ -878,7 +881,48 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <p>再执行命令 <code>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')</code> 即可生成用户 eks-admin 的临时 token ， 将其填入登陆界面即可登陆到 dashboard。</p>
 <p>(注意 token 有效期只有半小时，过期后需要重新生成才能登陆)</p>
 <blockquote>
-<p>其他资料《<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62965122/is-it-possible-to-disable-kubernetes-dashboard-tls-check">Is it possible to disable kubernetes dashboard tls check</a>》</p>
+<p>其他资料</p>
+</blockquote>
+<ul>
+<li>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023130407">访问K8s Dashboard的几种方式</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62965122/is-it-possible-to-disable-kubernetes-dashboard-tls-check">Is it possible to disable kubernetes dashboard tls check</a>》</li>
+</ul>
+<h3 id="另一个更简单的方法"><a href="#另一个更简单的方法" class="headerlink" title="另一个更简单的方法"></a>另一个更简单的方法</h3><p>《<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91731765">Web基础配置篇（十七）: Kubernetes dashboard安装配置</a>》</p>
+<p>将dashboard改为NodePort方式访问，不使用API Server 访问。因为前面 API Server 访问特别麻烦，一大串地址。</p>
+<p>如果是NodePort方式访问，就比较简单了，类似这种形式：<code>https://&lt;master-true-ip&gt;:&lt;port&gt;/</code> (注意前面的 <code>&lt;master-ip&gt;</code> 实际上是 lb 的域名，而此处的 <code>&lt;master-true-ip&gt;</code> 是 master 节点的真实 ip， 可以从 ec2 上查询得到)  </p>
+<p>修改方式：</p>
+<ul>
+<li>查看kubernetes-dashboard：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code></li>
+<li>编辑kubernetes-dashboard：<code>kubectl --namespace=kubernetes-dashboard edit service kubernetes-dashboard</code>，将里面的type: ClusterIP改为type: NodePort即可。</li>
+<li>wq保存即可。等一会儿，重新查看，就变为NodePort了。</li>
+</ul>
+<p>此时查询到 dashboard 服务端口从集群的 443 映射到 master 的某个端口，于是直接访问 <code>https://&lt;master-true-ip&gt;:&lt;port&gt;/</code> 即可（注意ec2安全组策略）</p>
+<p>由于没有证书， chrome 访问该地址会拦截，可以鼠标点击页面空白处，然后键盘输入 <code>thisisunsafe</code> 强制访问。</p>
+<h3 id="重新签发-dashboard-证书"><a href="#重新签发-dashboard-证书" class="headerlink" title="重新签发 dashboard 证书"></a>重新签发 dashboard 证书</h3><p>当然也可以选择重新生成并签发证书：</p>
+<pre><code>#新建目录：
+mkdir key &amp;&amp; cd key
+
+#生成证书
+openssl genrsa -out dashboard.key 2048 
+
+#这里替换成master节点ip
+openssl req -new -out dashboard.csr -key dashboard.key -subj '/CN=&lt;master-true-ip&gt;'
+openssl x509 -req -in dashboard.csr -signkey dashboard.key -out dashboard.crt 
+
+#删除原有的证书secret
+kubectl delete secret kubernetes-dashboard-certs -n kubernetes-dashboard
+
+#创建新的证书secret
+kubectl create secret generic kubernetes-dashboard-certs --from-file=dashboard.key --from-file=dashboard.crt -n kubernetes-dashboard
+
+#查看pod
+kubectl get pod -n kubernetes-dashboard
+
+#重启pod
+kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard</code></pre>
+<p>最后下载 dashboard.csr 到本地，并信任该证书即可。</p>
+<blockquote>
+<p>TODO: SHELL 一键生成脚本</p>
 </blockquote>
 <h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群：</p>
 <pre><code>kops delete  cluster test.k8s.local --yes</code></pre>
@@ -1519,7 +1563,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">225.3k</span>&nbsp;字
+                class="white-color">225.8k</span>&nbsp;字
             
             
             
