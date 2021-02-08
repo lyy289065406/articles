@@ -742,7 +742,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token string">"2021-02-08T03:28:29Z"</span>
   <span class="token key atrule">generation</span><span class="token punctuation">:</span> <span class="token number">1</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> hids.k8s.local
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> test.k8s.local
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">api</span><span class="token punctuation">:</span>
     <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
@@ -752,7 +752,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
     <span class="token key atrule">rbac</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token key atrule">channel</span><span class="token punctuation">:</span> stable
   <span class="token key atrule">cloudProvider</span><span class="token punctuation">:</span> aws
-  <span class="token key atrule">configBase</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//hids.k8s.local<span class="token punctuation">-</span>state/hids.k8s.local
+  <span class="token key atrule">configBase</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//test.k8s.local<span class="token punctuation">-</span>state/test.k8s.local
   <span class="token key atrule">containerRuntime</span><span class="token punctuation">:</span> docker
   <span class="token key atrule">etcdClusters</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">cpuRequest</span><span class="token punctuation">:</span> 200m
@@ -775,8 +775,8 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
   <span class="token key atrule">kubernetesApiAccess</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> 0.0.0.0/0
   <span class="token key atrule">kubernetesVersion</span><span class="token punctuation">:</span> 1.19.7
-  <span class="token key atrule">masterInternalName</span><span class="token punctuation">:</span> api.internal.hids.k8s.local
-  <span class="token key atrule">masterPublicName</span><span class="token punctuation">:</span> api.hids.k8s.local
+  <span class="token key atrule">masterInternalName</span><span class="token punctuation">:</span> api.internal.test.k8s.local
+  <span class="token key atrule">masterPublicName</span><span class="token punctuation">:</span> api.test.k8s.local
   <span class="token key atrule">metricsServer</span><span class="token punctuation">:</span>
     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">networkCIDR</span><span class="token punctuation">:</span> 172.20.0.0/16
