@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2021-02-09T07:36:20.630Z</updated>
+  <updated>2021-02-09T09:53:38.802Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <title>利用 kOps 在 AWS 部署 k8s 集群</title>
     <link href="https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/"/>
     <id>https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/</id>
-    <published>2021-02-08T11:42:55.000Z</published>
-    <updated>2021-02-09T07:36:20.630Z</updated>
+    <published>2021-02-08T13:42:55.000Z</published>
+    <updated>2021-02-09T09:53:38.802Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;本文涉及的参数与版本&quot;&gt;&lt;a href=&quot;#本文涉及的参数与版本&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;参数与版本&quot;&gt;&lt;a href=&quot;#参数与版本&quot; class=&quot;headerlink&quot;</summary>
         
       
     

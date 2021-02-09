@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    4.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    20 分
                 </div>
                 
 
@@ -600,7 +600,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="本文涉及的参数与版本"><a href="#本文涉及的参数与版本" class="headerlink" title="本文涉及的参数与版本"></a>本文涉及的参数与版本</h2><p>由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命令执行，否则最终搭建出来的集群很可能会出现各种兼容性问题。</p>
+                <h2 id="参数与版本"><a href="#参数与版本" class="headerlink" title="参数与版本"></a>参数与版本</h2><p>本文中涉及的所有工具或参数，如无特殊描述，均与下表相同：</p>
 <table>
 <thead>
 <tr>
@@ -617,7 +617,15 @@
 <td align="center">1.19.7</td>
 </tr>
 <tr>
-<td align="center">k8s name</td>
+<td align="center">metrics-server</td>
+<td align="center">集群内置</td>
+</tr>
+<tr>
+<td align="center">dashboard</td>
+<td align="center">2.0.1</td>
+</tr>
+<tr>
+<td align="center">cluster name</td>
 <td align="center">test.k8s.local</td>
 </tr>
 <tr>
@@ -626,32 +634,51 @@
 </tr>
 <tr>
 <td align="center">region</td>
-<td align="center"></td>
+<td align="center">us-east-1</td>
 </tr>
 <tr>
 <td align="center">zone</td>
-<td align="center"></td>
+<td align="center">us-east-1c</td>
 </tr>
 </tbody></table>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<p>不要照抄命令，示例版本过久，会导致 k8s 各种版本兼容问题</p>
+<blockquote>
+<p>由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命令执行，否则最终搭建出来的集群很可能会出现各种兼容性问题。</p>
 </blockquote>
-<p>安装 k8s：</p>
-<ul>
-<li>《<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/how-to-build-kubernetes-based-on-ec2-in-aws-china/">如何在 AWS 中国区上基于 EC 2搭建 Kubernetes</a>》</li>
-<li>《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d448abae039">AWS EC2 上安装 Kubernetes 的示例</a>》</li>
-<li>《<a target="_blank" rel="noopener" href="https://medium.com/@sanjay.chauhan164/https-medium-com-sanjay-chauhan164-kubernetes-with-kops-on-aws-20debcf3e1db">Kubernetes with KOPS on AWS - Clusters, Metrics Server, Dashboard (Web UI), Scaling HPA, Disruption Budget</a>》</li>
-</ul>
-<h2 id="Github-资源"><a href="#Github-资源" class="headerlink" title="Github 资源"></a>Github 资源</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kops</a>： oob 工具，装好集群之后，若要再安装 Metrics Server 、 kubernetes-dashboard 之类的插件，直接通过其 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/tree/master/addons">addons</a> 目录指引安装，避免出现版本兼容性问题</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes">kubernetes</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server">metrics-server</a></li>
-</ul>
-<hr>
-<h2 id="准备工作：部署-kOps-控制服务器"><a href="#准备工作：部署-kOps-控制服务器" class="headerlink" title="准备工作：部署 kOps 控制服务器"></a>准备工作：部署 kOps 控制服务器</h2><p>其作用就是以 oob 方式管理 k8s 集群，这台服务器具备 aws 账号权限，可以使用创建或删除用于部署 k8s 的 ec2 实例、vpc、安全组、s3 存储桶等。</p>
-<p>因为它不属于集群的一部分，但是可以使用 kubectl 工具以客户端的方式直接管理 k8s 集群（的master节点和工作节点），因此在 aws 申请一台低配的机器即可。例如 2c4g 的 ubuntu 18。</p>
-<p>下面所有操作均在这台服务器上执行，无需登陆 k8s 集群的任何节点。</p>
+<h2 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h2><table>
+<thead>
+<tr>
+<th align="center">工具</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/">AWS</a></td>
+<td align="center">亚马逊云计算平台，类似于阿里云、腾讯云等，可以提供搭建 k8s 集群的云主机、S3 存储桶等资源</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kOps</a></td>
+<td align="center">用于在 AWS 上搭建 k8s 集群的 OOB（out-of-band） 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes">kubernetes</a></td>
+<td align="center">简称 k8s，可跨多个主机管理容器化的应用程序的开源系统</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a></td>
+<td align="center">k8s 的 GUI 仪表板，可选插件</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server"><del>metrics-server</del></a></td>
+<td align="center">用于收集 k8s 集群指标（如 CPU、内存等）的可选插件，因已内置到 k8s 集群，<strong>不再推荐独立安装，避免出现版本兼容性问题</strong></td>
+</tr>
+</tbody></table>
+<p>关于 metrics-server 版本兼容性问题，可以参考《<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/kubernetes-practice-guide/troubleshooting-cases-schemaerror-when-using-kubectl-apply-or-edit.md">kubectl edit 或者 apply 报 SchemaError</a>》的说明，主要是 metrics-server 使用了新的 openapi-generator，导致生成的 openapi 格式与某些版本的 k8s 有差异，导致 kubectl 在解析 openapi 的 schema 时发生异常，以致只能回滚或重建集群。</p>
+<p>因为我们是使用 kOps 安装的集群，为了避免出现版本兼容性问题，以后要安装 metrics-server、dashboard 之类的插件，最好直接通过 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/tree/master/addons">kops/addons</a> 目录指引按需安装。</p>
+<h2 id="准备工作：部署-oob-server"><a href="#准备工作：部署-oob-server" class="headerlink" title="准备工作：部署 oob-server"></a>准备工作：部署 oob-server</h2><p>首先大概了解一下部署架构：</p>
+<p><img src="./04.png"></p>
+<p>如上图，oob-server 是在 AWS 手动申请的一台 EC2 服务器，我们在这台服务器上安装 awscli、kOps、kubectl 工具后，就可以以 OOB（带外管理）方式调度 AWS 的资源（包括 EC2、S3、VPC、LB、安全组等）创建 k8s 集群。</p>
+<p>因为 oob-server 不属于集群的一部分，因此在 aws 申请一台低配的机器即可（本文为 2C4G 的 Ubuntu 18.04）。</p>
+<p>尔后所有操作均在 oob-server 上执行即可，无需登陆 k8s 集群的任何节点。</p>
 <h3 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h3><p>集群中的 kube-apiserver 为服务端（由 kOps 负责安装），所以此处相当于安装客户端。</p>
 <p>安装：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -760,6 +787,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <li><code>--ssh-public-key</code> 就是把当前 kOps 服务器的 ssh 公钥写入 k8s 集群的每一个 node 节点，以便之后可以直接通过 ssh 登陆</li>
 </ul>
 <p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name test.k8s.local --yes --admin</code> 命令正式创建集群，但这里先不创建。</p>
+<p><img src="./03.png"></p>
 <p>我们需要调整集群的配置文件：<code>kops edit cluster test.k8s.local</code></p>
 <p>v1.19.7 版本生成的集群配置文件如下，这里主要修改两处：</p>
 <ul>
@@ -834,7 +862,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>较旧的 kOps 版本所创建的集群有 3 个节点： 1 个 master 和 2 个 工作节点。</p>
 <p>较新版本的 kOps 所创建的集群只有 2 个节点： master 和工作节点各一。</p>
 <p>查看集群状态： <code>kops validate cluster</code>： </p>
-<h2 id="操作集群"><a href="#操作集群" class="headerlink" title="操作集群"></a>操作集群</h2><p>只要集群正常启动了，以后就可以在 kOps 的服务器以 oob 方式通过 kubectl 直接操作集群了，无需登陆到集群的任何节点。</p>
+<h2 id="操作集群"><a href="#操作集群" class="headerlink" title="操作集群"></a>操作集群</h2><p>只要集群正常启动了，以后就可以在 kOps 的服务器以 OOB 方式通过 kubectl 直接操作集群了，无需登陆到集群的任何节点。</p>
 <ul>
 <li><code>kubectl get nodes</code>： 查看集群节点</li>
 <li><code>kubectl cluster-info</code>： 查看集群信息，主要查询对公访问域名（其实是 LB 提供的域名，可以在 aws 控制台的负载均衡器找到它）</li>
@@ -957,10 +985,17 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
 <blockquote>
 <p>TODO: SHELL 一键生成脚本</p>
 </blockquote>
-<h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群：</p>
-<pre><code>kops delete  cluster test.k8s.local --yes</code></pre>
+<h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 ec2 实例、lb、安全组等，但 iam 和 s3 不会释放）：</p>
+<pre><code>kops delete cluster test.k8s.local --yes</code></pre>
+<p><img src="./02.jpeg"></p>
 <p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
 <pre><code>rm -rf ~/.rube</code></pre>
+<p><img src="./01.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/how-to-build-kubernetes-based-on-ec2-in-aws-china/">如何在 AWS 中国区上基于 EC 2搭建 Kubernetes</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d448abae039">AWS EC2 上安装 Kubernetes 的示例</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://medium.com/@sanjay.chauhan164/https-medium-com-sanjay-chauhan164-kubernetes-with-kops-on-aws-20debcf3e1db">Kubernetes with KOPS on AWS - Clusters, Metrics Server, Dashboard (Web UI), Scaling HPA, Disruption Budget</a>》</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1244,7 +1279,7 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文涉及的参数与版本由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命
+                            搭建 k8s 集群的入门教程，适合对 AWS 有一定了解的同学参考
                         
                     </div>
                     <div class="publish-info">
@@ -1589,7 +1624,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">225.9k</span>&nbsp;字
+                class="white-color">226.2k</span>&nbsp;字
             
             
             
