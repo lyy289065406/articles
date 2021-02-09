@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2021-02-09T09:53:38.802Z</updated>
+  <updated>2021-02-09T10:15:03.957Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/"/>
     <id>https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/</id>
     <published>2021-02-08T13:42:55.000Z</published>
-    <updated>2021-02-09T09:53:38.802Z</updated>
+    <updated>2021-02-09T10:15:03.957Z</updated>
     
     
       
@@ -755,9 +755,9 @@
     <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
     
     
-    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    
     <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
+    
+    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   

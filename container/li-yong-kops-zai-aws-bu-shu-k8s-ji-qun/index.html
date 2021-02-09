@@ -578,7 +578,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.8k
+                    4.9k
                 </div>
                 
 
@@ -642,7 +642,7 @@
 </tr>
 </tbody></table>
 <blockquote>
-<p>由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命令执行，否则最终搭建出来的集群很可能会出现各种兼容性问题。</p>
+<p>由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命令执行，否则最终搭建出来的集群很可能会出现各种兼容性问题。详细可参考《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/setup/release/version-skew-policy/">Kubernetes 版本及版本偏差支持策略</a>》。</p>
 </blockquote>
 <h2 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h2><table>
 <thead>
@@ -656,8 +656,16 @@
 <td align="center">亚马逊云计算平台，类似于阿里云、腾讯云等，可以提供搭建 k8s 集群的云主机、S3 存储桶等资源</td>
 </tr>
 <tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/cli/">awscli</a></td>
+<td align="center">AWS 命令行工具，可用于管理 AWS 平台上的授权服务</td>
+</tr>
+<tr>
 <td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kOps</a></td>
 <td align="center">用于在 AWS 上搭建 k8s 集群的 OOB（out-of-band） 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a></td>
+<td align="center">k8s 命令行工具，可用于对 k8s 集群下发命令</td>
 </tr>
 <tr>
 <td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes">kubernetes</a></td>
@@ -677,42 +685,39 @@
 <h2 id="准备工作：部署-oob-server"><a href="#准备工作：部署-oob-server" class="headerlink" title="准备工作：部署 oob-server"></a>准备工作：部署 oob-server</h2><p>首先大概了解一下部署架构：</p>
 <p><img src="./04.png"></p>
 <p>如上图，oob-server 是在 AWS 手动申请的一台 EC2 服务器，我们在这台服务器上安装 awscli、kOps、kubectl 工具后，就可以以 OOB（带外管理）方式调度 AWS 的资源（包括 EC2、S3、VPC、LB、安全组等）创建 k8s 集群。</p>
-<p>因为 oob-server 不属于集群的一部分，因此在 aws 申请一台低配的机器即可（本文为 2C4G 的 Ubuntu 18.04）。</p>
-<p>尔后所有操作均在 oob-server 上执行即可，无需登陆 k8s 集群的任何节点。</p>
-<h3 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h3><p>集群中的 kube-apiserver 为服务端（由 kOps 负责安装），所以此处相当于安装客户端。</p>
-<p>安装：</p>
+<p>因为 oob-server 不属于集群的一部分，因此在 aws 申请一台低配的机器即可（本文为 2C4G 的 Ubuntu 18.04）。尔后所有操作均在 oob-server 上执行即可，无需登陆 k8s 集群的任何节点。</p>
+<h3 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h3><p>若了解 k8s 集群的同学可以知道，集群中有一个 kube-apiserver（由 kOps 负责安装），此处所安装的 kubectl 就是其客户端。</p>
+<p>安装命令如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
 mv kubectl /usr/local/bin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>要下载特定版本，将命令中的 <code>$(curl -L -s https://dl.k8s.io/release/stable.txt)</code> 部分替换为指定版本即可，而且一定要去看下最新的稳定版是哪个，k8s 对版本兼容性是有严格要求的，一旦不匹配集群会跑不起来（例如 metrics-server 装错版本集群就会崩掉）</p>
-</blockquote>
-<ul>
-<li>《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/">安装并配置 kubectl</a>》</li>
-<li>《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/setup/release/version-skew-policy/">Kubernetes 版本及版本偏差支持策略</a>》</li>
-</ul>
-<p>验证：<code>kubectl version --short --client</code></p>
+<p>若要下载特定版本，只需把命令中的 <code>$(curl -L -s https://dl.k8s.io/release/stable.txt)</code> 部分替换为指定版本即可。建议一定要去看下当前最新的稳定版是什么，k8s 对版本兼容性是有严格要求的，一旦不匹配集群会跑不起来。</p>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kubectl version --short --client<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>使用 <code>kubectl version</code> 可同时查看客户端和服务端版本，但现在服务端还没安装，查询会超时，故先查客户端。</p>
 </blockquote>
-<h3 id="安装-kOps"><a href="#安装-kOps" class="headerlink" title="安装 kOps"></a>安装 kOps</h3><p>安装：</p>
+<h3 id="安装-kOps"><a href="#安装-kOps" class="headerlink" title="安装 kOps"></a>安装 kOps</h3><p>安装命令如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x kops
 mv kops /usr/local/bin/kops<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>若要下载特定版本，只需把命令中的 <code>$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)</code> 部分替换为指定版本即可。建议一定要去看下当前最新的稳定版是什么，确保 kOps 支持安装的 k8s 集群版本与前面安装的 kubectl 版本一致。</p>
 <blockquote>
-<p>要下载特定版本，将命令中的 <code>$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)</code> 部分替换为指定版本即可，而且一定要去看下最新的稳定版是哪个，建议根据《<a target="_blank" rel="noopener" href="https://kops.sigs.k8s.io/welcome/releases/">kOps版本和版本控制</a>》 看一下哪个 kOps 版本支持安装的 k8s 集群版本与前面安装的 kubectl 版本一致（若没有则用 kubectl 对齐 k8s 的版本，反正两者一定要满足《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/setup/release/version-skew-policy/">Kubernetes 版本及版本偏差支持策略</a>》）</p>
+<p>关于 kOps 支持安装的 k8s 版本可以参考《<a target="_blank" rel="noopener" href="https://kops.sigs.k8s.io/welcome/releases/">kOps版本和版本控制</a>》。</p>
 </blockquote>
-<p>验证： <code>kops version</code></p>
-<h3 id="安装-awscli"><a href="#安装-awscli" class="headerlink" title="安装 awscli"></a>安装 awscli</h3><p>用于创建或删除用于部署 k8s 的 ec2 实例、vpc、安全组、s3 存储桶等</p>
-<p>安装：</p>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kops version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="安装-awscli"><a href="#安装-awscli" class="headerlink" title="安装 awscli"></a>安装 awscli</h3><p>安装命令如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">apt-get update
 apt-get install awscli<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>验证： <code>aws</code></p>
-<p>为了通过命令行执行 aws 控制台的部分功能，需要为其配置你个人 aws 账号的 AccessKeyID 和 SecretAccessKey 进行授权。</p>
-<p>打开 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/iam/">AWS IAM 控制面板</a>，点击左侧导航栏的【用户】便可找到你自己的个人账号，点击该账号，点击【安全证书】标签，点击【创建访问密钥】，即可得到 AccessKeyID 和 SecretAccessKey。</p>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>为了通过命令行执行 aws 控制台的部分功能，需要为其配置你个人 AWS 账号的 AccessKeyID 和 SecretAccessKey 进行授权。</p>
+<p>打开 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/iam/">IAM 控制面板</a>，点击左侧导航栏的【用户】便可找到你自己的个人账号，点击该账号，点击【安全证书】标签，点击【创建访问密钥】，即可得到 AccessKeyID 和 SecretAccessKey。</p>
 <blockquote>
 <p>这个密钥只是临时用的，下面配置好 kops 用户后记得回来删除掉。</p>
 </blockquote>
+<p><img src="./05.png"></p>
 <p>配置： <code>aws configure</code><br>会提问 4 个问题：</p>
 <ul>
 <li>AWS Access Key ID: 输入上面生成的 AccessKeyID</li>
@@ -995,6 +1000,7 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
 <li>《<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/how-to-build-kubernetes-based-on-ec2-in-aws-china/">如何在 AWS 中国区上基于 EC 2搭建 Kubernetes</a>》</li>
 <li>《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d448abae039">AWS EC2 上安装 Kubernetes 的示例</a>》</li>
 <li>《<a target="_blank" rel="noopener" href="https://medium.com/@sanjay.chauhan164/https-medium-com-sanjay-chauhan164-kubernetes-with-kops-on-aws-20debcf3e1db">Kubernetes with KOPS on AWS - Clusters, Metrics Server, Dashboard (Web UI), Scaling HPA, Disruption Budget</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/">安装并配置 kubectl</a>》</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1279,7 +1285,7 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搭建 k8s 集群的入门教程，适合对 AWS 有一定了解的同学参考
+                            kOps 是用于在 AWS 上搭建 k8s 集群的 OOB 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群
                         
                     </div>
                     <div class="publish-info">
@@ -1624,7 +1630,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">226.2k</span>&nbsp;字
+                class="white-color">226.3k</span>&nbsp;字
             
             
             
