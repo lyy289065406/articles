@@ -808,7 +808,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <p><img src="./03.png"></p>
 <p>我们需要执行命令 <code>kops edit cluster exp.k8s.local</code> 调整集群的配置文件，主要修改两处：</p>
 <ul>
-<li>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开。</li>
+<li><del>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开。</del></li>
 <li>追加 <code>metricsServer.enabled: true</code>: 因为后面需要安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a>，所以这里要启用内置的 <a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server">metrics-server</a> 插件。</li>
 </ul>
 <p>修改后的集群配置文件如下（仅适用于 1.19.7 版本）：</p>
@@ -850,7 +850,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
     <span class="token key atrule">allowContainerRegistry</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
     <span class="token key atrule">legacy</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">kubelet</span><span class="token punctuation">:</span>
-    <span class="token key atrule">anonymousAuth</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">anonymousAuth</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">kubernetesApiAccess</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> 0.0.0.0/0
   <span class="token key atrule">kubernetesVersion</span><span class="token punctuation">:</span> 1.19.7
@@ -879,7 +879,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 </blockquote>
 <p>执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
 <p><img src="./10.png"></p>
-<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中。</p>
+<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中，待【状态检查】完全通过后，即创建成功。</p>
 <p><img src="./11.png"></p>
 <h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>较旧的 kOps 版本所创建的集群有 3 个节点： 1 个 master 和 2 个 工作节点。</p>
 <p>较新版本的 kOps 所创建的集群只有 2 个节点： master 和工作节点各一。</p>
@@ -1647,7 +1647,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">226.2k</span>&nbsp;字
+                class="white-color">226.3k</span>&nbsp;字
             
             
             
