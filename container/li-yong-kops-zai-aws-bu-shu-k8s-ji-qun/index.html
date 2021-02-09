@@ -614,11 +614,11 @@
 </tr>
 <tr>
 <td align="center">kubectl</td>
-<td align="center">v1.19.7</td>
+<td align="center">1.19.7</td>
 </tr>
 <tr>
 <td align="center">k8s cluster version</td>
-<td align="center">v1.19.7</td>
+<td align="center">1.19.7</td>
 </tr>
 <tr>
 <td align="center">k8s cluster name</td>
@@ -642,7 +642,7 @@
 </tr>
 <tr>
 <td align="center">dashboard</td>
-<td align="center">v2.0.1</td>
+<td align="center">2.0.1</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -730,7 +730,7 @@ apt-get install awscli<span aria-hidden="true" class="line-numbers-rows"><span><
 <li><code>Default output format</code>: awscli 执行结果回显到命令行界面的格式， 默认为 <code>text</code>， 本文统一为 <code>json</code></li>
 </ul>
 <blockquote>
-<p>注意 AWS 关于 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions, Availability Zones, and Local Zones</a> 的区别。此处填的是 Regions（地区），例如 <code>us-east-1</code>。 后面会要求细化粒度到 Availability Zones（可用地区），例如 <code>us-east-1a</code>、<code>us-east-1b</code>、<code>us-east-1c</code> 等。</p>
+<p>注意 AWS 关于 《<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions, Availability Zones, and Local Zones</a>》 的区别。此处填的是 Regions（地区），例如 <code>us-east-1</code>。 后面会要求细化粒度到 Availability Zones（可用地区），例如 <code>us-east-1a</code>、<code>us-east-1b</code>、<code>us-east-1c</code> 等。</p>
 </blockquote>
 <h3 id="创建-kOps-专用的-IAM-用户"><a href="#创建-kOps-专用的-IAM-用户" class="headerlink" title="创建 kOps 专用的 IAM 用户"></a>创建 kOps 专用的 IAM 用户</h3><p>为了使用 kOps 部署集群，需要创建一个专用的 IAM 用户 <code>kops</code>，并分配这些权限：</p>
 <ul>
@@ -794,21 +794,24 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
      --master-size="t2.medium" \
      --node-size="t2.medium" \
      --ssh-public-key="~/.ssh/id_rsa.pub" \
-     --kubernetes-version="v1.19.7"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+     --kubernetes-version="1.19.7"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数说明：</p>
 <ul>
-<li><code>--name</code> 就是集群名称，固定格式为 <code>&lt;custom_name&gt;.k8s.local</code>， 为了让 kops 创建基于 gossip 的集群，集群的命名需要使用 <code>.k8s.local</code> 作为后缀，同时它可以自动关联到前面的 s3 Bucket 名称 <code>exp.k8s.local-state</code> </li>
-<li><code>--zones</code> 配置的是【可用地区】，注意 AWS 关于 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions, Availability Zones, and Local Zones</a> 的区别，前面配置的是地区 Regions，例如 us-east-1。 现在这里配置的是可用地区 Zones，例如 us-east-1a、us-east-1b、us-east-1c 等</li>
-<li><code>--master-size</code> 和 <code>--node-size</code> 指定的都是 ec2 的实例类型，决定实例的硬件配置，是 2c4g 还是 4c8g 等，kOps 创建 k8s 集群时会新建若干个 ec2 实例作为 node 节点，故而需要这个参数。具体的 ec2 类型可参考<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/pricing/on-demand/">这里</a></li>
-<li><code>--ssh-public-key</code> 就是把当前 kOps 服务器的 ssh 公钥写入 k8s 集群的每一个 node 节点，以便之后可以直接通过 ssh 登陆</li>
+<li><code>--name</code>: 集群名称，为了让 kops 创建基于 gossip 的集群，固定格式为 <code>&lt;custom_name&gt;.k8s.local</code>，这样它就可以自动关联到前面的 S3 Bucket 名称 <code>exp.k8s.local-state</code> 。</li>
+<li><code>--zones</code>: 这里填的不是 Regions（地区），而是 Availability Zones（可用地区）即 Availability Zones，本文固定为 <code>us-east-1c</code> 。</li>
+<li><code>--master-size</code>: 为 k8s 集群的 master 节点申请的 EC2 实例类型，决定了实例的硬件配置，本文固定为 <code>t2.medium</code>，具体的 ec2 类型可参考<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/pricing/on-demand/">这里</a>。</li>
+<li><code>--node-size</code>: 同上，申请的是 k8s 集群的 worker 节点。</li>
+<li><code>--ssh-public-key</code>: 前面生成的 ssh 密钥路径，目的是把 oob-server 的 ssh 公钥写入 k8s 集群的每一个节点，以便之后可以直接通过 ssh 登陆。</li>
+<li><code>--kubernetes-version</code>: 期望创建的 k8s 集群版本，可以参考《<a target="_blank" rel="noopener" href="https://kops.sigs.k8s.io/welcome/releases/">kOps版本和版本控制</a>》查看当前所安装的 kOps 支持安装的版本范围，本文固定为 <code>1.19.7</code> 。</li>
 </ul>
-<p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令正式创建集群，但这里先不创建。</p>
+<p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令正式创建集群，<strong>但这里先不创建</strong>。</p>
 <p><img src="./03.png"></p>
-<p>我们需要调整集群的配置文件：<code>kops edit cluster exp.k8s.local</code></p>
-<p>v1.19.7 版本生成的集群配置文件如下，这里主要修改两处：</p>
+<p>我们需要执行命令 <code>kops edit cluster exp.k8s.local</code> 调整集群的配置文件，主要修改两处：</p>
 <ul>
-<li>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开</li>
-<li>追加 <code>metricsServer.enabled: true</code>: <a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server">metrics-server</a> 主要用于收集 cpu 内存等信息给 kubernetes-dashboard，但是官方不再推荐安装这个插件，主要是该插件与 kube-apiserver 有版本冲突（见《<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/kubernetes-practice-guide/troubleshooting-cases-schemaerror-when-using-kubectl-apply-or-edit.md">kubectl edit 或者 apply 报 SchemaError</a>》），故而直接将其内置，并推荐使用开关方式激活这个插件，详见  <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/blob/master/addons/metrics-server/README.md">kops/addons/metrics-server</a></li>
+<li>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开。</li>
+<li>追加 <code>metricsServer.enabled: true</code>: 因为后面需要安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a>，所以这里要启用内置的 <a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server">metrics-server</a> 插件。</li>
 </ul>
+<p>修改后的集群配置文件如下（仅适用于 1.19.7 版本）：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Please edit the object below. Lines beginning with a '#' will be ignored,</span>
 <span class="token comment" spellcheck="true"># and an empty file will abort the edit. If an error occurs while saving this file will be</span>
 <span class="token comment" spellcheck="true"># reopened with the relevant failures.</span>
@@ -871,9 +874,13 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
       <span class="token key atrule">type</span><span class="token punctuation">:</span> Public
     <span class="token key atrule">masters</span><span class="token punctuation">:</span> public
     <span class="token key atrule">nodes</span><span class="token punctuation">:</span> public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
 <p>配置文件默认以 vim 模式编辑，只要格式符合 yaml ，并且配置项都是当前 k8s 版本支持的，就可以成功保存修改内容（否则会提示保存失败）。</p>
-<p>保存后执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
-<p>大概需要 10 分钟，此时切换到 aws 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">ec2</a> 控制台查看【实例】，可以看见 k8s 的实例正在创建中。</p>
+</blockquote>
+<p>执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
+<p><img src="./10.png"></p>
+<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中。</p>
+<p><img src="./11.png"></p>
 <h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>较旧的 kOps 版本所创建的集群有 3 个节点： 1 个 master 和 2 个 工作节点。</p>
 <p>较新版本的 kOps 所创建的集群只有 2 个节点： master 和工作节点各一。</p>
 <p>查看集群状态： <code>kops validate cluster</code>： </p>
@@ -901,7 +908,7 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <p>旧版本的 kOps 所创建集群节点，其 ssh 的登陆账号默认都是 admin，但是新版本会以集群节点的操作系统名称作为 ssh 的登陆账号，例如 ubuntu、centos 等。 使用的操作系统一般与 kOps 服务器一致，也可在 ec2 控制台直接查看实例的操作系统版本。</p>
 <h2 id="部署-dashboard"><a href="#部署-dashboard" class="headerlink" title="部署 dashboard"></a>部署 dashboard</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>为了方便从 ui 管理 k8s ，可以安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a>：</p>
 <p>因为我们是通过 kOps 安装的集群，为了避免版本兼容性问题，可以直接根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/blob/master/addons/kubernetes-dashboard/addon.yaml">kops/addons/kubernetes-dashboard/addon.yaml</a> 查看匹配的版本，然后获取其 yaml 脚本进行安装。</p>
-<p>例如当前安装的为 v1.19.7 版本的 k8s 集群，则应使用 2.0.1 版本的 dashboard， 故而安装命令为：</p>
+<p>例如当前安装的为 1.19.7 版本的 k8s 集群，则应使用 2.0.1 版本的 dashboard， 故而安装命令为：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v2.0.1.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>通过 <code>kubectl get pods --all-namespaces</code> 命令可查看是否安装成功： 名为 <code>kubernetes-dashboard-xxxxx</code> 的 pod 其 READY=1/1， STATUS=Running</p>
 <blockquote>
@@ -1640,7 +1647,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">226.3k</span>&nbsp;字
+                class="white-color">226.2k</span>&nbsp;字
             
             
             
