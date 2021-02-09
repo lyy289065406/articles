@@ -622,11 +622,11 @@
 </tr>
 <tr>
 <td align="center">k8s cluster name</td>
-<td align="center">test.k8s.local</td>
+<td align="center">exp.k8s.local</td>
 </tr>
 <tr>
 <td align="center">s3 name</td>
-<td align="center">test.k8s.local-state</td>
+<td align="center">exp.k8s.local-state</td>
 </tr>
 <tr>
 <td align="center">region</td>
@@ -699,7 +699,7 @@ mv kubectl /usr/local/bin/<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>验证安装命令如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kubectl version --short --client<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
-<p>使用 <code>kubectl version</code> 可同时查看客户端和服务端版本，但现在服务端还没安装，查询会超时，故先查客户端。</p>
+<p><code>kubectl version</code> 可同时查看客户端和服务端版本，但现在服务端还没安装，查询会超时，故先查客户端。</p>
 </blockquote>
 <h3 id="安装-kOps"><a href="#安装-kOps" class="headerlink" title="安装 kOps"></a>安装 kOps</h3><p>安装命令如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
@@ -763,43 +763,47 @@ aws iam add-user-to-group --user-name kops --group-name kops<span aria-hidden="t
 <li><code>Default region name</code>  : 保持不变即可</li>
 <li><code>Default output format</code>: a保持不变即可</li>
 </ul>
-<p>同时把 kops 用户的配置信息写入到 <code>~/.bashrc</code> 环境变量：</p>
+<p>同时把 <code>kops</code> 用户的配置信息写入到 <code>~/.bashrc</code> 环境变量：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">echo 'export AWS_ACCESS_KEY_ID=...' >> ~/.bashrc
 echo 'export AWS_SECRET_ACCESS_KEY=...' >> ~/.bashrc
 echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>最后生成 ssh 密钥：<code>ssh-keygen</code> （会有几个问题，回车到底即可）</p>
+<p>最后生成 ssh 密钥（会有几个问题，回车到底即可）：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
-<p>生成的密钥位置为 <code>~/.ssh/</code>，此密钥可用于之后登陆 k8s 集群。</p>
+<p>生成的密钥位置为 <code>~/.ssh/</code>，此密钥可用于之后直接 ssh 登陆 k8s 集群的任意节点。</p>
 </blockquote>
-<h3 id="创建-s3-Bucket"><a href="#创建-s3-Bucket" class="headerlink" title="创建 s3 Bucket"></a>创建 s3 Bucket</h3><p>存储桶用于存储集群数据，其命名格式要求为: <code>&lt;custom_name&gt;.k8s.local-state</code></p>
-<p>例如： <code>test.k8s.local-state</code> （注意后缀一个字符都不能改，下文的存储桶名称均以此为示例）</p>
+<h3 id="创建-S3-Bucket"><a href="#创建-S3-Bucket" class="headerlink" title="创建 S3 Bucket"></a>创建 S3 Bucket</h3><p>S3 存储桶用于存储集群数据，其命名格式要求为: <code>&lt;custom_name&gt;.k8s.local-state</code> 。</p>
+<p>本文 S3 取名为 <code>exp.k8s.local-state</code> （注意后缀一个字符都不能改）。</p>
+<p>创建命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws s3 mb s3://exp.k8s.local-state --region us-east-1 --endpoint-url https://s3.us-east-1.amazonaws.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>命令中的 <code>--region</code> 和 <code>--endpoint-url</code> 参数均涉及 region 名称，和前面配置 awscli 时的 region 名称保持一致即可。</p>
+</blockquote>
 <p>存储桶名称要求全球唯一，如果创建失败了，注意看提示是否名称已经被占用了。</p>
-<p>创建命令：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">aws s3 mb s3://test.k8s.local-state --region us-east-1 --endpoint-url https://s3.us-east-1.amazonaws.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<p>命令中的 <code>--region</code> 和 <code>--endpoint-url</code> 参数均涉及地区名称，和前面配置 aws 时的 region 名称保持一致即可</p>
-</blockquote>
-<p>创建成功后，访问 aws <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">s3</a> 可以看到该存储桶。</p>
+<p><img src="./07.png"></p>
+<p>创建成功后，访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 可以看到该存储桶：</p>
+<p><img src="./08.png"></p>
+<p><img src="./09.png"></p>
 <p>最后把 s3 的配置信息写入到 <code>~/.bashrc</code> 环境变量：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">echo 'export KOPS_STATE_STORE=s3://test.k8s.local-state' >> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">echo 'export KOPS_STATE_STORE=s3://exp.k8s.local-state' >> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="创建-k8s-集群"><a href="#创建-k8s-集群" class="headerlink" title="创建 k8s 集群"></a>创建 k8s 集群</h2><p>前面准备工作完成后，即可使用 kOps 创建集群。</p>
 <p>生成集群的配置文件：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kops create cluster \
-     --name=test.k8s.local \
+     --name=exp.k8s.local \
      --zones=us-east-1c \
      --master-size="t2.medium" \
      --node-size="t2.medium" \
      --ssh-public-key="~/.ssh/id_rsa.pub" \
      --kubernetes-version="v1.19.7"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><code>--name</code> 就是集群名称，固定格式为 <code>&lt;custom_name&gt;.k8s.local</code>， 为了让 kops 创建基于 gossip 的集群，集群的命名需要使用 <code>.k8s.local</code> 作为后缀，同时它可以自动关联到前面的 s3 Bucket 名称 <code>test.k8s.local-state</code> </li>
+<li><code>--name</code> 就是集群名称，固定格式为 <code>&lt;custom_name&gt;.k8s.local</code>， 为了让 kops 创建基于 gossip 的集群，集群的命名需要使用 <code>.k8s.local</code> 作为后缀，同时它可以自动关联到前面的 s3 Bucket 名称 <code>exp.k8s.local-state</code> </li>
 <li><code>--zones</code> 配置的是【可用地区】，注意 AWS 关于 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions, Availability Zones, and Local Zones</a> 的区别，前面配置的是地区 Regions，例如 us-east-1。 现在这里配置的是可用地区 Zones，例如 us-east-1a、us-east-1b、us-east-1c 等</li>
 <li><code>--master-size</code> 和 <code>--node-size</code> 指定的都是 ec2 的实例类型，决定实例的硬件配置，是 2c4g 还是 4c8g 等，kOps 创建 k8s 集群时会新建若干个 ec2 实例作为 node 节点，故而需要这个参数。具体的 ec2 类型可参考<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/pricing/on-demand/">这里</a></li>
 <li><code>--ssh-public-key</code> 就是把当前 kOps 服务器的 ssh 公钥写入 k8s 集群的每一个 node 节点，以便之后可以直接通过 ssh 登陆</li>
 </ul>
-<p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name test.k8s.local --yes --admin</code> 命令正式创建集群，但这里先不创建。</p>
+<p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令正式创建集群，但这里先不创建。</p>
 <p><img src="./03.png"></p>
-<p>我们需要调整集群的配置文件：<code>kops edit cluster test.k8s.local</code></p>
+<p>我们需要调整集群的配置文件：<code>kops edit cluster exp.k8s.local</code></p>
 <p>v1.19.7 版本生成的集群配置文件如下，这里主要修改两处：</p>
 <ul>
 <li>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开</li>
@@ -814,7 +818,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token string">"2021-02-08T03:28:29Z"</span>
   <span class="token key atrule">generation</span><span class="token punctuation">:</span> <span class="token number">1</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> test.k8s.local
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> exp.k8s.local
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">api</span><span class="token punctuation">:</span>
     <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
@@ -824,7 +828,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
     <span class="token key atrule">rbac</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token key atrule">channel</span><span class="token punctuation">:</span> stable
   <span class="token key atrule">cloudProvider</span><span class="token punctuation">:</span> aws
-  <span class="token key atrule">configBase</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//test.k8s.local<span class="token punctuation">-</span>state/test.k8s.local
+  <span class="token key atrule">configBase</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//exp.k8s.local<span class="token punctuation">-</span>state/exp.k8s.local
   <span class="token key atrule">containerRuntime</span><span class="token punctuation">:</span> docker
   <span class="token key atrule">etcdClusters</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">cpuRequest</span><span class="token punctuation">:</span> 200m
@@ -847,8 +851,8 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
   <span class="token key atrule">kubernetesApiAccess</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> 0.0.0.0/0
   <span class="token key atrule">kubernetesVersion</span><span class="token punctuation">:</span> 1.19.7
-  <span class="token key atrule">masterInternalName</span><span class="token punctuation">:</span> api.internal.test.k8s.local
-  <span class="token key atrule">masterPublicName</span><span class="token punctuation">:</span> api.test.k8s.local
+  <span class="token key atrule">masterInternalName</span><span class="token punctuation">:</span> api.internal.exp.k8s.local
+  <span class="token key atrule">masterPublicName</span><span class="token punctuation">:</span> api.exp.k8s.local
   <span class="token key atrule">metricsServer</span><span class="token punctuation">:</span>
     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">networkCIDR</span><span class="token punctuation">:</span> 172.20.0.0/16
@@ -868,7 +872,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
     <span class="token key atrule">masters</span><span class="token punctuation">:</span> public
     <span class="token key atrule">nodes</span><span class="token punctuation">:</span> public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>配置文件默认以 vim 模式编辑，只要格式符合 yaml ，并且配置项都是当前 k8s 版本支持的，就可以成功保存修改内容（否则会提示保存失败）。</p>
-<p>保存后执行 <code>kops update cluster --name test.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
+<p>保存后执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
 <p>大概需要 10 分钟，此时切换到 aws 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">ec2</a> 控制台查看【实例】，可以看见 k8s 的实例正在创建中。</p>
 <h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>较旧的 kOps 版本所创建的集群有 3 个节点： 1 个 master 和 2 个 工作节点。</p>
 <p>较新版本的 kOps 所创建的集群只有 2 个节点： master 和工作节点各一。</p>
@@ -997,7 +1001,7 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
 <p>TODO: SHELL 一键生成脚本</p>
 </blockquote>
 <h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 ec2 实例、lb、安全组等，但 iam 和 s3 不会释放）：</p>
-<pre><code>kops delete cluster test.k8s.local --yes</code></pre>
+<pre><code>kops delete cluster exp.k8s.local --yes</code></pre>
 <p><img src="./02.jpeg"></p>
 <p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
 <pre><code>rm -rf ~/.rube</code></pre>
