@@ -571,21 +571,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-09
+                    2021-02-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    5.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    20 分
+                    22 分
                 </div>
                 
 
@@ -665,7 +665,7 @@
 </tr>
 <tr>
 <td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kOps</a></td>
-<td align="center">用于在 AWS 上搭建 k8s 集群的 OOB（out-of-band） 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群</td>
+<td align="center">用于在 AWS 上搭建 k8s 集群的 oob（out-of-band） 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群</td>
 </tr>
 <tr>
 <td align="center"><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a></td>
@@ -688,7 +688,7 @@
 <p>因为我们是使用 kOps 安装的集群，为了避免出现版本兼容性问题，以后要安装 metrics-server、dashboard 之类的插件，最好直接通过 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/tree/master/addons">kops/addons</a> 目录指引按需安装。</p>
 <h2 id="准备工作：部署-oob-server"><a href="#准备工作：部署-oob-server" class="headerlink" title="准备工作：部署 oob-server"></a>准备工作：部署 oob-server</h2><p>首先大概了解一下部署架构：</p>
 <p><img src="./04.png"></p>
-<p>如上图，oob-server 是在 AWS 手动申请的一台 EC2 服务器，我们在这台服务器上安装 awscli、kOps、kubectl 工具后，就可以以 OOB（带外管理）方式调度 AWS 的资源（包括 EC2、S3、VPC、LB、安全组等）创建 k8s 集群。</p>
+<p>如上图，oob-server 是在 AWS 手动申请的一台 EC2 服务器，我们在这台服务器上安装 awscli、kOps、kubectl 工具后，就可以以 oob（带外管理）方式调度 AWS 的资源（包括 EC2、S3、VPC、LB、安全组等）创建 k8s 集群。</p>
 <p>因为 oob-server 不属于集群的一部分，因此在 aws 申请一台低配的机器即可（本文为 2C4G 的 Ubuntu 18.04）。尔后所有操作均在 oob-server 上执行即可，无需登陆 k8s 集群的任何节点。</p>
 <h3 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h3><p>若了解 k8s 集群的同学可以知道，集群中有一个 kube-apiserver（由 kOps 负责安装），此处所安装的 kubectl 就是其客户端。</p>
 <p>安装命令如下：</p>
@@ -879,68 +879,43 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 </blockquote>
 <p>执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
 <p><img src="./10.png"></p>
-<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中，待【状态检查】完全通过后，即创建成功。</p>
+<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中。</p>
+<blockquote>
+<p>当前版本的 kOps 所创建的集群只有 2 个节点（master 和 worker 节点各一），较旧的 kOps 版本所创建的集群有 3 个节点（1 个 master 节点和 2 个 worker 节点）。</p>
+</blockquote>
 <p><img src="./11.png"></p>
-<h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>较旧的 kOps 版本所创建的集群有 3 个节点： 1 个 master 和 2 个 工作节点。</p>
-<p>较新版本的 kOps 所创建的集群只有 2 个节点： master 和工作节点各一。</p>
-<p>查看集群状态： <code>kops validate cluster</code>： </p>
-<h2 id="操作集群"><a href="#操作集群" class="headerlink" title="操作集群"></a>操作集群</h2><p>只要集群正常启动了，以后就可以在 kOps 的服务器以 OOB 方式通过 kubectl 直接操作集群了，无需登陆到集群的任何节点。</p>
+<p>通过 <code>kops validate cluster</code> 命令可查看集群各个节点状态，若均为【Ready】即代表集群创建成功： </p>
+<p><img src="./15.png"></p>
+<h2 id="操作集群"><a href="#操作集群" class="headerlink" title="操作集群"></a>操作集群</h2><h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>以 kOps 方式部署的集群，可以在 oob-server 通过 kubectl 直接操作，无需登陆到集群的任何节点。常用命令如下：</p>
 <ul>
 <li><code>kubectl get nodes</code>： 查看集群节点</li>
-<li><code>kubectl cluster-info</code>： 查看集群信息，主要查询对公访问域名（其实是 LB 提供的域名，可以在 aws 控制台的负载均衡器找到它）</li>
+<li><code>kubectl cluster-info</code>： 查看集群域名地址信息</li>
 <li><code>kubectl version</code>： 查看集群版本</li>
-<li><code>kubectl config view</code>： 查看集群配置，其实就是查看 <code>~/.kube/config</code> 文件</li>
-<li><code>kubectl get deployments --all-namespaces</code>： 查看所有名字空间的 Deployment</li>
-<li><code>kubectl get rs --all-namespaces</code>： 查看所有名字空间的 Deployment</li>
-<li><code>kubectl get deployments --all-namespaces</code>： 查看所有名字空间的 ReplicaSet</li>
-<li><code>kubectl get pods --all-namespaces</code>： 查看所有名字空间的 pod</li>
-<li><code>kubectl get svc --all-namespaces</code>： 查看所有名字空间的 service</li>
+<li><code>kubectl config view</code>： 查看集群配置（脱敏），其实就是查看 <code>~/.kube/config</code> 文件（未脱敏）</li>
+<li><code>kubectl get deployments --all-namespaces</code>： 查看所有名字空间下的 Deployment</li>
+<li><code>kubectl get rs --all-namespaces</code>： 查看所有名字空间下的 ReplicaSet</li>
+<li><code>kubectl get pods --all-namespaces</code>： 查看所有名字空间下的 pod</li>
+<li><code>kubectl get svc --all-namespaces</code>： 查看所有名字空间下的 service</li>
 </ul>
-<h2 id="获取-kube-和-admin-账号的密码"><a href="#获取-kube-和-admin-账号的密码" class="headerlink" title="获取 kube 和 admin 账号的密码"></a>获取 kube 和 admin 账号的密码</h2><p>默认情况下集群有两个账号 admin 和 kube，可以通过 kOps 获取其密码：</p>
+<h3 id="登陆到集群节点"><a href="#登陆到集群节点" class="headerlink" title="登陆到集群节点"></a>登陆到集群节点</h3><p>因为前面在 oob-server 创建集群时，已经通过 kOps 配置了 ssh 密钥，所以可以直接从 oob-server 登陆到集群的任意节点：从 EC2 控制台获取集群节点的 IP 后，直接 ssh 登陆即可（注意配置安全组策略）。</p>
+<p>旧版本的 kOps 所创建集群节点，其 ssh 的登陆账号默认都是 admin，但是新版本会以集群节点的操作系统名称作为 ssh 的登陆账号，例如 ubuntu、centos 等。 集群节点所使用的操作系统一般与 oob-server 服务器一致，也可在 EC2 控制台直接查看各个节点实例的操作系统名称。</p>
+<h2 id="访问集群"><a href="#访问集群" class="headerlink" title="访问集群"></a>访问集群</h2><h3 id="获取服务地址"><a href="#获取服务地址" class="headerlink" title="获取服务地址"></a>获取服务地址</h3><p>通过命令 <code>kubectl cluster-info</code> 可查看集群的域名地址信息，其中【Kubernetes master】即为 master 节点的服务地址，也是 kube-apiserver 的服务地址。</p>
+<p><img src="./17.png"></p>
+<p>在 AWS 环境中，该域名地址是由 LB （负载均衡器）提供的，可以在 AWS 控制台的【负载均衡器】找到它，可以发现它被解析到 master 节点：</p>
+<p><img src="./16.png"></p>
+<h3 id="获取账号密码"><a href="#获取账号密码" class="headerlink" title="获取账号密码"></a>获取账号密码</h3><p>当通过浏览器访问 kube-apiserver 时，会要求输入 BasicAuth 。</p>
+<p>默认情况下集群有两个系统账号 <code>admin</code> 和 <code>kube</code>，可以通过 kOps 获取其密码：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kops get secrets kube --type secret -oplaintext
 kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
-<p>旧版本的 kOps 有 BUG，获取到的密码是反的，就是说 kube 返回的是 admin 的密码， admin 返回的是 kube 的密码</p>
+<p>某些旧版本的 kOps 有 BUG，获取到的密码是反的，就是说 kube 返回的是 admin 的密码， admin 返回的是 kube 的密码。</p>
 </blockquote>
-<p>不过这两个密码暂时用不到，可以先无视。</p>
-<h2 id="登陆到集群"><a href="#登陆到集群" class="headerlink" title="登陆到集群"></a>登陆到集群</h2><p>因为前面创建集群的时候已经配置了 ssh 密钥了，所以可以直接从 kOps 登陆到集群的任意节点。</p>
-<p>从 ec2 控制台查看集群节点的 公网ip 后，直接 ssh 登陆即可。</p>
-<p>旧版本的 kOps 所创建集群节点，其 ssh 的登陆账号默认都是 admin，但是新版本会以集群节点的操作系统名称作为 ssh 的登陆账号，例如 ubuntu、centos 等。 使用的操作系统一般与 kOps 服务器一致，也可在 ec2 控制台直接查看实例的操作系统版本。</p>
-<h2 id="部署-dashboard"><a href="#部署-dashboard" class="headerlink" title="部署 dashboard"></a>部署 dashboard</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>为了方便从 ui 管理 k8s ，可以安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a>：</p>
-<p>因为我们是通过 kOps 安装的集群，为了避免版本兼容性问题，可以直接根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/blob/master/addons/kubernetes-dashboard/addon.yaml">kops/addons/kubernetes-dashboard/addon.yaml</a> 查看匹配的版本，然后获取其 yaml 脚本进行安装。</p>
-<p>例如当前安装的为 1.19.7 版本的 k8s 集群，则应使用 2.0.1 版本的 dashboard， 故而安装命令为：</p>
+<h2 id="部署-dashboard"><a href="#部署-dashboard" class="headerlink" title="部署 dashboard"></a>部署 dashboard</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>为了方便从 GUI 管理 k8s ，推荐安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a>。又因为前面是通过 kOps 安装集群的，为了避免版本兼容性问题，可以直接从 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/blob/master/addons/kubernetes-dashboard/addon.yaml">kops/addons/kubernetes-dashboard/addon.yaml</a> 获取匹配的版本，然后获取其 yaml 脚本进行安装。</p>
+<p>例如当前安装的 k8s 集群版本为 1.19.7 ，则应使用 2.0.1 版本的 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v2.0.1.yaml">dashboard</a>， 故而安装命令为：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v2.0.1.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>通过 <code>kubectl get pods --all-namespaces</code> 命令可查看是否安装成功： 名为 <code>kubernetes-dashboard-xxxxx</code> 的 pod 其 READY=1/1， STATUS=Running</p>
-<blockquote>
-<p>《<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/dashboard-tutorial.html">教程：部署 Kubernetes 控制面板 （Web UI）</a>》</p>
-</blockquote>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，我们只需访问这个地址即可访问 dashboard：</p>
-<p><code>https://&lt;master-ip&gt;:&lt;apiserver-port&gt;/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code></p>
-<p>其中 <code>&lt;master-ip&gt;</code> 为 <code>kubectl cluster-info</code> 命令查询到 Kubernetes master 域名（实际上这是 lb 的地址，不是 master 的），<br><code>&lt;apiserver-port&gt;</code> 为 443</p>
-<p>但是事实上无法访问，会一直报错 401 Unauthorized</p>
-<p>原因是在 1.16 版本之后，kube-apiserver 必须要认证后方可访问，但是我们部署集群时，因为是测试环境，所以没有配置证书、甚至 BasicAuth 也没有配置，所以从公网是无法访问的。</p>
-<blockquote>
-<p>注意修改安全组准入策略</p>
-</blockquote>
-<hr>
-<p>那么测试环境有没有简单的方式呢？</p>
-<p>是有的。 我们在 kOps 的服务器上做一个代理转发：</p>
-<p><code>kubectl proxy --address='0.0.0.0' --port='8001' --accept-hosts='^*$'</code></p>
-<p>此时通过 <code>http://&lt;kops-ip&gt;:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code> 即可访问 dashboard（注意协议从原本的 https 改为 http）</p>
-<p>但是我们发现无法登陆（按钮变灰），报错为：Insecure access detected. Sign in will not be available. Access Dashboard securely over HTTPS or using localhost.</p>
-<p>详细原因见《<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md#login-not-available">Accessing Dashboard</a>》，主要是为了安全期间，在 1.16 版本之后， dashboard 如果使用 http 协议，只能从本地登陆（127.0.0.1 或 localhost）; 如果使用 https ，才可以从非本地登陆。</p>
-<hr>
-<p>那有没有办法绕过呢？</p>
-<p>是可以的，参考 《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023130407">访问K8s Dashboard的几种方式</a>》，我们在本地做一个本地端口转发，把流量转发到 kOps 的 8001 端口即可。 （生产环境不建议使用此方式）</p>
-<p>具体方法是：</p>
-<ul>
-<li>kOps 的 sshd 服务除了 22 端口外，增加监听一个端口用于本地端口转发，如 54322 ：  <code>vim /etc/ssh/sshd_config</code> ，取消 Port 22 注释，并添加一行 Port 54322， 重启 sshd 服务</li>
-<li>在 kOps 执行命令  <code>kubectl proxy</code> （默认只代理 127.0.0.1:8001， 不能是 0.0.0.0:8001）</li>
-<li>在本地 pc 执行命令： <code>ssh -L localhost:8001:localhost:8001 -NT ubuntu@&lt;kops-ip&gt; -p 54322</code></li>
-<li>访问 <code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code> 此时可看到按钮可点击</li>
-</ul>
-<p>但是需要先填入 token 。<br>token 生成方式不难，</p>
-<p>我们先在 kOps 服务上生成一个名为 <code>eks-admin-service-account.yaml</code> 的文件，文件内容为：</p>
+<p>通过 <code>kubectl get pods --all-namespaces</code> 命令可验证是否安装成功： 当名为 <code>kubernetes-dashboard-xxxxx</code> 的 pod 其状态为 <code>READY=1/1</code>， <code>STATUS=Running</code> 时，即安装成功。</p>
+<h3 id="配置登陆账号"><a href="#配置登陆账号" class="headerlink" title="配置登陆账号"></a>配置登陆账号</h3><p>为了访问 dashboard，我们还需为其<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md">配置一个服务账号</a>。</p>
+<p>在 oob-server 创建名为 <code>eks-admin-service-account.yaml</code> 的配置文件（文件名随意），其内容为：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
@@ -959,65 +934,81 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
   <span class="token key atrule">name</span><span class="token punctuation">:</span> eks<span class="token punctuation">-</span>admin
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该配置文件定义了一个服务账号 eks-admin 和集群角色</p>
-<p>然后执行命令 <code>kubectl apply -f eks-admin-service-account.yaml</code> 将其绑定到 k8s 集群。</p>
-<p>再执行命令 <code>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')</code> 即可生成用户 eks-admin 的临时 token ， 将其填入登陆界面即可登陆到 dashboard。</p>
-<p>(注意 token 有效期只有半小时，过期后需要重新生成才能登陆)</p>
+<p>该配置文件定义了一个服务账号 <code>eks-admin</code>（若需要自定义其他账号名称，修改 <code>eks-admin</code> 即可，下同）。</p>
+<p>然后执行命令 <code>kubectl apply -f eks-admin-service-account.yaml</code> 将其绑定到 k8s 集群即可。</p>
+<p>以后访问 dashboard 时，都需要提供 token 用于登陆，此时可在 oob-server 执行命令 <code>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')</code>，该命令可生成用户 <code>eks-admin</code> 的临时 token， 将其填入登陆界面即可。</p>
 <blockquote>
-<p>其他资料</p>
+<p>注意 token 有效期只有半小时，过期后需要执行上述命令重新生成</p>
 </blockquote>
+<p><img src="./13.png"></p>
+<h2 id="访问-dashboard"><a href="#访问-dashboard" class="headerlink" title="访问 dashboard"></a>访问 dashboard</h2><p>根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，dashboard 的访问地址为：<code>https://&lt;cluster-address&gt;/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code>。</p>
+<p>其中 <code>&lt;cluster-address&gt;</code> 为 <code>kubectl cluster-info</code> 命令得到 Kubernetes master 地址。</p>
+<p>但是事实上无法访问，会一直报错 <code>401 Unauthorized</code>。</p>
+<p>原因是在 1.16 版本之后，如果不是从 localhost 访问 kube-apiserver，都必须要认证后方可访问的。但是我们部署集群时，因为是测试环境，既没有配置证书、也没有配置 BasicAuth，所以从公网是无法直接访问的。</p>
+<p>但是因为是测试用集群，不想过于麻烦，有没有办法绕过访问限制呢？下面提供两种绕过方法。</p>
+<h3 id="NodePort-访问方式"><a href="#NodePort-访问方式" class="headerlink" title="NodePort 访问方式"></a>NodePort 访问方式</h3><p>此方法参考自《<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91731765">Web基础配置篇（十七）: Kubernetes dashboard 安装配置</a>》，执行起来较为简单。</p>
+<p>NodePort 原理是把 dashboard 的服务端口映射到 master 节点的宿主机的某个端口，然后直接访问 <code>https://&lt;master-ip&gt;:&lt;port&gt;/</code> 即可（注意配置 EC2 安全组策略）。</p>
+<p>这种访问方式绕过了 kube-apiserver，好处是访问 dashboard 服务时不需要再输入一串极长的地址，坏处是把端口暴露到公网，不但安全性下降，而且丧失了 LB 带来的好处，不建议在生产环境中使用。</p>
+<p>具体的配置方式如下：</p>
 <ul>
-<li>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023130407">访问K8s Dashboard的几种方式</a>》</li>
-<li>《<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62965122/is-it-possible-to-disable-kubernetes-dashboard-tls-check">Is it possible to disable kubernetes dashboard tls check</a>》</li>
+<li>查看 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code>，可见当前服务类型为 ClusterIP</li>
+<li>编辑 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard edit service kubernetes-dashboard</code>，把 <code>type: ClusterIP</code> 修改为 <code>type: NodePort</code>，因为是 vim 编辑，故用 wq 保存即可</li>
+<li>再次查看 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code>，服务类型已变更为 NodePort，且服务端口从 443 映射到了 30689（<strong>随机的</strong>）</li>
 </ul>
-<h3 id="另一个更简单的方法"><a href="#另一个更简单的方法" class="headerlink" title="另一个更简单的方法"></a>另一个更简单的方法</h3><p>《<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91731765">Web基础配置篇（十七）: Kubernetes dashboard安装配置</a>》</p>
-<p>将dashboard改为NodePort方式访问，不使用API Server 访问。因为前面 API Server 访问特别麻烦，一大串地址。</p>
-<p>如果是NodePort方式访问，就比较简单了，类似这种形式：<code>https://&lt;master-true-ip&gt;:&lt;port&gt;/</code> (注意前面的 <code>&lt;master-ip&gt;</code> 实际上是 lb 的域名，而此处的 <code>&lt;master-true-ip&gt;</code> 是 master 节点的真实 ip， 可以从 ec2 上查询得到)  </p>
-<p>修改方式：</p>
-<ul>
-<li>查看kubernetes-dashboard：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code></li>
-<li>编辑kubernetes-dashboard：<code>kubectl --namespace=kubernetes-dashboard edit service kubernetes-dashboard</code>，将里面的type: ClusterIP改为type: NodePort即可。</li>
-<li>wq保存即可。等一会儿，重新查看，就变为NodePort了。</li>
-</ul>
-<p>此时查询到 dashboard 服务端口从集群的 443 映射到 master 的某个端口，于是直接访问 <code>https://&lt;master-true-ip&gt;:&lt;port&gt;/</code> 即可（注意ec2安全组策略）</p>
-<p>由于没有证书， chrome 访问该地址会拦截，可以鼠标点击页面空白处，然后键盘输入 <code>thisisunsafe</code> 强制访问。</p>
-<h3 id="重新签发-dashboard-证书"><a href="#重新签发-dashboard-证书" class="headerlink" title="重新签发 dashboard 证书"></a>重新签发 dashboard 证书</h3><p>当然也可以选择重新生成并签发证书：</p>
-<pre><code>#新建目录：
-mkdir key &amp;&amp; cd key
-
-#生成证书
-openssl genrsa -out dashboard.key 2048 
-
-#这里替换成master节点ip
-openssl req -new -out dashboard.csr -key dashboard.key -subj '/CN=&lt;master-true-ip&gt;'
-openssl x509 -req -in dashboard.csr -signkey dashboard.key -out dashboard.crt 
-
-#删除原有的证书secret
-kubectl delete secret kubernetes-dashboard-certs -n kubernetes-dashboard
-
-#创建新的证书secret
-kubectl create secret generic kubernetes-dashboard-certs --from-file=dashboard.key --from-file=dashboard.crt -n kubernetes-dashboard
-
-#查看pod
-kubectl get pod -n kubernetes-dashboard
-
-#重启pod
-kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard</code></pre>
-<p>最后下载 dashboard.csr 到本地，并信任该证书即可。</p>
+<p><img src="./12.png"></p>
+<p>记住映射的端口，然后我们到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看集群 master 节点的公网 IP，访问 <code>https://&lt;master-ip&gt;:&lt;port&gt;/</code>，填入前面 <code>eks-admin</code> 账号的 token 即可登陆。</p>
 <blockquote>
-<p>TODO: SHELL 一键生成脚本</p>
+<p>注意端口是从 443 映射出来的，因此必须用 https 协议访问，但由于证书不可信，使用 chrome 访问该地址会拦截，可以鼠标点击页面空白处，键盘输入 <code>thisisunsafe</code> 强制访问。</p>
 </blockquote>
+<p><img src="./14.png"></p>
+<p><img src="./18.png"></p>
+<h3 id="代理转发访问方式"><a href="#代理转发访问方式" class="headerlink" title="代理转发访问方式"></a>代理转发访问方式</h3><p>这个方法会比前一个方法更复杂一些。</p>
+<p>需要知道，若 k8s 集群是部署在本地，那么通过 <code>kubectl proxy</code> 命令可以直接把 kube-apiserver 服务映射到本地 <code>http/8001</code> 端口的，再根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，直接访问 <a target="_blank" rel="noopener" href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/">http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</a> 即可。</p>
+<p><img src="./21.png"></p>
+<p>但现在集群是部署在 AWS 上的，我们需要通过公网访问，才有了限制。</p>
+<p>于是我们尝试放开 <code>kubectl proxy</code> 限制条件，在 oob-server 执行命令：</p>
+<p><code>kubectl proxy --address='0.0.0.0' --port='8001' --accept-hosts='^*$'</code></p>
+<p>意即所有网卡（公网和内网）均转发了 8001 端口服务，而且接受所有来源的请求（注意配置 EC2 安全组策略）。</p>
+<p>此时从公网访问 <code>http://&lt;oob-server-ip&gt;:8001</code> 已可成功打开 kube-apiserver 服务，不会再报 <code>401 Unauthorized</code> 异常了。</p>
+<p><img src="./22.png"></p>
+<p>但是从公网访问 <code>http://&lt;oob-server-ip&gt;:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code> 时，虽然可以打开 dashboard 登陆页面，但是无法登陆（按钮变灰），报错为：Insecure access detected. Sign in will not be available. Access Dashboard securely over HTTPS or using localhost.</p>
+<p><img src="./20.png"></p>
+<p>详细原因见《<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md#login-not-available">Accessing Dashboard</a>》，主要是 dashboard 为了安全起见，在 1.16 版本之后，如果使用 http 协议，只能从本地登陆（127.0.0.1 或 localhost）; 如果使用 https ，才可以从非本地登陆。</p>
+<p><img src="./19.png"></p>
+<p>简而言之，<code>kubectl proxy</code> 只是绕过了 kube-apiserver 的限制，没有绕过 dashboard 的限制。</p>
+<p>为此，这里参考了 《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023130407">访问 K8s Dashboard 的几种方式</a>》，可以做一个 ssh 本地端口转发，把本地流量通过 ssh 转发到 oob-server 的 8001 端口，oob-server 再通过 <code>kubectl proxy</code> 把流量转发到 k8s 集群（生产环境不建议使用此方式）。 </p>
+<p>具体方法如下：</p>
+<ul>
+<li>修改 oob-server 的 sshd 服务，除了 22 端口外，增加监听一个端口用于本地端口转发，如 54322 ：<code>vim /etc/ssh/sshd_config</code>，取消 <code>Port 22</code> 注释，并添加一行 <code>Port 2222</code>， 重启 sshd 服务</li>
+<li>在 oob-server 执行命令  <code>kubectl proxy</code> （即只代理 127.0.0.1:8001， 不能是 0.0.0.0:8001）</li>
+<li>在本地终端执行命令： <code>ssh -L localhost:8001:localhost:8001 -NT ubuntu@&lt;oob-server-ip&gt; -p 2222</code></li>
+<li>在本地浏览器访问 <code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code>，此时 dashboard 的登陆按钮不再是灰色，可点击登陆</li>
+</ul>
 <h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 ec2 实例、lb、安全组等，但 iam 和 s3 不会释放）：</p>
-<pre><code>kops delete cluster exp.k8s.local --yes</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">kops delete cluster exp.k8s.local --yes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./02.jpeg"></p>
 <p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
-<pre><code>rm -rf ~/.rube</code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">rm -rf ~/.rube<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./01.png"></p>
+<blockquote>
+<p>k8s 集群数据是存储在 S3 Bucket 的，只能访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 删除</p>
+</blockquote>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="集群部署过了一段时间后，kubectl-报错-Unauthorized"><a href="#集群部署过了一段时间后，kubectl-报错-Unauthorized" class="headerlink" title="集群部署过了一段时间后，kubectl 报错 Unauthorized"></a>集群部署过了一段时间后，kubectl 报错 Unauthorized</h3><p>例如执行 <code>kubectl version</code> 命令后，只能查看 kubectl 的 Client 端版本，而 Server 端版本则要求登陆：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.7", GitCommit:"1dd5338295409edcfff11505e7bb246f0d325d15", GitTreeState:"clean", BuildDate:"2021-01-13T13:23:52Z", GoVersion:"go1.15.5", Compiler:"gc", Platform:"linux/amd64"}
+error: You must be logged in to the server (the server has asked for the client to provide credentials)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这是因为从 kOps 1.19 开始，集群导出的证书仅在 18h 内有效，过期后需要在 oob-server 手动执行命令刷新证书：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 集群名称根据实际情况修改
+kops update cluster --name exp.k8s.local --yes --admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>测试环境尚可接受，为了一劳永逸，在生产环境建议使用其他身份验证机制。</p>
+<h3 id="登陆-dashboard-一段时间后，报错-Unauthorized"><a href="#登陆-dashboard-一段时间后，报错-Unauthorized" class="headerlink" title="登陆 dashboard 一段时间后，报错 Unauthorized"></a>登陆 dashboard 一段时间后，报错 Unauthorized</h3><p>前面已经说过，dashboard 的服务账号 <code>eks-admin</code> 的 token 是临时生成的，每次有效期只有半小时，过期后需要执行以下命令重新生成：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 服务账号名称根据实际情况修改
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/how-to-build-kubernetes-based-on-ec2-in-aws-china/">如何在 AWS 中国区上基于 EC 2搭建 Kubernetes</a>》</li>
 <li>《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d448abae039">AWS EC2 上安装 Kubernetes 的示例</a>》</li>
 <li>《<a target="_blank" rel="noopener" href="https://medium.com/@sanjay.chauhan164/https-medium-com-sanjay-chauhan164-kubernetes-with-kops-on-aws-20debcf3e1db">Kubernetes with KOPS on AWS - Clusters, Metrics Server, Dashboard (Web UI), Scaling HPA, Disruption Budget</a>》</li>
 <li>《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/">安装并配置 kubectl</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/dashboard-tutorial.html">教程：部署 Kubernetes 控制面板 （Web UI）</a>》</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1302,7 +1293,7 @@ kubectl delete pod kubernetes-dashboard-&lt;pod-id&gt;  -n kubernetes-dashboard<
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            kOps 是用于在 AWS 上搭建 k8s 集群的 OOB 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群
+                            kOps 是用于在 AWS 上搭建 k8s 集群的 oob 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群
                         
                     </div>
                     <div class="publish-info">
@@ -1647,7 +1638,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">226.3k</span>&nbsp;字
+                class="white-color">226.9k</span>&nbsp;字
             
             
             
