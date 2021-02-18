@@ -886,7 +886,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 <p><img src="./11.png"></p>
 <p>通过 <code>kops validate cluster</code> 命令可查看集群各个节点状态，若均为【Ready】即代表集群创建成功： </p>
 <p><img src="./15.png"></p>
-<h2 id="操作集群"><a href="#操作集群" class="headerlink" title="操作集群"></a>操作集群</h2><h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>以 kOps 方式部署的集群，可以在 oob-server 通过 kubectl 直接操作，无需登陆到集群的任何节点。常用命令如下：</p>
+<h2 id="操作-k8s-集群"><a href="#操作-k8s-集群" class="headerlink" title="操作 k8s 集群"></a>操作 k8s 集群</h2><h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>以 kOps 方式部署的集群，可以在 oob-server 通过 kubectl 直接操作，无需登陆到集群的任何节点。常用命令如下：</p>
 <ul>
 <li><code>kubectl get nodes</code>： 查看集群节点</li>
 <li><code>kubectl cluster-info</code>： 查看集群域名地址信息</li>
@@ -899,7 +899,7 @@ echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="l
 </ul>
 <h3 id="登陆到集群节点"><a href="#登陆到集群节点" class="headerlink" title="登陆到集群节点"></a>登陆到集群节点</h3><p>因为前面在 oob-server 创建集群时，已经通过 kOps 配置了 ssh 密钥，所以可以直接从 oob-server 登陆到集群的任意节点：从 EC2 控制台获取集群节点的 IP 后，直接 ssh 登陆即可（注意配置安全组策略）。</p>
 <p>旧版本的 kOps 所创建集群节点，其 ssh 的登陆账号默认都是 admin，但是新版本会以集群节点的操作系统名称作为 ssh 的登陆账号，例如 ubuntu、centos 等。 集群节点所使用的操作系统一般与 oob-server 服务器一致，也可在 EC2 控制台直接查看各个节点实例的操作系统名称。</p>
-<h2 id="访问集群"><a href="#访问集群" class="headerlink" title="访问集群"></a>访问集群</h2><h3 id="获取服务地址"><a href="#获取服务地址" class="headerlink" title="获取服务地址"></a>获取服务地址</h3><p>通过命令 <code>kubectl cluster-info</code> 可查看集群的域名地址信息，其中【Kubernetes master】即为 master 节点的服务地址，也是 kube-apiserver 的服务地址。</p>
+<h2 id="访问-k8s-集群"><a href="#访问-k8s-集群" class="headerlink" title="访问 k8s 集群"></a>访问 k8s 集群</h2><h3 id="获取服务地址"><a href="#获取服务地址" class="headerlink" title="获取服务地址"></a>获取服务地址</h3><p>通过命令 <code>kubectl cluster-info</code> 可查看集群的域名地址信息，其中【Kubernetes master】即为 master 节点的服务地址，也是 kube-apiserver 的服务地址。</p>
 <p><img src="./17.png"></p>
 <p>在 AWS 环境中，该域名地址是由 LB （负载均衡器）提供的，可以在 AWS 控制台的【负载均衡器】找到它，可以发现它被解析到 master 节点：</p>
 <p><img src="./16.png"></p>
