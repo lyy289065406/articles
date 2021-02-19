@@ -571,7 +571,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-18
+                    2021-02-19
                 </div>
                 
 
@@ -585,7 +585,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    23 分
                 </div>
                 
 
@@ -984,7 +984,7 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <li>在本地终端执行命令： <code>ssh -L localhost:8001:localhost:8001 -NT ubuntu@&lt;oob-server-ip&gt; -p 2222</code></li>
 <li>在本地浏览器访问 <code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code>，此时 dashboard 的登陆按钮不再是灰色，可点击登陆</li>
 </ul>
-<h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 ec2 实例、lb、安全组等，但 iam 和 s3 不会释放）：</p>
+<h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 EC2 实例、LB、安全组等资源，但 IAM 账号 和 S3 不会释放）：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">kops delete cluster exp.k8s.local --yes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./02.jpeg"></p>
 <p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
@@ -993,13 +993,16 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <blockquote>
 <p>k8s 集群数据是存储在 S3 Bucket 的，只能访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 删除</p>
 </blockquote>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="集群部署过了一段时间后，kubectl-报错-Unauthorized"><a href="#集群部署过了一段时间后，kubectl-报错-Unauthorized" class="headerlink" title="集群部署过了一段时间后，kubectl 报错 Unauthorized"></a>集群部署过了一段时间后，kubectl 报错 Unauthorized</h3><p>例如执行 <code>kubectl version</code> 命令后，只能查看 kubectl 的 Client 端版本，而 Server 端版本则要求登陆：</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="集群部署过了一段时间后，kubectl-报错-Unauthorized"><a href="#集群部署过了一段时间后，kubectl-报错-Unauthorized" class="headerlink" title="集群部署过了一段时间后，kubectl 报错 Unauthorized"></a>集群部署过了一段时间后，kubectl 报错 Unauthorized</h3><p>例如在 oob-server 执行 <code>kubectl version</code> 命令后，只能查看 kubectl 的 Client 端版本，而 Server 端版本则要求登陆：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.7", GitCommit:"1dd5338295409edcfff11505e7bb246f0d325d15", GitTreeState:"clean", BuildDate:"2021-01-13T13:23:52Z", GoVersion:"go1.15.5", Compiler:"gc", Platform:"linux/amd64"}
 error: You must be logged in to the server (the server has asked for the client to provide credentials)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>这是因为从 kOps 1.19 开始，集群导出的证书仅在 18h 内有效，过期后需要在 oob-server 手动执行命令刷新证书：</p>
+<p>这是因为从 kOps 1.19 开始，kOps 从集群导出的证书仅在 18h 内有效，过期 oob-server 和集群就无法通讯了。此时需要在 oob-server 手动执行命令刷新证书：</p>
 <pre class="line-numbers language-shell"><code class="language-shell"># 集群名称根据实际情况修改
 kops update cluster --name exp.k8s.local --yes --admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>测试环境尚可接受，为了一劳永逸，在生产环境建议使用其他身份验证机制。</p>
+<blockquote>
+<p>此问题只存在于 oob-server，若直接登陆到集群节点执行 kubectl 命令，是不会有此问题的</p>
+</blockquote>
 <h3 id="登陆-dashboard-一段时间后，报错-Unauthorized"><a href="#登陆-dashboard-一段时间后，报错-Unauthorized" class="headerlink" title="登陆 dashboard 一段时间后，报错 Unauthorized"></a>登陆 dashboard 一段时间后，报错 Unauthorized</h3><p>前面已经说过，dashboard 的服务账号 <code>eks-admin</code> 的 token 是临时生成的，每次有效期只有半小时，过期后需要执行以下命令重新生成：</p>
 <pre class="line-numbers language-shell"><code class="language-shell"># 服务账号名称根据实际情况修改
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
