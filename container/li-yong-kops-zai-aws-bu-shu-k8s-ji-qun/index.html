@@ -571,7 +571,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-19
+                    2021-03-04
                 </div>
                 
 
@@ -988,7 +988,7 @@ kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="
 <pre class="line-numbers language-shell"><code class="language-shell">kops delete cluster exp.k8s.local --yes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./02.jpeg"></p>
 <p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
-<pre class="line-numbers language-shell"><code class="language-shell">rm -rf ~/.rube<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">rm -rf ~/.kube<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="./01.png"></p>
 <blockquote>
 <p>k8s 集群数据是存储在 S3 Bucket 的，只能访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 删除</p>
