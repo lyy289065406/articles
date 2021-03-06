@@ -6,7 +6,7 @@
   <link href="https://exp-blog.com/atom.xml" rel="self"/>
   
   <link href="https://exp-blog.com/"/>
-  <updated>2021-03-04T03:38:46.280Z</updated>
+  <updated>2021-03-06T05:33:48.042Z</updated>
   <id>https://exp-blog.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git-LFS 的使用和迁移笔记</title>
+    <link href="https://exp-blog.com/scm/gitlfs-shi-yong-he-qian-yi/"/>
+    <id>https://exp-blog.com/scm/gitlfs-shi-yong-he-qian-yi/</id>
+    <published>2021-03-05T08:01:04.000Z</published>
+    <updated>2021-03-06T05:33:48.042Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;当你找到 Git-LFS 的时候，多半目的是为了要使用</summary>
+        
+      
+    
+    
+    
+    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
+    
+    
+    <category term="Git" scheme="https://exp-blog.com/tags/Git/"/>
+    
+    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>利用 kOps 在 AWS 部署 k8s 集群</title>
@@ -78,10 +105,10 @@
   
   <entry>
     <title>如何清洗 Github 提交历史 ？</title>
-    <link href="https://exp-blog.com/tools/qing-xi-github-ti-jiao-li-shi/"/>
-    <id>https://exp-blog.com/tools/qing-xi-github-ti-jiao-li-shi/</id>
+    <link href="https://exp-blog.com/scm/qing-xi-github-ti-jiao-li-shi/"/>
+    <id>https://exp-blog.com/scm/qing-xi-github-ti-jiao-li-shi/</id>
     <published>2021-01-23T07:22:16.000Z</published>
-    <updated>2021-01-23T07:34:45.344Z</updated>
+    <updated>2021-03-05T14:48:46.282Z</updated>
     
     
       
@@ -95,10 +122,12 @@
     
     
     
-    <category term="开发/工具" scheme="https://exp-blog.com/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
     
     
-    <category term="git" scheme="https://exp-blog.com/tags/git/"/>
+    <category term="Git" scheme="https://exp-blog.com/tags/Git/"/>
+    
+    <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
@@ -755,9 +784,9 @@
     <category term="软件配置管理" scheme="https://exp-blog.com/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/"/>
     
     
-    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
-    
     <category term="版本控制" scheme="https://exp-blog.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+    <category term="Ansible" scheme="https://exp-blog.com/tags/Ansible/"/>
     
   </entry>
   

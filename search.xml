@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Git-LFS 的使用和迁移笔记</title>
+      <link href="/scm/gitlfs-shi-yong-he-qian-yi/"/>
+      <url>/scm/gitlfs-shi-yong-he-qian-yi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当你找到 Git-LFS 的时候，多半目的是为了要使用 Github 存储大文件，但是在往下操作之前，需先知道 Git-LFS 不是免费的。</p><p>Git-LFS 只提供 1 GB 存储空间，和每月 1 GB 的流量，一旦超额，仓库就会被限制检出。</p><p>所以如果你仓库大文件超出这个数，又不愿意付费使用的话，就不需要再考虑 LFS 了。</p><blockquote><p>具体的收费标准可以从 <a href="https://github.com/settings/billing"><code>Github Account -&gt; Settings -&gt; Billing &amp; plans</code></a> 查看。</p></blockquote><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Github 对大文件有限制，当超过 100M 的时候无法上传。为了解决这个问题，Git-LFS 应运而生。</p><p>Git-LFS 即 Git Large File Storage，它是 Git 的一个扩展，当我们通过 LFS 上传大文件到 Github 后，该文件只会在我们的 Github 仓库生成一个指针文件，checkout 的时候也只会对指针文件进行操作。只有在本地以特定命令才能从 Github 重新 checkout 该文件，故而确保了我们的仓库不会过大。</p><blockquote><p>关于 LFS 的更多介绍可见 <a href="https://git-lfs.github.com/">官方说明</a></p></blockquote><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>先在系统安装 git-lfs ：</p><ul><li>Mac: <code>brew install git-lfs</code></li><li>ubuntu: <code>apt-get install git-lfs</code></li><li>centos: <code>yum install git-lfs</code></li></ul><p>再为 git 安装 lfs 扩展：</p><pre class="line-numbers language-shell"><code class="language-shell">git lfs install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在一个已经安装 lfs 扩展的 Git 仓库中使用以下命令可追踪大文件：</p><pre class="line-numbers language-shell"><code class="language-shell">git lfs track "<filepattern>"# 示例: git lfs track "*.exe"# 注意: *.exe 是大小写敏感的，如果存在 *.EXE 文件是无法匹配的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>每跟踪一种类型的大文件，可重复执行一次此命令，该命令会生成一个 <code>.gitattributes</code> 文件，用于描述 Git-LFS 的文件名匹配模板，其内容的每一行形如：</p><pre><code>*.exe filter=lfs diff=lfs merge=lfs -text</code></pre><ul><li><code>-text</code> 就是表示这个文件不是文本文件</li><li>其余的就是告诉 Git 在处理 filter、diff、merge 时，把 <code>*.exe</code> 文件通过 LFS 的方式处理</li></ul><p>使用 track 命令追踪档案之后，就可以打破 Github 的 100M 限制，把大文件推送到远端仓库上，不过在首次推送的时候，会消耗一些时间。</p><h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>这才是比较实用的，因为很多仓库是用着用着才想到要用 lfs 的。。。</p><p>对于一个已经用了一段时间的仓库，直接使用 track 命令是无法追踪之前已经提交到仓库的大文件的。</p><p>此时需要执行以下命令把本地分支上的匹配文件的提交历史版本都转换为 lfs ：</p><pre class="line-numbers language-shell"><code class="language-shell">git lfs migrate import --include="<filepattern>" --everything# 示例: git lfs migrate import --include="*.exe" --everything# 注意: 与 track 命令同理，每一种类型的大文件都需重复执行一次此命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>执行该命令后，无论切换到哪个分支，都会出现 <code>.gitattributes</code> 文件，且内容都是一样的。</p><p>当然，如果只想更新某个分支，可以使用 <code>git lfs migrate import --include="&lt;filepattern&gt;" --include-ref=refs/heads/&lt;branch_name&gt;</code> 命令指定。</p><blockquote><p>可以通过 <code>git lfs ls-files</code> 命令查看哪些文件被转换成了 lfs</p></blockquote><p>执行 migrate 迁移命令后，会更改所有已提交的 hash，因此需要使用 force 选项提交，以更新远端仓库：</p><pre class="line-numbers language-shell"><code class="language-shell">git push --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>迁移成功后，本地 git 仓库的大小可能并没有变化，主要是因为之前的提交还在，可以按需进行清理：</p><pre class="line-numbers language-shell"><code class="language-shell">git reflog expire --expire-unreachable=now --allgit gc --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h2><p>对于其他使用这个仓库的人而言，如果是第一次拉取仓库：</p><pre class="line-numbers language-shell"><code class="language-shell"># 只会拉取普通文件，LFS 所追踪的大文件会以指针文件形式拉下来GIT_LFS_SKIP_SMUDGE=1 git clone <repository-addr># 根据指针文件，拉取 LFS 所追踪的大文件git lfs pull<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但如果其他人已经使用了这个仓库一段时间，但是该仓库被你用 migrate 命令迁移了，他们再次使用 pull 去远程拉取的时候会失败，此时他们可以使用 <code>pull --allow-unrelated-histories</code> 命令把远程仓库被修改的历史与本地仓库历史做合并，但最好是重新拉取。</p><h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><p>前面已经说过，Git-LFS 只提供 1 GB 存储空间，和每月 1 GB 的流量。</p><p>一旦超额，只要检出 LFS 文件就会报错：</p><pre><code>batch response: This repository is over its data quota. Account responsible for LFS bandwidth should purchase more data packs to restore access</code></pre><p>此时要么每月支付 $5 ，要么就恢复为非 LFS 仓库，步骤如下：</p><ul><li>如果本地没有备份大文件，先执行 <code>git lfs pull</code> 把大文件拉回来（如果已经超额了，就只能先付费一个月把数据拉回来了）</li><li>在 Github 删除仓库，再重建同名仓库</li><li>在本地依次执行以下命令，重新推送仓库数据：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">rm -rf .gitgit initgit add -Agit commit -m "rebuild"git remote add origin <repository-addr>git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>重建仓库后，如果有其他人已经使用仓库一段时间了，他们是无法再直接 pull 仓库了。此时他们要么删除本地仓库重新 clone，要么执行以下命令以远端覆盖本地：</p><pre class="line-numbers language-shell"><code class="language-shell">git fetch --allgit reset --hard origin/master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h2><p>Git-LFS 推送的文件过大，导致推送时间过长，推送过程需要多次输入密码。</p><p>此问题可以修改 git 凭据的缓存时间解决：</p><pre><code># Set git to use the credential memory cachegit config --global credential.helper cache# Set the cache to timeout after 1 hour (setting is in seconds)git config --global credential.helper 'cache --timeout=3600'</code></pre><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul><li><a href="https://murphypei.github.io/blog/2019/12/git-lfs">Git-LFS 使用和迁移</a></li><li><a href="https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/">Git LFS 操作指南</a></li><li><a href="https://blog.csdn.net/nirendao/article/details/104954495">git clone 与 git pull 的时候不拉大文件</a></li><li><a href="https://www.thinbug.com/q/34579211">如何删除 git-lfs 跟踪的文件并释放存储配额？</a></li><li><a href="https://qastack.cn/programming/1125968/how-do-i-force-git-pull-to-overwrite-local-files">如何强制 git pull 覆盖本地文件？</a></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件配置管理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> 版本控制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用 kOps 在 AWS 部署 k8s 集群</title>
       <link href="/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/"/>
       <url>/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/</url>
@@ -65,22 +92,24 @@
     
     <entry>
       <title>如何清洗 Github 提交历史 ？</title>
-      <link href="/tools/qing-xi-github-ti-jiao-li-shi/"/>
-      <url>/tools/qing-xi-github-ti-jiao-li-shi/</url>
+      <link href="/scm/qing-xi-github-ti-jiao-li-shi/"/>
+      <url>/scm/qing-xi-github-ti-jiao-li-shi/</url>
       
         <content type="html"><![CDATA[<p>当 Github 的 Repo 变得日益臃肿、或者上传了敏感内容时，常见的方法时清理相关文件的所有历史提交记录：</p><pre class="line-numbers language-shell"><code class="language-shell">git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch ${FILEPATH}' --prune-empty --tag-name-filter cat -- --allgit push origin master --forcerm -rf .git/refs/original/git reflog expire --expire=now --allgit gc --prune=nowgit gc --aggressive --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但若这类文件非常多的时候，一个可选的方法时直接清空所有历史记录：</p><pre class="line-numbers language-shell"><code class="language-shell">rm -rf .gitgit initgit add -Agit commit -m "clear history"git remote add origin ${GITHUB_REPO_URL}git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
           
-          <category> 开发/工具 </category>
+          <category> 软件配置管理 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> Git </tag>
+            
+            <tag> 版本控制 </tag>
             
         </tags>
       
@@ -725,9 +754,9 @@
       
         <tags>
             
-            <tag> Ansible </tag>
-            
             <tag> 版本控制 </tag>
+            
+            <tag> Ansible </tag>
             
         </tags>
       
