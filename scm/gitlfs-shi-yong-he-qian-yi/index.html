@@ -527,12 +527,12 @@
                                 <span class="chip bg-color">Git</span>
                             </a>
                         
-                            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
-                                <span class="chip bg-color">版本控制</span>
-                            </a>
-                        
                             <a href="/tags/LFS/">
                                 <span class="chip bg-color">LFS</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                <span class="chip bg-color">版本控制</span>
                             </a>
                         
                     </div>
@@ -563,7 +563,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-06
+                    2021-03-07
                 </div>
                 
 
@@ -612,7 +612,7 @@
 <p>再为 git 安装 lfs 扩展：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">git lfs install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在一个已经安装 lfs 扩展的 Git 仓库中使用以下命令可追踪大文件：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">git lfs track "<filepattern>"
+<pre class="line-numbers language-shell"><code class="language-shell">git lfs track "$FILE_PATTERN"
 
 # 示例: git lfs track "*.exe"
 # 注意: *.exe 是大小写敏感的，如果存在 *.EXE 文件是无法匹配的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -626,12 +626,12 @@
 <h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>这才是比较实用的，因为很多仓库是用着用着才想到要用 lfs 的。。。</p>
 <p>对于一个已经用了一段时间的仓库，直接使用 track 命令是无法追踪之前已经提交到仓库的大文件的。</p>
 <p>此时需要执行以下命令把本地分支上的匹配文件的提交历史版本都转换为 lfs ：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">git lfs migrate import --include="<filepattern>" --everything
+<pre class="line-numbers language-shell"><code class="language-shell">git lfs migrate import --include="$FILE_PATTERN" --everything
 
 # 示例: git lfs migrate import --include="*.exe" --everything
 # 注意: 与 track 命令同理，每一种类型的大文件都需重复执行一次此命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>执行该命令后，无论切换到哪个分支，都会出现 <code>.gitattributes</code> 文件，且内容都是一样的。</p>
-<p>当然，如果只想更新某个分支，可以使用 <code>git lfs migrate import --include="&lt;filepattern&gt;" --include-ref=refs/heads/&lt;branch_name&gt;</code> 命令指定。</p>
+<p>当然，如果只想更新某个分支，可以使用 <code>git lfs migrate import --include="$FILE_PATTERN" --include-ref=refs/heads/&lt;branch_name&gt;</code> 命令指定。</p>
 <blockquote>
 <p>可以通过 <code>git lfs ls-files</code> 命令查看哪些文件被转换成了 lfs</p>
 </blockquote>
@@ -642,7 +642,7 @@
 git gc --prune=now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h2><p>对于其他使用这个仓库的人而言，如果是第一次拉取仓库：</p>
 <pre class="line-numbers language-shell"><code class="language-shell"># 只会拉取普通文件，LFS 所追踪的大文件会以指针文件形式拉下来
-GIT_LFS_SKIP_SMUDGE=1 git clone <repository-addr>
+GIT_LFS_SKIP_SMUDGE=1 git clone $REPO_ADDR
 
 # 根据指针文件，拉取 LFS 所追踪的大文件
 git lfs pull<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -660,7 +660,7 @@ git lfs pull<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 git init
 git add -A
 git commit -m "rebuild"
-git remote add origin <repository-addr>
+git remote add origin $REPO_ADDR
 git push -f -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重建仓库后，如果有其他人已经使用仓库一段时间了，他们是无法再直接 pull 仓库了。此时他们要么删除本地仓库重新 clone，要么执行以下命令以远端覆盖本地：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">git fetch --all
@@ -767,12 +767,12 @@ git config --global credential.helper 'cache --timeout=3600'</code></pre>
                                     <span class="chip bg-color">Git</span>
                                 </a>
                             
-                                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
-                                    <span class="chip bg-color">版本控制</span>
-                                </a>
-                            
                                 <a href="/tags/LFS/">
                                     <span class="chip bg-color">LFS</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                    <span class="chip bg-color">版本控制</span>
                                 </a>
                             
                         </div>
@@ -985,12 +985,12 @@ Git-LFS 只提供 1 GB 存储空间，和每月 1 GB 的流量，一旦超额，
                         <span class="chip bg-color">Git</span>
                     </a>
                     
-                    <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
-                        <span class="chip bg-color">版本控制</span>
-                    </a>
-                    
                     <a href="/tags/LFS/">
                         <span class="chip bg-color">LFS</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                        <span class="chip bg-color">版本控制</span>
                     </a>
                     
                 </div>
